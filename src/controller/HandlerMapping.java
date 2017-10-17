@@ -14,8 +14,6 @@ public class HandlerMapping {
 //		if(command.equals("")) controller = new ();
 		if(command.equals("write")) {
 			controller = new WriteController();
-		}else if(command.equals("showContent")){
-			controller = new ShowContentController();
 		}else if(command.equals("list")) {
 			controller = new ListController();
 		}else if(command.equals("deleteCheckPassword")) {

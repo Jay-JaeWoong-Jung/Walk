@@ -61,11 +61,10 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 			ps=conn.prepareStatement(StringQuery.INSERT_POSTING);
-			ps.setString(1,vo.getTitle());
-			ps.setString(2,vo.getWriter());
-			ps.setString(3,vo.getPassword());
-			ps.setString(4,vo.getContent());
-			
+			ps.setString(1,vo.getWriter());
+			ps.setString(2,vo.getPassword());
+			ps.setString(3,vo.getContent());
+						
 			int row = ps.executeUpdate();
 			System.out.println(row+" row INSERT OK!!");
 			
@@ -83,7 +82,7 @@ public class BoardDao {
 		}
 	}//	posting	
 	
-	public BoardVO getPostingByNo(int no) throws SQLException{
+	/*public BoardVO getPostingByNo(int no) throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -107,7 +106,7 @@ public class BoardDao {
 		}
 		return vo;
 	}//getPostingByNo
-	
+*/	
 	public ArrayList<BoardVO> getAllpost() throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
@@ -121,10 +120,8 @@ public class BoardDao {
 			while(rs.next()) {
 				list.add(new BoardVO(
 						rs.getInt("no"), 
-						rs.getString("title"), 
 						rs.getString("writer"), 
-						null,
-						null,
+						rs.getString("content"),
 						rs.getInt("hits"), 
 						rs.getString("time_posted")));
 							

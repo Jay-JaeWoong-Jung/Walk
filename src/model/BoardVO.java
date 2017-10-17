@@ -28,10 +28,26 @@ public class BoardVO {
 		this.content = content;
 	}
 	
+	public BoardVO(String writer, String password, String content) {
+		super();
+		this.writer = writer;
+		this.password = password;
+		this.content = content;
+	}
+	
 	public BoardVO(int no, String title, String writer, String content, int hits, String timePosted) {
 		super();
 		this.no = no;
 		this.title = title;
+		this.writer = writer;
+		this.content = content;
+		this.hits = hits;
+		this.timePosted = timePosted;
+	}
+	
+	public BoardVO(int no, String writer, String content, int hits, String timePosted) {
+		super();
+		this.no = no;
 		this.writer = writer;
 		this.content = content;
 		this.hits = hits;

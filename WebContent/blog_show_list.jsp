@@ -9,9 +9,9 @@
 <script type="text/javascript">
 function content_submit(){
 	var f=document.write_form;
-	if(f.title.value==""){
-		alert("제목을 입력하세요!");
-		f.title.focus();
+	if(f.content.value==""){
+		alert("내용을 입력하세요!");
+		f.content.focus();
 		return; 
 	}
 	if(f.writer.value==""){
@@ -24,17 +24,17 @@ function content_submit(){
 		f.password.focus();
 		return;
 	}
-	if(f.content.value==""){
-		alert("내용을 입력하세요!");
-		f.content.focus();
-		return;
-	}
+	
 	//이동할 페이지로 폼값을 가지고 전송됨
 	f.submit();
 }
 function cancel(){
 	var f=document.write_form;
 	f.reset();
+}
+
+function winOpen(){
+	window.open("blog_delete_popup.jsp?no=${bvo.no}","z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
 }
 </script>
 </head>
@@ -44,18 +44,23 @@ function cancel(){
 <table border="1" width="650" cellpadding="2" align="center">
 	<tr>
 		<th width="10%">번호</th>
-		<th width="50%">제목</th>
+		<th width="60%">내용</th>
 		<th width="15%">작성자</th>
 		<th width="15%">작성일</th>
-		<th width="10%">조회수</th>
+		
 	</tr>
-	<c:forEach var="bvo" items="${requestScope.list}">
+
+	<c:forEach var="bvo" items="${requestScope.list}" varStatus="i">
 		<tr>
-			<td>${bvo.no}</td>
-			<td><a href="DispatcherServlet?command=showContent&&no=${bvo.no}">${bvo.title}</a></td>
+			
+			<%-- <td><%i++;%><%=i %></td> --%>
+			<td>${i.count}</td>
+		<%-- 	<td>${bvo.no}</td> --%>
+			<td>${bvo.content}</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.timePosted}</td>
-			<td>${bvo.hits}</td>
+			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen()"></td>
+			<!-- <td>${bvo.hits}</td> -->
 		</tr>	
 	</c:forEach>
 </table><p>
@@ -64,9 +69,9 @@ function cancel(){
   <input type="hidden" name="command" value="write">
    <table align="center" width="500px" >
     <tr>
-     <td width="10%">제목</td>
+     <td width="10%">Comment</td>
      <td colspan="3">
-     <input type="text" name="title" maxlength="200" size="50">
+     <input type="text" name="content" maxlength="200" size="50">
      </td>
     </tr>
     <tr>
@@ -77,12 +82,7 @@ function cancel(){
      <input type="password" name="password" maxlength="4" size="4">
      </td>
     </tr>
-    <tr>
-     <td colspan="4">
-     <textarea cols="55" rows="15" name="content"></textarea>
-     </td>
-    </tr> 
-    <tr>
+     <tr>
      <td colspan="4" align="center" >
       <img src="img/confirm.gif" alt="확인"  onclick="content_submit()">
       <a href="blog_list.jsp" onclick="cancel()"><img src="img/cancel.gif"></a>      
@@ -95,6 +95,7 @@ function cancel(){
 
 <div align="center">
 <a href="blog_write.jsp"><img alt="글쓰기 이미지" src="img/write_btn.jpg"></a>
+<a href="blog_delete_popup.jsp"><img alt="삭제 이미지" src="img/delete_btn.jpg"></a>
 </div>
 </body>
 </html>

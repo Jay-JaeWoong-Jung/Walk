@@ -11,6 +11,7 @@ public class DeleteCheckPasswordController implements Controller {
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//no, password
 		int no = Integer.parseInt(request.getParameter("no"));
+		System.out.println("no ::"+no);
 		String pass = request.getParameter("password");
 		
 		boolean flag= BoardDao.getInstance().checkPassword(no, pass);
