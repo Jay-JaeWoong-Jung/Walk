@@ -8,27 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2 align="center">Factory Pattern을 이용한 게시판 글쓰기 2. </h2><p>
-<a href="blog_write.jsp">글 쓰 기</a>
-<a href="DispatcherServlet?command=list">전체 게시글 보기</a>
+<a href="blog_list.jsp"> HOME... </a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
