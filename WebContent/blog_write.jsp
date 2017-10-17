@@ -72,8 +72,6 @@ function cancel(){
    </table>
   </form>
   </body>
-  
-  zzzzzzzzzzzzzzz
 </html>
 
 
