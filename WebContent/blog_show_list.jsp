@@ -6,6 +6,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function content_submit(){
+	var f=document.write_form;
+	if(f.title.value==""){
+		alert("제목을 입력하세요!");
+		f.title.focus();
+		return; 
+	}
+	if(f.writer.value==""){
+		alert("이름을 입력하세요!");
+		f.writer.focus();
+		return;
+	}
+	if(f.password.value==""){
+		alert("패스워드를 입력하세요!");
+		f.password.focus();
+		return;
+	}
+	if(f.content.value==""){
+		alert("내용을 입력하세요!");
+		f.content.focus();
+		return;
+	}
+	//이동할 페이지로 폼값을 가지고 전송됨
+	f.submit();
+}
+function cancel(){
+	var f=document.write_form;
+	f.reset();
+}
+</script>
 </head>
 <body>
 <c:import url="blog_header.jsp"></c:import>
@@ -28,6 +59,39 @@
 		</tr>	
 	</c:forEach>
 </table><p>
+
+  <form action="DispatcherServlet" method="post" name="write_form">
+  <input type="hidden" name="command" value="write">
+   <table align="center" width="500px" >
+    <tr>
+     <td width="10%">제목</td>
+     <td colspan="3">
+     <input type="text" name="title" maxlength="200" size="50">
+     </td>
+    </tr>
+    <tr>
+     <td width="10%">이름</td>
+     <td width="35%"><input type="text" name="writer"></td>
+     <td width="15%">비밀번호</td>
+     <td >
+     <input type="password" name="password" maxlength="4" size="4">
+     </td>
+    </tr>
+    <tr>
+     <td colspan="4">
+     <textarea cols="55" rows="15" name="content"></textarea>
+     </td>
+    </tr> 
+    <tr>
+     <td colspan="4" align="center" >
+      <img src="img/confirm.gif" alt="확인"  onclick="content_submit()">
+      <a href="blog_list.jsp" onclick="cancel()"><img src="img/cancel.gif"></a>      
+     </td>  
+    </tr>
+   </table>
+  </form>
+
+
 
 <div align="center">
 <a href="blog_write.jsp"><img alt="글쓰기 이미지" src="img/write_btn.jpg"></a>
