@@ -6,7 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
+
 function content_submit(){
 	var f=document.write_form;
 	if(f.content.value==""){
@@ -33,9 +35,11 @@ function cancel(){
 	f.reset();
 }
 
-function winOpen(){
-	window.open("blog_delete_popup.jsp?no=${bvo.no}","z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
-}
+
+function winOpen(bvo.no){
+	var number =bvo.no;
+	window.open("blog_delete_popup.jsp?no=bvo.no","z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
+} 
 </script>
 </head>
 <body>
@@ -55,11 +59,13 @@ function winOpen(){
 			
 			<%-- <td><%i++;%><%=i %></td> --%>
 			<td>${i.count}</td>
-		<%-- 	<td>${bvo.no}</td> --%>
+			<td>${bvo.no}</td>
 			<td>${bvo.content}</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.timePosted}</td>
-			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen()"></td>
+			
+			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen(${bvo.no})"></td>
+		
 			<!-- <td>${bvo.hits}</td> -->
 		</tr>	
 	</c:forEach>

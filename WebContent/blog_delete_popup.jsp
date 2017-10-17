@@ -21,6 +21,7 @@ function delAction(){
 <body>
 <form action="DispatcherServlet" method="post" name="delCheckForm">
 <input type="password" name="password"  maxlength="200" size="50"><br><br>
+<b>${param.no}</b>
 <input type="hidden" name="command" value="deleteCheckPassword">
 <input type="hidden" name="no" value="${param.no}"> <!-- 게시판 no 받는것 -->
 <input type="button" value ="삭제"  onclick="delAction()">

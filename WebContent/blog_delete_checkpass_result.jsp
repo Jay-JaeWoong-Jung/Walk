@@ -19,7 +19,7 @@
 		</c:otherwise>
 	</c:choose>
 	
-	self.close();
+	window.self.close();
 </script>
 
 

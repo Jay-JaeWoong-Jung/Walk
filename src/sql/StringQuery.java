@@ -19,8 +19,7 @@ public interface StringQuery {
 			"SELECT COUNT(-1) FROM board WHERE no=? AND password=?";
 	// COUNT(-1) == COUNT(*)
 	String DELETE_POSTING =
-			/*"DELETE FROM board WHERE no=?";*/
-			"DELETE FROM board WHERE rownum=?";
+			"DELETE FROM board WHERE no=?";
 	
 	String CURRENT_NO = 
 			"SELECT board_seq.currVal FROM dual";
