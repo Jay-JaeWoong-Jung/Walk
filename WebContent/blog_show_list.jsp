@@ -33,8 +33,9 @@ function cancel(){
 	f.reset();
 }
 
-function winOpen(){
-	window.open("blog_delete_popup.jsp?no=${bvo.no}","z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
+function winOpen(bvono){
+	var number = bvono
+	window.open("blog_delete_popup.jsp?no="+number,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
 }
 </script>
 </head>
@@ -59,7 +60,7 @@ function winOpen(){
 			<td>${bvo.content}</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.timePosted}</td>
-			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen()"></td>
+			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen('${bvo.no}')"></td>
 			<!-- <td>${bvo.hits}</td> -->
 		</tr>	
 	</c:forEach>
