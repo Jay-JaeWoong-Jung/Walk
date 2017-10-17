@@ -8,7 +8,15 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
-
+$(document).ready(function() {
+	$('img').click(function () {
+		
+		/* var number=$(this).parent().find('.number').text(); */
+		 var num=$(this).attr("alt");
+		alert(num); 
+		window.open("blog_delete_popup.jsp?no="+num,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
+	});
+});
 function content_submit(){
 	var f=document.write_form;
 	if(f.content.value==""){
@@ -36,10 +44,9 @@ function cancel(){
 }
 
 
-function winOpen(bvo.no){
-	var number =bvo.no;
-	window.open("blog_delete_popup.jsp?no=bvo.no","z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
-} 
+/* function winOpen(){
+	
+} */
 </script>
 </head>
 <body>
@@ -59,13 +66,12 @@ function winOpen(bvo.no){
 			
 			<%-- <td><%i++;%><%=i %></td> --%>
 			<td>${i.count}</td>
-			<td>${bvo.no}</td>
+			<td class="number">${bvo.no}</td>
 			<td>${bvo.content}</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.timePosted}</td>
+			<td class="img"><img alt=${bvo.no} src="img/delete_btn.jpg" border="0"></td>
 			
-			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen(${bvo.no})"></td>
-		
 			<!-- <td>${bvo.hits}</td> -->
 		</tr>	
 	</c:forEach>
