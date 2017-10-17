@@ -1,6 +1,13 @@
 package sql;
 
 public interface StringQuery {
+	
+	String UPDATE_TIME ="update membership  set  selectedTime=? where userId=?";
+	
+	String INSERT_DATE = "insert into id_log (userId,attendance,reserveDate) values(?,?,to_char(sysdate,'YYYYMMDD'))"; 
+	
+	String selectedCount = "select count(*) from membership where selectedTime=?";
+	
 //	String INSERT_POSTING = "INSERT INTO board (no, title, writer, password, content, time_posted)" +
 //	" VALUES(board_seq.nextVal, ?, ?, ?, ?, sysdate)";
 //	String SELECT_POSTING = 

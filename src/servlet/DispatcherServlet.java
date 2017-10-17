@@ -27,7 +27,9 @@ public class DispatcherServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd = request.getParameter("command");
+		System.out.println(cmd);
 		Controller controller=HandlerMapping.getInstance().createController(cmd);
+		System.out.println("controller....");
 		try{
 			ModelAndView mv =controller.HandleRequest(request, response);
 			if(mv.isRedirect()) response.sendRedirect(mv.getPath());
