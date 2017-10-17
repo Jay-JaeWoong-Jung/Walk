@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+
+.container-fluid{border:0px solid #000; text-align:center;}
+
+.btn.btn-success{width:200px;margin:0 auto;}

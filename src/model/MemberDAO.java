@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.ArrayList;
 
 import config.OracleInfo;
+import javafx.util.Pair;
 import sql.StringQuery;
 
 /*
@@ -37,8 +38,8 @@ public class MemberDAO {
 	/////////////// 공통적인 로직 /////////////////////////////
 	public  Connection getConnection() throws SQLException{
 		System.out.println("디비연결 성공....");
-		//return DataSourceManager.getInstance().getConnection();
-		return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
+		return DataSourceManager.getInstance().getConnection();
+		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
 	}
 	public void closeAll(PreparedStatement ps, Connection conn)throws SQLException{
 		if(ps!=null) ps.close();
@@ -56,8 +57,7 @@ public class MemberDAO {
 		PreparedStatement ps=null;
 		try{
 			con=getConnection();
-			String sql="insert into membership values(?,?,?,?,?,?,?,?,?,?)";
-			ps=con.prepareStatement(sql);
+			ps=con.prepareStatement(StringQuery.INSERT_MEMBER);
 			
 			ps.setString(1,vo.getUserId());
 			ps.setString(2,vo.getUserPass());
@@ -75,27 +75,79 @@ public class MemberDAO {
 			closeAll(ps,con);
 		}
 	}
-	
-	public static void main(String[] args) throws Exception{
-		
-		MemberDAO dao = MemberDAO.getInstance();
-		MemberVO vo = new MemberVO(
-				"myId", 
-				"myPass", 
-				"myUserName",
-				"01012345678",
-				new Date(),
-				0,
-				"my comapny",
-				0,
-				950411,
-				"email@email.com");
-		dao.registerMember(vo);
-		//System.out.println(dao.getPostingByNo());
-		 
+	public ArrayList<Pair<String,Integer>> getAllUserIdTimePair() throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		ArrayList<Pair<String,Integer>> list = null;
+		try {
+			con=getConnection();
+			list = new ArrayList<Pair<String,Integer>>();
+			ps=con.prepareStatement(StringQuery.GET_ALL_USERID_TIMESLOT);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new Pair(rs.getString(1), rs.getInt(2)));	
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return list;
 	}
-	
-	
+	public ArrayList<Pair<String,Integer>> getUserIdFlagPairByTimeSlot(int timeSlot) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		ArrayList<Pair<String,Integer>> list = null;
+		try {
+			con=getConnection();
+			list = new ArrayList<Pair<String,Integer>>();
+			ps=con.prepareStatement(StringQuery.GET_USERID_FLAG_BY_TIMESLOT);
+			ps.setInt(1, timeSlot);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new Pair(rs.getString(1), rs.getInt(2)));	
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return list;
+	}
+	public ArrayList<String> getUserIDsByTimeSlot(int timeSlot) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		ArrayList<String> list = null;
+		try {
+			con=getConnection();
+			list = new ArrayList<String>();
+			ps=con.prepareStatement(StringQuery.GET_USERID_BY_TIMESLOT);
+			ps.setInt(1, timeSlot);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getString(1));	
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return list;
+	}
+	public void updateAssignedGroup(String userId, int flag) throws SQLException {
+		Connection conn=null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.UPDATE_FLAG);
+			ps.setString(2, userId);
+			ps.setInt(1, flag);
+			int result = ps.executeUpdate();
+			
+			System.out.println("update ok.."+result);
+			
+		}finally {
+			closeAll(ps, conn);
+		}
+	}
+
 	public void chooseTimeSlot(int selectedTime, String userId) throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
@@ -142,6 +194,27 @@ public class MemberDAO {
 	}
 	
 	
+	/*	
+	public static void main(String[] args) throws Exception{
+		
+		MemberDAO dao = MemberDAO.getInstance();
+		MemberVO vo = new MemberVO(
+				"myId", 
+				"myPass", 
+				"myUserName",
+				"01012345678",
+				new Date(),
+				0,
+				"my comapny",
+				0,
+				950411,
+				"email@email.com");
+		dao.registerMember(vo);
+		System.out.println(dao.getAllUserIdTimePair());
+		//System.out.println(dao.getPostingByNo());
+		 
+	}
+	*/
 	
 
 

@@ -6,8 +6,12 @@ public interface StringQuery {
 	
 	String INSERT_DATE = "insert into id_log (userId,attendance,reserveDate) values(?,?,to_char(sysdate,'YYYYMMDD'))"; 
 	
-	String selectedCount = "select count(*) from membership where selectedTime=?";
-	
+	String SELECTED_TIME = "select count(*) from membership where selectedTime=?";
+	String INSERT_MEMBER ="insert into membership values(?,?,?,?,?,?,?,?,?,?)";
+	String GET_ALL_USERID_TIMESLOT = "select userid, selectedtime from membership";
+	String GET_USERID_BY_TIMESLOT = "SELECT userId FROM membership where selectedTime=?";
+	String UPDATE_FLAG = "UPDATE membership SET flag=? WHERE userId =?";
+	String GET_USERID_FLAG_BY_TIMESLOT = "select userid, flag from membership where selectedtime=?";
 //	String INSERT_POSTING = "INSERT INTO board (no, title, writer, password, content, time_posted)" +
 //	" VALUES(board_seq.nextVal, ?, ?, ?, ?, sysdate)";
 //	String SELECT_POSTING = 

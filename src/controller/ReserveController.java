@@ -22,10 +22,10 @@ public class ReserveController implements Controller{
 		String userId = request.getParameter("userId");
 		int attendace = 1;
 		System.out.println("컨트롤러 입성");
-		
+		/*
 		MemberDAO.getInstance().chooseTimeSlot(selectedTime, userId);
 		
-		MemberDAO.getInstance().setReserveDate(userId,attendace);
+		MemberDAO.getInstance().setReserveDate(userId,attendace);*/
 		
 		String path = "rsuccess.jsp";
 		return new ModelAndView(path);
