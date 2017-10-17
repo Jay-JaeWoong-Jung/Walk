@@ -17,7 +17,7 @@ public class DashboardController implements Controller{
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-//		int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
+		int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
 		String userId =request.getParameter("userId");
 		
 		
