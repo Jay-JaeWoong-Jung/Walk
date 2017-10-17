@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import config.OracleInfo;
+import sql.StringQuery;
 
 /*
  * 나중에 실질적으로 Component기반으로 최종적으로 돌릴때에는
@@ -93,6 +94,55 @@ public class MemberDAO {
 		//System.out.println(dao.getPostingByNo());
 		 
 	}
+	
+	
+	public void chooseTimeSlot(int selectedTime, String userId) throws SQLException{
+		Connection conn=null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			ps=conn.prepareStatement(StringQuery.UPDATE_TIME);
+			
+			ps.setInt(1,selectedTime);
+			ps.setString(2,userId);
+			
+			
+			int row = ps.executeUpdate();
+			System.out.println(row+"  chooseTimeSlot row update OK!!");
+			
+
+		}finally {
+			closeAll(rs,ps, conn);
+		}
+
+	}
+	
+	
+	public void setReserveDate(String userId,int attendace) throws SQLException{
+		Connection conn=null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			ps=conn.prepareStatement(StringQuery.INSERT_DATE);
+			
+			
+			ps.setString(1,userId);
+			ps.setInt(2,attendace);
+			
+			int row = ps.executeUpdate();
+			System.out.println(row+" setReserveDate row insert OK!!");
+			
+
+		}finally {
+			closeAll(rs,ps, conn);
+		}
+
+	}
+	
+	
+	
 
 
 
