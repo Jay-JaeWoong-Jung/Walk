@@ -25,10 +25,12 @@ import java.util.Date;
  */
 public class MemberDAO {
 
+	
 	private static MemberDAO dao = new MemberDAO();
 	private MemberDAO() {}
 	public static MemberDAO getInstance() {
 		return dao;
+		
 	}
 	/////////////// 공통적인 로직 /////////////////////////////
 	public  Connection getConnection() throws SQLException{
