@@ -1,0 +1,8 @@
+@charset "EUC-KR";
+
+.btn-group-vertical > button {
+	height: 200px;
+}
+ h1 {
+	font-size: 4em;
+}
