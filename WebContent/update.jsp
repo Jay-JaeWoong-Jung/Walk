@@ -11,8 +11,8 @@
 <script language="javascript" src="script.js"></script>
 </head>
 <%
-	String loginID = (String) session.getAttribute("loginID");
-	MemberVO vo = dao.getMember(loginID);
+	String userId = (String) session.getAttribute("userId");
+	MemberVO vo = dao.getMemberInfo(userId);
 %>
 <body>
 	<h1 align="center">회원 정보 수정</h1>
@@ -21,22 +21,22 @@
 		<table border="1" align="center">
 			<tr>
 				<td align="right">ID :</td>
-				<td><%=vo.getId()%></td>
+				<td><%=vo.getUserId()%></td>
 			</tr>
 			<tr>
 				<td align="right">Password :</td>
 				<td><input type="password" name="pass"
-					value="<%=vo.getPass()%>" /></td>
+					value="<%=vo.getUserPass()%>" /></td>
 			</tr>
 			<tr>
 				<td align="right">Password 확인 :</td>
 				<td><input type="password" name="repass"
-					value="<%=vo.getPass()%>" /></td>
+					value="<%=vo.getUserPass()%>" /></td>
 			</tr>
 			<tr>
 
 				<td align="right">이름 :</td>
-				<td><%=vo.getName()%></td>
+				<td><%=vo.getUserName()%></td>
 			</tr>
 			<tr>
 				<td align="right">핸드폰 번호 :</td>
@@ -49,27 +49,13 @@
 				<td align="right">이메일 :</td>
 				<td><input type="text" name="email" value="<%=vo.getEmail()%>" /></td>
 			</tr>
-			<tr>
-				<td align="right">우편번호 :</td>
-				<td><input type="text" name="zipcode"
-					value="<%=vo.getZipcode()%>" /> <input type="button" value="찾기"
-					onclick="zipCheck()" /></td>
-			</tr>
-			<tr>
-				<td align="right">주소1 :</td>
-				<td><input type="text" name="address1" size="50"
-					value="<%=vo.getAddress1()%>" /></td>
-			</tr>
-			<tr>
-				<td align="right">주소2 :</td>
-				<td><input type="text" name="address2" size="30"
-					value="<%=vo.getAddress2()%>" /></td>
-			</tr>
+			
+			
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
 					value="수정완료" onclick="updateCheck()" />&nbsp;&nbsp; <input
 					type="button" value="취소"
-					onclick="javascript:window.location='login.jsp'" /></td>
+					onclick="javascript:window.location='main.jsp'" /></td>
 			</tr>
 		</table>
 	</form>

@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="dao" class="model.MemberDAO" />
 <%
-	String id = request.getParameter("id");
-	boolean check = dao.idCheck(id);
+	String userId = request.getParameter("userId");
+	boolean check = dao.idCheck(userId);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,7 +15,7 @@
 <body bgcolor="#ffffcc">
 	<br>
 	<center>
-		<b><%=id%></b>
+		<b><%=userId%></b>
 		<%
 			if (check) {
 				out.println("는 이미 존재하는 ID 입니다.<br></br>");

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Vector;
 
 /*
  * 나중에 실질적으로 Component기반으로 최종적으로 돌릴때에는
@@ -25,29 +26,36 @@ import java.util.Date;
  */
 public class MemberDAO {
 
-	
 	private static MemberDAO dao = new MemberDAO();
-	private MemberDAO() {}
+
+	private MemberDAO() {
+	}
+
 	public static MemberDAO getInstance() {
 		return dao;
-		
+
 	}
+
 	/////////////// 공통적인 로직 /////////////////////////////
-	public  Connection getConnection() throws SQLException{
+	public Connection getConnection() throws SQLException {
 		System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
 	}
-	public void closeAll(PreparedStatement ps, Connection conn)throws SQLException{
-		if(ps!=null) ps.close();
-		if(conn!=null) conn.close();
+
+	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
+		if (ps != null)
+			ps.close();
+		if (conn != null)
+			conn.close();
 	}
-	
-	public void closeAll(ResultSet rs,PreparedStatement ps, Connection conn)throws SQLException{
-		if(rs!=null){
+
+	public void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
+		if (rs != null) {
 			rs.close();
 			closeAll(ps, conn);
 		}
 	}//
+
 	public boolean idCheck(String userId) throws SQLException {
 		boolean result = true;
 		Connection conn = null;
@@ -69,18 +77,159 @@ public class MemberDAO {
 		}
 		return result;
 	}// idCheck
-	
-	public static void main(String[] args) throws Exception{
-		
-		MemberDAO dao = MemberDAO.getInstance();
-		//MemberVO vo = new MemberVO("1234", "1234", "1234", "1234", new Date(1986, 8, 6) , 0, "1234", "My Company", 0,19808060);
-		dao.idCheck("abcd");
-		//System.out.println(dao.getPostingByNo());
-		 
+
+	public boolean registerMember(MemberVO vo) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean flag = false;
+		try {
+			conn = getConnection();
+			String strQuery = "insert into membership values(?,?,?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, vo.getUserName());
+			pstmt.setString(2, vo.getUserId());
+			pstmt.setString(3, vo.getUserPass());
+			pstmt.setString(4, vo.getPhone1());
+			pstmt.setString(5, vo.getPhone2());
+			pstmt.setString(6, vo.getPhone3());
+			pstmt.setString(7, vo.getEmail());
+			pstmt.setInt(8, vo.getBirth());
+			pstmt.setInt(9, vo.getGender());
+
+			int count = pstmt.executeUpdate();
+			if (count > 0)
+				flag = true;
+
+		} catch (Exception e) {
+			System.out.println("Exception" + e);
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return flag;
+	}// registerMember
+
+	public int loginCheck(String userId, String userPass) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int check = -1;
+		try {
+			conn = getConnection();
+			String strQuery = "select userpass from membership where userid=? ";
+			pstmt = conn.prepareStatement(strQuery);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				String dbPass = rs.getString("userpass");
+				if (userPass.equals(dbPass))
+					check = 1;
+				else
+					check = 0;
+			}
+
+		} catch (Exception e) {
+			System.out.println("Exception" + e);
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return check;
+	}// loginCheck
+
+	public MemberVO getMemberInfo(String userId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from membership where userid=?");
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+
+				vo.setUserName(rs.getString("username"));
+				vo.setUserId(rs.getString("userid"));
+				vo.setUserPass(rs.getString("userpass"));
+				vo.setPhone1(rs.getString("phone1"));
+				vo.setPhone2(rs.getString("phone2"));
+				vo.setPhone3(rs.getString("phone3"));
+				vo.setEmail(rs.getString("email"));
+				vo.setBirth(rs.getInt("birth"));
+				vo.setGender(rs.getInt("gender"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return vo;
+	}// getMemberInfo
+
+	public void updateMember(MemberVO vo) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement(
+					"update membership set userpass=?,phone1=?,phone2=?,phone3=?,email=? where userid=?");
+			pstmt.setString(1, vo.getUserPass());
+			pstmt.setString(2, vo.getPhone1());
+			pstmt.setString(3, vo.getPhone2());
+			pstmt.setString(4, vo.getPhone3());
+			pstmt.setString(5, vo.getEmail());
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(pstmt, conn);
+		}
+
 	}
 
+	public int deleteMember(String userId, String userPass) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String dbPass = "";
+		int result = -1;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select userpass from membership where userid=? ");
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				dbPass = rs.getString("userPass");
+				if (dbPass.equals(userPass)) {
+					pstmt = conn.prepareStatement("delete from membership where userid=?");
+					pstmt.setString(1, userId);
+					pstmt.executeUpdate();
+					result = 1;
 
+				} else {
+					result = 0;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return result;
+	}
 
-	
-	
+	/*public static void main(String[] args) throws Exception {
+
+		MemberDAO dao = MemberDAO.getInstance();
+		// MemberVO vo = new MemberVO("1234", "1234", "1234", "1234", new Date(1986, 8,
+		// 6) , 0, "1234", "My Company", 0,19808060);
+		dao.idCheck("abcd");
+		System.out.println(dao.idCheck(null));
+
+	}*/
+
 }

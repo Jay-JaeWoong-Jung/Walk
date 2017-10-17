@@ -9,8 +9,8 @@
 	<jsp:setProperty name="vo" property="*" />
 </jsp:useBean>
 <%
-	String loginID = (String) session.getAttribute("loginID");
-	vo.setId(loginID);
+	String userId = (String) session.getAttribute("userId");
+	vo.setUserId(userId);
 	dao.updateMember(vo);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

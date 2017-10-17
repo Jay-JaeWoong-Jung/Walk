@@ -9,13 +9,13 @@
 <title>회원탈퇴</title>
 </head>
 <%
-	String id = (String) session.getAttribute("loginID");
-	String pass = request.getParameter("pass");
-	int check = dao.deleteMember(id, pass);
+	String userId = (String) session.getAttribute("userId");
+	String userPass = request.getParameter("userPass");
+	int check = dao.deleteMember(userId, userPass);
 	if (check == 1) {
 		session.invalidate();
 %>
-<meta http-equiv="Refresh" content="3;url=Bootstrap.jsp">
+<meta http-equiv="Refresh" content="3;url=main.jsp">
 <body>
 	<center>
 		<font size="5" face="바탕체"> 회원정보가 삭제되었습니다.<br></br> 안녕히 가세요!<br></br>

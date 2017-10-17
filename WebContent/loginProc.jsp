@@ -3,13 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <jsp:useBean id="dao" class="model.MemberDAO" />
 <%
-	String id = request.getParameter("id");
-	String pass = request.getParameter("pass");
-	int check = dao.loginCheck(id, pass);
+	String userId = request.getParameter("userId");
+	String userPass = request.getParameter("userPass");
+	int check = dao.loginCheck(userId, userPass);
 %>
 <%
 	if (check == 1) {
-		session.setAttribute("loginID", id);
+		session.setAttribute("userId", userId);
 		response.sendRedirect("main.jsp");
 
 	} else if (check == 0) {

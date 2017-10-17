@@ -6,7 +6,9 @@ public class MemberVO {
 	private String userId;
 	private String userPass;
 	private String userName;
-	private String phoneNumber;
+	private String phone1;
+	private String phone2;
+	private String phone3;
 	private Date regDate;
 	private int selectedTime;
 	private String email;
@@ -14,13 +16,33 @@ public class MemberVO {
 	private int gender;
 	private int birth;
 
-	public MemberVO(String userId, String userPass, String userName, String phoneNumber, Date regDate, int selectedTime,
-			String email, String company, int gender, int birth) {
+	
+	
+	
+	
+	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
+			String email, int gender, int birth) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
 		this.userName = userName;
-		this.phoneNumber = phoneNumber;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
+		this.email = email;
+		this.gender = gender;
+		this.birth = birth;
+	}
+
+	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
+			Date regDate, int selectedTime, String email, String company, int gender, int birth) {
+		super();
+		this.userId = userId;
+		this.userPass = userPass;
+		this.userName = userName;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
 		this.regDate = regDate;
 		this.selectedTime = selectedTime;
 		this.email = email;
@@ -53,12 +75,28 @@ public class MemberVO {
 		this.userName = userName;
 	}
 
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getPhone1() {
+		return phone1;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
+	}
+
+	public String getPhone2() {
+		return phone2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+
+	public String getPhone3() {
+		return phone3;
+	}
+
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
 	}
 
 	public Date getRegDate() {
@@ -111,9 +149,12 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phoneNumber="
-				+ phoneNumber + ", regDate=" + regDate + ", selectedTime=" + selectedTime + ", email=" + email
-				+ ", company=" + company + ", gender=" + gender + ", birth=" + birth + "]";
+		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phone1=" + phone1
+				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", regDate=" + regDate + ", selectedTime="
+				+ selectedTime + ", email=" + email + ", company=" + company + ", gender=" + gender + ", birth=" + birth
+				+ "]";
 	}
+
+	
 
 }

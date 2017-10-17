@@ -5,7 +5,7 @@
 <jsp:useBean id="vo" class="model.MemberVO" />
 <jsp:setProperty name="vo" property="*" />
 <%
-	boolean flag = dao.memberInsert(vo);
+	boolean flag = dao.registerMember(vo);
 %>
 <html>
 <head>
