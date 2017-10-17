@@ -9,12 +9,13 @@ public class MemberVO {
 	private String phoneNumber;
 	private Date regDate;
 	private int selectedTime;
+	private String email;
 	private String company;
-	private int gender;	
+	private int gender;
 	private int birth;
-	
+
 	public MemberVO(String userId, String userPass, String userName, String phoneNumber, Date regDate, int selectedTime,
-			String company, int gender, int birth) {
+			String email, String company, int gender, int birth) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
@@ -22,6 +23,7 @@ public class MemberVO {
 		this.phoneNumber = phoneNumber;
 		this.regDate = regDate;
 		this.selectedTime = selectedTime;
+		this.email = email;
 		this.company = company;
 		this.gender = gender;
 		this.birth = birth;
@@ -75,6 +77,14 @@ public class MemberVO {
 		this.selectedTime = selectedTime;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getCompany() {
 		return company;
 	}
@@ -102,10 +112,8 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phoneNumber="
-				+ phoneNumber + ", regDate=" + regDate + ", selectedTime=" + selectedTime + ", company=" + company
-				+ ", gender=" + gender + ", birth=" + birth + "]";
+				+ phoneNumber + ", regDate=" + regDate + ", selectedTime=" + selectedTime + ", email=" + email
+				+ ", company=" + company + ", gender=" + gender + ", birth=" + birth + "]";
 	}
-	
-	
-	
+
 }

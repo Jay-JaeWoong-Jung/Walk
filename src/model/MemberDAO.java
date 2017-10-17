@@ -48,20 +48,33 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}//
-	
+	public boolean idCheck(String userId) throws SQLException {
+		boolean result = true;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement("select * from membership where userid=?");
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if (!rs.next()) {
+				result = false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return result;
+	}// idCheck
 	
 	public static void main(String[] args) throws Exception{
 		
 		MemberDAO dao = MemberDAO.getInstance();
-		MemberVO vo = new MemberVO("myId", "myPass", 
-				"myUserName",
-				"01012345678",
-				new Date(2000, 11, 11 ),
-				0,
-				"my comapny",
-				0,
-				950411);
-		//dao.Businesslogic()
+		//MemberVO vo = new MemberVO("1234", "1234", "1234", "1234", new Date(1986, 8, 6) , 0, "1234", "My Company", 0,19808060);
+		dao.idCheck("abcd");
 		//System.out.println(dao.getPostingByNo());
 		 
 	}
