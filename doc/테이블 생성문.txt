@@ -8,7 +8,8 @@ birth varchar(10) not null,
 company varchar(20),
 selectedTime number(3),
 regDate date default sysdate,
-eamil varchar2(20) not null
+eamil varchar2(20) not null,
+flag number(10)
 );
 
 

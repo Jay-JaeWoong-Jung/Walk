@@ -13,8 +13,6 @@ public class HandlerMapping {
 		System.out.println("handler 입성");
 		if(command.equals("reserve")){
 			controller = new ReserveController();
-		} else if(command.equals("generateGroups")) {
-			controller = new GenerateGroups();
 		
 		} else if(command.equals("dashboard")){
 			controller = new DashboardController();
