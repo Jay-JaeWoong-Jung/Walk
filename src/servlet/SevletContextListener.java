@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import constants.MagicNumbers;
 import controller.JobTimer;
 
 public class SevletContextListener implements ServletContextListener{
@@ -76,7 +77,7 @@ public class SevletContextListener implements ServletContextListener{
 		timer.schedule(new JobTimer(4), date4.getTime() ,60*1000);
 		timer.schedule(new JobTimer(5), date5.getTime() ,60*1000);
 		timer.schedule(new JobTimer(6), date6.getTime() ,60*1000);	
-		timer.schedule(new JobTimer(0), date7.getTime() ,60*1000);
+		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7.getTime() ,60*1000);
 		
 		
 		

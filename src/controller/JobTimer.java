@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TimerTask;
 
+import constants.MagicNumbers;
 import javafx.util.Pair;
-import model.MagicNumbers;
 import model.MemberDAO;
 
 public class JobTimer extends TimerTask{

@@ -12,8 +12,8 @@ import java.util.Date;
 
 
 import config.OracleInfo;
+import constants.StringQuery;
 import javafx.util.Pair;
-import sql.StringQuery;
 
 /*
  * 나중에 실질적으로 Component기반으로 최종적으로 돌릴때에는

@@ -1,0 +1,21 @@
+@charset "EUC-KR";
+.displayInline {
+	display: inline;
+}
+.smallFont {
+	font-size: .7em;
+}
+
+#groupColorCard {
+	min-height: 300px;
+}
+#tDate {
+	min-width: 180px;
+}
+.btn-size {
+	min-height:80px;
+}
+
+.card-image {
+	width: 50px;
+}

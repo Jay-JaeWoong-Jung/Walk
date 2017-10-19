@@ -1,4 +1,4 @@
-package sql;
+package constants;
 
 public interface StringQuery {
 	
