@@ -22,7 +22,7 @@
 </script>
 </head>
 <body bgcolor="#ffffcc">
-	<br></br>
+
 	<center>
 		<c:choose>
 			<c:when test="${flag == 'true'}">

@@ -229,14 +229,14 @@ Install with Bower
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
-								class="form-control" id="InputId" placeholder="아이디" required>
+								class="form-control" id="InputId" placeholder="아이디" >
 
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="InputPassword"
-								placeholder="비밀번호" required>
+								placeholder="비밀번호" >
 						</div>
 
 						<div class="form-check">

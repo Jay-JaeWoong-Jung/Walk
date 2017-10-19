@@ -241,7 +241,7 @@ public class MemberDAO {
 			if (rs.next()) {
 				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
 						rs.getString("phone2"), rs.getString("phone3"), rs.getString("emailId"),
-						rs.getString("emailAdd"), rs.getInt("gender"), rs.getString("birth"));
+						rs.getString("emailAdd"), rs.getInt("gender")/*, rs.getString("birth")*/);
 			}
 
 		} finally {
