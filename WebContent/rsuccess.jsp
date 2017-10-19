@@ -24,8 +24,10 @@
 		
 		<h3>15분 전 예약 문자를 기다려 주세요</h3> 
 	  	</div>	
-	  	<button type="button" class="btn btn-success"  >확인</button>
-		
+	  	<form action="DispatcherServlet" method="post">
+	 	 	<input type="submit" class="btn btn-success"  value="submit">
+	  		<input type="hidden" name="command" value="dashboard">
+		</form>
 	</div>
 	
 	

@@ -9,16 +9,16 @@ public class HandlerMapping {
 	
 	public Controller createController(String command){
 		Controller controller = null;
+
 		System.out.println("handler 입성");
 		if(command.equals("reserve")){
 			controller = new ReserveController();
-		}else if(command.equals("Dashboard")){
+		
+		} else if(command.equals("dashboard")){
 			controller = new DashboardController();
 		}
 		
 		
-//		if(command.equals("")) controller = new ();
-//		if(command.equals("")) controller = new ();
 //		if(command.equals("")) controller = new ();
 
 		return controller;

@@ -38,6 +38,7 @@ function reserve(){
 	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="5" onclick="reserve()"><h1>13:00</h1></button>
 	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="6" onclick="reserve()"><h1>13:30</h1></button>
 	  		
+
 		<form action="DispatcherServlet" name="selectTimeFrm" id="selectTimeFrm"> 
 			
 	  		<input type="hidden" name="command" value="reserve">
