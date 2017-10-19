@@ -60,17 +60,17 @@ function winOpen_Edit(editno){
 
 <!-- **********************End Main list Table ****************************-->
 <div class="container">
-	<h1 align="center" class="display-3"><b>Comment</b></h1><p>
 	<div class ="col-8">
-		<table class="table table-hover" border="1" width="650" cellpadding="2" align="center">
+	<h1 align="left" class="display-3"><b>Comment</b></h1><p>
+		<table class="table table-hover table-bordered">
 		<thead>	
-			<tr class="table-primary">
-				<th width="5%">#</th>
-				<th width="60%">Content</th>
-				<th width="15%">Writer</th>
-				<th width="15%">Date</th>
-				<th width="15%"></th>
-		
+			<tr class="table-primary text-center">
+				<th width="5%" class="text-center">#</th>
+				<th width="60%" class="text-center">Content</th>
+				<th width="15%" class="text-center">Writer</th>
+				<th width="15%" class="text-center">Date</th>
+				<td colspan="2"></td>
+				
 			</tr>
 		</thead>
 		<c:forEach var="bvo" items="${requestScope.list}" varStatus="i">
@@ -81,53 +81,55 @@ function winOpen_Edit(editno){
 				<td>${bvo.content}</td>
 				<td>${bvo.writer}</td>
 				<td>${bvo.timePosted}</td>
-				<td><button type="button" class="btn btn-default-sm active">Delete
-				<span class="oi oi-trash" onclick="winOpen_Delete('${bvo.no}')"></span></button><br><br>
-				<button type="button" class="btn btn-default-sm active">Edit
+				<td><button type="button" class="btn btn-default-xs active">
+				<span class="oi oi-trash" onclick="winOpen_Delete('${bvo.no}')"></span></button></td>
+				<td><button type="button" class="btn btn-default-xs active">
 				<span class="oi oi-pencil" onclick="winOpen_Edit('${bvo.no}')"></span></button></td>
 				
 			</tr>	
 			</c:forEach>
 		</table><p>
 	</div>
-	<div class="col-4">
 	
-	</div>
 </div>
 <!-- **********************End Main list Table ****************************-->
-
-  <form action="DispatcherServlet" method="post" name="write_form">
-  <input type="hidden" name="command" value="write">
-   <table align="center" width="500px" >
-    <tr>
-     <td width="10%">Comment</td>
-     <td colspan="3">
-     <input type="text" name="content" maxlength="200" size="50">
-     </td>
-    </tr>
-    <tr>
-     <td width="10%">이름</td>
-     <td width="35%"><input type="text" name="writer"></td>
-     <td width="15%">비밀번호</td>
-     <td >
-     <input type="password" name="password" maxlength="4" size="4">
-     </td>
-    </tr>
-     <tr>
-     <td colspan="4" align="center" >
-      <img src="img/confirm.gif" alt="확인"  onclick="content_submit()">
-      <a href="blog_list.jsp" onclick="cancel()"><img src="img/cancel.gif"></a>      
-     </td>  
-    </tr>
-   </table>
-  </form>
-
-
-
-<div align="center">
-<a href="blog_write.jsp"><img alt="글쓰기 이미지" src="img/write_btn.jpg"></a>
-<a href="blog_delete_popup.jsp"><img alt="삭제 이미지" src="img/delete_btn.jpg"></a>
+<div class="container">
+	<div class=col-8>
+ 	 <form action="DispatcherServlet" method="post" name="write_form">
+  		<input type="hidden" name="command" value="write">
+  		 <table align="left" width="500px"  style="border:1px solid black" >
+  		 	<tr>
+    		   <td width="10%">Name</td>
+   			   <td width="200px"><input type="text" name="writer"></td>
+     		   <td width="15%">Password</td>
+       		   <td>
+    			 <input type="password" name="password" maxlength="6" size="8">
+               </td>
+   	         </tr>
+   	         
+  			 <tr>
+     			<td width="15%">Comment</td>
+    		    <td colspan="3">
+     				<input type="text" name="content" maxlength="100" size="80">
+   		       </td>
+    		 </tr>
+    		 
+   	         <tr>
+   	  		    <td colspan="4" align="center" >
+   	  		    <button type="button" class="btn btn-primary btn-block">Write 
+   	  		    <span class="oi oi-check" onclick="content_submit()"></span></button>
+   	  			 
+   	  			  <button type="button" class="btn btn-default-lg  pull-right" >Cancel
+   	  			  <span class="oi oi-trash" onclick="cancel()"></span></button>
+    	              	            
+   	            </td>  
+  	        </tr>
+  	    </table>
+ 	</form>
+  </div>	
 </div>
+
+
 </body>
 </html>
 
