@@ -82,7 +82,7 @@ public class BoardDao {
 		}
 	}//	posting	
 	
-	/*public BoardVO getPostingByNo(int no) throws SQLException{
+	public BoardVO getPostingByNo(int no) throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -94,7 +94,6 @@ public class BoardDao {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				vo = new BoardVO(no, 
-						rs.getString("title"),
 						rs.getString("writer"), 
 						rs.getString("content"), 
 						rs.getInt("hits"), 
@@ -106,7 +105,8 @@ public class BoardDao {
 		}
 		return vo;
 	}//getPostingByNo
-*/	
+	
+	
 	public ArrayList<BoardVO> getAllpost() throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
@@ -170,6 +170,21 @@ public class BoardDao {
 		}
 		
 		
+	}
+	
+	public void updateContent(BoardVO vo) throws SQLException{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.UPDATE_CONTENT);
+			ps.setString(1,vo.getContent());
+			ps.setInt(2, vo.getNo());
+			int row = ps.executeUpdate(); // 1
+			System.out.println("UPDATE OK! "+row); //delete가 되면 1(delelete되어진 row수)
+		}finally {
+			closeAll(ps, conn);
+		}
 	}
 	
 	

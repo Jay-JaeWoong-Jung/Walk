@@ -20,6 +20,10 @@ public class HandlerMapping {
 			controller = new DeleteCheckPasswordController();
 		}else if(command.equals("deletePosting")) {
 			controller = new DeletePostingController();
+		}else if(command.equals("editCheckPassword")) {
+			controller = new EditCheckPasswordController();
+		}else if(command.equals("editcontent")) {
+			controller = new EditContentController();
 		}
 
 		return controller;

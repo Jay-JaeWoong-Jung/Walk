@@ -54,6 +54,12 @@ public class BoardVO {
 		this.timePosted = timePosted;
 	}
 	
+	public BoardVO(int no, String content) { // For EditContentController
+		super();
+		this.no = no;
+		this.content = content;
+	}
+	
 	public int getNo() {
 		return no;
 	}

@@ -4,9 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript">
+
 function content_submit(){
 	var f=document.write_form;
 	if(f.content.value==""){
@@ -33,9 +35,14 @@ function cancel(){
 	f.reset();
 }
 
-function winOpen(bvono){
-	var number = bvono
+function winOpen_Delete(deleteno){
+	var number = deleteno
 	window.open("blog_delete_popup.jsp?no="+number,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
+}
+
+function winOpen_Edit(editno){
+	var number = editno
+	window.open("blog_edit_popup.jsp?no="+number,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
 }
 </script>
 </head>
@@ -56,15 +63,15 @@ function winOpen(bvono){
 			
 			<%-- <td><%i++;%><%=i %></td> --%>
 			<td>${i.count}</td>
-		<%-- 	<td>${bvo.no}</td> --%>
 			<td>${bvo.content}</td>
 			<td>${bvo.writer}</td>
 			<td>${bvo.timePosted}</td>
-			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen('${bvo.no}')"></td>
-			<!-- <td>${bvo.hits}</td> -->
+			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen_Delete('${bvo.no}')"></td>
+			<td><input type="button" value="수정 " onclick="winOpen_Edit('${bvo.no}')"></td>
+						
 		</tr>	
 	</c:forEach>
-</table><p>
+	</table><p>
 
   <form action="DispatcherServlet" method="post" name="write_form">
   <input type="hidden" name="command" value="write">
