@@ -9,13 +9,13 @@ public class MemberVO {
 	private String phone1;
 	private String phone2;
 	private String phone3;
-	private Date regDate;
-	private int selectedTime;
+	private int gender;
 	private String emailId;
 	private String emailAdd;
-	private String company;
-	private int gender;
 	private String birth;
+	private String company;
+	private int selectedTime;
+	private Date regDate;
 
 	public MemberVO(java.lang.String userName, java.lang.String phone1, java.lang.String phone2,
 			java.lang.String phone3, java.lang.String emailId, java.lang.String emailAdd, int gender
@@ -37,8 +37,10 @@ public class MemberVO {
 		this.userPass = userPass;
 	}
  
+	
+
 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
-			String emailId, String emailAdd, int gender, String birth) {
+			int gender, String emailId, String emailAdd, String birth) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
@@ -46,9 +48,9 @@ public class MemberVO {
 		this.phone1 = phone1;
 		this.phone2 = phone2;
 		this.phone3 = phone3;
+		this.gender = gender;
 		this.emailId = emailId;
 		this.emailAdd = emailAdd;
-		this.gender = gender;
 		this.birth = birth;
 	}
 
@@ -157,11 +159,11 @@ public class MemberVO {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-
+ 
 	public int getGender() {
 		return gender;
 	}
-
+ 
 	public void setGender(int gender) {
 		this.gender = gender;
 	}

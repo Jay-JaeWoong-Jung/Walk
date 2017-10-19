@@ -91,17 +91,22 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(StringQuery.INSERT_REGISTER);
-			pstmt.setString(1, vo.getUserId());
-			pstmt.setString(2, vo.getUserPass());
-			pstmt.setString(3, vo.getUserName());
+			pstmt.setString(1, "myId");
+			pstmt.setString(2, "myPass");
+			pstmt.setString(3, "myName");
 
-			pstmt.setString(4, vo.getPhone1());
-			pstmt.setString(5, vo.getPhone2());
-			pstmt.setString(6, vo.getPhone3());
-			pstmt.setInt(7, vo.getGender());
-			pstmt.setString(8, vo.getEmailId());
-			pstmt.setString(9, vo.getEmailAdd());
-			pstmt.setString(10, vo.getBirth());
+			pstmt.setString(4, "123");
+			pstmt.setString(5, "456");
+			pstmt.setString(6, "789");
+			pstmt.setInt(7, 0);
+			pstmt.setString(8, "aa");
+			pstmt.setString(9, "bb");
+			pstmt.setString(10, "950411");
+			pstmt.setString(11, null);
+			pstmt.setNull(12, java.sql.Types.INTEGER);
+			pstmt.setDate(13, null);
+			//pstmt.setNull(13, java.sql.Types.DATE);
+
 			System.out.println("update 전");
 
 			pstmt.executeUpdate();	
@@ -258,13 +263,13 @@ public class MemberDAO {
 	public static void main(String[] args) throws Exception {
 		
 		 MemberDAO dao = MemberDAO.getInstance();
-		 dao.registerMember(new MemberVO("myId", "myPass", "myname", "010", "1234", "5678", "ddd", "naver.com", 0, "19860806"));
+		 dao.registerMember(new MemberVO("myId", "myPass", "myname", "010", "1234", "5678",0, "ddd", "naver.com", "9860806"));
 		/* MemberVO vo = new MemberVO("1234",
 		"1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
 		 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
 		dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
 		 MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
-		 "ealurill","@naver.com", 1, 860806)));
+		 "ealurill","@naver.com", 1, 860806))); 
 		*/ 
 		 
 	}
