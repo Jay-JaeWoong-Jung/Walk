@@ -16,7 +16,7 @@ public class HandlerMapping {
 		} else if(command.equals("generateGroups")) {
 			controller = new GenerateGroups();
 		
-		} else if(command.equals("Dashboard")){
+		} else if(command.equals("dashboard")){
 			controller = new DashboardController();
 		}
 		

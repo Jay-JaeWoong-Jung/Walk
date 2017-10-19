@@ -28,7 +28,7 @@ private int timeSlot;
 			System.out.println("선택시간:" + timeSlot);
 			
 			for(int i=0; i<list.size(); i++) {
-				int flag = i % MagicNumbers.GROUP_SIZE;
+				int flag = i % (list.size() / MagicNumbers.GROUP_SIZE) ;
 				MemberDAO.getInstance().updateAssignedGroup(list.get(i), flag);
 			}
 			ArrayList<Pair<String, Integer>> resultList = MemberDAO.getInstance().getUserIdFlagPairByTimeSlot(timeSlot);

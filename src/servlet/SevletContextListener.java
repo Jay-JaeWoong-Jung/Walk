@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import controller.GenerateGroupThread;
 import controller.JobTimer;
 
 public class SevletContextListener implements ServletContextListener{
@@ -67,6 +66,8 @@ public class SevletContextListener implements ServletContextListener{
 		timer.schedule(new JobTimer(3), date3.getTime() ,60*1000);
 		timer.schedule(new JobTimer(4), date4.getTime() ,60*1000);
 		timer.schedule(new JobTimer(5), date5.getTime() ,60*1000);
+		
+		
 		
 //		scheduler = Executors.newSingleThreadScheduledExecutor();
 //		scheduler.schedule(new GenerateGroupThread(1), 5, TimeUnit.SECONDS);

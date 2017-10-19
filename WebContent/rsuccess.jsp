@@ -26,7 +26,7 @@
 	  	</div>	
 	  	<form action="DispatcherServlet" method="post">
 	 	 	<input type="submit" class="btn btn-success"  value="submit">
-	  		<input type="hidden" name="command" value="generateGroups">
+	  		<input type="hidden" name="command" value="dashboard">
 		</form>
 	</div>
 	
