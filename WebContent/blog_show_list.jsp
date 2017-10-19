@@ -6,7 +6,15 @@
 <head>
 
 <title>Insert title here</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" 
+integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" 
+integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<link href="./open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+
 <script type="text/javascript">
 
 function content_submit(){
@@ -47,31 +55,46 @@ function winOpen_Edit(editno){
 </script>
 </head>
 <body>
-<c:import url="blog_header.jsp"></c:import>
-<h2 align="center"><b>전체 게시글 보기</b></h2><p>
-<table border="1" width="650" cellpadding="2" align="center">
-	<tr>
-		<th width="10%">번호</th>
-		<th width="60%">내용</th>
-		<th width="15%">작성자</th>
-		<th width="15%">작성일</th>
-		
-	</tr>
 
-	<c:forEach var="bvo" items="${requestScope.list}" varStatus="i">
-		<tr>
+<c:import url="blog_header.jsp"></c:import>
+
+<!-- **********************End Main list Table ****************************-->
+<div class="container">
+	<h1 align="center" class="display-3"><b>Comment</b></h1><p>
+	<div class ="col-8">
+		<table class="table table-hover" border="1" width="650" cellpadding="2" align="center">
+		<thead>	
+			<tr class="table-primary">
+				<th width="5%">#</th>
+				<th width="60%">Content</th>
+				<th width="15%">Writer</th>
+				<th width="15%">Date</th>
+				<th width="15%"></th>
+		
+			</tr>
+		</thead>
+		<c:forEach var="bvo" items="${requestScope.list}" varStatus="i">
+			<tr class="table-info">
 			
-			<%-- <td><%i++;%><%=i %></td> --%>
-			<td>${i.count}</td>
-			<td>${bvo.content}</td>
-			<td>${bvo.writer}</td>
-			<td>${bvo.timePosted}</td>
-			<td><img alt="삭제" src="img/delete_btn.jpg" border="0" onClick="winOpen_Delete('${bvo.no}')"></td>
-			<td><input type="button" value="수정 " onclick="winOpen_Edit('${bvo.no}')"></td>
-						
-		</tr>	
-	</c:forEach>
-	</table><p>
+				<%-- <td><%i++;%><%=i %></td> --%>
+				<td>${i.count}</td>
+				<td>${bvo.content}</td>
+				<td>${bvo.writer}</td>
+				<td>${bvo.timePosted}</td>
+				<td><button type="button" class="btn btn-default-sm active">Delete
+				<span class="oi oi-trash" onclick="winOpen_Delete('${bvo.no}')"></span></button><br><br>
+				<button type="button" class="btn btn-default-sm active">Edit
+				<span class="oi oi-pencil" onclick="winOpen_Edit('${bvo.no}')"></span></button></td>
+				
+			</tr>	
+			</c:forEach>
+		</table><p>
+	</div>
+	<div class="col-4">
+	
+	</div>
+</div>
+<!-- **********************End Main list Table ****************************-->
 
   <form action="DispatcherServlet" method="post" name="write_form">
   <input type="hidden" name="command" value="write">
