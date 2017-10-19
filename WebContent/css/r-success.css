@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+.col > img{
+	 width: 25px;
+	 float: right;
+	 
+}
+
+.col > h2{
+	display: inline;
+}
+.col > nav {
+	padding: 0;
+	display: inline-flex;
+	float: right;
+}
