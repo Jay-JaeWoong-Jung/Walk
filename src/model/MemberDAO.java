@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 
+import sql.StringQuery;
+
 /*
  * 나중에 실질적으로 Component기반으로 최종적으로 돌릴때에는
  * DataSource 방식을 사용할 것이다...
@@ -55,6 +57,7 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}//
+	////////////////////////////// 비지니스 로직/////////////
 
 	public boolean idCheck(String userId) throws SQLException {
 		boolean result = true;
@@ -64,7 +67,7 @@ public class MemberDAO {
 
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from membership where userid=?");
+			pstmt = conn.prepareStatement(StringQuery.SELECT_IDCHECK);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (!rs.next()) {
@@ -85,21 +88,23 @@ public class MemberDAO {
 		boolean flag = false;
 		try {
 			conn = getConnection();
-			String strQuery = "insert into membership values(?,?,?,?,?,?,?,?,?)";
-			pstmt = conn.prepareStatement(strQuery);
+			pstmt = conn.prepareStatement(StringQuery.INSERT_REGISTER);
 			pstmt.setString(1, vo.getUserName());
 			pstmt.setString(2, vo.getUserId());
 			pstmt.setString(3, vo.getUserPass());
 			pstmt.setString(4, vo.getPhone1());
 			pstmt.setString(5, vo.getPhone2());
 			pstmt.setString(6, vo.getPhone3());
-			pstmt.setString(7, vo.getEmail());
-			pstmt.setInt(8, vo.getBirth());
-			pstmt.setInt(9, vo.getGender());
+			pstmt.setString(7, vo.getEmailId());
+			pstmt.setString(8, vo.getEmailAdd());
+			pstmt.setString(9, vo.getBirth());
+			pstmt.setInt(10, vo.getGender());
 
 			int count = pstmt.executeUpdate();
-			if (count > 0)
+			if (count > 0) {
 				flag = true;
+				System.out.println("registerMember OK...." + count);
+			}
 
 		} catch (Exception e) {
 			System.out.println("Exception" + e);
@@ -116,8 +121,7 @@ public class MemberDAO {
 		int check = -1;
 		try {
 			conn = getConnection();
-			String strQuery = "select userpass from membership where userid=? ";
-			pstmt = conn.prepareStatement(strQuery);
+			pstmt = conn.prepareStatement(StringQuery.SELECT_LOGINCHECK);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -143,7 +147,7 @@ public class MemberDAO {
 		MemberVO vo = null;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select * from membership where userid=?");
+			pstmt = conn.prepareStatement(StringQuery.SELECT_GETMEMINFO);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -154,8 +158,9 @@ public class MemberDAO {
 				vo.setPhone1(rs.getString("phone1"));
 				vo.setPhone2(rs.getString("phone2"));
 				vo.setPhone3(rs.getString("phone3"));
-				vo.setEmail(rs.getString("email"));
-				vo.setBirth(rs.getInt("birth"));
+				vo.setEmailId(rs.getString("emailId"));
+				vo.setEmailAdd(rs.getString("emailAdd"));
+				vo.setBirth(rs.getString("birth"));
 				vo.setGender(rs.getInt("gender"));
 
 			}
@@ -173,15 +178,15 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 
-			pstmt = conn.prepareStatement(
-					"update membership set userpass=?,phone1=?,phone2=?,phone3=?,email=? where userid=?");
+			pstmt = conn.prepareStatement(StringQuery.SELECT_UPDATE);
 			pstmt.setString(1, vo.getUserPass());
 			pstmt.setString(2, vo.getPhone1());
 			pstmt.setString(3, vo.getPhone2());
 			pstmt.setString(4, vo.getPhone3());
-			pstmt.setString(5, vo.getEmail());
-
-			pstmt.executeUpdate();
+			pstmt.setString(5, vo.getEmailId());
+			pstmt.setString(6, vo.getEmailAdd());
+			int result = pstmt.executeUpdate();
+			System.out.println("updateMember OK..." + result);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -199,13 +204,13 @@ public class MemberDAO {
 		int result = -1;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement("select userpass from membership where userid=? ");
+			pstmt = conn.prepareStatement(StringQuery.SELECT_MEMBER);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				dbPass = rs.getString("userPass");
 				if (dbPass.equals(userPass)) {
-					pstmt = conn.prepareStatement("delete from membership where userid=?");
+					pstmt = conn.prepareStatement(StringQuery.DELETE_MEMBER);
 					pstmt.setString(1, userId);
 					pstmt.executeUpdate();
 					result = 1;
@@ -222,14 +227,39 @@ public class MemberDAO {
 		return result;
 	}
 
-	/*public static void main(String[] args) throws Exception {
+	public MemberVO login(String userId, String userPass) throws SQLException {
+		MemberVO vo = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(StringQuery.SELECT_LOGIN);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPass);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
+						rs.getString("phone2"), rs.getString("phone3"), rs.getString("emailId"),
+						rs.getString("emailAdd"), rs.getInt("gender"), rs.getString("birth"));
+			}
 
-		MemberDAO dao = MemberDAO.getInstance();
-		// MemberVO vo = new MemberVO("1234", "1234", "1234", "1234", new Date(1986, 8,
-		// 6) , 0, "1234", "My Company", 0,19808060);
-		dao.idCheck("abcd");
-		System.out.println(dao.idCheck(null));
-
-	}*/
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return vo;
+	}
+	/*
+	 * public static void main(String[] args) throws Exception {
+	 * 
+	 * MemberDAO dao = MemberDAO.getInstance(); MemberVO vo = new MemberVO("1234",
+	 * "1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
+	 * 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
+	 * //dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
+	 * MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
+	 * "ealurill","@naver.com", 1, 860806)));
+	 * 
+	 * dao.login("abcd", "1234"); }
+	 */
 
 }

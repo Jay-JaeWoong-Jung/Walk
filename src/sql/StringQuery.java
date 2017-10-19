@@ -1,14 +1,12 @@
 package sql;
 
 public interface StringQuery {
-//	String INSERT_POSTING = "INSERT INTO board (no, title, writer, password, content, time_posted)" +
-//	" VALUES(board_seq.nextVal, ?, ?, ?, ?, sysdate)";
-//	String SELECT_POSTING = 
-//			"SELECT no, title, writer, content, hits, time_posted FROM board WHERE  no=?";
-//	String CURRENT_NO =
-//			"SELECT board_seq.currVal FROM dual";
-//	String DATE_POSTED = 
-//			"SELECT sysdate FROM dual";
-//	String SELECT_ALL =
-//			"SELECT no, title, writer, content, hits, to_char(time_posted, 'YYYY.MM.DD') time_posted FROM board";
+	String SELECT_IDCHECK = "select * from membership where userId=?";
+	String INSERT_REGISTER = "insert into membership values(?,?,?,?,?,?,?,?,?,?)";
+	String SELECT_LOGINCHECK = "select userpass from membership where userid=? ";
+	String SELECT_GETMEMINFO = "select * from membership where userid=?";
+	String SELECT_UPDATE = "update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=? where userid=?";
+	String SELECT_MEMBER = "select userpass from membership where userid=? ";
+	String DELETE_MEMBER = "delete from membership where userid=?";
+	String SELECT_LOGIN = "select username,phone1,phone2,phone3,gender,emailid,emailadd, birth from member where id=? and password=?";
 }

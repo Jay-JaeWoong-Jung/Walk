@@ -1,65 +1,110 @@
-function idCheck(id) {
-	if (id == "") {
+function idCheck() {
+		var userId = $('#InputId').val();
+	if (userId == "") {
 		alert("아이디를 입력해 주세요.");
-		document.main.id.focus();
+		document.main.userId.focus();
 	} else {
-		url = "idCheck.jsp?id=" + id;
-		window.open(url, "post", "width=300,height=150");
+		
+		url = "DispatcherServlet?userId="+userId+"&&command=idCheck";
+		window.open(url, "", "width=300,height=150");
 	}
 }
 
 function inputCheck() {
-	if (document.main.name.value == "") {
+	var userName = $('#InputName').val();
+	var userId = $('#InputId').val();
+	var userPass = $('#InputPassword').val();
+	var userRepass = $('#InputPasswordRepeat').val();
+	var phone1 = $('#InputPhone1').val();
+	var phone2 = $('#InputPhone2').val();
+	var phone3 = $('#InputPhone3').val();
+	var emailId = $('#InputEmailId').val();
+	var emailAdd = $('#InputSelectedEmail').val();
+	var birthday = $('#InputBirth').val();
+	var male = $('#male').val();
+	var female = $('#female').val();
+	if (userName == "") {
 		alert("이름을 입력해 주세요.");
-		document.main.name.focus();
+		document.main.userName.focus();
 		return;
 	}
 	
-	if (document.main.id.value == "") {
+	if (userId== "") {
 		alert("아이디를 입력해 주세요.");
-		document.main.id.focus();
+		document.main.userId.focus();
 		return;
 	}
-	if (document.main.pass.value == "") {
+	if (userPass == "") {
 		alert("비밀번호를 입력해 주세요.");
-		document.main.pass.focus();
+		document.main.userPass.focus();
 		return;
 	}
-	if (document.main.repass.value == "") {
+	if (userRepass == "") {
 		alert("비밀번호를 확인해 주세요.");
-		document.main.repass.focus();
+		document.main.userRepass.focus();
 		return;
 	}
-	if (document.main.pass.value != document.main.repass.value) {
+	if (userPass != userRepass) {
 		alert("비밀번호가 일치하지 않습니다.");
-		document.main.repass.focus();
+		document.main.userRepass.focus();
 		return;
 	}
 
-	if (document.main.phone1.value == "") {
+	if (phone1 == "") {
 		alert("통신사를 입력해 주세요.");
 		document.main.phone1.focus();
 		return;
 	}
-	if (document.main.phone2.value == "") {
+	if (phone2== "") {
 		alert("전화번호를 입력해 주세요.");
 		document.main.phone2.focus();
 		return;
 	}
-	if (document.main.phone3.value == "") {
+	if (phone3 == "") {
 		alert("전화번호를 입력해 주세요.");
 		document.main.phone3.focus();
 		return;
 	}
-	if (document.main.email.value == "") {
+	if (emailId== "") {
 		alert("이메일을 입력해 주세요.");
 		document.main.email.focus();
 		return;
 	}
+	if (emailAdd== "") {
+		alert("이메일을 입력해 주세요.");
+		document.main.email.focus();
+		return;
+	}if (male== "" && female=="") {
+		alert("성별을 입력해주세요.");
+		document.main.email.focus();
+		return;
+	}
+	if (birthday== "") {
+		alert("생년월일을 입력해 주세요.");
+		document.main.birthday.focus();
+		return;
+	}
 	
-	document.main.submit();
+	
+	$('#regForm').submit();
 }
-	function updateCheck() {
+function checkLogin() {
+	var userId = $('#InputId').val();
+	var userPass = $('#InputPassword').val();
+	if (userId== "") {
+		alert("아이디를 입력해 주세요.");
+		document.main.userId.focus();
+		return;
+	}
+	if (userPass == "") {
+		alert("비밀번호를 입력해 주세요.");
+		document.main.userPass.focus();
+		return;
+	}else {
+	
+	$('#loginForm').submit();
+}
+/*	function updateCheck() {
 		if (document.main.name.value == "") {
 			alert("이름을 입력해 주세요.");
 			document.main.name.focus();
@@ -107,5 +152,7 @@ function inputCheck() {
 			document.main.email.focus();
 			return;
 		}
-		document.main.submit();
+		document.main.submit();*/
 	}
+
+

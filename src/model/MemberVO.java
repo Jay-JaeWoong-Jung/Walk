@@ -11,17 +11,24 @@ public class MemberVO {
 	private String phone3;
 	private Date regDate;
 	private int selectedTime;
-	private String email;
+	private String emailId;
+	private String emailAdd;
 	private String company;
 	private int gender;
-	private int birth;
+	private String birth;
 
-	
-	
-	
-	
+	public MemberVO(String string, String string2, String string3, String string4, int int5, String string6,
+			String string7, String string8) {
+	}
+
+	public MemberVO(String userId, String userPass) {
+		super();
+		this.userId = userId;
+		this.userPass = userPass;
+	}
+
 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
-			String email, int gender, int birth) {
+			String emailId, String emailAdd, int gender, String birth) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
@@ -29,13 +36,14 @@ public class MemberVO {
 		this.phone1 = phone1;
 		this.phone2 = phone2;
 		this.phone3 = phone3;
-		this.email = email;
+		this.emailId = emailId;
+		this.emailAdd = emailAdd;
 		this.gender = gender;
 		this.birth = birth;
 	}
 
 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
-			Date regDate, int selectedTime, String email, String company, int gender, int birth) {
+			Date regDate, int selectedTime, String emailId, String emailAdd, String company, int gender, String birth) {
 		super();
 		this.userId = userId;
 		this.userPass = userPass;
@@ -45,7 +53,8 @@ public class MemberVO {
 		this.phone3 = phone3;
 		this.regDate = regDate;
 		this.selectedTime = selectedTime;
-		this.email = email;
+		this.emailId = emailId;
+		this.emailAdd = emailAdd;
 		this.company = company;
 		this.gender = gender;
 		this.birth = birth;
@@ -115,12 +124,20 @@ public class MemberVO {
 		this.selectedTime = selectedTime;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+
+	public String getEmailAdd() {
+		return emailAdd;
+	}
+
+	public void setEmailAdd(String emailAdd) {
+		this.emailAdd = emailAdd;
 	}
 
 	public String getCompany() {
@@ -139,11 +156,11 @@ public class MemberVO {
 		this.gender = gender;
 	}
 
-	public int getBirth() {
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 
@@ -151,10 +168,8 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phone1=" + phone1
 				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", regDate=" + regDate + ", selectedTime="
-				+ selectedTime + ", email=" + email + ", company=" + company + ", gender=" + gender + ", birth=" + birth
-				+ "]";
+				+ selectedTime + ", emailId=" + emailId + ", emailAdd=" + emailAdd + ", company=" + company
+				+ ", gender=" + gender + ", birth=" + birth + "]";
 	}
-
-	
 
 }

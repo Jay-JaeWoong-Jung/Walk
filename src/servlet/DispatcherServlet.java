@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import controller.HandlerMapping;
 import controller.ModelAndView;
+import model.MemberDAO;
 
 /**
  * Servlet implementation class DispatcherServlet
  */
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      MemberDAO dao=MemberDAO.getInstance();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);

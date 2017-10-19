@@ -40,8 +40,22 @@
 Install with Bower
 <script type="text/javascript">
 	$('.selectpicker').selectpicker('refresh');
+	
+	
+	
 </script>
-<script language="javascript" src="script.js"></script>
+
+<c:if test="${flag =='true'}">
+	<script>
+	url = "regProc.jsp?flag=${flag}";
+	window.open(url, "", "width=300,height=150");
+	</script>
+
+</c:if>
+
+<script type="text/javascript" src="script.js"></script>
+
+
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar"
@@ -70,9 +84,9 @@ Install with Bower
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#contact">CONTACT</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a href="#"
-					data-toggle="modal" data-target="#signUp">회원가입 </a></li>
+					data-toggle="modal" data-target="#signUp " id="regForm">회원가입 </a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a href="#"
-					data-toggle="modal" data-target="#signIn">로그인</a></li>
+					data-toggle="modal" data-target="#signIn" id="login">로그인</a></li>
 
 			</ul>
 		</div>
@@ -91,10 +105,10 @@ Install with Bower
 					</button>
 				</div>
 
-				<form action="./regProc.jsp" method="post" name="regForm">
+				<form action="DispatcherServlet" method="post" name="regForm" onsubmit="return inputCheck()" id="regForm" >
 					<div class="modal-body">
 						<div class="form-group">
-							<label for="id">이름</label> <input type="text" name="name"
+							<label for="id">이름</label> <input type="text" name="userName"
 								class="form-control" id="InputName" placeholder="이름" required>
 						</div>
 						<div class="form-group row">
@@ -102,20 +116,20 @@ Install with Bower
 								<label for="id">ID</label>
 							</div>
 							<div class="col-xs-9">
-								<input type="text"   name="id" class="form-control" id="InputId"
+								<input type="text"   name="userId" class="form-control" id="InputId"
 									placeholder="아이디" required>
 							</div>
 							<div class="col-xs-2">
 								<input type="button" value="중복확인"
-									onclick="idCheck(this.form.id.value)" class="btn btn-secondary" />
+									onclick="idCheck()" class="btn btn-secondary" />
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
-								type="password" name="pass" class="form-control" id="InputPassword"
+								type="password" name="userPass" class="form-control" id="InputPassword"
 								placeholder="비밀번호" required> <label><b>비밀번호
-									확인</b></label> <input type="password" name="repass" class="form-control"
+									확인</b></label> <input type="password" name="userRepass" class="form-control"
 								id="InputPasswordRepeat" placeholder="비밀번호 확인" name="psw-repeat"
 								required>
 						</div>
@@ -123,16 +137,16 @@ Install with Bower
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
-							<select name="phone1" class="selectpicker">
+							<select name="phone1" class="selectpicker" id="InputPhone1">
 								<option value="010" selected="010">010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
 								<option value="017">017</option>
 								<option value="018">018</option>
 								<option value="019">019</option>
-							</select> &nbsp; - &nbsp;<input type="text" name="phone2"
+							</select> &nbsp; - &nbsp;<input type="text" name="phone2" id="InputPhone2"
 								class="form-group input-sm" /> &nbsp; - &nbsp;<input
-								type="text" name="phone3" class="form-group input-sm" />
+								type="text" name="phone3" id="InputPhone3"class="form-group input-sm" />
 						</div>
 
 					</div>
@@ -141,12 +155,12 @@ Install with Bower
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
 						<div class="col-xs-7">
-							<input type="text" name="email" class="form-control" id="InputEmail"
+							<input type="text" name="email" class="form-control" id="InputEmailId"
 								aria-describedby="emailHelp" placeholder="Email" required>
 						</div>
 						<div>
 							<div>
-								<select class="selectpicker" name="email">
+								<select class="selectpicker" name="email" id="InputSelectedEmail">
 									<option value="직접선택" selected="직접선택">직접선택</option>
 									<option value="@naver.com">@naver.com</option>
 									<option value="@nate.com">@nate.com</option>
@@ -170,7 +184,7 @@ Install with Bower
 								<label for="birth">생년월일</label>
 							</div>
 							<div class="col-sm-10">
-								<input type="date" name="birthday" value=""
+								<input type="date" name="birthday" id="InputBirth"
 									class="birthday datepicker" style="margin-right: 5px;" />
 							</div>
 						</div>
@@ -181,14 +195,15 @@ Install with Bower
 								<label for="">성별</label>
 							</div>
 							<div class="col-sm-10">
-								<input type="radio" name="gender" value="0" />남자 <input
-									type="radio" name="gender" value="1" required />여자
+								<input type="radio" name="gender" value="0" id="male"   />남자 <input
+									type="radio" name="gender" value="1" id="female"  />여자
 							</div>
 
 						</div>
 					</div>
 
 					<div class="modal-footer" style="margin-top:130px">
+						<input type="hidden" value="register" name="command">
 						<button type="submit" class="btn btn-primary" value="회원가입"
 							onclick="inputCheck()">회원가입</button>
 						<button type="button" class="btn btn-secondary"
@@ -210,7 +225,7 @@ Install with Bower
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form>
+				<form action="DispatcherServlet" method="post" name="loginForm" onsubmit="return checkLogin()" id="loginForm" >
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
@@ -231,11 +246,14 @@ Install with Bower
 						</div>
 					</div>
 					<div class="modal-footer">
+					<input type="hidden" name="command" value="login">
 						<button type="submit" class="btn btn-primary">로그인</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
 					</div>
 				</form>
+				
+				
 
 			</div>
 		</div>
