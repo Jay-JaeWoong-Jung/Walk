@@ -37,7 +37,7 @@ public class MemberDAO {
 	}
 	/////////////// 공통적인 로직 /////////////////////////////
 	public  Connection getConnection() throws SQLException{
-		System.out.println("디비연결 성공....");
+		//System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
 		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
 	}
@@ -141,7 +141,7 @@ public class MemberDAO {
 			ps.setInt(1, flag);
 			int result = ps.executeUpdate();
 			
-			System.out.println("update ok.."+result);
+			//System.out.println("update ok.."+result);
 			
 		}finally {
 			closeAll(ps, conn);
