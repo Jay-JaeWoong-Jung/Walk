@@ -36,7 +36,7 @@ public class MemberVO {
 		this.userId = userId;
 		this.userPass = userPass;
 	}
-
+ 
 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
 			String emailId, String emailAdd, int gender, String birth) {
 		super();

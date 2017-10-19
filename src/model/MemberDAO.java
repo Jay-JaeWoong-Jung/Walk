@@ -1,12 +1,14 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 
+import config.OracleInfo;
 import sql.StringQuery;
 
 /*
@@ -41,7 +43,8 @@ public class MemberDAO {
 	/////////////// 공통적인 로직 /////////////////////////////
 	public Connection getConnection() throws SQLException {
 		System.out.println("디비연결 성공....");
-		return DataSourceManager.getInstance().getConnection();
+		//return DataSourceManager.getInstance().getConnection();
+		return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
 	}
 
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
@@ -84,32 +87,34 @@ public class MemberDAO {
 	public boolean registerMember(MemberVO vo) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		boolean flag = false;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(StringQuery.INSERT_REGISTER);
-			pstmt.setString(1, vo.getUserName());
-			pstmt.setString(2, vo.getUserId());
-			pstmt.setString(3, vo.getUserPass());
+			pstmt.setString(1, vo.getUserId());
+			pstmt.setString(2, vo.getUserPass());
+			pstmt.setString(3, vo.getUserName());
+
 			pstmt.setString(4, vo.getPhone1());
 			pstmt.setString(5, vo.getPhone2());
 			pstmt.setString(6, vo.getPhone3());
-			pstmt.setString(7, vo.getEmailId());
-			pstmt.setString(8, vo.getEmailAdd());
-			pstmt.setString(9, vo.getBirth());
-			pstmt.setInt(10, vo.getGender());
+			pstmt.setInt(7, vo.getGender());
+			pstmt.setString(8, vo.getEmailId());
+			pstmt.setString(9, vo.getEmailAdd());
+			pstmt.setString(10, vo.getBirth());
+			System.out.println("update 전");
 
-			int count = pstmt.executeUpdate();
-			if (count > 0) {
+			pstmt.executeUpdate();	
+			System.out.println("후");
+			/*if (count > 0) {
 				flag = true;
 				System.out.println("registerMember OK...." + count);
-			}
-
+			}*/
+ 
 		} catch (Exception e) {
 			System.out.println("Exception" + e);
 		} finally {
-			closeAll(rs, pstmt, conn);
+			closeAll(pstmt, conn);
 		}
 		return flag;
 	}// registerMember
@@ -227,7 +232,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public MemberVO login(String userId, String userPass) throws SQLException {
+	/*public MemberVO login(String userId, String userPass) throws SQLException {
 		MemberVO vo = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -241,25 +246,28 @@ public class MemberDAO {
 			if (rs.next()) {
 				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
 						rs.getString("phone2"), rs.getString("phone3"), rs.getString("emailId"),
-						rs.getString("emailAdd"), rs.getInt("gender")/*, rs.getString("birth")*/);
+						rs.getString("emailAdd"), rs.getInt("gender"), rs.getString("birth"));
 			}
 
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return vo;
+	}*/
+
+	public static void main(String[] args) throws Exception {
+		
+		 MemberDAO dao = MemberDAO.getInstance();
+		 dao.registerMember(new MemberVO("myId", "myPass", "myname", "010", "1234", "5678", "ddd", "naver.com", 0, "19860806"));
+		/* MemberVO vo = new MemberVO("1234",
+		"1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
+		 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
+		dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
+		 MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
+		 "ealurill","@naver.com", 1, 860806)));
+		*/ 
+		 
 	}
-	/*
-	 * public static void main(String[] args) throws Exception {
-	 * 
-	 * MemberDAO dao = MemberDAO.getInstance(); MemberVO vo = new MemberVO("1234",
-	 * "1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
-	 * 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
-	 * //dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
-	 * MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
-	 * "ealurill","@naver.com", 1, 860806)));
-	 * 
-	 * dao.login("abcd", "1234"); }
-	 */
+
 
 }
