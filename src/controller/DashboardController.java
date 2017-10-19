@@ -1,9 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.MemberDAO;
+import model.MemberVO;
 
 /*
  * 주석...
@@ -17,8 +20,12 @@ public class DashboardController implements Controller{
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
+		
 		String userId =request.getParameter("userId");
+		
+		
+		
+		
 		
 		
 		

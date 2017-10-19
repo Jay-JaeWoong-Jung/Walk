@@ -6,7 +6,7 @@ public interface StringQuery {
 	
 	String INSERT_DATE = "insert into id_log (userId,attendance,reserveDate) values(?,?,to_char(sysdate,'YYYYMMDD'))"; 
 	
-	String selectedCount = "select count(*) from membership where selectedTime=?";
+	
 	
 //	String INSERT_POSTING = "INSERT INTO board (no, title, writer, password, content, time_posted)" +
 //	" VALUES(board_seq.nextVal, ?, ?, ?, ?, sysdate)";
@@ -18,4 +18,6 @@ public interface StringQuery {
 //			"SELECT sysdate FROM dual";
 //	String SELECT_ALL =
 //			"SELECT no, title, writer, content, hits, to_char(time_posted, 'YYYY.MM.DD') time_posted FROM board";
+	
+	
 }
