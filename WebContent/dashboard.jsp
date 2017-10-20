@@ -134,8 +134,8 @@
 	  	  	<span id="milsecs">00</span>
 	  	  	</h1>
 		  <div class="row justify-content-around">
-		<span>   <a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()",  style="position:absolute;left:10%;">START</a> </span> 
-		  <span>    <a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="position:absolute;left:60%;">FINISH</a> </span> 
+		<span><a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()" style="width:300px;" >START</a></span> 
+		  <span><a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="width:300px;">FINISH</a></span> 
 		  </div><br>
 		  
 		  
