@@ -308,6 +308,28 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public int deleteLog(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.DELETE_LOG);
+			
+			ps.setString(1, userId);
+			
+			result=ps.executeUpdate();
+			System.out.println("로그  삭제 "+result+"개 성공");
+			
+		} finally {
+			closeAll(ps,con);
+		}
+		return result;
+	}
+	
 	
 	public ArrayList<MemberVO> getNameInGroup(int selectedTime, int flag) throws SQLException {
 		Connection con=null;
@@ -328,6 +350,63 @@ public class MemberDAO {
 			closeAll(rs,ps,con);
 		}
 		return list;
+	}
+	
+	public boolean isReservation(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		boolean result=false;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.IS_RESERVATION);
+			
+			ps.setString(1, userId);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()){
+				if (rs.getInt(1) == 1) result=true;
+					
+			System.out.println(" isreservation dao값:"+result);		
+				
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return result;
+	}
+	
+	public Date getReserveDate(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		Date date= null;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.GET_RESERVE_DATE);
+			
+			ps.setString(1, userId);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()){
+				date=rs.getDate(1);
+				
+					
+			System.out.println(" getReserveDate dao값:"+date);		
+				
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return date;
 	}
 	
 	

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,7 +45,9 @@
 	  
 	  <a class="navbar-brand" href="#">Logo</a>
 	  
-	   <p id="tDate" class="lead displayInline mb-0 text-center text-right ">10월 19일 오늘 산책</p>
+	   <p id="tDate" class="lead displayInline mb-0 text-center text-right ">
+	   <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
+	   </p>
 	 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>	

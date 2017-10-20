@@ -26,7 +26,7 @@ public class SevletContextListener implements ServletContextListener{
 
 		Timer timer = new Timer();
 		Calendar date1 = Calendar.getInstance();
-		date1.set(Calendar.HOUR_OF_DAY,18);
+		date1.set(Calendar.HOUR_OF_DAY,11);
 		date1.set(Calendar.MINUTE,9);
 		date1.set(Calendar.SECOND,5);
 		date1.set(Calendar.MILLISECOND,0);

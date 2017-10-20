@@ -24,9 +24,10 @@ public class ReserveCancelController implements Controller{
 
 		//selectedTime 수정!!! 시간대 변경!!!
 		int cancelReserve=MemberDAO.getInstance().cancelReservation(userId);
+		int cancelLog=MemberDAO.getInstance().deleteLog(userId);
 		
 		
-			request.setAttribute("cancelReserve", cancelReserve);
+		request.setAttribute("cancelReserve", cancelReserve);
 		
 		
 		

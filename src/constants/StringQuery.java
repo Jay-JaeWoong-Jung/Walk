@@ -20,6 +20,9 @@ public interface StringQuery {
 	String GET_SAME_FLAG_COUNT ="select count(*) from membership where selectedTime=? group by flag having flag=?";
 	String UPDATE_TIMESLOT ="update membership set selectedTime=? where userId=?";
 	String CANCEL_RESERVATION="update membership set selectedTime=0 where userId=?";
+	String DELETE_LOG="delete from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
+	String IS_RESERVATION="select attendance from id_log where userId=?";
+	String GET_RESERVE_DATE= "select reserveDate from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
 
 //	String INSERT_POSTING = "INSERT INTO board (no, title, writer, password, content, time_posted)" +
 //	" VALUES(board_seq.nextVal, ?, ?, ?, ?, sysdate)";

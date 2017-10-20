@@ -3,6 +3,7 @@ package controller;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,6 +41,7 @@ public class DashboardController implements Controller{
 		
 		ArrayList<MemberVO> rvo=MemberDAO.getInstance().getNameInGroup(selectedTime, vo.getFlag());
 		
+		Date date=MemberDAO.getInstance().getReserveDate(userId);
 		
 		
 		System.out.println("count:"+count);
@@ -49,6 +51,7 @@ public class DashboardController implements Controller{
 		request.setAttribute("vo", vo);
 		request.setAttribute("rvo", rvo);
 		request.setAttribute("count", count);
+		request.setAttribute("date", date);
 		
 		String path = "dashboard.jsp";
 		

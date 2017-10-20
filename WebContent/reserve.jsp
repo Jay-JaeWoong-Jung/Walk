@@ -27,7 +27,17 @@ function reserve(){
 }
 
 
+
+
 </script>
+
+<c:if test="${param.reserve =='true' }">
+	<script>
+		alert("이미 예약하셨습니다.");
+	</script>
+
+</c:if>
+
 <body>
 	<div class="btn-group-vertical container-fluid">
 	
