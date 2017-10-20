@@ -6,20 +6,21 @@ public class HandlerMapping {
 	public static HandlerMapping getInstance() {
 		return hm;
 	}
-	
+
 	public Controller createController(String command){
 		Controller controller = null;
 
 		System.out.println("handler 입성");
 		if(command.equals("reserve")){
 			controller = new ReserveController();
-		
-		} else if(command.equals("dashboard")){
+		}else if(command.equals("dashboard")){
 			controller = new DashboardController();
+		}else if(command.equals("reserveCancel")){
+			controller = new ReserveCancelController();
 		}
-		
-		
-//		if(command.equals("")) controller = new ();
+
+
+		//		if(command.equals("")) controller = new ();
 
 		return controller;
 	}

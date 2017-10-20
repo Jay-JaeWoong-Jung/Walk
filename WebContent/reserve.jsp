@@ -27,10 +27,69 @@ function reserve(){
 }
 
 
+
+
 </script>
+
+<c:if test="${param.reserve =='true' }">
+	<script>
+		alert("이미 예약하셨습니다.");
+	</script>
+
+</c:if>
+
 <body>
-	<div class="btn-group-vertical container-fluid">
+	 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  
+	  <a class="navbar-brand" href="#">Logo</a>
+	  
+	   <p id="tDate" class="lead displayInline mb-0 text-center text-right ">
+	   <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
+	   </p>
+	 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>	
+	  
+	  
 	
+	  <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">About</a>
+	      </li>
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Reserve
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	          <a class="dropdown-item" href="#" onclick="reserveChange()">예약 변경</a>
+<!-- 	          DispatcherServlet?userId=myId1&selectedTime=selectedTime&command=reserveChange -->
+	          <div class="dropdown-divider"></div>
+	          
+	          <a class="dropdown-item" href="DispatcherServlet?userId=myId1&selectedTime=1&command=reserveCancel">예약 취소</a>
+	        </div>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Profile</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Blog</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Sign out</a>
+	      </li>
+	    </ul>
+	   
+	  </div>
+	 
+	  
+	  
+	</nav>
+
+	<div class="btn-group-vertical container-fluid">
 	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="1" onclick="reserve()"><h1>11:00</h1></button>
 	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="2" onclick="reserve()"><h1>11:30</h1></button>
 	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="3" onclick="reserve()"><h1>12:00</h1></button>
@@ -42,8 +101,11 @@ function reserve(){
 		<form action="DispatcherServlet" name="selectTimeFrm" id="selectTimeFrm"> 
 			
 	  		<input type="hidden" name="command" value="reserve">
-	  		 <input type="hidden" name="userId" value="insu"> 
-	  		<input type="hidden" name="selectedTime"  id="selectedTime" value="1">
+	  		 <input type="hidden" name="userId" value="myId1"> 
+	  		<input type="hidden" name="selectedTime"  id="selectedTime" value="">
+	  		<c:if test="${param.change =='true'}">
+	  		 <input type="hidden" name="change" value="true"> 
+	  		</c:if>
 	  		
   		</form>
 	</div>

@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import java.util.Date;
+
+
+
 import config.OracleInfo;
 import constants.StringQuery;
 import javafx.util.Pair;
@@ -193,6 +197,220 @@ public class MemberDAO {
 
 	}
 	
+	public void clearFlagNTime(int flag, int selectedTime) throws SQLException {
+		Connection conn=null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.CLEAR_FLAG_SELECTEDTIME);
+			ps.setInt(1, flag);
+			ps.setInt(2, selectedTime);
+			int result = ps.executeUpdate();
+			
+			System.out.println("update ok.."+result);
+			
+		}finally {
+			closeAll(ps, conn);
+		}
+	}
+	
+	public MemberVO getReservationInfo(String userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.GET_RESERVATION_INFO_BY_ID);
+			ps.setString(1, userId);
+			
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				vo=new MemberVO(userId, rs.getString("userName"), rs.getInt("selectedTime"), rs.getInt("flag"));
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return vo;
+	}
+	
+	
+	public int getFlagCout(int selectedTime, int flag) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		System.out.println("dao selectedTime:"+selectedTime);
+		System.out.println("dao flag:"+flag);
+		
+		int result=0;
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.GET_SAME_FLAG_COUNT);
+			ps.setInt(1, selectedTime);
+			ps.setInt(2, flag);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				result=rs.getInt(1);
+				System.out.println(result);
+			}
+		} finally {
+			closeAll(ps,con);
+		}
+		return result;
+	}
+	
+	
+	public int updateTimeSlot(int selectedTime, String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result;
+		
+		System.out.println("dao입성  selectedTime:"+selectedTime);
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.UPDATE_TIMESLOT);
+			ps.setInt(1, selectedTime);
+			ps.setString(2, userId);
+			
+			result=ps.executeUpdate();
+			System.out.println("타임슬럿 변경 "+result+"개 성공");
+			
+		} finally {
+			closeAll(ps,con);
+		}
+		return result;
+	}
+	
+	public int cancelReservation(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.CANCEL_RESERVATION);
+			
+			ps.setString(1, userId);
+			
+			result=ps.executeUpdate();
+			System.out.println("타임슬럿 0 으로 초기화 "+result+"개 성공");
+			
+		} finally {
+			closeAll(ps,con);
+		}
+		return result;
+	}
+	
+	public int deleteLog(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.DELETE_LOG);
+			
+			ps.setString(1, userId);
+			
+			result=ps.executeUpdate();
+			System.out.println("로그  삭제 "+result+"개 성공");
+			
+		} finally {
+			closeAll(ps,con);
+		}
+		return result;
+	}
+	
+	
+	public ArrayList<MemberVO> getNameInGroup(int selectedTime, int flag) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		ArrayList<MemberVO> list =new ArrayList<MemberVO>();
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.GET_NAME_IN_GROUP_BY_ID_FLAG);
+			ps.setInt(1, selectedTime);
+			ps.setInt(2, flag);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new MemberVO(rs.getString("userName")));	
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return list;
+	}
+	
+	public boolean isReservation(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		boolean result=false;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.IS_RESERVATION);
+			
+			ps.setString(1, userId);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()){
+				if (rs.getInt(1) == 1) result=true;
+					
+			System.out.println(" isreservation dao값:"+result);		
+				
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return result;
+	}
+	
+	public Date getReserveDate(String  userId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		Date date= null;
+		
+		
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.GET_RESERVE_DATE);
+			
+			ps.setString(1, userId);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()){
+				date=rs.getDate(1);
+				
+					
+			System.out.println(" getReserveDate dao값:"+date);		
+				
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return date;
+	}
+	
+	
+
 	
 	/*	
 	public static void main(String[] args) throws Exception{

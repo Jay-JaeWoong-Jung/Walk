@@ -1,30 +1,61 @@
 package controller;
 
+
+
+import java.util.ArrayList;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.MemberDAO;
+import model.MemberVO;
 
-/*
- * 주석...
- * 폼의 값 받아서
- * pvo 생성
- * biz() 호출
- * 네비게이션..redirect
- */
+
 public class DashboardController implements Controller{
 
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
-		String userId =request.getParameter("userId");
+		
+		//String userId =request.getParameter("userId");
+		// String selectedTime =request.getParameter("selectedTime");
+		String userId ="myId1";
+		int selectedTime=2;
+		
+		
+	
+		
+		//userId,falg,selectedTime 추출
+		MemberVO vo=MemberDAO.getInstance().getReservationInfo(userId);
 		
 		
 		
+		//해당 userId 해당하는 selectedTime에 해당하는 같은 그룹(flag) count 수
+//		System.out.println("vo.getSelectedTime():"+vo.getSelectedTime());
+//		System.out.println("vo.getFlag():"+vo.getFlag());
+		
+		int count=MemberDAO.getInstance().getFlagCout(selectedTime, vo.getFlag());
 		
 		
-		String path = "";
+		
+		ArrayList<MemberVO> rvo=MemberDAO.getInstance().getNameInGroup(selectedTime, vo.getFlag());
+		
+		Date date=MemberDAO.getInstance().getReserveDate(userId);
+		
+		
+		System.out.println("count:"+count);
+		System.out.println("vo:"+vo);
+		System.out.println("rvo:"+rvo);
+		
+		request.setAttribute("vo", vo);
+		request.setAttribute("rvo", rvo);
+		request.setAttribute("count", count);
+		request.setAttribute("date", date);
+		
+		String path = "dashboard.jsp";
+		
+
 		return new ModelAndView(path);
 	}
 }
