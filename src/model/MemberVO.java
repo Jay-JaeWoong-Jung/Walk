@@ -37,6 +37,26 @@ public class MemberVO {
 		this.selectedTime = selectedTime;
 		this.flag = flag;
 	}
+	
+	
+	
+	
+
+	
+
+	public MemberVO(String userName) {
+		super();
+		this.userName = userName;
+	}
+
+
+	public MemberVO(String userId, String userName, int selectedTime, int flag) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.selectedTime = selectedTime;
+		this.flag = flag;
+	}
 
 
 	public String getUserId() {

@@ -71,13 +71,13 @@ public class SevletContextListener implements ServletContextListener{
 		date7.set(Calendar.SECOND,59);
 		date7.set(Calendar.MILLISECOND,0);
 
-		timer.schedule(new JobTimer(1), date1.getTime() ,60*1000);
-		timer.schedule(new JobTimer(2), date2.getTime() ,60*1000);
-		timer.schedule(new JobTimer(3), date3.getTime() ,60*1000);
-		timer.schedule(new JobTimer(4), date4.getTime() ,60*1000);
-		timer.schedule(new JobTimer(5), date5.getTime() ,60*1000);
-		timer.schedule(new JobTimer(6), date6.getTime() ,60*1000);	
-		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7.getTime() ,60*1000);
+//		timer.schedule(new JobTimer(1), date1.getTime() ,60*1000);
+//		timer.schedule(new JobTimer(2), date2.getTime() ,60*1000);
+//		timer.schedule(new JobTimer(3), date3.getTime() ,60*1000);
+//		timer.schedule(new JobTimer(4), date4.getTime() ,60*1000);
+//		timer.schedule(new JobTimer(5), date5.getTime() ,60*1000);
+//		timer.schedule(new JobTimer(6), date6.getTime() ,60*1000);	
+//		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7.getTime() ,60*1000);
 		
 		
 		

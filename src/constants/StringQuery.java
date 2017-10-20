@@ -15,7 +15,8 @@ public interface StringQuery {
 	String GET_USERID_FLAG_BY_TIMESLOT = "select userid, flag from membership where selectedtime=?";
 	String CLEAR_FLAG_SELECTEDTIME="UPDATE membership SET flag=?, selectedTime=?";
 	
-	String GET_RESERVATION_INFO_BY_ID="select userId, selectedTime, flag from membership where userId=?";
+	String GET_NAME_IN_GROUP_BY_ID_FLAG="select userName from membership where selectedTime=? and flag=?";
+	String GET_RESERVATION_INFO_BY_ID="select userId, selectedTime, flag,userName from membership where userId=?";
 	String GET_SAME_FLAG_COUNT ="select count(*) from membership where selectedTime=? group by flag having flag=?";
 	String UPDATE_TIMESLOT ="update membership set selectedTime=? where userId=?";
 	String CANCEL_RESERVATION="update membership set selectedTime=0 where userId=?";

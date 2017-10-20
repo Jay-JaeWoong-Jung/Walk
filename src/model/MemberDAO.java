@@ -227,7 +227,7 @@ public class MemberDAO {
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				vo=new MemberVO(userId, rs.getInt("selectedTime"), rs.getInt("flag"));
+				vo=new MemberVO(userId, rs.getString("userName"), rs.getInt("selectedTime"), rs.getInt("flag"));
 			}
 		} finally {
 			closeAll(rs,ps,con);
@@ -307,6 +307,30 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	
+	public ArrayList<MemberVO> getNameInGroup(int selectedTime, int flag) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		ArrayList<MemberVO> list =new ArrayList<MemberVO>();
+		try {
+			con=getConnection();
+			
+			ps=con.prepareStatement(StringQuery.GET_NAME_IN_GROUP_BY_ID_FLAG);
+			ps.setInt(1, selectedTime);
+			ps.setInt(2, flag);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new MemberVO(rs.getString("userName")));	
+			}
+		} finally {
+			closeAll(rs,ps,con);
+		}
+		return list;
+	}
+	
+	
 
 	
 	/*	

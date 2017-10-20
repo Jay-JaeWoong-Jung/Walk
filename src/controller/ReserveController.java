@@ -20,12 +20,21 @@ public class ReserveController implements Controller{
 		int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
 		System.out.println("selectedTime:"+selectedTime);
 		String userId = request.getParameter("userId");
+		String change = request.getParameter("change");
 		int attendace = 1;
-		System.out.println("컨트롤러 입성");
-		/*
+		System.out.println("리저브 컨트롤러 change값:"+change);
+		
 		MemberDAO.getInstance().chooseTimeSlot(selectedTime, userId);
 		
-		MemberDAO.getInstance().setReserveDate(userId,attendace);*/
+		MemberDAO.getInstance().setReserveDate(userId,attendace);
+		
+		if(change=="true"){
+			String path = "rsuccess.jsp?change=true";
+		}else{
+			
+			String path = "rsuccess.jsp";
+		}
+		
 		
 		String path = "rsuccess.jsp";
 		return new ModelAndView(path);

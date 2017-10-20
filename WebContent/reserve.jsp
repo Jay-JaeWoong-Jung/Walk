@@ -42,8 +42,11 @@ function reserve(){
 		<form action="DispatcherServlet" name="selectTimeFrm" id="selectTimeFrm"> 
 			
 	  		<input type="hidden" name="command" value="reserve">
-	  		 <input type="hidden" name="userId" value="insu"> 
-	  		<input type="hidden" name="selectedTime"  id="selectedTime" value="1">
+	  		 <input type="hidden" name="userId" value="myId1"> 
+	  		<input type="hidden" name="selectedTime"  id="selectedTime" value="">
+	  		<c:if test="${param.change =='true'}">
+	  		 <input type="hidden" name="change" value="true"> 
+	  		</c:if>
 	  		
   		</form>
 	</div>

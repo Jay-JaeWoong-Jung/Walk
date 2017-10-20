@@ -13,6 +13,31 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/dashboard.css">
 <title>Dashboard</title>
+
+ 
+
+
+<script>
+	function reserveChange() {
+		window.open("reserve.jsp?change=true", "",
+				"width=500,height=800,top=100,left=400");
+	}
+</script>
+
+
+<c:if test="${cancelReserve =='1' }">
+	<script>
+		alert("예약 취소에 성공하셨습니다.");
+	</script>
+</c:if>
+<c:if test="${cancelReserve =='0' }">
+	<script>
+		alert("예약 취소가 안되었습니다. 관리자에게 문의바랍니다.");
+	</script>
+</c:if>
+
+
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,17 +61,18 @@
 	          Reserve
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	          <a class="dropdown-item" href="#">예약 변경</a>
+	          <a class="dropdown-item" href="#" onclick="reserveChange()">예약 변경</a>
+<!-- 	          DispatcherServlet?userId=myId1&selectedTime=selectedTime&command=reserveChange -->
 	          <div class="dropdown-divider"></div>
 	          
-	          <a class="dropdown-item" href="#">예약 취소</a>
+	          <a class="dropdown-item" href="DispatcherServlet?userId=myId1&selectedTime=1&command=reserveCancel">예약 취소</a>
 	        </div>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Profile</a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="nav-link" href="#">Dashboard</a>
+	        <a class="nav-link" href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Blog</a>
@@ -65,25 +91,110 @@
 	  
 	</nav>
 	<div class="jumbotron">
-	  <p class="display-4 text-right"><span class="smallFont text-muted">Meet by</span> 11:30 AM</p>
-	  <p class="display-4 text-right"><span class="smallFont text-muted	">Start at</span> 11:35 AM</p>
+	  <p class="display-4 text-right"><span class="smallFont text-muted">Meet by</span> 
+	  <c:if test="${vo.selectedTime =='1' }"> 11:30 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='2' }"> 12:00 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='3' }"> 12:30 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='4' }"> 13:00 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='5' }"> 13:30 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='6' }"> 14:00 AM</p> </c:if>
+	  
+	  <p class="display-4 text-right"><span class="smallFont text-muted	">Start at</span> 
+	  <c:if test="${vo.selectedTime =='1'}"> 11:35 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='2' }"> 12:05 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='3' }"> 12:35 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='4' }"> 13:05 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='5' }"> 13:35 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='6' }"> 14:05 AM</p> </c:if>
+	  
+	  
 	  
 	  <hr class="my-4">
-	  <p class="lead text-right"><span class="text-muted">팀원(4):&emsp;</span>오호진, 서영의, 김보경, 박인수 </p>
+	  <p class="lead text-right"><span class="text-muted">팀원(${count}):&emsp;</span>
+	  <c:forEach var="row" items="${rvo}">
+	 ${row.userName} &nbsp;
+	 
+	 </c:forEach> 
+	  
+	  </p>
 	  <hr class="my-4">
 	  
-	  <div class="container">
+	  <div class="container-fluid">
 	  	  	<h1 class=" mb-3 text-center">활동 기록하기</h1>
-	  	  	<h1 class="display-1 mb-5 col text-center">00:00:00</h1>
+	  	  	<h1 class="display-1 mb-5 col text-center">
+	  	  <!-- 	<span id="minute" style="position:absolute;left:30%;">00</span> <span style="position:absolute;left:40%;" >:</span>
+	  	  	<span id="seconds"style="position:absolute;left:50%;">00</span>	<span style="position:absolute;left:60%;">:</span>
+	  	  	<span id="milsecs"style="position:absolute;left:70%;">00</span> -->
+	  	  	
+	  	  	<span id="minute" >00</span> <span  >:</span>
+	  	  	<span id="seconds">00</span>	<span >:</span>
+	  	  	<span id="milsecs">00</span>
+	  	  	</h1>
 		  <div class="row justify-content-around">
-		    <a class="btn btn-primary btn-lg col-5" href="#" role="button">START</a>
-		    <a class="btn btn-primary btn-lg col-5 " href="#" role="button">FINISH</a>
+		<span>   <a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()",  style="position:absolute;left:10%;">START</a> </span> 
+		  <span>    <a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="position:absolute;left:60%;">FINISH</a> </span> 
 		  </div><br>
 		  
 		  
+		   <SCRIPT > 
+		
+		var currentsec=0; 
+		var currentmin=0; 
+		var currentmil=0; 
+		var keepgoin=false; 
+		
+		function timer(){ 
+		if(keepgoin){ 
+		  currentmil+=1;                 
+		   if (currentmil==10){         
+		    currentmil=0;         
+		    currentsec+=1; 
+		   } 
+		   if (currentsec==60){         
+		    currentsec=0;         
+		    currentmin+=1;         
+		   } 
+		  Strsec=""+currentsec;         
+		  Strmin=""+currentmin;         
+		  Strmil=""+currentmil; 
+		  if (Strmil.length!=2){ 
+			  Strmil="0"+currentmil; 
+			   }
+		   if (Strsec.length!=2){ 
+		    Strsec="0"+currentsec; 
+		   } 
+		   if (Strmin.length!=2){ 
+		    Strmin="0"+currentmin; 
+		   } 
+		  
+		  $('#minute').text(Strmin);
+		  $('#seconds').text(Strsec);
+		 $('#milsecs').text(Strmil);
+		  setTimeout("timer()", 100);         
+		} 
+		} 
+		
+
+		
+		</SCRIPT> 
+		
+		
+		  
 	  </div>
 	</div>
-	<div class="jumbotron groupColorCard bg-danger text-white">
+	<c:if test="${vo.flag == '1'}"><div class="jumbotron groupColorCard bg-success text-white">  </c:if>
+	<c:if test="${vo.flag == '2'}"><div class="jumbotron groupColorCard bg-info text-white">  </c:if>
+	<c:if test="${vo.flag == '3'}"><div class="jumbotron groupColorCard bg-warning text-white">  </c:if>
+	<c:if test="${vo.flag == '4'}"><div class="jumbotron groupColorCard bg-danger text-white">  </c:if>
+	<c:if test="${vo.flag == '5'}"><div class="jumbotron groupColorCard bg-primary text-white">  </c:if>
+	<c:if test="${vo.flag == '6'}"><div class="jumbotron groupColorCard  text-white" style="background-color:blue;">  </c:if>
+	<c:if test="${vo.flag == '7'}"><div class="jumbotron groupColorCard  text-white" style="background-color:yello;">  </c:if>
+	<c:if test="${vo.flag == '8'}"><div class="jumbotron groupColorCard  text-white" style="background-color:pink;">  </c:if>
+	<c:if test="${vo.flag == '9'}"><div class="jumbotron groupColorCard  text-white" style="background-color:grey;">  </c:if>
+	<c:if test="${vo.flag == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;">  </c:if>
+	
+	
+	
 	    <p class="display-4 text-center">그룹색상</p>
 	    <p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
 	    <a href="#">
