@@ -4,52 +4,28 @@ import java.util.Date;
 
 public class MemberVO {
 	private String userId;
-	private String userPass;
-	private String userName;
-	private String phoneNumber;
-	private Date regDate;
-	private int selectedTime;
-	private String company;
-	private int gender;	
-	private int birth;
-	private String email;
-	private int flag;
-	public MemberVO(String userId, String userPass, String userName, String phoneNumber, Date regDate, int selectedTime,
-			String company, int gender, int birth, String email, int flag) {
-		super();
-		this.userId = userId;
-		this.userPass = userPass;
-		this.userName = userName;
-		this.phoneNumber = phoneNumber;
-		this.regDate = regDate;
-		this.selectedTime = selectedTime;
-		this.company = company;
-		this.gender = gender;
-		this.birth = birth;
-		this.email = email;
-		this.flag = flag;
-	}
-	
-	
-	public MemberVO(String userId, int selectedTime, int flag) {
-		super();
-		this.userId = userId;
-		this.selectedTime = selectedTime;
-		this.flag = flag;
-	}
-	
-	
-	
-	
-
-	
-
+    private String userPass;
+    private String userName;
+    private String phone1;
+    private String phone2;
+    private String phone3;
+    private int gender;
+    private String emailId;
+    private String emailAdd;
+    private String birth;
+    private String company;
+    private int selectedTime;
+    private Date regDate;
+    private String emailAccept;
+    private String profile;
+    private int flag;
+    
+    
+    
 	public MemberVO(String userName) {
 		super();
 		this.userName = userName;
 	}
-
-
 	public MemberVO(String userId, String userName, int selectedTime, int flag) {
 		super();
 		this.userId = userId;
@@ -57,8 +33,27 @@ public class MemberVO {
 		this.selectedTime = selectedTime;
 		this.flag = flag;
 	}
-
-
+	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
+			int gender, String emailId, String emailAdd, String birth, String company, int selectedTime, Date regDate,
+			String emailAccept, String profile, int flag) {
+		super();
+		this.userId = userId;
+		this.userPass = userPass;
+		this.userName = userName;
+		this.phone1 = phone1;
+		this.phone2 = phone2;
+		this.phone3 = phone3;
+		this.gender = gender;
+		this.emailId = emailId;
+		this.emailAdd = emailAdd;
+		this.birth = birth;
+		this.company = company;
+		this.selectedTime = selectedTime;
+		this.regDate = regDate;
+		this.emailAccept = emailAccept;
+		this.profile = profile;
+		this.flag = flag;
+	}
 	public String getUserId() {
 		return userId;
 	}
@@ -77,29 +72,23 @@ public class MemberVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getPhone1() {
+		return phone1;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
 	}
-	public Date getRegDate() {
-		return regDate;
+	public String getPhone2() {
+		return phone2;
 	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
 	}
-	public int getSelectedTime() {
-		return selectedTime;
+	public String getPhone3() {
+		return phone3;
 	}
-	public void setSelectedTime(int selectedTime) {
-		this.selectedTime = selectedTime;
-	}
-	public String getCompany() {
-		return company;
-	}
-	public void setCompany(String company) {
-		this.company = company;
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
 	}
 	public int getGender() {
 		return gender;
@@ -107,17 +96,53 @@ public class MemberVO {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public int getBirth() {
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
+	public String getEmailAdd() {
+		return emailAdd;
+	}
+	public void setEmailAdd(String emailAdd) {
+		this.emailAdd = emailAdd;
+	}
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-	public String getEmail() {
-		return email;
+	public String getCompany() {
+		return company;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public int getSelectedTime() {
+		return selectedTime;
+	}
+	public void setSelectedTime(int selectedTime) {
+		this.selectedTime = selectedTime;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+	public String getEmailAccept() {
+		return emailAccept;
+	}
+	public void setEmailAccept(String emailAccept) {
+		this.emailAccept = emailAccept;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	public int getFlag() {
 		return flag;
@@ -127,11 +152,14 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phoneNumber="
-				+ phoneNumber + ", regDate=" + regDate + ", selectedTime=" + selectedTime + ", company=" + company
-				+ ", gender=" + gender + ", birth=" + birth + ", email=" + email + ", flag=" + flag + "]";
+		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phone1=" + phone1
+				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", gender=" + gender + ", emailId=" + emailId
+				+ ", emailAdd=" + emailAdd + ", birth=" + birth + ", company=" + company + ", selectedTime="
+				+ selectedTime + ", regDate=" + regDate + ", emailAccept=" + emailAccept + ", profile=" + profile
+				+ ", flag=" + flag + "]";
 	}
-	
+    
+    
 	
 	
 	

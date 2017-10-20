@@ -56,29 +56,7 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}//
-	public void registerMember(MemberVO vo) throws SQLException{
-		Connection con=null;
-		PreparedStatement ps=null;
-		try{
-			con=getConnection();
-			ps=con.prepareStatement(StringQuery.INSERT_MEMBER);
-			
-			ps.setString(1,vo.getUserId());
-			ps.setString(2,vo.getUserPass());
-			ps.setString(3,vo.getUserName());
-			ps.setString(4,vo.getPhoneNumber());
-			ps.setInt(5, vo.getGender());
-			ps.setInt(6, vo.getBirth());
-			ps.setString(7, vo.getCompany());
-			ps.setInt(8, vo.getSelectedTime());
-			ps.setDate(9,  new java.sql.Date(vo.getRegDate().getTime()));
-			ps.setString(10, vo.getEmail());
-			int result=ps.executeUpdate();
-			System.out.println("insert ok.."+result);
-		}finally{
-			closeAll(ps,con);
-		}
-	}
+	
 	public ArrayList<Pair<String,Integer>> getAllUserIdTimePair() throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;

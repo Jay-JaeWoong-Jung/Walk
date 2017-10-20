@@ -8,7 +8,7 @@ public interface StringQuery {
 	
 
 	String SELECTED_TIME = "select count(*) from membership where selectedTime=?";
-	String INSERT_MEMBER ="insert into membership values(?,?,?,?,?,?,?,?,?,?)";
+	String INSERT_MEMBER ="insert into membership ( values(?,?,?,?,?,?,?,?,?,?)";
 	String GET_ALL_USERID_TIMESLOT = "select userid, selectedtime from membership";
 	String GET_USERID_BY_TIMESLOT = "SELECT userId FROM membership where selectedTime=?";
 	String UPDATE_FLAG = "UPDATE membership SET flag=? WHERE userId =?";
