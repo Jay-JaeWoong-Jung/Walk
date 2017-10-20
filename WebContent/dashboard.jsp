@@ -166,14 +166,17 @@
 	  	  	<span id="milsecs"style="position:absolute;left:70%;">00</span> -->
 	  	  	
 	  	  	<span id="minute" >00</span> <span  >:</span>
-	  	  	<span id="seconds">00</span>	<span >:</span>
+	  	  	<span id="seconds">00</span> <span >:</span>
 	  	  	<span id="milsecs">00</span>
 	  	  	</h1>
+	  	  	
 		  <div class="row justify-content-around">
-			<span>   <a class="btn btn-primary btn-lg col-4" href="#" role="button" ONCLICK="keepgoin=true;timer()",  style="position:absolute;left:10%;">START</a> </span> 
-			<span>   <a class="btn btn-primary btn-lg col-4 " href="#" role="button"  ONCLICK="keepgoin=false;" style="position:absolute;left:60%;">FINISH</a> </span> 
-		  </div><br>
+			<a class="btn btn-primary btn-lg col-4" href="#" role="button" ONCLICK="keepgoin=true;timer()",  style="position:absolute;left:10%;">START</a>
+			<a class="btn btn-primary btn-lg col-4 " href="#" role="button"  ONCLICK="keepgoin=false;" style="position:absolute;left:60%;">FINISH</a>
+		  </div>
+		  <br>
 	  </div>
+	  
 	</div>
 	<c:if test="${vo.flag == '1'}"><div class="jumbotron groupColorCard bg-success text-white">  </c:if>
 	<c:if test="${vo.flag == '2'}"><div class="jumbotron groupColorCard bg-info text-white">  </c:if>
