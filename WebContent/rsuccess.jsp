@@ -24,35 +24,63 @@
 
 <title>Insert title here</title>
 </head>
-
+<script type="text/javascript">
+	function toDashBoard() {
+		location.href = "DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard";
+	}
+</script>
 
 
 <body>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="#">Logo</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarSupportedContent"
-		aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="#">About</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="#">Reserve</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Dashboard</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-		</ul>
-		<!-- <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	    </form> -->
-	</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  
+	  <a class="navbar-brand" href="#">Logo</a>
+	  
+	   <p id="tDate" class="lead displayInline mb-0 text-center text-right ">
+	   <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
+	   </p>
+	 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>	
+	  
+	  
+	
+	  <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="#">About</a>
+	      </li>
+	      <li class="nav-item dropdown">
+	        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	          Reserve
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	          <a class="dropdown-item" href="#" onclick="reserveChange()">예약 변경</a>
+<!-- 	          DispatcherServlet?userId=myId1&selectedTime=selectedTime&command=reserveChange -->
+	          <div class="dropdown-divider"></div>
+	          
+	          <a class="dropdown-item" href="DispatcherServlet?userId=myId1&selectedTime=1&command=reserveCancel">예약 취소</a>
+	        </div>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Profile</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Blog</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Sign out</a>
+	      </li>
+	    </ul>
+	   
+	  </div>
+	 
+	  
+	  
 	</nav>
 	<div class="jumbotron  jumbotron-fluid">
 		<div class="container">
@@ -79,8 +107,8 @@
 
 					<c:choose>
 						<c:when test="${param.change =='true'}">
-							<input type="button" class="btn btn-primary btn-lg" value="닫기"
-								style="width: 300px;" onclick="window.self.close()">
+							<input type="button" class="btn btn-primary btn-lg" value="대시보드로이동"
+								style="width: 300px;" onclick="toDashBoard()">
 						</c:when>
 						<c:otherwise>
 							<form action="DispatcherServlet" method="post">

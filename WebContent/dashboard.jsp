@@ -15,13 +15,52 @@
 <link rel="stylesheet" href="./css/dashboard.css">
 <title>Dashboard</title>
 
- 
+<SCRIPT > 
+	
+	var currentsec=0; 
+	var currentmin=0; 
+	var currentmil=0; 
+	var keepgoin=false; 
+	
+	function timer(){ 
+	if(keepgoin){ 
+	  currentmil+=1;                 
+	   if (currentmil==10){         
+	    currentmil=0;         
+	    currentsec+=1; 
+	   } 
+	   if (currentsec==60){         
+	    currentsec=0;         
+	    currentmin+=1;         
+	   } 
+	  Strsec=""+currentsec;         
+	  Strmin=""+currentmin;         
+	  Strmil=""+currentmil; 
+	  if (Strmil.length!=2){ 
+		  Strmil="0"+currentmil; 
+		   }
+	   if (Strsec.length!=2){ 
+	    Strsec="0"+currentsec; 
+	   } 
+	   if (Strmin.length!=2){ 
+	    Strmin="0"+currentmin; 
+	   } 
+	  
+	  $('#minute').text(Strmin);
+	  $('#seconds').text(Strsec);
+	 $('#milsecs').text(Strmil);
+	  setTimeout("timer()", 100);         
+	} 
+	} 
+
+
+
+</SCRIPT> 
 
 
 <script>
 	function reserveChange() {
-		window.open("reserve.jsp?change=true", "",
-				"width=500,height=800,top=100,left=400");
+		location.href="reserve.jsp?change=true";
 	}
 </script>
 
@@ -41,7 +80,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  
 	  <a class="navbar-brand" href="#">Logo</a>
 	  
@@ -84,10 +123,7 @@
 	        <a class="nav-link" href="#">Sign out</a>
 	      </li>
 	    </ul>
-	    <!-- <form class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	    </form> -->
+	   
 	  </div>
 	 
 	  
@@ -122,7 +158,7 @@
 	  </p>
 	  <hr class="my-4">
 	  
-	  <div class="container-fluid">
+	  <div class="container">
 	  	  	<h1 class=" mb-3 text-center">활동 기록하기</h1>
 	  	  	<h1 class="display-1 mb-5 col text-center">
 	  	  <!-- 	<span id="minute" style="position:absolute;left:30%;">00</span> <span style="position:absolute;left:40%;" >:</span>
@@ -130,13 +166,22 @@
 	  	  	<span id="milsecs"style="position:absolute;left:70%;">00</span> -->
 	  	  	
 	  	  	<span id="minute" >00</span> <span  >:</span>
-	  	  	<span id="seconds">00</span>	<span >:</span>
+	  	  	<span id="seconds">00</span> <span >:</span>
 	  	  	<span id="milsecs">00</span>
 	  	  	</h1>
+	  	  	
 		  <div class="row justify-content-around">
-		<span><a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()" style="width:300px;" >START</a></span> 
+
+
+<a class="btn btn-primary btn-lg col-4" href="#" role="button" ONCLICK="keepgoin=true;timer()",  style="position:absolute;left:10%;">START</a>
+			<a class="btn btn-primary btn-lg col-4 " href="#" role="button"  ONCLICK="keepgoin=false;" style="position:absolute;left:60%;">FINISH</a>
+		  </div>
+		  <br>
+		  
+		  
+		<!-- <span><a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()" style="width:300px;" >START</a></span> 
 		  <span><a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="width:300px;">FINISH</a></span> 
-		  </div><br>
+		  </div><br> -->
 		  
 		  
 		   <SCRIPT > 
@@ -182,8 +227,9 @@
 		</SCRIPT> 
 		
 		
-		  
+	
 	  </div>
+	  
 	</div>
 	<c:if test="${vo.flag == '1'}"><div class="jumbotron groupColorCard bg-success text-white">  </c:if>
 	<c:if test="${vo.flag == '2'}"><div class="jumbotron groupColorCard bg-info text-white">  </c:if>
@@ -197,13 +243,13 @@
 	<c:if test="${vo.flag == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;">  </c:if>
 	
 	
-	
+	<div class="jumbotron groupColorCard bg-danger text-white">
 	    <p class="display-4 text-center">그룹색상</p>
 	    <p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
 	    <a href="#">
 		<img class="card-image rounded mx-auto d-block" src="./pic/zoom_in.png" alt="Card image">
 		</a>
-  	</div>
+	</div>
 	
   	
 </body>
