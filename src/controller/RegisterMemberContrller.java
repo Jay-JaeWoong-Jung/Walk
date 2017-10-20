@@ -12,7 +12,7 @@ public class RegisterMemberContrller implements Controller {
 
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-				 
+				  
 		String userName=request.getParameter("userName");
 		String userId=request.getParameter("userId");
 		String userPass=request.getParameter("userPass");

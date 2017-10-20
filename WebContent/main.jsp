@@ -271,7 +271,7 @@ Install with Bower
 
 						<div class="form-check">
 							<label class="form-check-label"> <input type="checkbox"
-								class="form-check-input"> 로그인 유지
+								class="form-check-input" value="y" name="retainId"> 로그인 유지
 							</label>
 						</div>
 					</div>

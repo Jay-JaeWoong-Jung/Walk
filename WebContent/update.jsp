@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<td align="right">이메일 :</td>
-				<td><input type="text" name="email" value="<%=vo.getEmail()%>" /></td>
+			<%-- 	<td><input type="text" name="email" value="<%=vo.getEmail()%>" /></td> --%>
 			</tr>
 			
 			
