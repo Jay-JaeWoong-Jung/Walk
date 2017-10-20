@@ -17,13 +17,15 @@ public interface StringQuery {
 			"SELECT board_seq.currVal FROM dual";
 	
 	String SELECT_POSTING = 
-			"SELECT no, writer, content, hits, time_posted FROM board WHERE  no=?";
+			"SELECT no, writer, content, hits, time_posted FROM board WHERE no=?";
 	
 	String UPDATE_CONTENT = 
 			"UPDATE board SET content= ? WHERE no=?";
 	
-	String PAGE_LIST = "SELECT no, writer, content,  hits, to_char(time_posted, 'YYYY.MM.DD') time_posted FROM board order by no";
+	String PAGE_LIST = 
+			"SELECT no, writer, content,  hits,  to_char(time_posted, 'YYYY/mm/DD hh:mm') time_posted "
+			+ "FROM board where to_char(time_posted, 'YYYY/MM/DD') = ? order by no";
 	
 	String CURRENT_DATE=
-			"SELECT to_char(sysdate,'YYYYMMDD') AS time_posted FROM dual";
+			"SELECT to_char(sysdate,'YYYY/MM/DD') AS time_posted FROM dual";
 }

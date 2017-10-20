@@ -68,7 +68,7 @@ $(function (){
     
     //sendBtn 버튼을 클릭하면 입력된 날짜를 받아서 alert로 출력
 	$('#sendBtn').click(function() {
-		//alert("Today Date :: " +$('#datepicker').val());
+		
 		
 		var date = $("#datepicker").val();
 	  	$.ajax({
@@ -80,6 +80,7 @@ $(function (){
 	  			 console.log(date); */
 	  		},
 	  	})
+	  	alert("Loading....");
 	});
     
     

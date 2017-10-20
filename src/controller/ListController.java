@@ -15,7 +15,9 @@ public class ListController implements Controller {
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String date = request.getParameter("date");
-		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllpostByDate();
+		System.out.println("나오면 대박"+ date);
+		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllpostByDate(date);
+		
 		System.out.println("getAllPost()...call...");
 		
 		request.setAttribute("list", rlist);
