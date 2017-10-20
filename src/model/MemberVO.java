@@ -17,19 +17,8 @@ public class MemberVO {
 	private int gender;
 	private String birth;
 
-	public MemberVO(java.lang.String userName, java.lang.String phone1, java.lang.String phone2,
-			java.lang.String phone3, java.lang.String emailId, java.lang.String emailAdd, int gender
-			) {
-		super();
-		this.userName = userName;
-		this.phone1 = phone1;
-		this.phone2 = phone2;
-		this.phone3 = phone3;
-		this.emailId = emailId;
-		this.emailAdd = emailAdd;
-		this.gender = gender;
 	
-	}
+
 
 	public MemberVO(String userId, String userPass) {
 		super();
