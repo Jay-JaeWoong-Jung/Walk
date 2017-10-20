@@ -1,12 +1,14 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Vector;
 
+import config.OracleInfo;
 import sql.StringQuery;
 
 /*
@@ -42,6 +44,7 @@ public class MemberDAO {
 	public Connection getConnection() throws SQLException {
 		System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
+		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
 	}
 
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
@@ -81,35 +84,35 @@ public class MemberDAO {
 		return result;
 	}// idCheck
 
-	public boolean registerMember(MemberVO vo) throws SQLException {
+	public int registerMember(MemberVO vo) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean flag = false;
+		int flag = 0;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(StringQuery.INSERT_REGISTER);
-			pstmt.setString(1, vo.getUserName());
-			pstmt.setString(2, vo.getUserId());
-			pstmt.setString(3, vo.getUserPass());
+			pstmt.setString(1, vo.getUserId());
+			pstmt.setString(2, vo.getUserPass());
+			pstmt.setString(3, vo.getUserName());
+
 			pstmt.setString(4, vo.getPhone1());
 			pstmt.setString(5, vo.getPhone2());
 			pstmt.setString(6, vo.getPhone3());
-			pstmt.setString(7, vo.getEmailId());
-			pstmt.setString(8, vo.getEmailAdd());
-			pstmt.setString(9, vo.getBirth());
-			pstmt.setInt(10, vo.getGender());
-
-			int count = pstmt.executeUpdate();
-			if (count > 0) {
-				flag = true;
-				System.out.println("registerMember OK...." + count);
-			}
-
+			pstmt.setInt(7, vo.getGender());
+			pstmt.setString(8, vo.getEmailId());
+			pstmt.setString(9, vo.getEmailAdd());
+			pstmt.setString(10, vo.getBirth());
+			pstmt.setString(11, null);
+			pstmt.setNull(12, java.sql.Types.INTEGER);
+			pstmt.setString(13,vo.getEmailAccept());
+			pstmt.setString(14, null);
+			flag=pstmt.executeUpdate();
+			System.out.println("registerMember OK...." );
+			
 		} catch (Exception e) {
 			System.out.println("Exception" + e);
 		} finally {
-			closeAll(rs, pstmt, conn);
+			closeAll(pstmt, conn);
 		}
 		return flag;
 	}// registerMember
@@ -151,17 +154,27 @@ public class MemberDAO {
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-
-				vo.setUserName(rs.getString("username"));
+				vo=new MemberVO();
 				vo.setUserId(rs.getString("userid"));
 				vo.setUserPass(rs.getString("userpass"));
+				vo.setUserName(rs.getString("username"));
+				
 				vo.setPhone1(rs.getString("phone1"));
 				vo.setPhone2(rs.getString("phone2"));
 				vo.setPhone3(rs.getString("phone3"));
-				vo.setEmailId(rs.getString("emailId"));
-				vo.setEmailAdd(rs.getString("emailAdd"));
-				vo.setBirth(rs.getString("birth"));
+				
 				vo.setGender(rs.getInt("gender"));
+				vo.setEmailId(rs.getString("emailid"));
+				vo.setEmailAdd(rs.getString("emailadd"));
+				
+				vo.setBirth(rs.getString("birth"));
+				vo.setCompany(rs.getString("company"));
+				vo.setSelectedTime(rs.getInt("selectedtime"));
+				
+				vo.setRegDate(rs.getDate("regdate"));
+				vo.setEmailAccept(rs.getString("emailaccept"));
+				vo.setProfile(rs.getString("profile"));
+				
 
 			}
 		} catch (Exception e) {
@@ -171,13 +184,13 @@ public class MemberDAO {
 		}
 		return vo;
 	}// getMemberInfo
+	
 
 	public void updateMember(MemberVO vo) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = getConnection();
-
 			pstmt = conn.prepareStatement(StringQuery.SELECT_UPDATE);
 			pstmt.setString(1, vo.getUserPass());
 			pstmt.setString(2, vo.getPhone1());
@@ -185,6 +198,12 @@ public class MemberDAO {
 			pstmt.setString(4, vo.getPhone3());
 			pstmt.setString(5, vo.getEmailId());
 			pstmt.setString(6, vo.getEmailAdd());
+			pstmt.setString(7, vo.getCompany());
+			pstmt.setInt(8, vo.getSelectedTime());
+			pstmt.setString(9, vo.getEmailAccept());
+			pstmt.setString(10, vo.getProfile());
+			
+			pstmt.setString(11, vo.getUserId());
 			int result = pstmt.executeUpdate();
 			System.out.println("updateMember OK..." + result);
 
@@ -226,40 +245,52 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
 	public MemberVO login(String userId, String userPass) throws SQLException {
-		MemberVO vo = null;
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		try {
-			con = getConnection();
-			pstmt = con.prepareStatement(StringQuery.SELECT_LOGIN);
-			pstmt.setString(1, userId);
-			pstmt.setString(2, userPass);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
-						rs.getString("phone2"), rs.getString("phone3"), rs.getString("emailId"),
-						rs.getString("emailAdd"), rs.getInt("gender"), rs.getString("birth"));
-			}
-
-		} finally {
-			closeAll(rs, pstmt, con);
-		}
-		return vo;
+	MemberVO vo = new MemberVO();
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	
+	try {
+		con = getConnection();
+		pstmt = con.prepareStatement(StringQuery.SELECT_LOGIN);
+		pstmt.setString(1, userId);
+		pstmt.setString(2, userPass);
+		rs = pstmt.executeQuery();
+		if (rs.next()) {
+			vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
+					rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"),rs.getString("emailId"),
+					rs.getString("emailAdd"), rs.getString("birth"),rs.getString("emailaccept"),rs.getString("profile"));
+		System.out.println("login성공!!!...."+vo);
+		}else {System.out.println("로그인 실패....");}
+ 
+	} finally {
+		closeAll(rs, pstmt, con);
 	}
-	/*
-	 * public static void main(String[] args) throws Exception {
-	 * 
-	 * MemberDAO dao = MemberDAO.getInstance(); MemberVO vo = new MemberVO("1234",
-	 * "1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
-	 * 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
-	 * //dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
-	 * MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
-	 * "ealurill","@naver.com", 1, 860806)));
-	 * 
-	 * dao.login("abcd", "1234"); }
-	 */
+	return vo;
+}
+/*	
+	public static void main(String[] args) throws Exception {
+		
+		 MemberDAO dao = MemberDAO.getInstance();
+		//dao.registerMember(new MemberVO("myId3", "myPass", "myname", "010", "1234", "5678",0, "ddd", "@naver.com", "9860806",null,0,new Date()));
+		//System.out.println(dao.idCheck("myId"));
+		//System.out.println(dao.deleteMember("myId", "myPass"));
+		//System.out.println(dao.loginCheck("abcd", "1234"));
+		 //System.out.println(dao.getMemberInfo("abcd"));
+		//update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=? company=? selectedtime=? where userid=?"
+		// System.out.println(dao.getMemberInfo("myId3"));
+		System.out.println(dao.login("abcd", "1234"));		 //dao.updateMember(new MemberVO("8686", "010", "1234", "4321", "opilior", "gmail@.com", "코스타", 1, "myId"));
+		 MemberVO vo = new MemberVO("1234",
+		"1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
+		 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
+		dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
+		 MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
+		 "ealurill","@naver.com", 1, 860806))); 
+	
+		 
+	}
+*/
 
 }

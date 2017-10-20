@@ -10,8 +10,8 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${mvo !=null}">
-		<b>${mvo.name}</b>님, 로그인 성공!!<br>
+	<c:when test="${mvo !='null'}">
+		<b>${mvo.userId}</b>님, 로그인 성공!!<br>
 		<a href="main.jsp">Walk & Talk 입장하기</a>
 	</c:when>
 	<c:otherwise>

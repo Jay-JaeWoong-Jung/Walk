@@ -9,31 +9,35 @@
 <title>회원 가입 확인</title>
 <script language="JavaScript" src="script.js"></script>
 <script>
-	$('#moveLogin').click(function() {
-		$('#login').click(function() {
-		});
-		$('#login').trigger('click');
+
+function regForm(){
+/* 	
+$('#moveLogin').click(function() {
+		
+		
+	
 	});
-	$('#moveRegForm').click(function() {
-		$('#regForm').click(function() {
-		});
-		$('#regForm').trigger('click');
-	});
+$('#login').trigger('click');
+}
+	 */
+	
+		
+	
 </script>
 </head>
 <body bgcolor="#ffffcc">
 
 	<center>
 		<c:choose>
-			<c:when test="${flag == 'true'}">
+			<c:when test="${regResult == '1'}">
 				<b>회원가입을 축하드립니다.</b>
 				<br />
-				<a href="#" id="moveLogin"> 로그인 </a>
+				<a href="main.jsp" id="moveLogin" onclick="regForm()"> 메인페이지로 이동 </a>
 			</c:when>
 			<c:otherwise>
 				<b>다시 입력하여 주십시오.</b>
 				<br />
-				<a href="#" id="moveRegForm">다시 가입</a>
+				<a href="main.jsp" id="moveRegForm" >다시 가입</a>
 			</c:otherwise>
 		</c:choose>
 	</center>

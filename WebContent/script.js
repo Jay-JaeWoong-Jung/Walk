@@ -2,7 +2,7 @@ function idCheck() {
 		var userId = $('#InputId').val();
 	if (userId == "") {
 		alert("아이디를 입력해 주세요.");
-		document.main.userId.focus();
+		document.regForm.userId.focus();
 	} else {
 		
 		url = "DispatcherServlet?userId="+userId+"&&command=idCheck";
@@ -25,63 +25,63 @@ function inputCheck() {
 	var female = $('#female').val();
 	if (userName == "") {
 		alert("이름을 입력해 주세요.");
-		document.main.userName.focus();
+		document.regForm.userName.focus();
 		return;
 	}
 	
 	if (userId== "") {
 		alert("아이디를 입력해 주세요.");
-		document.main.userId.focus();
+		document.regForm.userId.focus();
 		return;
 	}
 	if (userPass == "") {
 		alert("비밀번호를 입력해 주세요.");
-		document.main.userPass.focus();
+		document.regForm.userPass.focus();
 		return;
 	}
 	if (userRepass == "") {
 		alert("비밀번호를 확인해 주세요.");
-		document.main.userRepass.focus();
+		document.regForm.userRepass.focus();
 		return;
 	}
 	if (userPass != userRepass) {
 		alert("비밀번호가 일치하지 않습니다.");
-		document.main.userRepass.focus();
+		document.regForm.userRepass.focus();
 		return;
 	}
 
 	if (phone1 == "") {
 		alert("통신사를 입력해 주세요.");
-		document.main.phone1.focus();
+		document.regForm.phone1.focus();
 		return;
 	}
 	if (phone2== "") {
 		alert("전화번호를 입력해 주세요.");
-		document.main.phone2.focus();
+		document.regForm.phone2.focus();
 		return;
 	}
 	if (phone3 == "") {
 		alert("전화번호를 입력해 주세요.");
-		document.main.phone3.focus();
+		document.regForm.phone3.focus();
 		return;
 	}
 	if (emailId== "") {
 		alert("이메일을 입력해 주세요.");
-		document.main.email.focus();
+		document.regForm.email.focus();
 		return;
 	}
 	if (emailAdd== "") {
 		alert("이메일을 입력해 주세요.");
-		document.main.email.focus();
+		document.regForm.email.focus();
 		return;
 	}if (male== "" && female=="") {
 		alert("성별을 입력해주세요.");
-		document.main.email.focus();
+		document.regForm.email.focus();
 		return;
 	}
 	if (birthday== "") {
 		alert("생년월일을 입력해 주세요.");
-		document.main.birthday.focus();
+		document.regForm.birthday.focus();
 		return;
 	}
 	
@@ -91,14 +91,14 @@ function inputCheck() {
 function checkLogin() {
 	var userId = $('#InputId').val();
 	var userPass = $('#InputPassword').val();
-	if (userId== "") {
+	if (userId=="") {
 		alert("아이디를 입력해 주세요.");
-		document.main.userId.focus();
+		document.loginForm.userId.focus();
 		return;
 	}
 	if (userPass == "") {
 		alert("비밀번호를 입력해 주세요.");
-		document.main.userPass.focus();
+		document.loginForm.userPass.focus();
 		return;
 	}else {
 	

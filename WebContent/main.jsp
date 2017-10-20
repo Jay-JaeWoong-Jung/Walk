@@ -155,12 +155,12 @@ Install with Bower
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
 						<div class="col-xs-7">
-							<input type="text" name="email" class="form-control" id="InputEmailId"
+							<input type="text" name="emailId" class="form-control" id="InputEmailId"
 								aria-describedby="emailHelp" placeholder="Email" required>
 						</div>
 						<div>
 							<div>
-								<select class="selectpicker" name="email" id="InputSelectedEmail">
+								<select class="selectpicker" name="emailAdd" id="InputSelectedEmail">
 									<option value="직접선택" selected="직접선택">직접선택</option>
 									<option value="@naver.com">@naver.com</option>
 									<option value="@nate.com">@nate.com</option>
@@ -176,6 +176,12 @@ Install with Bower
 									<option value="@hanmail.net">@hanmail.net</option>
 									<option value="@hotmail.com">@hotmail.com</option>
 								</select>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-10">
+									<label for="">Email 수신여부 : &nbsp;&nbsp;</label> <input
+										type="checkbox" name="emailAccept" value="y" />
+								</div>
 							</div>
 						</div>
 
@@ -202,7 +208,7 @@ Install with Bower
 						</div>
 					</div>
 
-					<div class="modal-footer" style="margin-top:130px">
+					<div class="modal-footer" style="margin-top:160px">
 						<input type="hidden" value="register" name="command">
 						<button type="submit" class="btn btn-primary" value="회원가입"
 							onclick="inputCheck()">회원가입</button>
