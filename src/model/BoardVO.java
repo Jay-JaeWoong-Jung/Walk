@@ -60,6 +60,11 @@ public class BoardVO {
 		this.content = content;
 	}
 	
+	public BoardVO(String timePosted) { // For EditContentController
+		super();
+		this.timePosted = timePosted;
+	}
+	
 	public int getNo() {
 		return no;
 	}

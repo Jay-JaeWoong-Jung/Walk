@@ -15,6 +15,10 @@ integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNm
 integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <link href="./open-iconic-master/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
 
 function content_submit(){
@@ -52,7 +56,42 @@ function winOpen_Edit(editno){
 	var number = editno
 	window.open("blog_edit_popup.jsp?no="+number,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
 }
+
+$(function (){
+    $( "#datepicker" ).datepicker({
+    	
+    	dateFormat:"yy-mm-dd",
+    	dayNamesMin:['일','월','화','수','목','금','토'],
+    	monthNames:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+    	
+    }); //datepicker()
+    
+    //sendBtn 버튼을 클릭하면 입력된 날짜를 받아서 alert로 출력
+	$('#sendBtn').click(function() {
+		//alert("Today Date :: " +$('#datepicker').val());
+		
+		var date = $("#datepicker").val();
+	  	$.ajax({
+	  		type : 'post',
+	  		url : 'DispatcherServlet',
+	  		data : { command: date},
+	  		success : function(dateResult){
+	  			/* alert();
+	  			 console.log(date); */
+	  		},
+	  	})
+	});
+    
+    
+});
 </script>
+<style>
+body{
+    background-color: skyblue;
+    }
+
+
+</style>
 </head>
 <body>
 
@@ -60,11 +99,12 @@ function winOpen_Edit(editno){
 
 <!-- **********************End Main list Table ****************************-->
 <div class="container">
+  <div class="row">
 	<div class ="col-8">
 	<h1 align="left" class="display-3"><b>Comment</b></h1><p>
 		<table class="table table-hover table-bordered">
 		<thead>	
-			<tr class="table-primary text-center">
+			<tr class="text-center">
 				<th width="5%" class="text-center">#</th>
 				<th width="60%" class="text-center">Content</th>
 				<th width="15%" class="text-center">Writer</th>
@@ -90,14 +130,21 @@ function winOpen_Edit(editno){
 			</c:forEach>
 		</table><p>
 	</div>
+	<!-- **************** Start Calendar ********************  -->
+	<div class="col-4">
+	<p>Date: <input type="text" id="datepicker"></p>
+	<input type="submit" value="Date Check" id="sendBtn">
+	</div>
 	
+	<!-- **************** End Calendar ********************  -->
+  </div>
 </div>
 <!-- **********************End Main list Table ****************************-->
-<div class="container">
+<div class="container" style="padding-top:50px">
 	<div class=col-8>
  	 <form action="DispatcherServlet" method="post" name="write_form">
   		<input type="hidden" name="command" value="write">
-  		 <table align="left" width="500px"  style="border:1px solid black" >
+  		 <table align="left" width="500px"   >
   		 	<tr>
     		   <td width="10%">Name</td>
    			   <td width="200px"><input type="text" name="writer"></td>

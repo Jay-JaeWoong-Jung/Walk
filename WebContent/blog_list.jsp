@@ -13,13 +13,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  	<link rel="stylesheet" href="./css/main.css">
+
 </head>
 <body>
 
 <h2 align="center">Factory Pattern을 이용한 게시판 글쓰기 2. </h2><p>
 
  <a href="blog_write.jsp">글 쓰 기</a>
-<a href="DispatcherServlet?command=list">전체 게시글 보기</a>
+<a href="DispatcherServlet?command=todayDate">게시글 보기</a>
 
 </body>
 </html>

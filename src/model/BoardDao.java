@@ -107,7 +107,7 @@ public class BoardDao {
 	}//getPostingByNo
 	
 	
-	public ArrayList<BoardVO> getAllpost() throws SQLException{
+	public ArrayList<BoardVO> getAllpostByDate(String date) throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -116,6 +116,7 @@ public class BoardDao {
 				
 			conn = getConnection();
 			ps = conn.prepareStatement(StringQuery.PAGE_LIST);
+			ps.setString(1, date);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(new BoardVO(
@@ -185,6 +186,28 @@ public class BoardDao {
 		}finally {
 			closeAll(ps, conn);
 		}
+	}
+	
+	public String getTodayDate() throws SQLException{
+		Connection conn=null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String date="";
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.CURRENT_DATE);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				date = rs.getString("time_posted");
+				System.out.println("getTodayDate...."+date);
+			}
+		}finally {
+			closeAll(ps, conn);
+		}
+			
+		
+		return date;
+		
 	}
 	
 	

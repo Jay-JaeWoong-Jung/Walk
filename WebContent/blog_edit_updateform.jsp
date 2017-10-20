@@ -33,7 +33,7 @@ function editAction(){
 <c:choose>
 	<c:when test="${param.result!=null}">
 		<form action="DispatcherServlet?no=${param.no}" method="post" name="update_form">
- 		<input type="hidden" name="command" value="editcontent">
+ 		<input type="hidden" name="command" value="editContent">
  		<input type="text" value="${list.content}" name="content" maxlength="200" size="50">
 		<input type="button" value ="수정하기"  onclick="editAction()">
 		

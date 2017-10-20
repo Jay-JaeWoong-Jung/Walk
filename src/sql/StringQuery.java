@@ -23,5 +23,7 @@ public interface StringQuery {
 			"UPDATE board SET content= ? WHERE no=?";
 	
 	String PAGE_LIST = "SELECT no, writer, content,  hits, to_char(time_posted, 'YYYY.MM.DD') time_posted FROM board order by no";
-
+	
+	String CURRENT_DATE=
+			"SELECT to_char(sysdate,'YYYYMMDD') AS time_posted FROM dual";
 }
