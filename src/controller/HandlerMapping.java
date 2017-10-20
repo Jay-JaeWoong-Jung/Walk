@@ -14,13 +14,17 @@ public class HandlerMapping {
 		Controller controller = null;
 
 		System.out.println("handler 입성");
+		
 		if (command.equals("register")) {
 			controller = new RegisterMemberContrller();
-		} else if (command.equals("login")) {
+		}else if (command.equals("login")){
 			controller = new LoginController();
-		} else if (command.equals("idCheck"))
+		}else if (command.equals("idCheck")) {
 			controller = new IdCheckController();
- 
-		return controller;
+		}else if (command.equals("logout")){
+		controller = new LogoutController();
+		}
+	return controller;
 	}
 }
+

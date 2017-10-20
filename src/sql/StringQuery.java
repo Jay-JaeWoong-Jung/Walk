@@ -8,5 +8,5 @@ public interface StringQuery {
 	String SELECT_UPDATE = "update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=?, company=?, selectedtime=?,emailaccept, profile where userid=?";
 	String SELECT_MEMBER = "select userpass from membership where userid=? ";
 	String DELETE_MEMBER = "delete from membership where userid=?";
-	String SELECT_LOGIN = "select username,phone1,phone2,phone3,gender,emailid,emailadd, birth from membership where userid=? and userpass=?";
+	String SELECT_LOGIN = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailAccept,profile from membership where userid=? and userPass=?";
 }

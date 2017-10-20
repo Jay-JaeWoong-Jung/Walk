@@ -32,7 +32,10 @@ $('#login').trigger('click');
 			<c:when test="${regResult == '1'}">
 				<b>회원가입을 축하드립니다.</b>
 				<br />
-				<a href="main.jsp" id="moveLogin" onclick="regForm()"> 메인페이지로 이동 </a>
+				<script type="text/javascript">
+				
+				</script>
+				<a href="#signIn" id="moveLogin" onclick="regForm()"> 메인페이지로 이동 </a>
 			</c:when>
 			<c:otherwise>
 				<b>다시 입력하여 주십시오.</b>

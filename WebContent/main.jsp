@@ -83,10 +83,34 @@ Install with Bower
 					href="#pricing">PRICING</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#contact">CONTACT</a></li>
-				<li data-toggle="collapse" data-target="#myNavbar"><a href="#"
-					data-toggle="modal" data-target="#signUp " id="regForm">회원가입 </a></li>
-				<li data-toggle="collapse" data-target="#myNavbar"><a href="#"
-					data-toggle="modal" data-target="#signIn" id="login">로그인</a></li>
+				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
+						<c:when test="${mvo.userId != null}">
+							<a href="#" data-toggle="modal" data-target="#signUp "
+								id="regForm">${mvo.userId}님 </a>
+						</c:when>
+						<c:otherwise>
+							<a href="#" data-toggle="modal" data-target="#signUp "
+								id="regForm">회원가입 </a>
+						</c:otherwise>
+					</c:choose>
+				</li>
+				<li data-toggle="collapse" data-target="#myNavbar">
+				
+				<c:choose>
+						<c:when test="${mvo.userId != null}"> <!-- 로그인 상태라면 -->
+							<a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
+								data-toggle="modal"  id="login"> 로그아웃</a>
+
+						</c:when>
+						<c:otherwise> 
+							
+							<a href="#signIn" data-toggle="modal" data-target="#signIn" id="login">로그인</a>
+		
+						</c:otherwise>
+				</c:choose>
+
+
+				</li>
 
 			</ul>
 		</div>
@@ -235,14 +259,14 @@ Install with Bower
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
-								class="form-control" id="InputId" placeholder="아이디" >
+								class="form-control" id="InputId" placeholder="아이디"  name="userId">
 
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="InputPassword"
-								placeholder="비밀번호" >
+								placeholder="비밀번호" name="userPass" >
 						</div>
 
 						<div class="form-check">

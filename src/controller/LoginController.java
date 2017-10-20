@@ -21,9 +21,9 @@ public class LoginController implements Controller {
 		if (vo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", vo);
-			return new ModelAndView("login_ok.jsp");
-		} else
-			return new ModelAndView("login_fail.jsp");
+			
+		} 
+			return new ModelAndView("main.jsp");
 	}
 
 }
