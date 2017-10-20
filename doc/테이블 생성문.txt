@@ -1,17 +1,18 @@
 create table membership(
 userId varchar2(20) not null,
 userPass varchar2(15) not null,
-userName varchar2(10) not null,
+userName varchar2(20) not null,
 phoneNumber varchar2(20) not null,
 gender number(2) not null,
 birth varchar(10) not null,
 company varchar(20),
 selectedTime number(3),
 regDate date default sysdate,
-eamil varchar2(20) not null,
-flag number(10)
+eamil varchar2(20) not null
+
 );
 
+alter table membership add flag number(10);
 
 create table id_log(
 userId varchar2(20) not null,
