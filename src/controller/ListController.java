@@ -15,7 +15,12 @@ public class ListController implements Controller {
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String date = request.getParameter("date");
-		System.out.println("나오면 대박"+ date);
+		System.out.println("무엇이 온건가 "+ date);
+		if(date.charAt(4)=='-') {
+			date = date.replaceAll("-", "/");
+		}
+		System.out.println("바뀌면 대박"+ date);
+
 		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllpostByDate(date);
 		
 		System.out.println("getAllPost()...call...");

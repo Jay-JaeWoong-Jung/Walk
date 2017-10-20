@@ -10,7 +10,7 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript">
 	alert("수정이 완료되었습니다");
-	window.opener.location.href="DispatcherServlet?command=list";
+	window.opener.location.href="DispatcherServlet?command=list&&date="+${param.date};
 	
 	self.close();
 </script>

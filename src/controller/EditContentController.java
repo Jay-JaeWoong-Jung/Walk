@@ -12,7 +12,7 @@ public class EditContentController implements Controller {
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int no = Integer.parseInt(request.getParameter("no"));
 		String content = request.getParameter("content");
-		
+		String date = request.getParameter("date");
 		BoardVO pvo = new BoardVO(no, content);
 		BoardDao.getInstance().updateContent(pvo);
 		

@@ -67,22 +67,7 @@ $(function (){
     }); //datepicker()
     
     //sendBtn 버튼을 클릭하면 입력된 날짜를 받아서 alert로 출력
-	$('#sendBtn').click(function() {
-		
-		
-		var date = $("#datepicker").val();
-	  	$.ajax({
-	  		type : 'post',
-	  		url : 'DispatcherServlet',
-	  		data : { command: date},
-	  		success : function(dateResult){
-	  			/* alert();
-	  			 console.log(date); */
-	  		},
-	  	})
-	  	alert("Loading....");
-	});
-    
+	
     
 });
 </script>
@@ -133,8 +118,12 @@ body{
 	</div>
 	<!-- **************** Start Calendar ********************  -->
 	<div class="col-4">
-	<p>Date: <input type="text" id="datepicker"></p>
-	<input type="submit" value="Date Check" id="sendBtn">
+	
+	<form action="DispatcherServlet" method="post">
+		<p>Date: <input type="text" id="datepicker" name="date"></p>
+		<input type="submit" value="Date Check" id="sendBtn">
+		<input type="hidden" name="command" value= "list">
+ 	</form>
 	</div>
 	
 	<!-- **************** End Calendar ********************  -->
