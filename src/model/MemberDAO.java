@@ -43,8 +43,8 @@ public class MemberDAO {
 	/////////////// 공통적인 로직 /////////////////////////////
 	public Connection getConnection() throws SQLException {
 		System.out.println("디비연결 성공....");
-		return DataSourceManager.getInstance().getConnection();
-		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
+		//return DataSourceManager.getInstance().getConnection();
+		return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
 	}
 
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
@@ -106,6 +106,8 @@ public class MemberDAO {
 			pstmt.setNull(12, java.sql.Types.INTEGER);
 			pstmt.setString(13,vo.getEmailAccept());
 			pstmt.setString(14, null);
+			pstmt.setNull(15, java.sql.Types.INTEGER);
+			
 			flag=pstmt.executeUpdate();
 			System.out.println("registerMember OK...." );
 			
@@ -270,27 +272,28 @@ public class MemberDAO {
 	}
 	return vo;
 }
-/*	
+
 	public static void main(String[] args) throws Exception {
 		
 		 MemberDAO dao = MemberDAO.getInstance();
-		//dao.registerMember(new MemberVO("myId3", "myPass", "myname", "010", "1234", "5678",0, "ddd", "@naver.com", "9860806",null,0,new Date()));
+		dao.registerMember(new MemberVO("myID111", "myPass111", "myName111", "111", "1234", "5678", 0, "abc", "@ab.com", "950411", "myCom", 0, new Date(), "n", "url"));
 		//System.out.println(dao.idCheck("myId"));
 		//System.out.println(dao.deleteMember("myId", "myPass"));
 		//System.out.println(dao.loginCheck("abcd", "1234"));
 		 //System.out.println(dao.getMemberInfo("abcd"));
 		//update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=? company=? selectedtime=? where userid=?"
 		// System.out.println(dao.getMemberInfo("myId3"));
-		System.out.println(dao.login("abcd", "1234"));		 //dao.updateMember(new MemberVO("8686", "010", "1234", "4321", "opilior", "gmail@.com", "코스타", 1, "myId"));
-		 MemberVO vo = new MemberVO("1234",
-		"1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
-		 0,19808060); dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
-		dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
-		 MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
-		 "ealurill","@naver.com", 1, 860806))); 
-	
+		//System.out.println(dao.login("abcd", "1234"));		 //dao.updateMember(new MemberVO("8686", "010", "1234", "4321", "opilior", "gmail@.com", "코스타", 1, "myId"));
+//		 MemberVO vo = new MemberVO("1234",
+//		"1234", "1234", "1234", new Date(1986, 8, /6) , 0, "1234", "My Company",
+//		 0,19808060); 
+//		 dao.idCheck("abcd"); System.out.println(dao.idCheck("abcd"));
+//		dao.loginCheck("abcd", "1234"); System.out.println(dao.registerMember(new
+//		 MemberVO("opilior", "8686", "김보경", "010", "2319", "7552",
+//		 "ealurill","@naver.com", 1, 860806))); 
+	 
 		 
 	}
-*/
+
 
 }
