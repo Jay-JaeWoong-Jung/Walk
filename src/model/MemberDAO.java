@@ -61,7 +61,7 @@ public class MemberDAO {
 	
 	//////////////////회원관리 로직///////////////////
 	public boolean idCheck(String userId) throws SQLException {
-		boolean result = true;
+		boolean result = false;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -71,14 +71,14 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(StringQuery.SELECT_IDCHECK);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
-			if (!rs.next()) {
-				result = false;
-			}
+			if (rs.next()) return true;
+			else return false;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, conn);
 		}
+		
 		return result;
 	}// idCheck
 
@@ -130,9 +130,9 @@ public class MemberDAO {
 			if (rs.next()) {
 				String dbPass = rs.getString("userpass");
 				if (userPass.equals(dbPass))
-					check = 1;
+					return 1;
 				else
-					check = 0;
+					return 0;
 			}
 
 		} catch (Exception e) {
@@ -232,10 +232,10 @@ public class MemberDAO {
 					pstmt = conn.prepareStatement(StringQuery.DELETE_MEMBER);
 					pstmt.setString(1, userId);
 					pstmt.executeUpdate();
-					result = 1;
+					return 1;
 
 				} else {
-					result = 0;
+					return 0;
 				}
 			}
 		} catch (Exception e) {
