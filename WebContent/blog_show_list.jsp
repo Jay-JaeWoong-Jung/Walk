@@ -84,14 +84,16 @@ $(function (){
 <style>
 body {
 	background-color: skyblue;
+	font: coiny;
 }
+
 </style>
 </head>
 <body>
 
-	<c:import url="blog_header.jsp"></c:import>
+	
 
-	<!-- **********************End Main list Table ****************************-->
+	<!-- **********************Start Main list Table ****************************-->
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
@@ -262,7 +264,7 @@ body {
 			<form action="DispatcherServlet" method="post" name="write_form">
 				<input type="hidden" name="command" value="write">
 				
-				<table align="left" width="500px">
+				<table align="center" width="500px">
 					<tr>
 						<td width="10%">Name</td>
 						<td width="200px"><input type="text" name="writer"></td>
