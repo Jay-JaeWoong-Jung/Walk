@@ -31,17 +31,17 @@ private int timeSlot;
 			System.out.println("선택시간:" + timeSlot);
 			System.out.println("현재 list.size():"+list.size());
 			for(int i=0; i<list.size(); i++) {
-				int flag = i % (list.size() / MagicNumbers.GROUP_SIZE)+1 ;
-				MemberDAO.getInstance().updateAssignedGroup(list.get(i), flag);
+				int groupColor = i % (list.size() / MagicNumbers.GROUP_SIZE)+1 ;
+				MemberDAO.getInstance().updateAssignedGroup(list.get(i), groupColor);
 				
 				
 			}
-			ArrayList<Pair<String, Integer>> resultList = MemberDAO.getInstance().getUserIdFlagPairByTimeSlot(timeSlot);
+			ArrayList<Pair<String, Integer>> resultList = MemberDAO.getInstance().getUserIdgroupColorPairByTimeSlot(timeSlot);
 			System.out.println("그룹할당 결과:" + resultList);
 			
 			}else if(timeSlot == 0){
 				System.out.println("슬럿 0:" + timeSlot);
-				MemberDAO.getInstance().clearFlagNTime(timeSlot, timeSlot);
+				MemberDAO.getInstance().cleargroupColorNTime(timeSlot, timeSlot);
 				
 			}
 		} catch(Exception e) {

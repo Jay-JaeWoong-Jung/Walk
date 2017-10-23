@@ -31,15 +31,15 @@ public class DashboardController implements Controller{
 		
 		
 		
-		//해당 userId 해당하는 selectedTime에 해당하는 같은 그룹(flag) count 수
+		//해당 userId 해당하는 selectedTime에 해당하는 같은 그룹(groupColor) count 수
 //		System.out.println("vo.getSelectedTime():"+vo.getSelectedTime());
-//		System.out.println("vo.getFlag():"+vo.getFlag());
+//		System.out.println("vo.getgroupColor():"+vo.getgroupColor());
 		
-		int count=MemberDAO.getInstance().getFlagCout(selectedTime, vo.getFlag());
+		int count=MemberDAO.getInstance().getgroupColorCout(selectedTime, vo.getgroupColor());
 		
 		
 		
-		ArrayList<MemberVO> rvo=MemberDAO.getInstance().getNameInGroup(selectedTime, vo.getFlag());
+		ArrayList<MemberVO> rvo=MemberDAO.getInstance().getNameInGroup(selectedTime, vo.getgroupColor());
 		
 		Date date=MemberDAO.getInstance().getReserveDate(userId);
 		
