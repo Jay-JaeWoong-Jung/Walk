@@ -80,55 +80,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  
-	  <a class="navbar-brand" href="#">Logo</a>
-	  
-	   <p id="tDate" class="lead displayInline mb-0 text-center text-right ">
-	   <fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
-	   </p>
-	 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>	
-	  
-	  
-	
-	  <div class="collapse navbar-collapse mr-auto" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">About</a>
-	      </li>
-	      <li class="nav-item dropdown">
-	        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          Reserve
-	        </a>
-	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	          <a class="dropdown-item" href="#" onclick="reserveChange()">예약 변경</a>
-<!-- 	          DispatcherServlet?userId=myId1&selectedTime=selectedTime&command=reserveChange -->
-	          <div class="dropdown-divider"></div>
-	          
-	          <a class="dropdown-item" href="DispatcherServlet?userId=myId1&selectedTime=1&command=reserveCancel">예약 취소</a>
-	        </div>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Profile</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Blog</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Sign out</a>
-	      </li>
-	    </ul>
-	   
-	  </div>
-	 
-	  
-	  
-	</nav>
+	<c:import url="./navbar.jsp"></c:import>
 	<div class="jumbotron">
 	  <p class="display-4 text-right"><span class="smallFont text-muted">Meet by</span> 
 	  <c:if test="${vo.selectedTime =='2' }"> 11:30 AM</p> </c:if>
