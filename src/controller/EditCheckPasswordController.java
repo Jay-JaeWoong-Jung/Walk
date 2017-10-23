@@ -11,7 +11,10 @@ public class EditCheckPasswordController implements Controller {
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int no = Integer.parseInt(request.getParameter("no"));
+		/*String date =request.getParameter("timePosted");*/
+		
 		System.out.println("no ::"+no);
+		
 		String pass = request.getParameter("password");
 		String path = "";
 		boolean flag= BoardDao.getInstance().checkPassword(no, pass);

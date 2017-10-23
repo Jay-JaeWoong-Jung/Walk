@@ -47,13 +47,15 @@ function cancel(){
 	f.reset();
 }
 
-function winOpen_Delete(deleteno){
+function winOpen_Delete(deleteno,deletetime){
 	var number = deleteno
+	var time = deletetime
 	window.open("blog_delete_popup.jsp?no="+number,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
 }
 
-function winOpen_Edit(editno){
+function winOpen_Edit(editno,ediTime){
 	var number = editno
+	var time = ediTime 
 	window.open("blog_edit_popup.jsp?no="+number,"z","width=500, height=400, resizable=ture, toolbar=no, top=300, left=500");
 }
 
@@ -108,9 +110,9 @@ body{
 				<td>${bvo.writer}</td>
 				<td>${bvo.timePosted}</td>
 				<td><button type="button" class="btn btn-default-xs active">
-				<span class="oi oi-trash" onclick="winOpen_Delete('${bvo.no}')"></span></button></td>
-				<td><button type="button" class="btn btn-default-xs active">
 				<span class="oi oi-pencil" onclick="winOpen_Edit('${bvo.no}')"></span></button></td>
+				<td><button type="button" class="btn btn-default-xs active">
+				<span class="oi oi-trash" onclick="winOpen_Delete('${bvo.no}')"></span></button></td>
 				
 			</tr>	
 			</c:forEach>

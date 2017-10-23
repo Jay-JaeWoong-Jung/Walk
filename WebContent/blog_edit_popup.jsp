@@ -24,7 +24,6 @@ function editAction(){
 비밀번호를 입력하세요<input type="password" name="password"  maxlength="200" size="30"><br>
 <input type="hidden" name="command" value="editCheckPassword">
 <input type="hidden" name="no" value="${param.no}"> <!-- 게시판 no 받는것 -->
-<input type="hidden" name="date" value="${param.timePosted}">
 <input type="button" value ="수정"  onclick="editAction()">
 <input type="button" value ="창닫기" onclick="javascript:self.close()">
 </form>

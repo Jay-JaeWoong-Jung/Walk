@@ -18,6 +18,8 @@ public class ListController implements Controller {
 		System.out.println("무엇이 온건가 "+ date);
 		if(date.charAt(4)=='-') {
 			date = date.replaceAll("-", "/");
+			date = date.substring(0, 10);
+		
 		}
 		System.out.println("바뀌면 대박"+ date);
 
