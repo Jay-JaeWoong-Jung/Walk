@@ -19,10 +19,13 @@ public class ListController implements Controller {
 		if(date.charAt(4)=='-') {
 			date = date.replaceAll("-", "/");
 			date = date.substring(0, 10);
-		
+			System.out.println("1번째:::::"+ date);
+		}else if(date.charAt(4)=='/') {
+			date = date.substring(0, 10);
+			System.out.println("2번째:::::"+ date);
 		}
-		System.out.println("바뀌면 대박"+ date);
-
+		
+		System.out.println("최종::::"+ date);
 		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllpostByDate(date);
 		
 		System.out.println("getAllPost()...call...");

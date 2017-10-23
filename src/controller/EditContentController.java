@@ -14,16 +14,17 @@ public class EditContentController implements Controller {
 		String content = request.getParameter("content");
 		String date = request.getParameter("date");
 		
-		System.out.println("no::"+no);
-		System.out.println("date::"+date);
+		System.out.println("edit cont no::"+no);
+		System.out.println("edit cont date::"+date);
+		System.out.println("content!!!!::"+content);
 		BoardVO pvo = new BoardVO(no, content);
 		BoardDao.getInstance().updateContent(pvo);
 		
-//		String path = "DispatcherServlet?command=list";
+		String path = "DispatcherServlet?command=list&&date="+date;
 		
 //		return new ModelAndView(path, true); // 전형적인 Redirect 방식
-		String path ="blog_edit_result.jsp?date="+date;
-		return new ModelAndView(path);
+	
+		return new ModelAndView(path, true);
 	}
 
 }

@@ -59,6 +59,7 @@ function cancel(){
 }
 
 
+
 /* function winOpen_Edit(editno,ediTime){
 	var number = editno
 	var time = ediTime 
@@ -118,15 +119,16 @@ body {
 							<td>${bvo.writer}</td>
 							<td>${bvo.timePosted}</td>
 							
+							<!-- *************************** Edit ******************************  -->
 							<td><button name="edit" type="button" class="btn btn-primary-xs active"
-									data-toggle="modal" data-target="#editmodal">
-									<input type="hidden" name="editvalue" value="${bvo.no}','${bvo.content}','${bvo.timePosted}">
+									data-toggle="modal" data-target="#${bvo.no}">
 									<span class="oi oi-pencil" style="color: blue"></span>
 								</button>
+								
 								<!-- *************************** Start Modal ******************************  -->
-								<!-- *************************** Edit Modal ******************************  -->
-							
-							<div class="modal fade" id="editmodal" tabindex="-1"
+								
+						
+							<div class="modal fade" id="${bvo.no}" tabindex="-1"
 								role="dialog" >
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
@@ -137,29 +139,42 @@ body {
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<div class="modal-body">Edit Content
-										<input type="text" value="${bvo.content}" name="content" maxlength="200" size="50">
-										
-										</div>
+										  <div class="modal-body">Edit Content
+											<input type="text" value="${bvo.content}" id="${bvo.no}content"
+											name="content" maxlength="200" size="50" id="updateContent">
+										  </div>
+									
 										<div class="modal-footer">
-											<button type="button" class="btn btn-primary"
-												onclick="sumbit_Edit('${bvo.no}','${bvo.content}','${bvo.timePosted}')">Edit</button>
+											<%-- <button type="button" class="btn btn-primary"
+												onclick="sumbit_Edit('${bvo.no}','${bvo.timePosted}')">Edit</button> --%>
+												<button class="btn btn-primary" id="${bvo.no}clickBtn">Edit</button>
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Close</button>
-											<script type="text/javascript">
-											function sumbit_Edit(bvono,bvocontent,bvotime){
-												var number = bvono
-												var content = bvocontent
-												var time = bvotime
-												location.href="DispatcherServlet?command=editContent&&no="+number
-														+"&&content="+content
-														+"&&date="+time;
-											}
+										</div>		
+											 <script type="text/javascript">
+											 /* function sumbit_Edit(bvono,bvocontent,bvotime){
+												 	
+													var number = bvono
+													var content = bvocontent
+													var time = bvotime
+													location.href="DispatcherServlet?command=editContent&&no="+number
+															+"&&content="+content
+															+"&&date="+time;
+												} */
 
+												$(document).ready(function () {
+													$('#${bvo.no}clickBtn').click(function () {
+														var content=$('#${bvo.no}content').val();
+														/* alert(content); */
+			location.href="DispatcherServlet?command=editContent&&no=${bvo.no}&&content="+content+"&&date=${bvo.timePosted}";
+														
+													});
+													
+												});
 											
-											</script>
+											</script> 
 
-										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -167,11 +182,12 @@ body {
 							<!-- *************************** End Modal ******************************  -->
 								
 								</td>
+								<!-- *************************** Delete ******************************  -->
 															
 						<td>
 							
 							<button name="delete" type="button" class="btn btn-primary-xs active"
-									data-toggle="modal" data-target="#deleteModal">
+									data-toggle="modal" data-target="#${bvo.no}delete">
 									<span class="oi oi-trash" style="color: blue"></span>
 								</button>
 							
@@ -179,8 +195,8 @@ body {
 								<!-- *************************** Start Modal ******************************  -->
 								
 								
-						<!-- *************************** Delete ******************************  -->
-							<div class="modal fade" id="deleteModal" tabindex="-1"
+						
+							<div class="modal fade" id="${bvo.no}delete" tabindex="-1"
 								role="dialog" >
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
