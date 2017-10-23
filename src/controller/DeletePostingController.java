@@ -11,9 +11,11 @@ public class DeletePostingController implements Controller {
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int no = Integer.parseInt(request.getParameter("no"));
+		String date = request.getParameter("date");
+		System.out.println("deletePosting::"+no);
 		BoardDao.getInstance().deletePosting(no);
 		
-		String path = "DispatcherServlet?command=list";  // HandlerMapping 거쳐서 ListController 가기위함.
+		String path = "DispatcherServlet?command=list&&date="+date;  // HandlerMapping 거쳐서 ListController 가기위함.
 		
 		return new ModelAndView(path,true);
 	}

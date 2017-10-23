@@ -12,8 +12,9 @@ public class EditContentController implements Controller {
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int no = Integer.parseInt(request.getParameter("no"));
 		String content = request.getParameter("content");
-		System.out.println("no::"+no);
 		String date = request.getParameter("date");
+		
+		System.out.println("no::"+no);
 		System.out.println("date::"+date);
 		BoardVO pvo = new BoardVO(no, content);
 		BoardDao.getInstance().updateContent(pvo);
