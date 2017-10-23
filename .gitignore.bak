@@ -1,0 +1,5 @@
+build/classes/
+.classpath
+.settings
+src/config/*
+webContent/META-INF/*
