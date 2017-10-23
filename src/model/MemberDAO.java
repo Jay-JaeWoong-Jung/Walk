@@ -104,6 +104,8 @@ public class MemberDAO {
 			pstmt.setNull(12, java.sql.Types.INTEGER);
 			pstmt.setString(13,vo.getEmailAccept());
 			pstmt.setString(14, null);
+			pstmt.setNull(15, java.sql.Types.INTEGER);
+
 			flag=pstmt.executeUpdate();
 			System.out.println("registerMember OK...." );
 			

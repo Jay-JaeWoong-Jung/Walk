@@ -21,9 +21,13 @@ public class RegisterMemberContrller implements Controller {
 		String phone3=request.getParameter("phone3");
 		String emailId=request.getParameter("emailId");
 		String emailAdd=request.getParameter("emailAdd");
-		String birth=(request.getParameter("birthday"));
+		String birth=request.getParameter("birthday");
 		int gender=Integer.parseInt(request.getParameter("gender"));
 		String emailAccept=request.getParameter("emailAccept");
+		/*if(birth == "") {
+			
+			birth="1983-09-15";
+		}*/
 		
 		if(emailAccept == null) {
 			emailAccept="n";

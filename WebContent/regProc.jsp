@@ -35,12 +35,13 @@ $('#login').trigger('click');
 				<script type="text/javascript">
 				
 				</script>
-				<a href="#signIn" id="moveLogin" onclick="regForm()"> 메인페이지로 이동 </a>
+				<a href="main.jsp" id="moveLogin" onclick="regForm()"> 메인페이지로 이동
+				</a>
 			</c:when>
 			<c:otherwise>
 				<b>다시 입력하여 주십시오.</b>
 				<br />
-				<a href="main.jsp" id="moveRegForm" >다시 가입</a>
+				<a href="main.jsp" id="moveRegForm">다시 가입</a>
 			</c:otherwise>
 		</c:choose>
 	</center>

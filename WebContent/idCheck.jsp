@@ -3,11 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ID중복체크</title>
-<script language="JavaScript" src="script.js"></script>
+
 </head>
 <body bgcolor="#ffffcc">
 	<br>
@@ -16,16 +17,16 @@
 		
 		<c:choose>
 			<c:when test="${result == 'true'}">
-			 		${userId}는 이미 존재하는 ID 입니다.
+			 		<span style="color:red; ">Already Exist! </span>
 			</c:when>	
 			<c:otherwise>
-			${userId}는 사용 가능 합니다.<br></br>
+			<span style="color:blue; ">Usable </span>
 			
 			</c:otherwise>
 		</c:choose>
 			
 		
-		<a href="#" onclick="javascript:self.close()">닫기</a>
+	<!-- 	<a href="#" onclick="javascript:self.close()">닫기</a> -->
 	</center>
 </body>
 </html>
