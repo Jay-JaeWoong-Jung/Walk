@@ -21,7 +21,74 @@ public class MemberVO {
     private int groupColor;
     
     
+    public MemberVO() {
+		super();
+	}
+	///회원가입용 생성자///
+ // delete, logincheck용
+ 	public MemberVO(String userId, String userPass) {
+ 		super();
+ 		this.userId = userId;
+ 		this.userPass = userPass;
+ 	}
+ 	//login용 
+ 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
+ 			int gender, String emailId, String emailAdd, String birth, String emailAccept, String profile) {
+ 		super();
+ 		this.userId = userId;
+ 		this.userPass = userPass;
+ 		this.userName = userName;
+ 		this.phone1 = phone1;
+ 		this.phone2 = phone2;
+ 		this.phone3 = phone3;
+ 		this.gender = gender;
+ 		this.emailId = emailId;
+ 		this.emailAdd = emailAdd;
+ 		this.birth = birth;
+ 		this.emailAccept = emailAccept;
+ 		this.profile = profile;
+ 	}
+
+ 	// update용 생성자
+ 	public MemberVO(String userPass, String phone1, String phone2, String phone3, String emailId, String emailAdd,
+ 			String company, int selectedTime, String userId, String emailAccept, String profile) {
+ 		super();
+ 		this.userPass = userPass;
+ 		this.phone1 = phone1;
+ 		this.phone2 = phone2;
+ 		this.phone3 = phone3;
+ 		this.emailId = emailId;
+ 		this.emailAdd = emailAdd;
+ 		this.company = company;
+ 		this.selectedTime = selectedTime;
+ 		this.userId = userId;
+ 		this.emailAccept = emailAccept;
+ 		this.profile = profile;
+ 	}
+
+ 	
+ 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
+ 			int gender, String emailId, String emailAdd, String birth, String company, int selectedTime, Date regDate,
+ 			String emailAccept, String profile) {
+ 		super();
+ 		this.userId = userId;
+ 		this.userPass = userPass;
+ 		this.userName = userName;
+ 		this.phone1 = phone1;
+ 		this.phone2 = phone2;
+ 		this.phone3 = phone3;
+ 		this.gender = gender;
+ 		this.emailId = emailId;
+ 		this.emailAdd = emailAdd;
+ 		this.birth = birth;
+ 		this.company = company;
+ 		this.selectedTime = selectedTime;
+ 		this.regDate = regDate;
+ 		this.emailAccept = emailAccept;
+ 		this.profile = profile;
+ 	}
     
+    ///예약관리용 생성자////
 	public MemberVO(String userName) {
 		super();
 		this.userName = userName;
