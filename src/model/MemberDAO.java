@@ -245,7 +245,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	public MemberVO login(String userId, String userPass) throws SQLException {
+	public MemberVO login(String userId, String userPass) throws SQLException ,Exception{
 		MemberVO vo = new MemberVO();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -263,9 +263,15 @@ public class MemberDAO {
 						rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"),rs.getString("emailId"),
 						rs.getString("emailAdd"), rs.getString("birth"),rs.getString("emailaccept"),rs.getString("profile"));
 				System.out.println("login성공!!!...."+vo);
-			}else {System.out.println("로그인 실패....");}
+			}
+			else {System.out.println("로그인 실패....");
+		
+			
+			}
 
-		} finally {
+		}catch(Exception e){e.printStackTrace();}
+		
+		finally {
 			closeAll(rs, pstmt, con);
 		}
 		return vo;

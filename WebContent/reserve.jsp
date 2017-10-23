@@ -39,7 +39,10 @@ function reserve(){
 </c:if>
 
 <body>
-	 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<c:choose>
+	<c:when test="${mvo.userId != null}">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  
 	  <a class="navbar-brand" href="#">Logo</a>
 	  
@@ -101,7 +104,7 @@ function reserve(){
 		<form action="DispatcherServlet" name="selectTimeFrm" id="selectTimeFrm"> 
 			
 	  		<input type="hidden" name="command" value="reserve">
-	  		 <input type="hidden" name="userId" value="myId1"> 
+	  		 <input type="hidden" name="userId" value="${mvo.userId}"> 
 	  		<input type="hidden" name="selectedTime"  id="selectedTime" value="">
 	  		<c:if test="${param.change =='true'}">
 	  		 <input type="hidden" name="change" value="true"> 
@@ -109,5 +112,16 @@ function reserve(){
 	  		
   		</form>
 	</div>
+	</c:when>
+	
+	<c:otherwise>
+		<script>
+			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
+			location.href="main.jsp";
+		</script>
+	</c:otherwise>
+	
+</c:choose>
+	 
 </body>
 </html>

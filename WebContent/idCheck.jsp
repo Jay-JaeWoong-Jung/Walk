@@ -11,9 +11,9 @@
 
 </head>
 <body bgcolor="#ffffcc">
-	<br>
+	
 	<center>
-		<b></b>
+		
 		
 		<c:choose>
 			<c:when test="${result == 'true'}">

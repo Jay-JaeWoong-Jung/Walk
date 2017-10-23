@@ -33,12 +33,19 @@
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
 
+<c:if test="${param.login =='fail'}">
 
+<script>
+
+alert("로그인에 실패하였습니다.");
+</script>
+
+</c:if>
 
 <script type="text/javascript">
 	$('.selectpicker').selectpicker('refresh');
 	
-	
+
 	
 </script>
 

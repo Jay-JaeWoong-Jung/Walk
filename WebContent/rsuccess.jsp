@@ -33,6 +33,12 @@
 
 <body>
 
+<c:choose>
+	<c:when test="${mvo.userId != null}">
+	
+	
+
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  
 	  <a class="navbar-brand" href="#">Logo</a>
@@ -107,14 +113,13 @@
 
 					<c:choose>
 						<c:when test="${param.change =='true'}">
-							<input type="button" class="btn btn-primary btn-lg" value="대시보드로이동"
+							<input type="button" class="btn btn-primary btn-lg" value="대시보드로 이동"
 								style="width: 300px;" onclick="toDashBoard()">
 						</c:when>
 						<c:otherwise>
 							<form action="DispatcherServlet" method="post">
-								<input type="submit" class="btn btn-primary btn-lg"
-									value="dashboard가기"> <input type="hidden"
-									name="command" value="dashboard">
+								<input type="submit" class="btn btn-primary btn-lg" value="dashboard가기"> 
+								<input type="hidden" name="command" value="dashboard">
 							</form>
 						</c:otherwise>
 					</c:choose>
@@ -128,7 +133,18 @@
 
 		</div>
 	</div>
-
+	
+</c:when>
+	
+	<c:otherwise>
+		<script>
+			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
+			location.href="main.jsp";
+		</script>
+		
+	</c:otherwise>
+	
+</c:choose>
 
 </body>
 </html>

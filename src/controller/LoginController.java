@@ -15,15 +15,17 @@ public class LoginController implements Controller {
 		System.out.println("로그인 컨트롤러 입장");
 		String userId = request.getParameter("userId");
 		String userPass = request.getParameter("userPass");
-		String remainId = request.getParameter("remainId");
+		
 		System.out.println(userId + ", " + userPass);
-		// boolean flag=request.getParameter("login");
+		
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
-
-		if (vo != null) {
+		System.out.println("vo:"+vo);
+		System.out.println("널 입성");
+		if (vo.equals("null")) {
 			///// 세션 생성,바인딩/////
-			HttpSession session = request.getSession();
-			session.setAttribute("mvo", vo);
+			System.out.println("널 입성2");
+			return new ModelAndView("main.jsp");
+			
 		/*	/////// 쿠키 생성/////////
 			Cookie cookie = new Cookie("userId", userId);
 			cookie.setMaxAge(60 * 60 * 24 * 15);// 15일 저장
@@ -48,8 +50,12 @@ public class LoginController implements Controller {
 			} catch (Exception e) {
 			}
 */
+		}else{
+			HttpSession session = request.getSession();
+			session.setAttribute("mvo", vo);
+			return new ModelAndView("main.jsp");
 		}
-		return new ModelAndView("main.jsp");
+		
 	}
 
 }
