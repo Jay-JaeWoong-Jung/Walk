@@ -1,0 +1,1881 @@
+insert into membership values(
+'myId1'
+,'myPass1'
+,'MyUserName1'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId2'
+,'myPass2'
+,'MyUserName2'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId3'
+,'myPass3'
+,'MyUserName3'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId4'
+,'myPass4'
+,'MyUserName4'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId5'
+,'myPass5'
+,'MyUserName5'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId6'
+,'myPass6'
+,'MyUserName6'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId7'
+,'myPass7'
+,'MyUserName7'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId8'
+,'myPass8'
+,'MyUserName8'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId9'
+,'myPass9'
+,'MyUserName9'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId10'
+,'myPass10'
+,'MyUserName10'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId11'
+,'myPass11'
+,'MyUserName11'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId12'
+,'myPass12'
+,'MyUserName12'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId13'
+,'myPass13'
+,'MyUserName13'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId14'
+,'myPass14'
+,'MyUserName14'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId15'
+,'myPass15'
+,'MyUserName15'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId16'
+,'myPass16'
+,'MyUserName16'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId17'
+,'myPass17'
+,'MyUserName17'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId18'
+,'myPass18'
+,'MyUserName18'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId19'
+,'myPass19'
+,'MyUserName19'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId20'
+,'myPass20'
+,'MyUserName20'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId21'
+,'myPass21'
+,'MyUserName21'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId22'
+,'myPass22'
+,'MyUserName22'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId23'
+,'myPass23'
+,'MyUserName23'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId24'
+,'myPass24'
+,'MyUserName24'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId25'
+,'myPass25'
+,'MyUserName25'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId26'
+,'myPass26'
+,'MyUserName26'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId27'
+,'myPass27'
+,'MyUserName27'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId28'
+,'myPass28'
+,'MyUserName28'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId29'
+,'myPass29'
+,'MyUserName29'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId30'
+,'myPass30'
+,'MyUserName30'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId31'
+,'myPass31'
+,'MyUserName31'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId32'
+,'myPass32'
+,'MyUserName32'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId33'
+,'myPass33'
+,'MyUserName33'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId34'
+,'myPass34'
+,'MyUserName34'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId35'
+,'myPass35'
+,'MyUserName35'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId36'
+,'myPass36'
+,'MyUserName36'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId37'
+,'myPass37'
+,'MyUserName37'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId38'
+,'myPass38'
+,'MyUserName38'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId39'
+,'myPass39'
+,'MyUserName39'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId40'
+,'myPass40'
+,'MyUserName40'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId41'
+,'myPass41'
+,'MyUserName41'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId42'
+,'myPass42'
+,'MyUserName42'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId43'
+,'myPass43'
+,'MyUserName43'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId44'
+,'myPass44'
+,'MyUserName44'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId45'
+,'myPass45'
+,'MyUserName45'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId46'
+,'myPass46'
+,'MyUserName46'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId47'
+,'myPass47'
+,'MyUserName47'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId48'
+,'myPass48'
+,'MyUserName48'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId49'
+,'myPass49'
+,'MyUserName49'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId50'
+,'myPass50'
+,'MyUserName50'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId51'
+,'myPass51'
+,'MyUserName51'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId52'
+,'myPass52'
+,'MyUserName52'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId53'
+,'myPass53'
+,'MyUserName53'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId54'
+,'myPass54'
+,'MyUserName54'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId55'
+,'myPass55'
+,'MyUserName55'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId56'
+,'myPass56'
+,'MyUserName56'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId57'
+,'myPass57'
+,'MyUserName57'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId58'
+,'myPass58'
+,'MyUserName58'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId59'
+,'myPass59'
+,'MyUserName59'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId60'
+,'myPass60'
+,'MyUserName60'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId61'
+,'myPass61'
+,'MyUserName61'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId62'
+,'myPass62'
+,'MyUserName62'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId63'
+,'myPass63'
+,'MyUserName63'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId64'
+,'myPass64'
+,'MyUserName64'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId65'
+,'myPass65'
+,'MyUserName65'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId66'
+,'myPass66'
+,'MyUserName66'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId67'
+,'myPass67'
+,'MyUserName67'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId68'
+,'myPass68'
+,'MyUserName68'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId69'
+,'myPass69'
+,'MyUserName69'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId70'
+,'myPass70'
+,'MyUserName70'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId71'
+,'myPass71'
+,'MyUserName71'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId72'
+,'myPass72'
+,'MyUserName72'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId73'
+,'myPass73'
+,'MyUserName73'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId74'
+,'myPass74'
+,'MyUserName74'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId75'
+,'myPass75'
+,'MyUserName75'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId76'
+,'myPass76'
+,'MyUserName76'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId77'
+,'myPass77'
+,'MyUserName77'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId78'
+,'myPass78'
+,'MyUserName78'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId79'
+,'myPass79'
+,'MyUserName79'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId80'
+,'myPass80'
+,'MyUserName80'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId81'
+,'myPass81'
+,'MyUserName81'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId82'
+,'myPass82'
+,'MyUserName82'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId83'
+,'myPass83'
+,'MyUserName83'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId84'
+,'myPass84'
+,'MyUserName84'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId85'
+,'myPass85'
+,'MyUserName85'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId86'
+,'myPass86'
+,'MyUserName86'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId87'
+,'myPass87'
+,'MyUserName87'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId88'
+,'myPass88'
+,'MyUserName88'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId89'
+,'myPass89'
+,'MyUserName89'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId90'
+,'myPass90'
+,'MyUserName90'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId91'
+,'myPass91'
+,'MyUserName91'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId92'
+,'myPass92'
+,'MyUserName92'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId93'
+,'myPass93'
+,'MyUserName93'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId94'
+,'myPass94'
+,'MyUserName94'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,4
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId95'
+,'myPass95'
+,'MyUserName95'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,5
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId96'
+,'myPass96'
+,'MyUserName96'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,0
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId97'
+,'myPass97'
+,'MyUserName97'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,1
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId98'
+,'myPass98'
+,'MyUserName98'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,2
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+
+insert into membership values(
+'myId99'
+,'myPass99'
+,'MyUserName99'
+,'010'
+,'1234'
+, '5678'
+,0
+,'email'
+,'@email.com'
+,'950411'
+,'myCompany'
+,3
+,sysdate
+, 'y'
+, 'url'
+, 0
+);
+

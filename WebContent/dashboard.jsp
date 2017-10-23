@@ -131,20 +131,20 @@
 	</nav>
 	<div class="jumbotron">
 	  <p class="display-4 text-right"><span class="smallFont text-muted">Meet by</span> 
-	  <c:if test="${vo.selectedTime =='1' }"> 11:30 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='2' }"> 12:00 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='3' }"> 12:30 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='4' }"> 13:00 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='5' }"> 13:30 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='6' }"> 14:00 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='2' }"> 11:30 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='3' }"> 12:00 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='4' }"> 12:30 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='5' }"> 13:00 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='6' }"> 13:30 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p> </c:if>
 	  
 	  <p class="display-4 text-right"><span class="smallFont text-muted	">Start at</span> 
-	  <c:if test="${vo.selectedTime =='1'}"> 11:35 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='2' }"> 12:05 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='3' }"> 12:35 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='4' }"> 13:05 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='5' }"> 13:35 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='6' }"> 14:05 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='2'}"> 11:35 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='3' }"> 12:05 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='4' }"> 12:35 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='5' }"> 13:05 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='6' }"> 13:35 AM</p> </c:if>
+	  <c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p> </c:if>
 	  
 	  
 	  
@@ -231,16 +231,16 @@
 	  </div>
 	  
 	</div>
-	<c:if test="${vo.flag == '1'}"><div class="jumbotron groupColorCard bg-success text-white">  </c:if>
-	<c:if test="${vo.flag == '2'}"><div class="jumbotron groupColorCard bg-info text-white">  </c:if>
-	<c:if test="${vo.flag == '3'}"><div class="jumbotron groupColorCard bg-warning text-white">  </c:if>
-	<c:if test="${vo.flag == '4'}"><div class="jumbotron groupColorCard bg-danger text-white">  </c:if>
-	<c:if test="${vo.flag == '5'}"><div class="jumbotron groupColorCard bg-primary text-white">  </c:if>
-	<c:if test="${vo.flag == '6'}"><div class="jumbotron groupColorCard  text-white" style="background-color:blue;">  </c:if>
-	<c:if test="${vo.flag == '7'}"><div class="jumbotron groupColorCard  text-white" style="background-color:yello;">  </c:if>
-	<c:if test="${vo.flag == '8'}"><div class="jumbotron groupColorCard  text-white" style="background-color:pink;">  </c:if>
-	<c:if test="${vo.flag == '9'}"><div class="jumbotron groupColorCard  text-white" style="background-color:grey;">  </c:if>
-	<c:if test="${vo.flag == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;">  </c:if>
+	<c:if test="${vo.groupColor == '1'}"><div class="jumbotron groupColorCard bg-success text-white">  </c:if>
+	<c:if test="${vo.groupColor == '2'}"><div class="jumbotron groupColorCard bg-info text-white">  </c:if>
+	<c:if test="${vo.groupColor == '3'}"><div class="jumbotron groupColorCard bg-warning text-white">  </c:if>
+	<c:if test="${vo.groupColor == '4'}"><div class="jumbotron groupColorCard bg-danger text-white">  </c:if>
+	<c:if test="${vo.groupColor == '5'}"><div class="jumbotron groupColorCard bg-primary text-white">  </c:if>
+	<c:if test="${vo.groupColor == '6'}"><div class="jumbotron groupColorCard  text-white" style="background-color:blue;">  </c:if>
+	<c:if test="${vo.groupColor == '7'}"><div class="jumbotron groupColorCard  text-white" style="background-color:yello;">  </c:if>
+	<c:if test="${vo.groupColor == '8'}"><div class="jumbotron groupColorCard  text-white" style="background-color:pink;">  </c:if>
+	<c:if test="${vo.groupColor == '9'}"><div class="jumbotron groupColorCard  text-white" style="background-color:grey;">  </c:if>
+	<c:if test="${vo.groupColor == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;">  </c:if>
 	
 	
 	<div class="jumbotron groupColorCard bg-danger text-white">
