@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 import java.util.Date;
 
-
-
 import config.OracleInfo;
 import constants.StringQuery;
 import javafx.util.Pair;
@@ -35,31 +33,39 @@ import javafx.util.Pair;
 public class MemberDAO {
 
 	private static MemberDAO dao = new MemberDAO();
-	private MemberDAO() {}
+
+	private MemberDAO() {
+	}
+
 	public static MemberDAO getInstance() {
 		return dao;
 	}
+
 	/////////////// 공통적인 로직 /////////////////////////////
-	public  Connection getConnection() throws SQLException{
-		//System.out.println("디비연결 성공....");
+	public Connection getConnection() throws SQLException {
+		// System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
-		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER, OracleInfo.PASS);
+		// return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER,
+		// OracleInfo.PASS);
 	}
-	public void closeAll(PreparedStatement ps, Connection conn)throws SQLException{
-		if(ps!=null) ps.close();
-		if(conn!=null) conn.close();
+
+	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
+		if (ps != null)
+			ps.close();
+		if (conn != null)
+			conn.close();
 	}
-	
-	public void closeAll(ResultSet rs,PreparedStatement ps, Connection conn)throws SQLException{
-		if(rs!=null){
+
+	public void closeAll(ResultSet rs, PreparedStatement ps, Connection conn) throws SQLException {
+		if (rs != null) {
 			rs.close();
 			closeAll(ps, conn);
 		}
 	}
-	
+
 	///////////////////////////////////////////////
-	
-	//////////////////회원관리 로직///////////////////
+
+	////////////////// 회원관리 로직///////////////////
 	public boolean idCheck(String userId) throws SQLException {
 		boolean result = true;
 		Connection conn = null;
@@ -102,13 +108,13 @@ public class MemberDAO {
 			pstmt.setString(10, vo.getBirth());
 			pstmt.setString(11, null);
 			pstmt.setNull(12, java.sql.Types.INTEGER);
-			pstmt.setString(13,vo.getEmailAccept());
+			pstmt.setString(13, vo.getEmailAccept());
 			pstmt.setString(14, null);
 			pstmt.setNull(15, java.sql.Types.INTEGER);
 
-			flag=pstmt.executeUpdate();
-			System.out.println("registerMember OK...." );
-			
+			flag = pstmt.executeUpdate();
+			System.out.println("registerMember OK....");
+
 		} catch (Exception e) {
 			System.out.println("Exception" + e);
 		} finally {
@@ -154,27 +160,26 @@ public class MemberDAO {
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				vo=new MemberVO();
+				vo = new MemberVO();
 				vo.setUserId(rs.getString("userid"));
 				vo.setUserPass(rs.getString("userpass"));
 				vo.setUserName(rs.getString("username"));
-				
+
 				vo.setPhone1(rs.getString("phone1"));
 				vo.setPhone2(rs.getString("phone2"));
 				vo.setPhone3(rs.getString("phone3"));
-				
+
 				vo.setGender(rs.getInt("gender"));
 				vo.setEmailId(rs.getString("emailid"));
 				vo.setEmailAdd(rs.getString("emailadd"));
-				
+
 				vo.setBirth(rs.getString("birth"));
 				vo.setCompany(rs.getString("company"));
 				vo.setSelectedTime(rs.getInt("selectedtime"));
-				
+
 				vo.setRegDate(rs.getDate("regdate"));
 				vo.setEmailAccept(rs.getString("emailaccept"));
 				vo.setProfile(rs.getString("profile"));
-				
 
 			}
 		} catch (Exception e) {
@@ -184,11 +189,11 @@ public class MemberDAO {
 		}
 		return vo;
 	}// getMemberInfo
-	
 
-	public void updateMember(MemberVO vo) throws SQLException {
+	public int updateMember(MemberVO vo) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		int result = 0;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(StringQuery.SELECT_UPDATE);
@@ -202,9 +207,10 @@ public class MemberDAO {
 			pstmt.setInt(8, vo.getSelectedTime());
 			pstmt.setString(9, vo.getEmailAccept());
 			pstmt.setString(10, vo.getProfile());
-			
+
 			pstmt.setString(11, vo.getUserId());
-			int result = pstmt.executeUpdate();
+			
+			result = pstmt.executeUpdate();
 			System.out.println("updateMember OK..." + result);
 
 		} catch (Exception e) {
@@ -212,32 +218,22 @@ public class MemberDAO {
 		} finally {
 			closeAll(pstmt, conn);
 		}
-
+		return result;
 	}
 
 	public int deleteMember(String userId, String userPass) throws SQLException {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String dbPass = "";
 		int result = -1;
 		try {
 			conn = getConnection();
-			pstmt = conn.prepareStatement(StringQuery.SELECT_MEMBER);
+			pstmt = conn.prepareStatement(StringQuery.DELETE_MEMBER);
 			pstmt.setString(1, userId);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				dbPass = rs.getString("userPass");
-				if (dbPass.equals(userPass)) {
-					pstmt = conn.prepareStatement(StringQuery.DELETE_MEMBER);
-					pstmt.setString(1, userId);
-					pstmt.executeUpdate();
-					result = 1;
-
-				} else {
-					result = 0;
-				}
-			}
+			pstmt.setString(2, userPass);
+			result=pstmt.executeUpdate();
+			System.out.println("delete메소드 실행:"+result);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -245,12 +241,12 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
 	public MemberVO login(String userId, String userPass) throws SQLException {
 		MemberVO vo = new MemberVO();
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
 
 		try {
 			con = getConnection();
@@ -260,78 +256,83 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
-						rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"),rs.getString("emailId"),
-						rs.getString("emailAdd"), rs.getString("birth"),rs.getString("emailaccept"),rs.getString("profile"));
-				System.out.println("login성공!!!...."+vo);
-			}else {System.out.println("로그인 실패....");}
+						rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"), rs.getString("emailId"),
+						rs.getString("emailAdd"), rs.getString("birth"), rs.getString("emailaccept"),
+						rs.getString("profile"));
+				System.out.println("login성공!!!...." + vo);
+			} else {
+				System.out.println("로그인 실패....");
+			}
 
 		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return vo;
 	}
-	
-	
-	/////////////////reservation logic/////////////
-	
-	public ArrayList<Pair<String,Integer>> getAllUserIdTimePair() throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	///////////////// reservation logic/////////////
+
+	public ArrayList<Pair<String, Integer>> getAllUserIdTimePair() throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		ArrayList<Pair<String,Integer>> list = null;
+		ArrayList<Pair<String, Integer>> list = null;
 		try {
-			con=getConnection();
-			list = new ArrayList<Pair<String,Integer>>();
-			ps=con.prepareStatement(StringQuery.GET_ALL_USERID_TIMESLOT);
+			con = getConnection();
+			list = new ArrayList<Pair<String, Integer>>();
+			ps = con.prepareStatement(StringQuery.GET_ALL_USERID_TIMESLOT);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				list.add(new Pair(rs.getString(1), rs.getInt(2)));	
+			while (rs.next()) {
+				list.add(new Pair(rs.getString(1), rs.getInt(2)));
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return list;
 	}
-	public ArrayList<Pair<String,Integer>> getUserIdgroupColorPairByTimeSlot(int timeSlot) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	public ArrayList<Pair<String, Integer>> getUserIdgroupColorPairByTimeSlot(int timeSlot) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		ArrayList<Pair<String,Integer>> list = null;
+		ArrayList<Pair<String, Integer>> list = null;
 		try {
-			con=getConnection();
-			list = new ArrayList<Pair<String,Integer>>();
-			ps=con.prepareStatement(StringQuery.GET_USERID_GROUPCOLOR_BY_TIMESLOT);
+			con = getConnection();
+			list = new ArrayList<Pair<String, Integer>>();
+			ps = con.prepareStatement(StringQuery.GET_USERID_GROUPCOLOR_BY_TIMESLOT);
 			ps.setInt(1, timeSlot);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				list.add(new Pair(rs.getString(1), rs.getInt(2)));	
+			while (rs.next()) {
+				list.add(new Pair(rs.getString(1), rs.getInt(2)));
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return list;
 	}
+
 	public ArrayList<String> getUserIDsByTimeSlot(int timeSlot) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<String> list = null;
 		try {
-			con=getConnection();
+			con = getConnection();
 			list = new ArrayList<String>();
-			ps=con.prepareStatement(StringQuery.GET_USERID_BY_TIMESLOT);
+			ps = con.prepareStatement(StringQuery.GET_USERID_BY_TIMESLOT);
 			ps.setInt(1, timeSlot);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				list.add(rs.getString(1));	
+			while (rs.next()) {
+				list.add(rs.getString(1));
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return list;
 	}
+
 	public void updateAssignedGroup(String userId, int groupColor) throws SQLException {
-		Connection conn=null;
+		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
 			conn = getConnection();
@@ -339,61 +340,56 @@ public class MemberDAO {
 			ps.setString(2, userId);
 			ps.setInt(1, groupColor);
 			int result = ps.executeUpdate();
-			
-			//System.out.println("update ok.."+result);
-			
-		}finally {
+
+			// System.out.println("update ok.."+result);
+
+		} finally {
 			closeAll(ps, conn);
 		}
 	}
 
-	public void chooseTimeSlot(int selectedTime, String userId) throws SQLException{
-		Connection conn=null;
+	public void chooseTimeSlot(int selectedTime, String userId) throws SQLException {
+		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			ps=conn.prepareStatement(StringQuery.UPDATE_TIME);
-			
-			ps.setInt(1,selectedTime);
-			ps.setString(2,userId);
-			
-			
-			int row = ps.executeUpdate();
-			System.out.println(row+"  chooseTimeSlot row update OK!!");
-			
+			ps = conn.prepareStatement(StringQuery.UPDATE_TIME);
 
-		}finally {
-			closeAll(rs,ps, conn);
+			ps.setInt(1, selectedTime);
+			ps.setString(2, userId);
+
+			int row = ps.executeUpdate();
+			System.out.println(row + "  chooseTimeSlot row update OK!!");
+
+		} finally {
+			closeAll(rs, ps, conn);
 		}
 
 	}
-	
-	
-	public void setReserveDate(String userId,int attendace) throws SQLException{
-		Connection conn=null;
+
+	public void setReserveDate(String userId, int attendace) throws SQLException {
+		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			conn = getConnection();
-			ps=conn.prepareStatement(StringQuery.INSERT_DATE);
-			
-			
-			ps.setString(1,userId);
-			ps.setInt(2,attendace);
-			
-			int row = ps.executeUpdate();
-			System.out.println(row+" setReserveDate row insert OK!!");
-			
+			ps = conn.prepareStatement(StringQuery.INSERT_DATE);
 
-		}finally {
-			closeAll(rs,ps, conn);
+			ps.setString(1, userId);
+			ps.setInt(2, attendace);
+
+			int row = ps.executeUpdate();
+			System.out.println(row + " setReserveDate row insert OK!!");
+
+		} finally {
+			closeAll(rs, ps, conn);
 		}
 
 	}
-	
+
 	public void cleargroupColorNTime(int groupColor, int selectedTime) throws SQLException {
-		Connection conn=null;
+		Connection conn = null;
 		PreparedStatement ps = null;
 		try {
 			conn = getConnection();
@@ -401,214 +397,200 @@ public class MemberDAO {
 			ps.setInt(1, groupColor);
 			ps.setInt(2, selectedTime);
 			int result = ps.executeUpdate();
-			
-			System.out.println("update ok.."+result);
-			
-		}finally {
+
+			System.out.println("update ok.." + result);
+
+		} finally {
 			closeAll(ps, conn);
 		}
 	}
-	
+
 	public MemberVO getReservationInfo(String userId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
 		MemberVO vo = null;
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.GET_RESERVATION_INFO_BY_ID);
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.GET_RESERVATION_INFO_BY_ID);
 			ps.setString(1, userId);
-			
+
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				vo=new MemberVO(userId, rs.getString("userName"), rs.getInt("selectedTime"), rs.getInt("groupColor"));
+			while (rs.next()) {
+				vo = new MemberVO(userId, rs.getString("userName"), rs.getInt("selectedTime"), rs.getInt("groupColor"));
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return vo;
 	}
-	
-	
+
 	public int getgroupColorCout(int selectedTime, int groupColor) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		System.out.println("dao selectedTime:"+selectedTime);
-		System.out.println("dao groupColor:"+groupColor);
-		
-		int result=0;
+		System.out.println("dao selectedTime:" + selectedTime);
+		System.out.println("dao groupColor:" + groupColor);
+
+		int result = 0;
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.GET_SAME_GROUPCOLOR_COUNT);
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.GET_SAME_GROUPCOLOR_COUNT);
 			ps.setInt(1, selectedTime);
 			ps.setInt(2, groupColor);
-			
+
 			rs = ps.executeQuery();
-			
-			if(rs.next()) {
-				result=rs.getInt(1);
+
+			if (rs.next()) {
+				result = rs.getInt(1);
 				System.out.println(result);
 			}
 		} finally {
-			closeAll(ps,con);
+			closeAll(ps, con);
 		}
 		return result;
 	}
-	
-	
-	public int updateTimeSlot(int selectedTime, String  userId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	public int updateTimeSlot(int selectedTime, String userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		int result;
-		
-		System.out.println("dao입성  selectedTime:"+selectedTime);
+
+		System.out.println("dao입성  selectedTime:" + selectedTime);
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.UPDATE_TIMESLOT);
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.UPDATE_TIMESLOT);
 			ps.setInt(1, selectedTime);
 			ps.setString(2, userId);
-			
-			result=ps.executeUpdate();
-			System.out.println("타임슬럿 변경 "+result+"개 성공");
-			
+
+			result = ps.executeUpdate();
+			System.out.println("타임슬럿 변경 " + result + "개 성공");
+
 		} finally {
-			closeAll(ps,con);
+			closeAll(ps, con);
 		}
 		return result;
 	}
-	
-	public int cancelReservation(String  userId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	public int cancelReservation(String userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		int result;
-		
-		
+
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.CANCEL_RESERVATION);
-			
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.CANCEL_RESERVATION);
+
 			ps.setString(1, userId);
-			
-			result=ps.executeUpdate();
-			System.out.println("타임슬럿 0 으로 초기화 "+result+"개 성공");
-			
+
+			result = ps.executeUpdate();
+			System.out.println("타임슬럿 0 으로 초기화 " + result + "개 성공");
+
 		} finally {
-			closeAll(ps,con);
+			closeAll(ps, con);
 		}
 		return result;
 	}
-	
-	public int deleteLog(String  userId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	public int deleteLog(String userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		int result;
-		
-		
+
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.DELETE_LOG);
-			
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.DELETE_LOG);
+
 			ps.setString(1, userId);
-			
-			result=ps.executeUpdate();
-			System.out.println("로그  삭제 "+result+"개 성공");
-			
+
+			result = ps.executeUpdate();
+			System.out.println("로그  삭제 " + result + "개 성공");
+
 		} finally {
-			closeAll(ps,con);
+			closeAll(ps, con);
 		}
 		return result;
 	}
-	
-	
+
 	public ArrayList<MemberVO> getNameInGroup(int selectedTime, int groupColor) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		ArrayList<MemberVO> list =new ArrayList<MemberVO>();
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR);
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR);
 			ps.setInt(1, selectedTime);
 			ps.setInt(2, groupColor);
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				list.add(new MemberVO(rs.getString("userName")));	
+			while (rs.next()) {
+				list.add(new MemberVO(rs.getString("userName")));
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return list;
 	}
-	
-	public boolean isReservation(String  userId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	public boolean isReservation(String userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		boolean result=false;
-		
-		
+		boolean result = false;
+
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.IS_RESERVATION);
-			
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.IS_RESERVATION);
+
 			ps.setString(1, userId);
-			
+
 			rs = ps.executeQuery();
-			
-			if(rs.next()){
-				if (rs.getInt(1) == 1) result=true;
-					
-			System.out.println(" isreservation dao값:"+result);		
-				
+
+			if (rs.next()) {
+				if (rs.getInt(1) == 1)
+					result = true;
+
+				System.out.println(" isreservation dao값:" + result);
+
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return result;
 	}
-	
-	public Date getReserveDate(String  userId) throws SQLException {
-		Connection con=null;
-		PreparedStatement ps=null;
+
+	public Date getReserveDate(String userId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
 		ResultSet rs = null;
-		Date date= null;
-		
-		
+		Date date = null;
+
 		try {
-			con=getConnection();
-			
-			ps=con.prepareStatement(StringQuery.GET_RESERVE_DATE);
-			
+			con = getConnection();
+
+			ps = con.prepareStatement(StringQuery.GET_RESERVE_DATE);
+
 			ps.setString(1, userId);
-			
+
 			rs = ps.executeQuery();
-			
-			if(rs.next()){
-				date=rs.getDate(1);
-				
-					
-			System.out.println(" getReserveDate dao값:"+date);		
-				
+
+			if (rs.next()) {
+				date = rs.getDate(1);
+
+				System.out.println(" getReserveDate dao값:" + date);
+
 			}
 		} finally {
-			closeAll(rs,ps,con);
+			closeAll(rs, ps, con);
 		}
 		return date;
 	}
-	
-	
-	
 
-
-
-	
-	
 }

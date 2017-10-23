@@ -30,7 +30,7 @@ public class DispatcherServlet extends HttpServlet {
 		String cmd = request.getParameter("command");
 		System.out.println(cmd);
 		Controller controller=HandlerMapping.getInstance().createController(cmd);
-		System.out.println("controller....");
+		System.out.println("디스패처 controller....");
 		try{
 			ModelAndView mv =controller.HandleRequest(request, response);
 			if(mv.isRedirect()) response.sendRedirect(mv.getPath());

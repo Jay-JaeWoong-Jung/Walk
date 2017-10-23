@@ -20,10 +20,9 @@ public class LoginController implements Controller {
 		// boolean flag=request.getParameter("login");
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
 
-		if (vo != null) {
-			///// 세션 생성,바인딩/////
-			HttpSession session = request.getSession();
-			session.setAttribute("mvo", vo);
+		if (vo.getUserId() == null) {
+			
+			return new ModelAndView("main.jsp",true);
 		/*	/////// 쿠키 생성/////////
 			Cookie cookie = new Cookie("userId", userId);
 			cookie.setMaxAge(60 * 60 * 24 * 15);// 15일 저장
@@ -48,8 +47,13 @@ public class LoginController implements Controller {
 			} catch (Exception e) {
 			}
 */
+		}else {
+			HttpSession session = request.getSession();
+		///// 세션 생성,바인딩/////
+			session.setAttribute("mvo", vo);
+			return new ModelAndView("main.jsp",true);
 		}
-		return new ModelAndView("main.jsp");
+		
 	}
 
 }
