@@ -75,7 +75,7 @@ public class MemberDAO {
 		}
 		return list;
 	}
-	public ArrayList<Pair<String,Integer>> getUserIdFlagPairByTimeSlot(int timeSlot) throws SQLException {
+	public ArrayList<Pair<String,Integer>> getUserIdgroupColorPairByTimeSlot(int timeSlot) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
@@ -83,7 +83,7 @@ public class MemberDAO {
 		try {
 			con=getConnection();
 			list = new ArrayList<Pair<String,Integer>>();
-			ps=con.prepareStatement(StringQuery.GET_USERID_FLAG_BY_TIMESLOT);
+			ps=con.prepareStatement(StringQuery.GET_USERID_GROUPCOLOR_BY_TIMESLOT);
 			ps.setInt(1, timeSlot);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -113,14 +113,14 @@ public class MemberDAO {
 		}
 		return list;
 	}
-	public void updateAssignedGroup(String userId, int flag) throws SQLException {
+	public void updateAssignedGroup(String userId, int groupColor) throws SQLException {
 		Connection conn=null;
 		PreparedStatement ps = null;
 		try {
 			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.UPDATE_FLAG);
+			ps = conn.prepareStatement(StringQuery.UPDATE_GROUPCOLOR);
 			ps.setString(2, userId);
-			ps.setInt(1, flag);
+			ps.setInt(1, groupColor);
 			int result = ps.executeUpdate();
 			
 			//System.out.println("update ok.."+result);
@@ -175,13 +175,13 @@ public class MemberDAO {
 
 	}
 	
-	public void clearFlagNTime(int flag, int selectedTime) throws SQLException {
+	public void cleargroupColorNTime(int groupColor, int selectedTime) throws SQLException {
 		Connection conn=null;
 		PreparedStatement ps = null;
 		try {
 			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.CLEAR_FLAG_SELECTEDTIME);
-			ps.setInt(1, flag);
+			ps = conn.prepareStatement(StringQuery.CLEAR_GROUPCOLOR_SELECTEDTIME);
+			ps.setInt(1, groupColor);
 			ps.setInt(2, selectedTime);
 			int result = ps.executeUpdate();
 			
@@ -205,7 +205,7 @@ public class MemberDAO {
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				vo=new MemberVO(userId, rs.getString("userName"), rs.getInt("selectedTime"), rs.getInt("flag"));
+				vo=new MemberVO(userId, rs.getString("userName"), rs.getInt("selectedTime"), rs.getInt("groupColor"));
 			}
 		} finally {
 			closeAll(rs,ps,con);
@@ -214,20 +214,20 @@ public class MemberDAO {
 	}
 	
 	
-	public int getFlagCout(int selectedTime, int flag) throws SQLException {
+	public int getgroupColorCout(int selectedTime, int groupColor) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
 		System.out.println("dao selectedTime:"+selectedTime);
-		System.out.println("dao flag:"+flag);
+		System.out.println("dao groupColor:"+groupColor);
 		
 		int result=0;
 		try {
 			con=getConnection();
 			
-			ps=con.prepareStatement(StringQuery.GET_SAME_FLAG_COUNT);
+			ps=con.prepareStatement(StringQuery.GET_SAME_GROUPCOLOR_COUNT);
 			ps.setInt(1, selectedTime);
-			ps.setInt(2, flag);
+			ps.setInt(2, groupColor);
 			
 			rs = ps.executeQuery();
 			
@@ -309,7 +309,7 @@ public class MemberDAO {
 	}
 	
 	
-	public ArrayList<MemberVO> getNameInGroup(int selectedTime, int flag) throws SQLException {
+	public ArrayList<MemberVO> getNameInGroup(int selectedTime, int groupColor) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
@@ -317,9 +317,9 @@ public class MemberDAO {
 		try {
 			con=getConnection();
 			
-			ps=con.prepareStatement(StringQuery.GET_NAME_IN_GROUP_BY_ID_FLAG);
+			ps=con.prepareStatement(StringQuery.GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR);
 			ps.setInt(1, selectedTime);
-			ps.setInt(2, flag);
+			ps.setInt(2, groupColor);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(new MemberVO(rs.getString("userName")));	
