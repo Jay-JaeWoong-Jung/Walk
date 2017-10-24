@@ -61,9 +61,8 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 			ps=conn.prepareStatement(StringQuery.INSERT_POSTING);
-			ps.setString(1,vo.getWriter());
-			ps.setString(2,vo.getPassword());
-			ps.setString(3,vo.getContent());
+			ps.setString(1,vo.getUserId());
+			ps.setString(2,vo.getContent());
 						
 			int row = ps.executeUpdate();
 			System.out.println(row+" row INSERT OK!!");
@@ -94,10 +93,9 @@ public class BoardDao {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				vo = new BoardVO(no, 
-						rs.getString("writer"), 
+						rs.getString("userId"), 
 						rs.getString("content"), 
-						rs.getInt("hits"), 
-						rs.getString("time_posted"));
+						rs.getString("timePosted"));
 				System.out.println("getPostingByNo...."+no);
 			}
 		}finally {
@@ -121,10 +119,9 @@ public class BoardDao {
 			while(rs.next()) {
 				list.add(new BoardVO(
 						rs.getInt("no"), 
-						rs.getString("writer"), 
+						rs.getString("userId"), 
 						rs.getString("content"),
-						rs.getInt("hits"), 
-						rs.getString("time_posted")));
+						rs.getString("timePosted")));
 							
 			}
 		}finally {
@@ -133,16 +130,16 @@ public class BoardDao {
 		return list;
 	}
 	
-	public boolean checkPassword(int no, String password) throws SQLException{ // int도 가능
+	public boolean checkId(int no, String userId) throws SQLException{ // int도 가능
 		Connection conn=null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		boolean result= false;
 		try {
 			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.CHECK_PASSWORD);
+			ps = conn.prepareStatement(StringQuery.CHECK_ID);
 			ps.setInt(1, no);
-			ps.setString(2, password);
+			ps.setString(2, userId);
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				if(rs.getInt(1)!=0) result = true; // getInt(1)은 쿼리문의 성공여부의 결과창, 
@@ -198,7 +195,7 @@ public class BoardDao {
 			ps = conn.prepareStatement(StringQuery.CURRENT_DATE);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				date = rs.getString("time_posted");
+				date = rs.getString("timePosted");
 				System.out.println("getTodayDate...."+date);
 			}
 		}finally {

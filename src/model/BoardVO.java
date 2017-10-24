@@ -2,114 +2,92 @@ package model;
 
 public class BoardVO {
 	private int no;
-	private String title;
-	private String writer;
-	private String password;
+	private String userId;
 	private String content;
-	private int hits;
 	private String timePosted;
 	
-	public BoardVO(int no, String title, String writer, String password, String content, int hits, String timePosted) {
+	
+	public BoardVO(int no, String userId, String content, String timePosted) {
 		super();
 		this.no = no;
-		this.title = title;
-		this.writer = writer;
-		this.password = password;
+		this.userId = userId;
 		this.content = content;
-		this.hits = hits;
 		this.timePosted = timePosted;
 	}
 	
-	public BoardVO(String title, String writer, String password, String content) {
+	
+	public BoardVO(String userId, String content) {
 		super();
-		this.title = title;
-		this.writer = writer;
-		this.password = password;
+		this.userId = userId;
 		this.content = content;
 	}
+
 	
-	public BoardVO(String writer, String password, String content) {
-		super();
-		this.writer = writer;
-		this.password = password;
-		this.content = content;
-	}
-	
-	public BoardVO(int no, String title, String writer, String content, int hits, String timePosted) {
+
+
+
+	public BoardVO(int no) { //for getPostingByNo, deletePosting
 		super();
 		this.no = no;
-		this.title = title;
-		this.writer = writer;
-		this.content = content;
-		this.hits = hits;
-		this.timePosted = timePosted;
 	}
-	
-	public BoardVO(int no, String writer, String content, int hits, String timePosted) {
-		super();
-		this.no = no;
-		this.writer = writer;
-		this.content = content;
-		this.hits = hits;
-		this.timePosted = timePosted;
-	}
-	
-	public BoardVO(int no, String content) { // For EditContentController
+
+
+	public BoardVO(int no, String content) { // For checkId, EditContentController
 		super();
 		this.no = no;
 		this.content = content;
 	}
 	
-	public BoardVO(String timePosted) { // For EditContentController
-		super();
+	public BoardVO(String timePosted) { // For getAllpostByDate
+		
 		this.timePosted = timePosted;
 	}
-	
-	public int getNo() {
-		return no;
-	}
+
+
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getTitle() {
-		return title;
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getContent() {
-		return content;
-	}
+
+
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getHits() {
-		return hits;
-	}
-	public void setHits(int hits) {
-		this.hits = hits;
-	}
-	public String getTimePosted() {
-		return timePosted;
-	}
+
+
 	public void setTimePosted(String timePosted) {
 		this.timePosted = timePosted;
 	}
+
+
+	public int getNo() {
+		return no;
+	}
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public String getContent() {
+		return content;
+	}
+
+
+	public String getTimePosted() {
+		return timePosted;
+	}
+
+
 	@Override
 	public String toString() {
-		return "BoardVO [no=" + no + ", title=" + title + ", writer=" + writer + ", password=" + password + ", content="
-				+ content + ", hits=" + hits + ", timePosted=" + timePosted + "]";
-	}	
+		return "BoardVO [no=" + no + ", userId=" + userId + ", content=" + content + ", timePosted=" + timePosted + "]";
+	}
+	
+	
 }

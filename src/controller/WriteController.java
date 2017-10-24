@@ -2,6 +2,7 @@ package controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import model.BoardDao;
 import model.BoardVO;
@@ -10,11 +11,11 @@ public class WriteController implements Controller {
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String content = request.getParameter("content");
-		String writer = request.getParameter("writer");
-		String password = request.getParameter("password");
+		String userId = Session("writer");
 		
 		
-		BoardVO pvo = new BoardVO(writer, password, content);
+		
+		BoardVO pvo = new BoardVO(userId, content);
 		
 		BoardDao.getInstance().posting(pvo);
 		
