@@ -31,9 +31,10 @@ function reserve(){
 
 </script>
 
-<c:if test="${param.reserve =='true' }">
+<c:if test="${param.reserve =='true'}">
 	<script>
 		alert("이미 예약하셨습니다.");
+		location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${param.selectedTime}&command=dashboard";
 	</script>
 
 </c:if>

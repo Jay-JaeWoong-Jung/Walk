@@ -40,15 +40,12 @@
 Install with Bower
 <script type="text/javascript">
 	$('.selectpicker').selectpicker('refresh');
-	
-	
-	
 </script>
 
 <c:if test="${flag =='true'}">
 	<script>
-	url = "regProc.jsp?flag=${flag}";
-	window.open(url, "", "width=300,height=150");
+		url = "regProc.jsp?flag=${flag}";
+		window.open(url, "", "width=300,height=150");
 	</script>
 
 </c:if>
@@ -82,7 +79,7 @@ Install with Bower
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#pricing">PRICING</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
-					href="#contact">CONTACT</a></li>
+					href="DispatcherServlet?command=todayDate&userId=${mvo.userId}">게시판보기</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
 						<c:when test="${mvo.userId != null}">
 							<a href="#" data-toggle="modal" data-target="#signUp "
@@ -92,25 +89,21 @@ Install with Bower
 							<a href="#" data-toggle="modal" data-target="#signUp "
 								id="regForm">회원가입 </a>
 						</c:otherwise>
-					</c:choose>
-				</li>
-				<li data-toggle="collapse" data-target="#myNavbar">
-				
-				<c:choose>
-						<c:when test="${mvo.userId != null}"> <!-- 로그인 상태라면 -->
+					</c:choose></li>
+				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
+						<c:when test="${mvo.userId != null}">
+							<!-- 로그인 상태라면 -->
 							<a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
-								data-toggle="modal"  id="login"> 로그아웃</a>
+								data-toggle="modal" id="login"> 로그아웃</a>
 
 						</c:when>
-						<c:otherwise> 
-							
-							<a href="#signIn" data-toggle="modal" data-target="#signIn" id="login">로그인</a>
-		
+						<c:otherwise>
+
+							<a href="#signIn" data-toggle="modal" data-target="#signIn"
+								id="login">로그인</a>
+
 						</c:otherwise>
-				</c:choose>
-
-
-				</li>
+					</c:choose></li>
 
 			</ul>
 		</div>
@@ -129,7 +122,8 @@ Install with Bower
 					</button>
 				</div>
 
-				<form action="DispatcherServlet" method="post" name="regForm" onsubmit="return inputCheck()" id="regForm" >
+				<form action="DispatcherServlet" method="post" name="regForm"
+					onsubmit="return inputCheck()" id="regForm">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">이름</label> <input type="text" name="userName"
@@ -140,22 +134,64 @@ Install with Bower
 								<label for="id">ID</label>
 							</div>
 							<div class="col-xs-9">
-								<input type="text"   name="userId" class="form-control" id="InputId"
-									placeholder="아이디" required>
+								<input type="text" name="userId" class="form-control"
+									id="InputId" placeholder="아이디" required>
 							</div>
 							<div class="col-xs-2">
-								<input type="button" value="중복확인"
-									onclick="idCheck()" class="btn btn-secondary" />
+								<input type="button" value="중복확인" onclick="idCheck()"
+									class="btn btn-secondary" />
 							</div>
 						</div>
 
+						<script>
+							$("#InputId")
+									.keyup(
+											function() {
+
+												var userId = $("#InputId")
+														.val();
+												var param = "userId=" + userId
+														+ "&command=idCheck";
+
+												$
+														.ajax({
+															type : "post",
+															url : "DispatcherServlet",
+															data : param,
+															success : function(
+																	result) {
+																if (result
+																		.indexOf("Usable") > 0) {
+
+																	//검증한걸로...
+																	var checkResult = $(
+																			'input[name=doubleCheck]')
+																			.val(
+																					"true");
+
+																} else {
+																	var checkResult = $(
+																			'input[name=doubleCheck]')
+																			.val(
+																					"false");
+
+																}
+																$("#span_id")
+																		.html(
+																				result);
+															}
+														});
+
+											});
+						</script>
+
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
-								type="password" name="userPass" class="form-control" id="InputPassword"
-								placeholder="비밀번호" required> <label><b>비밀번호
-									확인</b></label> <input type="password" name="userRepass" class="form-control"
-								id="InputPasswordRepeat" placeholder="비밀번호 확인" name="psw-repeat"
-								required>
+								type="password" name="userPass" class="form-control"
+								id="InputPassword" placeholder="비밀번호" required> <label><b>비밀번호
+									확인</b></label> <input type="password" name="userRepass"
+								class="form-control" id="InputPasswordRepeat"
+								placeholder="비밀번호 확인" name="psw-repeat" required>
 						</div>
 						<div class="form-group ">
 							<label for="">핸드폰 번호 </label>
@@ -170,7 +206,8 @@ Install with Bower
 								<option value="019">019</option>
 							</select> &nbsp; - &nbsp;<input type="text" name="phone2" id="InputPhone2"
 								class="form-group input-sm" /> &nbsp; - &nbsp;<input
-								type="text" name="phone3" id="InputPhone3"class="form-group input-sm" />
+								type="text" name="phone3" id="InputPhone3"
+								class="form-group input-sm" />
 						</div>
 
 					</div>
@@ -179,12 +216,14 @@ Install with Bower
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
 						<div class="col-xs-7">
-							<input type="text" name="emailId" class="form-control" id="InputEmailId"
-								aria-describedby="emailHelp" placeholder="Email" required>
+							<input type="text" name="emailId" class="form-control"
+								id="InputEmailId" aria-describedby="emailHelp"
+								placeholder="Email" required>
 						</div>
 						<div>
 							<div>
-								<select class="selectpicker" name="emailAdd" id="InputSelectedEmail">
+								<select class="selectpicker" name="emailAdd"
+									id="InputSelectedEmail">
 									<option value="직접선택" selected="직접선택">직접선택</option>
 									<option value="@naver.com">@naver.com</option>
 									<option value="@nate.com">@nate.com</option>
@@ -225,14 +264,14 @@ Install with Bower
 								<label for="">성별</label>
 							</div>
 							<div class="col-sm-10">
-								<input type="radio" name="gender" value="0" id="male"   />남자 <input
-									type="radio" name="gender" value="1" id="female"  />여자
+								<input type="radio" name="gender" value="0" id="male" />남자 <input
+									type="radio" name="gender" value="1" id="female" />여자
 							</div>
 
 						</div>
 					</div>
 
-					<div class="modal-footer" style="margin-top:160px">
+					<div class="modal-footer" style="margin-top: 160px">
 						<input type="hidden" value="register" name="command">
 						<button type="submit" class="btn btn-primary" value="회원가입"
 							onclick="inputCheck()">회원가입</button>
@@ -255,35 +294,38 @@ Install with Bower
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form action="DispatcherServlet" method="post" name="loginForm" onsubmit="return checkLogin()" id="loginForm" >
+				<form action="DispatcherServlet" method="post" name="loginForm"
+					onsubmit="return checkLogin()" id="loginForm">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
-								class="form-control" id="InputId" placeholder="아이디"  name="userId">
+								class="form-control" id="InputId" placeholder="아이디"
+								name="userId">
 
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="InputPassword"
-								placeholder="비밀번호" name="userPass" >
+								placeholder="비밀번호" name="userPass">
 						</div>
 
 						<div class="form-check">
 							<label class="form-check-label"> <input type="checkbox"
-								class="form-check-input" value="y" name="retainId"> 로그인 유지
+								class="form-check-input" value="y" name="retainId"> 로그인
+								유지
 							</label>
 						</div>
 					</div>
 					<div class="modal-footer">
-					<input type="hidden" name="command" value="login">
+						<input type="hidden" name="command" value="login">
 						<button type="submit" class="btn btn-primary">로그인</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
 					</div>
 				</form>
-				
-				
+
+
 
 			</div>
 		</div>

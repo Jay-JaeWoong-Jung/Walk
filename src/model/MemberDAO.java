@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.Date;
-
-
-
 import constants.StringQuery;
 import javafx.util.Pair;
 
@@ -434,10 +431,11 @@ public class MemberDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		System.out.println("dao selectedTime:" + selectedTime);
-		System.out.println("dao groupColor:" + groupColor);
 
-		int result = 0;
+		
+		
+		int result=0;
+
 		try {
 			con = getConnection();
 
@@ -447,9 +445,11 @@ public class MemberDAO {
 
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
-				result = rs.getInt(1);
-				System.out.println(result);
+			
+			if(rs.next()) {
+				result=rs.getInt(1);
+				
+
 			}
 		} finally {
 			closeAll(ps, con);
@@ -596,5 +596,41 @@ public class MemberDAO {
 		}
 		return date;
 	}
+	
+	public void updateStartTime(String userId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.UPDATE_START_TIME);
+			ps.setString(1, userId);
+			
+			int result = ps.executeUpdate();
+
+			 System.out.println("updateStartTime 성공갯수"+result);
+
+		} finally {
+			closeAll(ps, conn);
+		}
+	}
+	
+	public void updateFinishTime(String userId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.UPDATE_FINISH_TIME);
+			ps.setString(1, userId);
+			
+			int result = ps.executeUpdate();
+
+			 System.out.println("updateFinishTime 성공갯수"+result);
+
+		} finally {
+			closeAll(ps, conn);
+		}
+	}
+	
+	
 
 }

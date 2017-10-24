@@ -13,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/dashboard.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Dashboard</title>
 
 
@@ -30,6 +31,8 @@
 		alert("예약 취소가 안되었습니다. 관리자에게 문의바랍니다.");
 	</script>
 </c:if>
+
+
 
 
 
@@ -107,7 +110,79 @@
 		  
 		<SCRIPT > 
 		
+		$('#stBtn').one('click',function () {
+			alert("stnBtn");
+			var param ="userId=${mvo.userId}&command=startTime";
+			$.ajax({
+				type : "post",
+				url : "DispatcherServlet",
+				data : param,
+				success : function(result) {
+					$("#stnBtn").html(result);
+
+					}
+					
+				});
+			});
+		
+		
+		
+		$('#stopBtn').click(function () {
+			alert("stopBtn");
+			var param ="userId=${mvo.userId}&command=finishTime";
+			$.ajax({
+				type : "post",
+				url : "DispatcherServlet",
+				data : param,
+				success : function(result) {
+					$("#stnBtn").html(result);
+
+					}
+					
+				});
+			});
+			
+			//location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=StartTime";
+			
+	
+		
+		
+		
+		 <SCRIPT > 
+		
+		
+		
+		<%-- <% System.out.println("첫 쓰레드이름:"+Thread.currentThread().getName());
+		String threadName= Thread.currentThread().getName();
+		if(!Thread.currentThread().getName().equals("stopWatch")){
+			
+		
+		Thread th = new Thread(new Runnable(){
+			 
+			 public  void run(){
+				Thread.currentThread().setName("stopWatch");
+				for(int i=0;i<1000000;i++){
+					
+					System.out.println("쓰레드이름:"+Thread.currentThread().getName()+i);
+					try{
+						Thread.sleep(1000);
+						
+						
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					
+				}
+					
+				
+			}
+		});
+		
+		th.start();
+		}
+		  	%> --%>
 		  	
+	
 						var currentsec = 0;
 						var currentmin = 0;
 						var currentmil = 0;

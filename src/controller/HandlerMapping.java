@@ -13,8 +13,12 @@ public class HandlerMapping {
 	public Controller createController(String command) {
 		Controller controller = null;
 
-		System.out.println("handler 입성 및 커맨드:"+command);
-		if (command.equals("reserve")) {
+
+
+		
+		if(command.equals("reserve")){
+
+
 			controller = new ReserveController();
 		} else if (command.equals("dashboard")) {
 			controller = new DashboardController();
@@ -32,8 +36,26 @@ public class HandlerMapping {
 			controller = new UpdateController();
 		} else if (command.equals("deleteMember")) {
 			controller = new DeleteController();
+		}else if (command.equals("startTime")) {
+			controller = new StopWatchController();
+		}else if (command.equals("finishTime")) {
+			controller = new StopWatchController();
+			
+			
+		}else if(command.equals("write")) {
+			controller = new WriteController();		
+		}else if(command.equals("list") || command.equals("date")) {
+			controller = new ListController();
+		}else if(command.equals("deletePosting")) {
+			controller = new DeletePostingController();
+		}else if(command.equals("editContent")) {
+			controller = new EditContentController();
+		}else if(command.equals("todayDate")) {
+			controller = new TodayDateController();
+		}else if(command.equals("checkId")) {
+			controller = new CheckIdController();
 		}
-
+		System.out.println("handler 입성"+controller+"컨트롤러 객체 생성");
 		return controller;
 	}
 }

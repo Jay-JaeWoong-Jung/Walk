@@ -29,37 +29,44 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active"><a class="nav-link" href="#">About</a>
 			</li>
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="http://example.com"
-				id="navbarDropdownMenuLink" data-toggle="dropdown"
+			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Reserve </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="#" onclick="reserveGo()">예약하기</a>
+						<script>
+						function reserveGo(){
+							location.href="reserve.jsp?";
+						}
+						</script>
+					<div class="dropdown-divider"></div>	
+					
 					<a class="dropdown-item" href="#" onclick="reserveChange()">예약변경</a>
 						<script>
 						function reserveChange(){
 							location.href="reserve.jsp?change=true";
 						}
 						</script>
-					<!-- 	          DispatcherServlet?userId=myId1&selectedTime=selectedTime&command=reserveChange -->
+					
 					<div class="dropdown-divider"></div>
 
 					<a class="dropdown-item" href="#"onclick="reserveCancel()">예약 취소</a>
 					<script>
 						function reserveCancel(){
-							location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${mvo.selectedTime}&command=reserveCancel";
+							location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=reserveCancel";
 						}
 					</script>
 						
 					
-				</div></li>
+				</div>
+			</li>
 			<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
 
-			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
-			<c:choose>
+
+			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar"><c:choose>
 				
 					<c:when test="${mvo.userId != null}">
 						<a href="#" data-toggle="modal" data-target="#signUp "
