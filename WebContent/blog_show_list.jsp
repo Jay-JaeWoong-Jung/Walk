@@ -106,7 +106,7 @@ body {
 						<tr class="text-center">
 							<th width="5%" class="text-center">#</th>
 							<th width="60%" class="text-center">Content</th>
-							<th width="15%" class="text-center">Writer</th>
+							<th width="15%" class="text-center">userId</th>
 							<th width="15%" class="text-center">Date</th>
 							<td colspan="2"></td>
 
@@ -118,7 +118,7 @@ body {
 							<%-- <td><%i++;%><%=i %></td> --%>
 							<td>${i.count}</td>
 							<td>${bvo.content}</td>
-							<td>${bvo.writer}</td>
+							<td>${bvo.userId}</td>
 							<td>${bvo.timePosted}</td>
 							
 							<!-- *************************** Edit ******************************  -->
@@ -265,13 +265,7 @@ body {
 				<input type="hidden" name="command" value="write">
 				
 				<table align="center" width="500px">
-					<tr>
-						<td width="10%">Name</td>
-						<td width="200px"><input type="text" name="writer"></td>
-						<td width="15%">Password</td>
-						<td><input type="password" name="password" maxlength="6"
-							size="8"></td>
-					</tr>
+					
 
 					<tr>
 						<td width="15%">Comment</td>
