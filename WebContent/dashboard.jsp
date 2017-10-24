@@ -146,7 +146,43 @@
 			
 	
 		
+		
+		
+		 <SCRIPT > 
+		
+		
+		
+		<%-- <% System.out.println("첫 쓰레드이름:"+Thread.currentThread().getName());
+		String threadName= Thread.currentThread().getName();
+		if(!Thread.currentThread().getName().equals("stopWatch")){
+			
+		
+		Thread th = new Thread(new Runnable(){
+			 
+			 public  void run(){
+				Thread.currentThread().setName("stopWatch");
+				for(int i=0;i<1000000;i++){
+					
+					System.out.println("쓰레드이름:"+Thread.currentThread().getName()+i);
+					try{
+						Thread.sleep(1000);
+						
+						
+					}catch(Exception e){
+						e.printStackTrace();
+					}
+					
+				}
+					
+				
+			}
+		});
+		
+		th.start();
+		}
+		  	%> --%>
 		  	
+	
 						var currentsec = 0;
 						var currentmin = 0;
 						var currentmil = 0;
