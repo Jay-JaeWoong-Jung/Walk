@@ -15,10 +15,7 @@ public class HandlerMapping {
 
 
 
-		
 		if(command.equals("reserve")){
-
-
 			controller = new ReserveController();
 		} else if (command.equals("dashboard")) {
 			controller = new DashboardController();
