@@ -15,8 +15,12 @@ public interface StringQuery {
 	String CURRENT_NO = 
 			"SELECT board_seq.currVal FROM dual";
 	
-	String SELECT_POSTING = 
-			"SELECT no, userId, content, timePosted FROM board WHERE no=?";
+	/*String SELECT_POSTING = 
+			"SELECT no, userId, content, timePosted FROM board WHERE no=?";*/
+	
+	String SELECT_POSTINGBYID = 
+			"SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted"
+			+ " FROM board WHERE userId=? order by no";
 	
 	String UPDATE_CONTENT = 
 			"UPDATE board SET content= ? WHERE no=?";

@@ -24,6 +24,8 @@ public class HandlerMapping {
 			controller = new TodayDateController();
 		}else if(command.equals("checkId")) {
 			controller = new CheckIdController();
+		}else if(command.equals("listById")) {
+			controller = new ListByIdController();
 		}
 
 		return controller;

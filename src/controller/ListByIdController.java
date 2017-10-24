@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,24 +9,18 @@ import javax.servlet.http.HttpSession;
 import model.BoardDao;
 import model.BoardVO;
 
-public class CheckIdController implements Controller {
+public class ListByIdController implements Controller {
 
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		boolean flag;
-		String path = "";
-		int no =Integer.parseInt(request.getParameter("no"));
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
+		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllPostById(userId);
 		
-		flag = BoardDao.getInstance().checkId(no, userId);
+		request.setAttribute("list",rlist );
 		
-		if(flag==true) {
-			path = "DispathcerServlet?command=editContent";
-		}
-		
-		return new ModelAndView(path,true);
+		return new ModelAndView( "blog_show_list.jsp");
 	}
 
 }

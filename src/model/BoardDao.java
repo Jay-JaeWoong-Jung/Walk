@@ -81,7 +81,7 @@ public class BoardDao {
 		}
 	}//	posting	
 	
-	public BoardVO getPostingByNo(int no) throws SQLException{
+	/*public BoardVO getPostingByNo(int no) throws SQLException{
 		Connection conn=null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -103,7 +103,7 @@ public class BoardDao {
 		}
 		return vo;
 	}//getPostingByNo
-	
+*/	
 	
 	public ArrayList<BoardVO> getAllpostByDate(String date) throws SQLException{
 		Connection conn=null;
@@ -206,6 +206,30 @@ public class BoardDao {
 		return date;
 		
 	}
+	
+	public ArrayList<BoardVO> getAllPostById(String userId) throws SQLException{
+		Connection conn=null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.SELECT_POSTINGBYID);
+			ps.setString(1, userId);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(new BoardVO(
+						rs.getInt("no"), 
+						rs.getString("userId"), 
+						rs.getString("content"),
+						rs.getString("timePosted")));
+							
+			}
+		}finally {
+			closeAll(ps, conn);
+		}
+		return list;
+	}//getPostingByNo
 	
 	
 	
