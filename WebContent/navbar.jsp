@@ -65,6 +65,7 @@
 			</li>
 			<li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
 
+
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar"><c:choose>
 				
 					<c:when test="${mvo.userId != null}">

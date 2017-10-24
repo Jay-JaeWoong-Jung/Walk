@@ -8,10 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.Date;
-
-
-
-
 import constants.StringQuery;
 import javafx.util.Pair;
 

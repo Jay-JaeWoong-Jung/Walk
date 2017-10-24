@@ -18,8 +18,6 @@
 	rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./css/main.css">
@@ -38,63 +36,26 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
 
-<c:if test="${param.login =='fail'}">
 
-<script>
-
-alert("로그인에 실패하였습니다.");
+Install with Bower
+<script type="text/javascript">
+	$('.selectpicker').selectpicker('refresh');
 </script>
+
+<c:if test="${flag =='true'}">
+	<script>
+		url = "regProc.jsp?flag=${flag}";
+		window.open(url, "", "width=300,height=150");
+	</script>
 
 </c:if>
 
-<script type="text/javascript">
-	$('.selectpicker').selectpicker('refresh');
+<script type="text/javascript" src="script.js"></script>
 
-</script>
-
-<script>
-	function checkLogin() {
-
-		console.log("첵로긴");
-		var userId = $('#loginId').val();
-		var userPass = $('#loginPass').val();
-		if (userId == "") {
-			alert("아이디를 입력해 주세요.");
-			document.loginForm.userId.focus();
-			return;
-		}
-		if (userPass == "") {
-			alert("비밀번호를 입력해 주세요.");
-			document.loginForm.userPass.focus();
-			return;
-		} else {
-
-			$('#loginForm').submit();
-		}
-
-	}
-
-	//아이디 중복 확인 처리
-
-	/* 
-	 function idCheck() {
-	 var userId = $('#InputId').val();
-	 $('input[name=doubleCheck]').val("true");
-	 if (userId == "") {
-	 alert("아이디를 입력해 주세요.");
-	 document.regForm.userId.focus();
-	 } else {
-	
-	 url = "DispatcherServlet?userId="+userId+"&&command=idCheck";
-	 window.open(url, "", "width=300,height=150");
-	 }
-	 } */
-	 
-</script>
 
 </head>
 
-<body id="myPage"
+<body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
 
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -114,14 +75,15 @@ alert("로그인에 실패하였습니다.");
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#services">SERVICES</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
-					href="profile.jsp">프로필</a></li>
+					href="#portfolio">PORTFOLIO</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#pricing">PRICING</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="DispatcherServlet?command=todayDate&userId=${mvo.userId}">게시판보기</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
 						<c:when test="${mvo.userId != null}">
-							<a href="#" data-toggle="modal" id="regForm">${mvo.userId}님 </a>
+							<a href="#" data-toggle="modal" data-target="#signUp "
+								id="regForm">${mvo.userId}님 </a>
 						</c:when>
 						<c:otherwise>
 							<a href="#" data-toggle="modal" data-target="#signUp "
@@ -148,93 +110,7 @@ alert("로그인에 실패하였습니다.");
 	</div>
 	</nav>
 
-
 	<!-- 회원가입 Modal -->
-
-	<script>
-		function inputCheck() {
-			var userName = $('#InputName').val();
-			var userId = $('#InputId').val();
-			var doubleCheck = $('#doubleCheck').val();
-			var userPass = $('#InputPassword').val();
-			var userRepass = $('#InputPasswordRepeat').val();
-			var phone1 = $('#InputPhone1').val();
-			var phone2 = $('#InputPhone2').val();
-			var phone3 = $('#InputPhone3').val();
-			var emailId = $('#InputEmailId').val();
-			var emailAdd = $('#InputSelectedEmail').val();
-			var birthday = $('#InputBirth').val();
-
-			var male = $('#male').val();
-			var female = $('#female').val();
-			if (userName == "") {
-				alert("이름을 입력해 주세요.");
-				document.regForm.userName.focus();
-				return;
-			}
-
-			if (userId == "") {
-				alert("아이디를 입력해 주세요.");
-				document.regForm.userId.focus();
-				return;
-			}
-			if (doubleCheck == "false") {
-				alert("아이디 중복확인을 해주세요.");
-
-				return;
-			}
-			if (userPass == "") {
-				alert("비밀번호를 입력해 주세요.");
-				document.regForm.userPass.focus();
-				return;
-			}
-			if (userRepass == "") {
-				alert("비밀번호를 확인해 주세요.");
-				document.regForm.userRepass.focus();
-				return;
-			}
-			if (userPass != userRepass) {
-				alert("비밀번호가 일치하지 않습니다.");
-				document.regForm.userRepass.focus();
-				return;
-			}
-
-			if (phone2 == "") {
-				alert("전화번호 중간자리를 입력해 주세요.");
-				document.regForm.phone2.focus();
-				return;
-			}
-			if (phone3 == "") {
-				alert("전화번호 뒷자리를 입력해 주세요.");
-				document.regForm.phone3.focus();
-				return;
-			}
-			if (emailId == "") {
-				alert("이메일을 입력해 주세요.");
-				document.regForm.email.focus();
-				return;
-			}
-			if (emailAdd == "") {
-				alert("이메일을 입력해 주세요.");
-				document.regForm.email.focus();
-				return;
-			}
-			if (male == "" && female == "") {
-				alert("성별을 입력해주세요.");
-				document.regForm.email.focus();
-				return;
-			}
-			if (birthday == "") {
-				alert("생년월일을  입력해 주세요.");
-				window.close();
-
-			}
-
-			$('#regForm').submit();
-		}
-	</script>
-
-
 	<div class="modal fade " id="signUp" tabindex="-1" role="dialog">
 		<div class="modal-dialog m-t-5" role="document">
 			<div class="modal-content">
@@ -247,7 +123,7 @@ alert("로그인에 실패하였습니다.");
 				</div>
 
 				<form action="DispatcherServlet" method="post" name="regForm"
-					onsubmit="inputCheck()" id="regForm">
+					onsubmit="return inputCheck()" id="regForm">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">이름</label> <input type="text" name="userName"
@@ -257,16 +133,13 @@ alert("로그인에 실패하였습니다.");
 							<div class="col-sm-10">
 								<label for="id">ID</label>
 							</div>
-							<div class="col-xs-7">
+							<div class="col-xs-9">
 								<input type="text" name="userId" class="form-control"
-									id="InputId" placeholder="아이디">
+									id="InputId" placeholder="아이디" required>
 							</div>
-							<div class="col-xs-3">
-								<span id="span_id"></span>
-								<!-- <input type="button" value="중복확인"
-									onclick="idCheck()" class="btn btn-secondary" /> -->
-								<input type="hidden" name="doubleCheck" id="doubleCheck"
-									value="false">
+							<div class="col-xs-2">
+								<input type="button" value="중복확인" onclick="idCheck()"
+									class="btn btn-secondary" />
 							</div>
 						</div>
 
@@ -280,7 +153,8 @@ alert("로그인에 실패하였습니다.");
 												var param = "userId=" + userId
 														+ "&command=idCheck";
 
-												$.ajax({
+												$
+														.ajax({
 															type : "post",
 															url : "DispatcherServlet",
 															data : param,
@@ -323,9 +197,8 @@ alert("로그인에 실패하였습니다.");
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
-							<select name="phone1" class="selectpicker col-xs-3"
-								id="InputPhone1">
-								<option value="010" selected>010</option>
+							<select name="phone1" class="selectpicker" id="InputPhone1">
+								<option value="010" selected="010">010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
 								<option value="017">017</option>
@@ -348,52 +221,25 @@ alert("로그인에 실패하였습니다.");
 								placeholder="Email" required>
 						</div>
 						<div>
-
 							<div>
-
-
-
-								<span id="emailChange"> <select class="selectpicker"
-									name="emailAdd" id="InputSelectedEmail"
-									onchange="changeFunc();">
-
-										<option value="@naver.com">@naver.com</option>
-										<option value="@nate.com">@nate.com</option>
-										<option value="@dreamwiz.com">@dreamwiz.com</option>
-										<option value="@yahoo.co.kr">@yahoo.co.kr</option>
-										<option value="@empal.com">@empal.com</option>
-										<option value="@unitel.co.kr">@unitel.co.kr</option>
-										<option value="@gmail.com">@gmail.com</option>
-										<option value="@korea.com">@korea.com</option>
-										<option value="@chol.com">@chol.com</option>
-										<option value="@paran.com">@paran.com</option>
-										<option value="@freechal.com">@freechal.com</option>
-										<option value="@hanmail.net">@hanmail.net</option>
-										<option value="@hotmail.com">@hotmail.com</option>
-										<option value="직접선택"> 직접선택</option>
-
+								<select class="selectpicker" name="emailAdd"
+									id="InputSelectedEmail">
+									<option value="직접선택" selected="직접선택">직접선택</option>
+									<option value="@naver.com">@naver.com</option>
+									<option value="@nate.com">@nate.com</option>
+									<option value="@dreamwiz.com">@dreamwiz.com</option>
+									<option value="@yahoo.co.kr">@yahoo.co.kr</option>
+									<option value="@empal.com">@empal.com</option>
+									<option value="@unitel.co.kr">@unitel.co.kr</option>
+									<option value="@gmail.com">@gmail.com</option>
+									<option value="@korea.com">@korea.com</option>
+									<option value="@chol.com">@chol.com</option>
+									<option value="@paran.com">@paran.com</option>
+									<option value="@freechal.com">@freechal.com</option>
+									<option value="@hanmail.net">@hanmail.net</option>
+									<option value="@hotmail.com">@hotmail.com</option>
 								</select>
-								</span>
-
-
 							</div>
-							<script>
-								function changeFunc() {
-
-									var selectBox = document
-											.getElementById("InputSelectedEmail");
-									var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-									if (selectedValue == "직접선택") {
-										$("#emailChange")
-												.html(
-														"<input type='text' name='emailAdd' id='InputSelectedEmail' value='' />")
-
-									}
-								}
-							</script>
-
-
 							<div class="form-group">
 								<div class="col-sm-10">
 									<label for="">Email 수신여부 : &nbsp;&nbsp;</label> <input
@@ -408,7 +254,7 @@ alert("로그인에 실패하였습니다.");
 							</div>
 							<div class="col-sm-10">
 								<input type="date" name="birthday" id="InputBirth"
-									class="birthday " style="margin-right: 5px;" />
+									class="birthday datepicker" style="margin-right: 5px;" />
 							</div>
 						</div>
 
@@ -435,10 +281,7 @@ alert("로그인에 실패하였습니다.");
 				</form>
 			</div>
 		</div>
-
-
 	</div>
-
 
 	<!-- Sign-in Modal -->
 	<div class="modal fade m-t-5" id="signIn" tabindex="-1" role="dialog">
@@ -452,18 +295,18 @@ alert("로그인에 실패하였습니다.");
 					</button>
 				</div>
 				<form action="DispatcherServlet" method="post" name="loginForm"
-					id="loginForm" onsubmit="return checkLogin()">
+					onsubmit="return checkLogin()" id="loginForm">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
-								class="form-control" id="loginId" placeholder="아이디"
+								class="form-control" id="InputId" placeholder="아이디"
 								name="userId">
 
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
-								type="password" class="form-control" id="loginPass"
+								type="password" class="form-control" id="InputPassword"
 								placeholder="비밀번호" name="userPass">
 						</div>
 
@@ -611,7 +454,7 @@ alert("로그인에 실패하였습니다.");
 		<div class="row text-center slideanim">
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="#" alt="Paris" width="400" height="300">
+					<img src="paris.jpg" alt="Paris" width="400" height="300">
 					<p>
 						<strong>Paris</strong>
 					</p>
@@ -620,7 +463,7 @@ alert("로그인에 실패하였습니다.");
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="#" alt="New York" width="400" height="300">
+					<img src="newyork.jpg" alt="New York" width="400" height="300">
 					<p>
 						<strong>New York</strong>
 					</p>
@@ -629,7 +472,7 @@ alert("로그인에 실패하였습니다.");
 			</div>
 			<div class="col-sm-4">
 				<div class="thumbnail">
-					<img src="#" alt="San Francisco" width="400" height="300">
+					<img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
 					<p>
 						<strong>San Francisco</strong>
 					</p>
@@ -825,8 +668,8 @@ alert("로그인에 실패하였습니다.");
 	<div id="googleMap" style="height: 400px; width: 100%;"></div>
 	<script>
 		function myMap() {
-			myCenter = new google.maps.LatLng(41.878114, -87.629798);
-			var mapOptions = {
+			var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+			var mapProp = {
 				center : myCenter,
 				zoom : 12,
 				scrollwheel : false,
@@ -834,16 +677,15 @@ alert("로그인에 실패하였습니다.");
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),
-					mapOptions);
-
+					mapProp);
 			var marker = new google.maps.Marker({
-				position : myCenter,
+				position : myCenter
 			});
 			marker.setMap(map);
 		}
 	</script>
 	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABmESzR_EPQzZZCwZV_DFTEHWOjVJWOtc&callback=myMap"></script>
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 	<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
