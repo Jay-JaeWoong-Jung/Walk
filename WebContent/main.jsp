@@ -96,7 +96,7 @@ function idCheck() {
 
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar"
+<body id="myPage"
 	data-offset="60">
 
 	<nav class="navbar navbar-default navbar-fixed-top">

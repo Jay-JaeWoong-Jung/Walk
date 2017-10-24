@@ -15,10 +15,9 @@ public class ReserveCancelController implements Controller{
 	public ModelAndView HandleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		//String userId =request.getParameter("userId");
-		// String selectedTime =request.getParameter("selectedTime");
-		String userId ="myId1";
-		int selectedTime=0;
+		String userId =request.getParameter("userId");
+		 int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
+		
 		
 
 

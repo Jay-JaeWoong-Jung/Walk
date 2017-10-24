@@ -12,9 +12,7 @@ import controller.HandlerMapping;
 import controller.ModelAndView;
 import model.MemberDAO;
 
-/**
- * Servlet implementation class DispatcherServlet
- */
+
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       MemberDAO dao=MemberDAO.getInstance();
@@ -23,14 +21,12 @@ public class DispatcherServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd = request.getParameter("command");
 		System.out.println("디스패쳐 서블릿 명령어:"+cmd);
 		Controller controller=HandlerMapping.getInstance().createController(cmd);
-		System.out.println("controller....");
+		System.out.println("디스패쳐 controller....");
 		try{
 			ModelAndView mv =controller.HandleRequest(request, response);
 			if(mv.isRedirect()) response.sendRedirect(mv.getPath());
