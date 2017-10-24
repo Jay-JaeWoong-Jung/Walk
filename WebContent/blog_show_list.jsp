@@ -39,16 +39,7 @@ function content_submit(){
 		f.content.focus();
 		return; 
 	}
-	if(f.writer.value==""){
-		alert("이름을 입력하세요!");
-		f.writer.focus();
-		return;
-	}
-	if(f.password.value==""){
-		alert("패스워드를 입력하세요!");
-		f.password.focus();
-		return;
-	}
+	
 	
 	//이동할 페이지로 폼값을 가지고 전송됨
 	f.submit();
@@ -275,10 +266,11 @@ body {
 
 					<tr>
 						<td colspan="4" align="center">
-							<button type="button" class="btn btn-primary btn-block">
-								Write <span class="oi oi-check" onclick="content_submit()"></span>
-							</button>
-
+							<!-- <button type="button" class="btn btn-primary btn-block" onclick="content_submit()">
+								Write <span class="oi oi-check" ></span>
+							</button> -->
+							<a href="#" class ="btn btn-primary btn-block" onclick="content_submit()">Write<span class="oi oi-check" ></span></a>
+							
 							<button type="button" class="btn btn-default-lg  pull-right">
 								Cancel <span class="oi oi-trash" onclick="cancel()"></span>
 							</button>
