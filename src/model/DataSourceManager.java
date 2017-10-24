@@ -11,7 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import config.OracleInfo;
+
 
 public class DataSourceManager {
 	private DataSource ds;//수정

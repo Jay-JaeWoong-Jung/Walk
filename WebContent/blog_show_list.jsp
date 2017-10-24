@@ -82,6 +82,15 @@ body {
 </head>
 <body>
 
+<c:choose>
+	<c:when test="${mvo.userId == null}">
+		<script>
+			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
+			location.href="main.jsp";
+		</script>
+	</c:when>
+	<c:otherwise>
+	
 
 	<!-- **********************Start Main list Table ****************************-->
 	<div class="container-fluid">
@@ -159,8 +168,7 @@ body {
 								<!-- *************************** Start Modal ******************************  -->
 								
 						
-							<div class="modal fade" id="${bvo.no}" tabindex="-1"
-								role="dialog" >
+							<div class="modal fade" id="${bvo.no}" tabindex="-1" role="dialog" >
 								<div class="modal-dialog" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -284,6 +292,7 @@ body {
 		<div class="col-12">
 			<form action="DispatcherServlet" method="post" name="write_form">
 				<input type="hidden" name="command" value="write">
+				<input type="hidden" name="userId" value="${mvo.userId}">
 				
 				<table align="center" width="500px">
 					
@@ -326,7 +335,9 @@ body {
 	
 
 	
-
+</c:otherwise>
+	
+</c:choose>
 
 </body>
 </html>

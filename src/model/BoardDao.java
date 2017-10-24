@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import sql.StringQuery;
+import constants.StringQuery;
+
+
 
 /*
  * 나중에 실질적으로 Component기반으로 최종적으로 돌릴때에는
@@ -81,29 +83,7 @@ public class BoardDao {
 		}
 	}//	posting	
 	
-	/*public BoardVO getPostingByNo(int no) throws SQLException{
-		Connection conn=null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		BoardVO vo = null;
-		try {
-			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.SELECT_POSTING);
-			ps.setInt(1, no);
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				vo = new BoardVO(no, 
-						rs.getString("userId"), 
-						rs.getString("content"), 
-						rs.getString("timePosted"));
-				System.out.println("getPostingByNo...."+no);
-			}
-		}finally {
-			closeAll(ps, conn);
-		}
-		return vo;
-	}//getPostingByNo
-*/	
+	
 	
 	public ArrayList<BoardVO> getAllpostByDate(String date) throws SQLException{
 		Connection conn=null;
@@ -229,17 +209,17 @@ public class BoardDao {
 			closeAll(ps, conn);
 		}
 		return list;
-	}//getPostingByNo
+	}//getAllPostById
 	
 	
-	
+	/*
 	public static void main(String[] args) throws Exception{
 		BoardDao dao = BoardDao.getInstance();
 		//dao.posting(new BoardVO("추석", "신정환", "7788", "낌미낌미~~~"));
 		//System.out.println(dao.getPostingByNo(1));
-		/*BoardVO v = new BoardVO("한가위", "홍길동", "1234", "보름달이 뜨면은~~~우워우어");
-		System.out.println(dao.getPostingByNo(v.getNo()));*/
-	}
+		BoardVO v = new BoardVO("한가위", "홍길동", "1234", "보름달이 뜨면은~~~우워우어");
+		System.out.println(dao.getPostingByNo(v.getNo()));
+	}*/
 
 }
 
