@@ -27,6 +27,9 @@ function setupdate() {
 	}
 
 </script>
+
+
+			
 <body>
 	<c:choose>
 		<c:when test="${mvo.userId != null}">
@@ -36,9 +39,26 @@ function setupdate() {
 					<div class="col-sm-4">
 						<h1>profile</h1>
 						<div class="thumbnail">
+						
+						
+						<c:choose>
+							<c:when test="${mvo.profile != null}">
+							
+								<img src="./upload/${mvo.profile}" class="img-circle"
+								alt="Cinque Terre" width="300" height="272">
+							
+							</c:when>
+							<c:otherwise>
 							<img src="./image/default.png" class="img-circle"
-								alt="Cinque Terre" width="300" height="272"> <br> <br />
-							<b>${mvo.userId}님의 정보입니다.</b><br> <br />
+								alt="Cinque Terre" width="300" height="272">
+							
+						</c:otherwise>
+						
+						
+								
+						</c:choose>		
+								 <br> <br />
+							<b>${mvo.userId}님의 정보입니다. 파일명:${mvo.profile} </b><br> <br />
 						</div>
 						<div class="col-sm-6">
 							<span ><img src="./image/setting.png" class="img-circle"

@@ -6,3 +6,4 @@ build/*
 *.bak
 .project
 bin/*
+/bin/
