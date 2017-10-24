@@ -49,12 +49,7 @@ alert("로그인에 실패하였습니다.");
 
 <script type="text/javascript">
 	$('.selectpicker').selectpicker('refresh');
-<<<<<<< HEAD
-=======
-	
 
-	
->>>>>>> 072372e9f697750aa2f9889017ec5e3558d54392
 </script>
 
 <script>
@@ -94,6 +89,7 @@ alert("로그인에 실패하였습니다.");
 	 window.open(url, "", "width=300,height=150");
 	 }
 	 } */
+	 
 </script>
 
 </head>

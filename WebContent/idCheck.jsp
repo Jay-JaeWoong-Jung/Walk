@@ -12,14 +12,11 @@
 
 </head>
 <body bgcolor="#ffffcc">
-<<<<<<< HEAD
-	<center>
-=======
+
 	
 	<center>
 		
 		
->>>>>>> 072372e9f697750aa2f9889017ec5e3558d54392
 		<c:choose>
 			<c:when test="${result == 'true'}">
 				<span style="color: red;">Already Exist! </span>
