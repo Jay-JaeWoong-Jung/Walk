@@ -1,0 +1,8 @@
+src/config/*
+webContent/META-INF/*
+.settings
+.classpath
+build/*
+*.bak
+.project
+bin/*
