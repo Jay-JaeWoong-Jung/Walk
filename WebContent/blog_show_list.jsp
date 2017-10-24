@@ -40,8 +40,7 @@ function content_submit(){
 		f.content.focus();
 		return; 
 	}
-	
-	
+
 	//이동할 페이지로 폼값을 가지고 전송됨
 	f.submit();
 }
