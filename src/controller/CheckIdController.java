@@ -2,6 +2,7 @@ package controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.BoardDao;
 import model.BoardVO;
@@ -13,7 +14,8 @@ public class CheckIdController implements Controller {
 		boolean flag;
 		String path = "";
 		int no =Integer.parseInt(request.getParameter("no"));
-		String userId = (String)Session.getAttribute("userId");
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
 		
 		BoardVO pvo = new BoardVO(no, userId);
 		flag = BoardDao.getInstance().checkId(no, userId);

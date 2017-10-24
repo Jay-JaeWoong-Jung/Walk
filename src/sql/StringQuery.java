@@ -11,8 +11,7 @@ public interface StringQuery {
 	// COUNT(-1) == COUNT(*)
 	String DELETE_POSTING =
 			"DELETE FROM board WHERE no=?";
-			
-	
+
 	String CURRENT_NO = 
 			"SELECT board_seq.currVal FROM dual";
 	

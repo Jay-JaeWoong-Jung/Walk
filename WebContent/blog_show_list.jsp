@@ -39,6 +39,7 @@ function content_submit(){
 		f.content.focus();
 		return; 
 	}
+
 	//이동할 페이지로 폼값을 가지고 전송됨
 	f.submit();
 }
@@ -264,12 +265,13 @@ body {
 
 					<tr>
 						<td colspan="4" align="center">
-							<button type="button" class="btn btn-primary btn-block"  onclick="content_submit()">
-								Write <span class="oi oi-check"></span>
-							</button> 
-						
-							<button type="button" class="btn btn-default-lg  pull-right"  onclick="cancel()">
-								Reset <span class="oi oi-trash"></span>
+							<!-- <button type="button" class="btn btn-primary btn-block" onclick="content_submit()">
+								Write <span class="oi oi-check" ></span>
+							</button> -->
+							<a href="#" class ="btn btn-primary btn-block" onclick="content_submit()">Write<span class="oi oi-check" ></span></a>
+							
+							<button type="button" class="btn btn-default-lg  pull-right">
+								Cancel <span class="oi oi-trash" onclick="cancel()"></span>
 							</button>
 
 						</td>
