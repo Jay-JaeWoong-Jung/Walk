@@ -25,6 +25,7 @@ public class DispatcherServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd = request.getParameter("command");
 		System.out.println("디스패쳐 서블릿 명령어:"+cmd);
+		
 		Controller controller=HandlerMapping.getInstance().createController(cmd);
 
 		try{

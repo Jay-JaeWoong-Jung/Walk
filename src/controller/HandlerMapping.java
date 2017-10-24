@@ -14,7 +14,7 @@ public class HandlerMapping {
 		Controller controller = null;
 
 
-		System.out.println("handler 입성"+command+"컨트롤러 객체 생성");
+		
 		if(command.equals("reserve")){
 
 
@@ -35,8 +35,12 @@ public class HandlerMapping {
 			controller = new UpdateController();
 		} else if (command.equals("deleteMember")) {
 			controller = new DeleteController();
+		}else if (command.equals("startTime")) {
+			controller = new StopWatchController();
+		}else if (command.equals("finishTime")) {
+			controller = new StopWatchController();
 		}
-
+		System.out.println("handler 입성"+controller+"컨트롤러 객체 생성");
 		return controller;
 	}
 }

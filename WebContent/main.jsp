@@ -280,8 +280,7 @@ alert("로그인에 실패하였습니다.");
 												var param = "userId=" + userId
 														+ "&command=idCheck";
 
-												$
-														.ajax({
+												$.ajax({
 															type : "post",
 															url : "DispatcherServlet",
 															data : param,

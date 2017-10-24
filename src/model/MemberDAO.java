@@ -600,5 +600,41 @@ public class MemberDAO {
 		}
 		return date;
 	}
+	
+	public void updateStartTime(String userId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.UPDATE_START_TIME);
+			ps.setString(1, userId);
+			
+			int result = ps.executeUpdate();
+
+			 System.out.println("updateStartTime 성공갯수"+result);
+
+		} finally {
+			closeAll(ps, conn);
+		}
+	}
+	
+	public void updateFinishTime(String userId) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.UPDATE_FINISH_TIME);
+			ps.setString(1, userId);
+			
+			int result = ps.executeUpdate();
+
+			 System.out.println("updateFinishTime 성공갯수"+result);
+
+		} finally {
+			closeAll(ps, conn);
+		}
+	}
+	
+	
 
 }

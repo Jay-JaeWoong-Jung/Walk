@@ -13,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/dashboard.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Dashboard</title>
 
 
@@ -110,9 +111,40 @@
 		<SCRIPT > 
 		
 		$('#stBtn').one('click',function () {
-			location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=dashboard";
+			alert("stnBtn");
+			var param ="userId=${mvo.userId}&command=startTime";
+			$.ajax({
+				type : "post",
+				url : "DispatcherServlet",
+				data : param,
+				success : function(result) {
+					$("#stnBtn").html(result);
+
+					}
+					
+				});
+			});
+		
+		
+		
+		$('#stopBtn').click(function () {
+			alert("stopBtn");
+			var param ="userId=${mvo.userId}&command=finishTime";
+			$.ajax({
+				type : "post",
+				url : "DispatcherServlet",
+				data : param,
+				success : function(result) {
+					$("#stnBtn").html(result);
+
+					}
+					
+				});
+			});
 			
-		}); 
+			//location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=StartTime";
+			
+	
 		
 		  	
 						var currentsec = 0;
