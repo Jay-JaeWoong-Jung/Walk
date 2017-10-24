@@ -92,7 +92,7 @@ body {
 				</h1>
 				
 	
-			<div class="container" style="padding:30px 10px 10px 0px">
+			<div class="container-fluid" style="padding:30px 10px 10px 0px">
 				<div class="row">
 					<div class="col-8">
 						<a href="DispatcherServlet?command=todayDate">
@@ -112,8 +112,9 @@ body {
 					<div class="col-4">
 						<form class="form-inline" action="DispatcherServlet" method="post">
 					
-							<h2></h2><input type="text" id="datepicker" name="date">
-							 <input type="submit" value="Date Check" id="sendBtn">
+							<span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;						
+							<input type="text" id="datepicker" name="date">&nbsp;
+							 <input type="submit" class="btn btn-primary" value="Search" id="sendBtn">
 				
 							<input type="hidden" name="command" value="list">
 					
