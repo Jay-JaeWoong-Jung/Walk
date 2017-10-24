@@ -84,29 +84,48 @@ body {
 
 
 	<!-- **********************Start Main list Table ****************************-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
 				<h1 align="left" class="display-3">
 					<b>Comment</b>
 				</h1>
-				<p>
-	<nav class="navbar navbar-expand-sm ">
 				
-				<form class="form-inline" action="DispatcherServlet" method="post">
-					
-					<p><h2></h2><input type="text" id="datepicker" name="date"></p>
-					 <input type="submit" value="Date Check" id="sendBtn">
-					<!-- <a href="#"class="btn btn-success" type="submit" id="sendBtn">search</a> -->
-					<input type="hidden" name="command" value="list">
-					
-				</form>
+	
+			<div class="container" style="padding:30px 10px 10px 0px">
+				<div class="row">
+					<div class="col-8">
+						<a href="DispatcherServlet?command=todayDate">
+						<span class="oi oi-align-center" style="font-size:20px;color:blue"></span>
+						Today</a>
+						&nbsp;&nbsp;
+						
+						<a href="DispatcherServlet?command=listById">
+						<span class="oi oi-chat" style="font-size:20px;color:warning">					
+						</span>내가 쓴글</a>
+						
 				
- 				 <!-- <form class="form-inline">
- 			   <input class="form-control" type="text" placeholder="Search">
-  				  <button class="btn btn-success" type="button">Search</button>
-  					</form> -->
-	</nav>
+					</div>		
+				
+				
+				<!-- **************** Start Calendar ******************** -->
+					<div class="col-4">
+						<form class="form-inline" action="DispatcherServlet" method="post">
+					
+							<h2></h2><input type="text" id="datepicker" name="date">
+							 <input type="submit" value="Date Check" id="sendBtn">
+				
+							<input type="hidden" name="command" value="list">
+					
+						</form>
+					</div>
+				</div>
+			<!-- **************** End Calendar ********************  -->
+		
+			</div>
+				
+ 			
+	
 				<table class="table table-hover table-bordered">
 					<thead>
 						<tr class="text-center">
@@ -254,25 +273,14 @@ body {
 				<p>
 			</div>
 			<!-- **************** Start Calendar ********************  -->
-			<!-- <div class="col-4">
-
-				<form action="DispatcherServlet" method="post">
-					<p>
-						Date: <input type="text" id="datepicker" name="date">
-					</p>
-					<input type="submit" value="Date Check" id="sendBtn"> <input
-						type="hidden" name="command" value="list">
-				</form>
-			</div> -->
+			
 
 			<!-- **************** End Calendar ********************  -->
 		</div>
-	</div>
-	<!-- **********************End Main list Table ****************************-->
-
-	<!-- *************************** Start Write Form ******************************  -->
-	<div class="container" style="padding-top: 50px">
-		<div class=col-8>
+		
+		<!-- *************************** Start Write Form ******************************  -->
+	<div class="container" style="padding-top: 30px">
+		<div class="col-12">
 			<form action="DispatcherServlet" method="post" name="write_form">
 				<input type="hidden" name="command" value="write">
 				
@@ -306,6 +314,15 @@ body {
 	</div>
 
 	<!-- *************************** End Write Form ******************************  -->
+		
+		
+		
+		
+		
+	</div>
+	<!-- **********************End Main list Table ****************************-->
+
+	
 
 	
 
