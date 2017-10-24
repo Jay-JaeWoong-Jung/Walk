@@ -38,10 +38,23 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
 
+<c:if test="${param.login =='fail'}">
 
+<script>
+
+alert("로그인에 실패하였습니다.");
+</script>
+
+</c:if>
 
 <script type="text/javascript">
 	$('.selectpicker').selectpicker('refresh');
+<<<<<<< HEAD
+=======
+	
+
+	
+>>>>>>> 072372e9f697750aa2f9889017ec5e3558d54392
 </script>
 
 <script>
@@ -85,7 +98,7 @@
 
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar"
+<body id="myPage"
 	data-offset="60">
 
 	<nav class="navbar navbar-default navbar-fixed-top">

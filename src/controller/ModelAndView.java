@@ -2,7 +2,7 @@ package controller;
 
 public class ModelAndView {
 	private String path;
-	private boolean isRedirect;
+	private boolean isRedirect=false;
 	public ModelAndView(String path, boolean isRedirect) {
 		super();
 		this.path = path;

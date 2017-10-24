@@ -15,9 +15,9 @@ public class LoginController implements Controller {
 		System.out.println("로그인 컨트롤러 입장");
 		String userId = request.getParameter("userId");
 		String userPass = request.getParameter("userPass");
-		String remainId = request.getParameter("remainId");
+		
 		System.out.println(userId + ", " + userPass);
-		// boolean flag=request.getParameter("login");
+		
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
 
 		if (vo.getUserId() == null) {
@@ -49,7 +49,6 @@ public class LoginController implements Controller {
 */
 		}else {
 			HttpSession session = request.getSession();
-		///// 세션 생성,바인딩/////
 			session.setAttribute("mvo", vo);
 			return new ModelAndView("main.jsp",true);
 		}
