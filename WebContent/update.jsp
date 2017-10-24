@@ -6,8 +6,7 @@
 <html>
 <head>
 
-<!-- Theme Made By www.w3schools.com - No Copyright -->
-<title>Bootstrap Theme Company Page</title>
+<title>회원정보 수정 페이지</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -37,9 +36,8 @@
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
-
 </head>
-<!-- 회원정보 수정 페이지 -->
+
 
 <script>
 	function updateCheck() {
@@ -132,8 +130,9 @@
 	}
 </script>
 <body>
-	<form action="DispatcherServlet?command=updateMember" method="post" name="updateForm"
-		onsubmit="return updateCheck()" id="updateForm" enctype="multipart/form-data">
+	<form action="DispatcherServlet?command=updateMember" method="post"
+		name="updateForm" onsubmit="return updateCheck()" id="updateForm"
+		enctype="multipart/form-data">
 
 		<div class="header" align="center">
 			<font size="5"> 회원 정보 수정</font>
@@ -151,13 +150,12 @@
 		<hr>
 
 		<div class="modal-body">
-		<div class="form-group">
-				<label for="profile">프로필 사진</label> 
-				<input type="file" name="userProfile"
-					class="form-control" id="InputProfile" >
+			<div class="form-group">
+				<label for="profile">프로필 사진</label> <input type="file"
+					name="userProfile" class="form-control" id="InputProfile">
 			</div>
-		
-		
+
+
 			<div class="form-group">
 				<label for="id">이름</label> <input type="text" name="userName"
 					class="form-control" id="InputName" placeholder="이름" readonly
@@ -169,7 +167,7 @@
 				</div>
 				<div class="col-xs-7">
 					<input type="text" name="userId" class="form-control" id="InputId"
-						value="${mvo.userId}" readonly >
+						value="${mvo.userId}" readonly>
 				</div>
 				<div class="col-xs-3">
 					<span id="span_id"></span>
@@ -228,16 +226,18 @@
 				<label for="">핸드폰 번호 </label>
 			</div>
 			<div>
-				<select name="phone1" class="selectpicker col-xs-3" id="InputPhone1" value="${mvo.phone1}">
+				<select name="phone1" class="selectpicker col-xs-3" id="InputPhone1"
+					value="${mvo.phone1}">
 					<option value="010" selected>010</option>
 					<option value="011">011</option>
 					<option value="016">016</option>
 					<option value="017">017</option>
 					<option value="018">018</option>
 					<option value="019">019</option>
-				</select> &nbsp; - &nbsp;<input type="text" name="phone2" id="InputPhone2" value="${mvo.phone2}"
-					class="form-group input-sm" /> &nbsp; - &nbsp;<input type="text"
-					name="phone3" id="InputPhone3" value="${mvo.phone3}" class="form-group input-sm" />
+				</select> &nbsp; - &nbsp;<input type="text" name="phone2" id="InputPhone2"
+					value="${mvo.phone2}" class="form-group input-sm" /> &nbsp; -
+				&nbsp;<input type="text" name="phone3" id="InputPhone3"
+					value="${mvo.phone3}" class="form-group input-sm" />
 			</div>
 
 		</div>
@@ -247,8 +247,8 @@
 			</div>
 			<div class="col-xs-7">
 				<input type="text" name="emailId" class="form-control"
-					id="InputEmailId" aria-describedby="emailHelp" value="${mvo.emailId}"
-					required>
+					id="InputEmailId" aria-describedby="emailHelp"
+					value="${mvo.emailId}" required>
 			</div>
 			<div>
 
@@ -257,7 +257,8 @@
 
 
 					<span id="emailChange"> <select class="selectpicker"
-						name="emailAdd" id="InputSelectedEmail" onchange="changeFunc();" value="${mvo.emailAdd}">
+						name="emailAdd" id="InputSelectedEmail" onchange="changeFunc();"
+						value="${mvo.emailAdd}">
 
 							<option value="@naver.com">@naver.com</option>
 							<option value="@nate.com">@nate.com</option>
@@ -321,9 +322,8 @@
 					<label for="">성별</label>
 				</div>
 				<div class="col-sm-10">
-					<input type="radio" name="gender" value="0" id="male" readonly
-						 />남자 <input type="radio" name="gender"
-						value="1" id="female" readonly  />여자
+					<input type="radio" name="gender" value="0" id="male" readonly />남자
+					<input type="radio" name="gender" value="1" id="female" readonly />여자
 				</div>
 
 			</div>
