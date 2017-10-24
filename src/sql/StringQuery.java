@@ -3,7 +3,7 @@ package sql;
 public interface StringQuery {
 
 	String INSERT_POSTING = 
-			"INSERT INTO board (no, userId, content, time_posted)"+
+			"INSERT INTO board (no, userId, content, timePosted)"+
 	" VALUES(board_seq.nextVal,?, ?, sysdate)";
 	
 	String CHECK_ID =
@@ -23,7 +23,7 @@ public interface StringQuery {
 			"UPDATE board SET content= ? WHERE no=?";
 	
 	String PAGE_LIST = 
-			"SELECT no, userId, content, to_char(time_posted, 'YYYY/mm/DD hh:mm') timePosted "
+			"SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted "
 			+ "FROM board where to_char(timePosted, 'YYYY/MM/DD') = ? order by no";
 	
 	String CURRENT_DATE=

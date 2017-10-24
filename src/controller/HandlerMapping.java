@@ -22,6 +22,8 @@ public class HandlerMapping {
 			controller = new EditContentController();
 		}else if(command.equals("todayDate")) {
 			controller = new TodayDateController();
+		}else if(command.equals("checkId")) {
+			controller = new CheckIdController();
 		}
 
 		return controller;

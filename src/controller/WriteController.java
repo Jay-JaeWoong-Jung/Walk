@@ -11,7 +11,7 @@ public class WriteController implements Controller {
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String content = request.getParameter("content");
-		String userId = Session("writer");
+		String userId = "rrrrrrrrr";
 		
 		
 		
