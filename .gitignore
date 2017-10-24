@@ -1,10 +1,5 @@
-OracleInfo.java
-*.classpath
-
-
-
-*/OracleInfo.java
-*/.classpath
-
-
-OracleInfo
+src/config/*
+webContent/META-INF/*
+.settings
+.classpath
+build/*
