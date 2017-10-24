@@ -13,7 +13,6 @@ public class WriteController implements Controller {
 		String content = request.getParameter("content");
 
 		String userId = "asdfcc";/*Session("writer");*/
-
 		
 		
 		
