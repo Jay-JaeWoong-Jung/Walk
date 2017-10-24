@@ -17,9 +17,8 @@ public class WriteController implements Controller {
 		BoardVO pvo = new BoardVO(writer, password, content);
 		
 		BoardDao.getInstance().posting(pvo);
-	
 		
-		String path = "DispatcherServlet?command=list";
+		String path = "DispatcherServlet?command=todayDate";
 		return new ModelAndView(path, true); // 전형적인 Redirect 방식
 	}
 }

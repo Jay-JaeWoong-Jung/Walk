@@ -14,12 +14,14 @@ public class HandlerMapping {
 //		if(command.equals("")) controller = new ();
 		if(command.equals("write")) {
 			controller = new WriteController();
-		}else if(command.equals("list")) {
+		}else if(command.equals("list") || command.equals("date")) {
 			controller = new ListController();
-		}else if(command.equals("deleteCheckPassword")) {
-			controller = new DeleteCheckPasswordController();
 		}else if(command.equals("deletePosting")) {
 			controller = new DeletePostingController();
+		}else if(command.equals("editContent")) {
+			controller = new EditContentController();
+		}else if(command.equals("todayDate")) {
+			controller = new TodayDateController();
 		}
 
 		return controller;
