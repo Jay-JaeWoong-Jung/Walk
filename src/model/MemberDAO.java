@@ -440,8 +440,7 @@ public class MemberDAO {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs = null;
-		System.out.println("dao selectedTime:"+selectedTime);
-		System.out.println("dao groupColor:"+groupColor);
+		
 		
 		int result=0;
 		try {
@@ -455,7 +454,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				result=rs.getInt(1);
-				System.out.println(result);
+				
 			}
 		} finally {
 			closeAll(ps,con);

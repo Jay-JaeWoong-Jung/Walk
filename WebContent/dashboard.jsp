@@ -33,6 +33,8 @@
 
 
 
+
+
 </head>
 
 
@@ -106,6 +108,11 @@
 		  
 		  
 		<SCRIPT > 
+		
+		$('#stBtn').one('click',function () {
+			location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=dashboard";
+			
+		}); 
 		
 		  	
 						var currentsec = 0;

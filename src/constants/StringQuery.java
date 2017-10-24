@@ -34,6 +34,7 @@ public interface StringQuery {
 	String DELETE_LOG="delete from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
 	String IS_RESERVATION="select attendance from id_log where userId=?";
 	String GET_RESERVE_DATE= "select reserveDate from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
+	/*String SET_START_TIME=*/
 
 //	String INSERT_POSTING = "INSERT INTO board (no, title, writer, password, content, time_posted)" +
 //	" VALUES(board_seq.nextVal, ?, ?, ?, ?, sysdate)";

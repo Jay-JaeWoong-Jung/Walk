@@ -26,9 +26,10 @@ public class DispatcherServlet extends HttpServlet {
 		String cmd = request.getParameter("command");
 		System.out.println("디스패쳐 서블릿 명령어:"+cmd);
 		Controller controller=HandlerMapping.getInstance().createController(cmd);
-		System.out.println("디스패쳐 controller....");
+		
 		try{
 			ModelAndView mv =controller.HandleRequest(request, response);
+			System.out.println("디스패쳐 controller에서 뷰페이지로 이동");
 			if(mv.isRedirect()) response.sendRedirect(mv.getPath());
 			else request.getRequestDispatcher(mv.getPath()).forward(request, response);
 		}catch(Exception e){

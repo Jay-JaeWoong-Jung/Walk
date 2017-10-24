@@ -26,7 +26,7 @@
 </head>
 <script type="text/javascript">
 	function toDashBoard() {
-		location.href = "DispatcherServlet?userId=${mvo.userId}&selectedTime=${mvo.selectedTime}&command=dashboard";
+		location.href = "DispatcherServlet?userId=${mvo.userId}&selectedTime=${param.selectedTime}&command=dashboard";
 	}
 </script>
 
@@ -76,7 +76,7 @@
 								<input type="submit" class="btn btn-primary btn-lg" value="dashboard가기"> 
 								<input type="hidden" name="command" value="dashboard">
 								<input type="hidden" name="userId" value="${mvo.userId}">
-								<input type="hidden" name="selectedTime" value="${mvo.selectedTime}">
+								<input type="hidden" name="selectedTime" value="${param.selectedTime}">
 							</form>
 						</c:otherwise>
 					</c:choose>

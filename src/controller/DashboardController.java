@@ -23,6 +23,7 @@ public class DashboardController implements Controller{
 //		String userId ="myId1";
 //		int selectedTime=2;
 		
+		System.out.println("DashboardController에서 selectedTime:"+selectedTime);
 		
 	
 		
@@ -32,8 +33,8 @@ public class DashboardController implements Controller{
 		
 		
 		//해당 userId 해당하는 selectedTime에 해당하는 같은 그룹(groupColor) count 수
-//		System.out.println("vo.getSelectedTime():"+vo.getSelectedTime());
-//		System.out.println("vo.getgroupColor():"+vo.getgroupColor());
+    	System.out.println("vo.getSelectedTime():"+vo.getSelectedTime());
+		System.out.println("vo.getgroupColor():"+vo.getgroupColor());
 		
 		int count=MemberDAO.getInstance().getgroupColorCout(selectedTime, vo.getgroupColor());
 		
