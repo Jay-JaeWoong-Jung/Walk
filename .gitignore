@@ -3,3 +3,5 @@ webContent/META-INF/*
 .settings
 .classpath
 build/*
+*.bak
+.project

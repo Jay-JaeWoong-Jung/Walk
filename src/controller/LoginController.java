@@ -19,15 +19,35 @@ public class LoginController implements Controller {
 		System.out.println(userId + ", " + userPass);
 		
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
-		System.out.println("vo:"+vo);
-		
+
 		if (vo.getUserId() == null) {
-			///// 세션 생성,바인딩/////
-			System.out.println("널 입성2");
-			return new ModelAndView("main.jsp",true);
 			
-	
-		}else{
+			return new ModelAndView("main.jsp",true);
+		/*	/////// 쿠키 생성/////////
+			Cookie cookie = new Cookie("userId", userId);
+			cookie.setMaxAge(60 * 60 * 24 * 15);// 15일 저장
+			response.addCookie(cookie);
+			response.sendRedirect("cookieLoginConfirm.jsp");
+			String id = "";
+			try {
+				Cookie[] cookies = request.getCookies();
+
+				if (cookies != null) {
+					for (int i = 0; i < cookies.length; i++) {
+						if (cookies[i].getName().equals("userId")) {
+							id = cookies[i].getValue();
+						}
+					}
+					if (id.equals("")) {
+						response.sendRedirect("main.jsp");
+					}
+				} else {
+					response.sendRedirect("main.jsp");
+				}
+			} catch (Exception e) {
+			}
+*/
+		}else {
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", vo);
 			return new ModelAndView("main.jsp",true);
