@@ -5,3 +5,4 @@ webContent/META-INF/*
 build/*
 *.bak
 .project
+bin/*

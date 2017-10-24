@@ -58,13 +58,14 @@
 			</li>
 			<li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
 
-			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar"><c:choose>
-				<!-- 로그인 상태라면 -->
+			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
+			<c:choose>
+				
 					<c:when test="${mvo.userId != null}">
 						<a href="#" data-toggle="modal" data-target="#signUp "
 							id="regForm">${mvo.userId}님 </a>
 					</c:when>
-				<!-- 로그인 상태가 아니라면  -->
+				
 					<c:otherwise>
 						<a class="nav-link" href="#" data-toggle="modal"
 							data-target="#signUp " id="regForm">회원가입 </a>
@@ -74,14 +75,14 @@
 
 				<c:choose>
 					<c:when test="${mvo.userId != null}">
-						<!-- 로그인 상태라면 -->
+						
 						<a class="nav-link"
 							href="DispatcherServlet?command=logout&userId=${mvo.userId}"
 							data-toggle="modal" id="login"> 로그아웃</a>
 
 					</c:when>
 					<c:otherwise>
-						<!-- 로그인 상태가 아니라면  -->
+						
 						<a class="nav-link" href="#signIn" data-toggle="modal"
 							data-target="#signIn" id="login">로그인</a>
 
