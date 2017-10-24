@@ -4,4 +4,9 @@ webContent/META-INF/*
 .classpath
 build/*
 *.bak
+<<<<<<< HEAD
 .project
+=======
+.project
+bin/*
+>>>>>>> origin/blog

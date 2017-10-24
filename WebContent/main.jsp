@@ -118,7 +118,7 @@ alert("로그인에 실패하였습니다.");
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#pricing">PRICING</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
-					href="#contact">CONTACT</a></li>
+					href="DispatcherServlet?command=todayDate&userId=${mvo.userId}">게시판보기</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
 						<c:when test="${mvo.userId != null}">
 							<a href="#" data-toggle="modal" id="regForm">${mvo.userId}님 </a>

@@ -14,6 +14,7 @@ public class HandlerMapping {
 		Controller controller = null;
 
 
+
 		
 		if(command.equals("reserve")){
 
@@ -39,6 +40,20 @@ public class HandlerMapping {
 			controller = new StopWatchController();
 		}else if (command.equals("finishTime")) {
 			controller = new StopWatchController();
+			
+			
+		}else if(command.equals("write")) {
+			controller = new WriteController();		
+		}else if(command.equals("list") || command.equals("date")) {
+			controller = new ListController();
+		}else if(command.equals("deletePosting")) {
+			controller = new DeletePostingController();
+		}else if(command.equals("editContent")) {
+			controller = new EditContentController();
+		}else if(command.equals("todayDate")) {
+			controller = new TodayDateController();
+		}else if(command.equals("checkId")) {
+			controller = new CheckIdController();
 		}
 		System.out.println("handler 입성"+controller+"컨트롤러 객체 생성");
 		return controller;
