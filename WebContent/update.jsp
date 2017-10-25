@@ -220,7 +220,7 @@
 						</div>
 						<div class="col-xs-7">
 							<input type="text" name="emailId" class="form-control" id="InputEmailId"
-								aria-describedby="emailHelp" placeholder="Email" required>
+								aria-describedby="emailHelp" value="${mvo.emailId}">
 						</div>
 						<div>
 						
@@ -229,7 +229,7 @@
 						
 								
 							<span id="emailChange">
-								<select class="selectpicker" name="emailAdd" id="InputSelectedEmail"   onchange="changeFunc();">
+								<select class="selectpicker" name="emailAdd" id="InputSelectedEmail"  value="${mvo.emailAdd}"  onchange="changeFunc();">
 									
 									<option value="@naver.com">@naver.com</option>
 									<option value="@nate.com">@nate.com</option>
