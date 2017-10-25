@@ -9,7 +9,7 @@
 </head>
 <c:choose>
 	<c:when test="${updateResult == '1' }">
-		<meta http-equiv="Refresh" content="3;url=main.jsp">
+		<meta http-equiv="Refresh" content="3;url=newMain.jsp">
 	</c:when>
 	<c:otherwise>
 		<meta http-equiv="Refresh"

@@ -155,7 +155,7 @@
 		
 		
 		
-		  <% 
+	<%-- 	  <% 
 		 
 		System.out.println("첫 쓰레드이름:"+Thread.currentThread().getName());
 		String threadName= Thread.currentThread().getName();
@@ -184,7 +184,7 @@
 		
 		th.start();
 		}
-		  	%>  
+		  	%>   --%>
 		  		
 	
 						var currentsec = 0;

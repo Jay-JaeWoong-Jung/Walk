@@ -14,7 +14,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:import url="./navbar.jsp"></c:import>
+<%@ include file="./navbar.jsp"%>
+
+	
 	<div class="container-fluid">
 		<img class="mx-auto d-block"
 			src="./image/Healthcare-Medical-Heart-icon.png">

@@ -39,7 +39,6 @@
 	$('.selectpicker').selectpicker('refresh');
 	
 	
-	
 </script>
 
 <script>
@@ -76,6 +75,8 @@ function checkLogin(){
 <script>
 alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 </script>
+
+
 </c:if>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
@@ -124,15 +125,19 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 				<li data-toggle="collapse" data-target="#myNavbar">
 				
 				<c:choose>
-						<c:when test="${mvo.userId != null}"> <!-- 로그인 상태라면 -->
+						<c:when test="${mvo.userId != null}"> 
 							<a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
 								data-toggle="modal"  id="login"> 로그아웃</a>
-
+						<script>
+						alert("로그아웃 클릭후");
+						</script>
 						</c:when>
 						<c:otherwise> 
 							
 							<a href="#signIn" data-toggle="modal" data-target="#signIn" id="login">로그인</a>
-		
+						<script>
+						alert("로그인후");
+						</script>
 						</c:otherwise>
 				</c:choose>
 

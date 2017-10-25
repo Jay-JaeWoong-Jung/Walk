@@ -27,6 +27,8 @@ public class LoginController implements Controller {
 		System.out.println(userId + ", " + userPass);
 
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
+
+
 		if(vo.getUserId() != null) {
 			HttpSession session =request.getSession();
 			session.setAttribute("mvo", vo);
@@ -43,7 +45,7 @@ public class LoginController implements Controller {
 				response.addCookie(cookie);
 				System.out.println("쿠키 생성 및 밸류"+vo.getUserId());
 				
-				return new ModelAndView("main.jsp",true);
+				return new ModelAndView("newMain.jsp",true);
 				
 			}else{
 				Cookie[] cookies=request.getCookies();
@@ -57,9 +59,11 @@ public class LoginController implements Controller {
 				}
 				
 			}
-			return new ModelAndView("main.jsp",true);
+
+			return new ModelAndView("newMain.jsp",true);
+
 		}else {
-			return new ModelAndView("main.jsp?loginfail=true",true);
+			return new ModelAndView("newMain.jsp?loginfail=true",true);
 		}
 		
 	}
