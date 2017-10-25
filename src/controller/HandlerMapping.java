@@ -9,6 +9,7 @@ import controller.board.WriteController;
 import controller.dashboard.DashboardController;
 import controller.dashboard.StopWatchController;
 import controller.member.CheckIdController;
+import controller.member.CookieConfirmController;
 import controller.member.DeleteController;
 import controller.member.IdCheckController;
 import controller.member.LoginController;
@@ -32,7 +33,6 @@ public class HandlerMapping {
 		Controller controller = null;
 
 
-
 		if(command.equals("reserve")){
 			controller = new ReserveController();
 		} else if (command.equals("dashboard")) {
@@ -54,7 +54,9 @@ public class HandlerMapping {
 		}else if (command.equals("startTime")) {
 			controller = new StopWatchController();
 		}else if (command.equals("finishTime")) {
-			controller = new StopWatchController();
+			controller = new StopWatchController();	
+		}else if (command.equals("cookieConfirm")) {
+			controller = new CookieConfirmController();
 			
 			
 		}else if(command.equals("write")) {
