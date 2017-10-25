@@ -21,6 +21,17 @@ public class LogoutController implements Controller {
 //		session.setAttribute("mvo", vo);
 //		System.out.println("무효 안함!2");
 		
+		
+//		Cookie[] cookies=request.getCookies();
+//		if (cookies!=null) {
+//			for (int i = 0; i < cookies.length; i++) {
+//				if (cookies[i].getName().equals("userId")) {
+//					cookies[i].setMaxAge(0);
+//					response.addCookie(cookies[i]);
+//				}
+//			}
+//		}
+		
 		session.invalidate();
 		/*//////쿠키추가////////
 		Cookie[] cookies=request.getCookies();

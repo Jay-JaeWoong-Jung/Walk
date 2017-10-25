@@ -14,7 +14,7 @@ public class HandlerMapping {
 		Controller controller = null;
 
 
-
+		
 		
 		if(command.equals("reserve")){
 
@@ -39,7 +39,9 @@ public class HandlerMapping {
 		}else if (command.equals("startTime")) {
 			controller = new StopWatchController();
 		}else if (command.equals("finishTime")) {
-			controller = new StopWatchController();
+			controller = new StopWatchController();	
+		}else if (command.equals("cookieConfirm")) {
+			controller = new CookieConfirmController();
 			
 			
 		}else if(command.equals("write")) {

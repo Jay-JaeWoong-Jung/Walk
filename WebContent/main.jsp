@@ -65,29 +65,12 @@ function checkLogin(){
 }
 
 
-//아이디 중복 확인 처리
-
-
-
-
-/* 
-function idCheck() {
-		var userId = $('#InputId').val();
-		$('input[name=doubleCheck]').val("true");
-	if (userId == "") {
-		alert("아이디를 입력해 주세요.");
-		document.regForm.userId.focus();
-	} else {
-		
-		url = "DispatcherServlet?userId="+userId+"&&command=idCheck";
-		window.open(url, "", "width=300,height=150");
-	}
-} */
 
 
 </script>
 
 </head>
+
 
 <c:if test="${param.loginfail =='true'}">
 <script>
@@ -242,6 +225,7 @@ function inputCheck() {
 
 
 </script>
+
 
 
 	<div class="modal fade " id="signUp" tabindex="-1" role="dialog">
@@ -446,22 +430,45 @@ function inputCheck() {
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
-								class="form-control" id="loginId" placeholder="아이디"  name="userId" value="<c:if test="${retainId !='null'}"><c:out value="${retainId}"></c:out></c:if>">
+								class="form-control" id="loginId" placeholder="아이디"  name="userId" value="">
 
-
+<%-- <c:if test="${retainId !='null'}"><c:out value="${retainId}"></c:out></c:if> --%>
 
 						</div>
-
+				<script>
+				$('#login').click(function() {
+					
+					
+					
+						
+					
+					 var param = "command=cookieConfirm";
+					
+					
+					
+					$.ajax({
+						type: "post",
+						url: "DispatcherServlet",
+						data: param,
+						success: function(result){
+							
+							$("#loginId").val(result);
+						}
+					}); 
+					
+				})
+				</script>
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="loginPass"
-								placeholder="비밀번호" name="userPass" value="<c:if test="${retainPass !='null'}"><c:out value="${retainPass}"></c:out></c:if>" >
-						
+								placeholder="비밀번호" name="userPass" value="" >
+						<%-- <c:if test="${retainPass !='null'}"><c:out value="${retainPass}"></c:out></c:if> --%>
 						</div>
+						
 
 						<div class="form-check">
 							<label class="form-check-label"> <input type="checkbox"
-								class="form-check-input" value="y" name="retainId"> 로그인 유지
+								class="form-check-input" value="y" name="retainId"> 아이디 기억
 							</label>
 						</div>
 					</div>
@@ -480,7 +487,7 @@ function inputCheck() {
 	</div>
 
 	<div class="jumbotron text-center">
-		<h1>Company</h1>
+		<h1>Company</h1> 
 		<p>We specialize in blablabla</p>
 		<form>
 			<div class="input-group">
