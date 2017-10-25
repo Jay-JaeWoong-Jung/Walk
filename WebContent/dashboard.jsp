@@ -273,7 +273,7 @@
 	    <p class="display-4 text-center">그룹색상</p>
 	    <p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
 	    <a href="#">
-		<img class="card-image rounded mx-auto d-block" src="./pic/zoom_in.png" alt="Card image">
+		<img class="card-image rounded mx-auto d-block" src="./iamge/zoom_in.png" alt="Card image">
 		</a>
 	</div>
 

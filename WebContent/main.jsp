@@ -101,9 +101,6 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="profile.jsp">프로필</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
-<<<<<<< HEAD
-					href="DispatcherServlet?command=todayDate">게시판 보기</a></li>
-=======
 					href="#pricing"  class="dropdown-item" onclick="reserveGo()">예약하기</a>
 					<script>
 						function reserveGo(){
@@ -112,7 +109,6 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						</script>	
 					
 				</li>
->>>>>>> 82c3d7f900a8929b272bcfba814c0a4e782af95c
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#contact">CONTACT</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
@@ -124,22 +120,24 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							<a href="#" data-toggle="modal" data-target="#signUp "
 								id="regForm">회원가입 </a>
 						</c:otherwise>
-
 					</c:choose>
 				</li>
 				<li data-toggle="collapse" data-target="#myNavbar">
 				
 				<c:choose>
 						<c:when test="${mvo.userId != null}"> 
-
 							<a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
 								data-toggle="modal"  id="login"> 로그아웃</a>
-
+						<script>
+						alert("로그아웃 클릭후");
+						</script>
 						</c:when>
 						<c:otherwise> 
 							
 							<a href="#signIn" data-toggle="modal" data-target="#signIn" id="login">로그인</a>
-		
+						<script>
+						alert("로그인후");
+						</script>
 						</c:otherwise>
 				</c:choose>
 
@@ -508,15 +506,8 @@ function inputCheck() {
 	</div>
 
 	<div class="jumbotron text-center">
-<<<<<<< HEAD
-
-		<h1>Company</h1> 
-
-		<p>We specialize in blablabla</p>
-=======
 		<h1>Walk & Talk</h1> 
 		<p>Social Activity Platform</p>
->>>>>>> 82c3d7f900a8929b272bcfba814c0a4e782af95c
 		<form>
 			<div class="input-group">
 				<input type="email" class="form-control" size="50"

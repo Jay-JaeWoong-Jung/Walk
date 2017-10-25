@@ -11,8 +11,9 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="#"><img src="./image/logo2.png" class="img-square"
-										alt="./image/logo2.png" width="100%" ></a>
+
+		class="navbar-brand" href="#"><img src="./image/footstep.svg" style="width: 50px;"></a>
+
 
 	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
 		<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
@@ -85,9 +86,12 @@
 				<c:choose>
 					<c:when test="${mvo.userId != null}">
 						
-						<a class="nav-link"
-							href="DispatcherServlet?command=logout&userId=${mvo.userId}"
-							data-toggle="modal" id="login"> 로그아웃</a>
+						<a class="nav-link" onclick="logout()"> 로그아웃</a>
+							<script type="text/javascript">
+								function logout() {
+									location.href="DispatcherServlet?command=logout&userId=${mvo.userId}";
+								}
+							</script>
 
 					</c:when>
 					<c:otherwise>
