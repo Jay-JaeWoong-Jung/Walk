@@ -162,7 +162,7 @@ body {
 									data-toggle="modal" data-target="#${bvo.no}">
 									<span class="oi oi-pencil" style="color: blue"></span>
 								</button> -->
-								<a href="#" name="edit" class="btn btn-primary-xs active"
+								<a href="DispatcherServlet?command=checkId" name="edit" class="btn btn-primary-xs active"
 									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color: blue"></span></a>
 								
 								<!-- *************************** Start Modal ******************************  -->

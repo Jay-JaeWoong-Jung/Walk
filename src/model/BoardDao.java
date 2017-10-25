@@ -192,6 +192,7 @@ public class BoardDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
 		try {
 			conn = getConnection();
 			ps = conn.prepareStatement(StringQuery.SELECT_POSTINGBYID);
@@ -200,7 +201,7 @@ public class BoardDao {
 			while(rs.next()) {
 				list.add(new BoardVO(
 						rs.getInt("no"), 
-						rs.getString("userId"), 
+						userId, 
 						rs.getString("content"),
 						rs.getString("timePosted")));
 							

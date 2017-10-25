@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BoardDao;
-import model.BoardVO;
+
 
 public class CheckIdController implements Controller {
 
@@ -21,7 +21,7 @@ public class CheckIdController implements Controller {
 		flag = BoardDao.getInstance().checkId(no, userId);
 		
 		if(flag==true) {
-			path = "DispathcerServlet?command=editContent";
+			path = "blog_show_list.jsp?#${bvo.no}";
 		}
 		
 		return new ModelAndView(path,true);

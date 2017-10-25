@@ -20,7 +20,7 @@ public class ListByIdController implements Controller {
 		
 		request.setAttribute("list",rlist );
 		
-		return new ModelAndView( "blog_show_list.jsp");
+		return new ModelAndView("blog_show_list.jsp");
 	}
 
 }

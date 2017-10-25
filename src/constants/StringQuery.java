@@ -57,7 +57,7 @@ public interface StringQuery {
 	
 	String SELECT_POSTINGBYID = 
 			"SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted"
-			+ " FROM board WHERE userId='?' order by no";
+			+ " FROM board WHERE userId=? order by no";
 	
 	
 
