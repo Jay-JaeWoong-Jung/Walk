@@ -205,8 +205,8 @@ public class MemberDAO {
 			pstmt.setInt(8, vo.getSelectedTime());
 			pstmt.setString(9, vo.getEmailAccept());
 			pstmt.setString(10, vo.getProfile());
-
-			pstmt.setString(11, vo.getUserId());
+			pstmt.setInt(11, vo.getGender());
+			pstmt.setString(12, vo.getUserId());
 			
 			result = pstmt.executeUpdate();
 			System.out.println("updateMember OK..." + result);

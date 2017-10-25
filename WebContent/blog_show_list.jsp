@@ -114,18 +114,23 @@ body {
 	
 			<div class="container-fluid" style="padding:30px 10px 10px 0px">
 				<div class="row">
-					<div class="col-8">
-						<a href="DispatcherServlet?command=todayDate">
-						<span class="oi oi-align-center" style="font-size:20px;color:blue"></span>
-						Today</a>
+				<div class="col-1">
+										
+				</div>
+					<div class="col-6">
+						<a  href="main.jsp" class ="btn btn-primary" ><span class="oi oi-home" style="font-size:25px"></span></a>
+						&nbsp;&nbsp;
+						<a  href="DispatcherServlet?command=todayDate" class ="btn btn-primary" ><span class="oi oi-align-center" style="font-size:20px;"></span>
+						&nbsp;Today</a></a>
 						&nbsp;&nbsp;
 						
-						<a href="DispatcherServlet?command=listById">
-						<span class="oi oi-chat" style="font-size:20px;color:warning">					
-						</span>내가 쓴글</a>
+						
+						<a  href="DispatcherServlet?command=listById" class ="btn btn-primary" ><span class="oi oi-chat" style="font-size:20px;"></span>
+						&nbsp;내가 쓴글</a></a>
+						
 						
 				
-					</div>		
+					</div>	
 				
 				
 				<!-- **************** Start Calendar ******************** -->
@@ -133,8 +138,9 @@ body {
 						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
 					
 							<span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;						
-							<input type="text" id="datepicker" name="date">&nbsp;
-							<!--  <input type="submit" class="btn btn-primary" value="Search" id="sendBtn" onclick="search_submit"> -->
+							<input type="text" id="datepicker" value="Select Date" name="date" onclick="this.value=null">&nbsp;
+						
+						
 						<a href="#" class ="btn btn-primary" onclick="search_submit()"  value="Search" id="sendBtn">search</a>
 							
 							<input type="hidden" name="command" value="list">
@@ -170,10 +176,11 @@ body {
 							<td>${bvo.timePosted}</td>
 							
 							<!-- *************************** Edit ******************************  -->
-							<td><!-- <button name="edit" type="button" class="btn btn-primary-xs active"
-									data-toggle="modal" data-target="#${bvo.no}">
-									<span class="oi oi-pencil" style="color: blue"></span>
-								</button> -->
+					<c:choose>
+						<c:when test="${mvo.userId==bvo.userId}">
+						
+						
+							<td>
 								<a href="#" name="edit" class="btn btn-primary-xs active"
 									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color: blue"></span></a>
 								
@@ -203,15 +210,7 @@ body {
 												data-dismiss="modal">Close</button>
 										</div>		
 											 <script type="text/javascript">
-											 /* function sumbit_Edit(bvono,bvocontent,bvotime){
-												 	
-													var number = bvono
-													var content = bvocontent
-													var time = bvotime
-													location.href="DispatcherServlet?command=editContent&&no="+number
-															+"&&content="+content
-															+"&&date="+time;
-												} */
+											
 
 												$(document).ready(function () {
 													$('#${bvo.no}clickBtn').click(function () {
@@ -237,11 +236,7 @@ body {
 															
 						<td>
 							
-							<!-- <button name="delete" type="button" class="btn btn-primary-xs active"
-									data-toggle="modal" data-target="#${bvo.no}delete">
-									<span class="oi oi-trash" style="color: blue"></span>
-									
-								</button> -->
+							
 							<a href="#" name="delete" class="btn btn-primary-xs active"
 									data-toggle="modal" data-target="#${bvo.no}delete" ><span class="oi oi-trash" style="color: blue"></span></a>
 							
@@ -284,7 +279,14 @@ body {
 							<!-- *************************** End Modal ******************************  -->
 							
 						</td>	
+						</c:when>
+						<c:otherwise>
+						<td colspan="2">
+						
+						</td>
 							
+						</c:otherwise>
+					</c:choose>	
 
 
 						</tr>
@@ -293,38 +295,34 @@ body {
 				</table>
 				<p>
 			</div>
-			<!-- **************** Start Calendar ********************  -->
 			
-
-			<!-- **************** End Calendar ********************  -->
 		</div>
 		
 		<!-- *************************** Start Write Form ******************************  -->
-	<div class="container" style="padding-top: 30px">
+	<div class="container-fluid" style="padding-top: 30px" align="center">
 		<div class="col-12">
 			<form action="DispatcherServlet" method="post" name="write_form">
 				<input type="hidden" name="command" value="write">
 				<input type="hidden" name="userId" value="${mvo.userId}">
 				
-				<table align="center" width="500px">
+				<table align="center" width="700px">
 					
 
 					<tr>
-						<td width="15%">Comment</td>
-						<td colspan="3"><input type="text" name="content" maxlength="100" size="100"></td><br>
+						<td width="15%"><span class="oi oi-double-quote-serif-left"></span></td>
+											
+						
+						<td colspan="3">&nbsp;<input type="text"  name="content" maxlength="100" size="100">&nbsp;</td>
+						<td><span class="oi oi-double-quote-serif-right"></span></td>
 					</tr>
 					
 					<tr>
-			
+						
 						<td colspan="4" align="center">
-							<!-- <button type="button" class="btn btn-primary btn-block" onclick="content_submit()">
-								Write <span class="oi oi-check" ></span>
-							</button> -->
-							<a href="#" class ="btn btn-primary btn-block" onclick="content_submit()">Write<span class="oi oi-check" ></span></a>
+							
+							<br><a href="#" class ="btn btn-primary btn-block" onclick="content_submit()">Write<span class="oi oi-check" ></span></a>
 							<br>
-							<!-- <button type="button" class="btn btn-default-lg  pull-right">
-								Cancel <span class="oi oi-trash" onclick="cancel()"></span>
-							</button> -->
+							
 							<a href="#" class="btn btn-warning"  onclick="cancel()">Reset <span class="oi oi-trash" onclick="cancel()"></span></a>
 							<br><br><br>
 

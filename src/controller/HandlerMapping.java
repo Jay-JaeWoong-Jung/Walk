@@ -46,8 +46,6 @@ public class HandlerMapping {
 			controller = new EditContentController();
 		}else if(command.equals("todayDate")) {
 			controller = new TodayDateController();
-		}else if(command.equals("checkId")) {
-			controller = new CheckIdController();
 		}else if(command.equals("listById")) {
 			controller = new ListByIdController();
 			System.out.println("ListByIdController 생성됬습니다..");
@@ -60,7 +58,12 @@ public class HandlerMapping {
 		Controller controller = null;
 
 
+<<<<<<< HEAD
+		
+		
+=======
 
+>>>>>>> f92317ac05d02b85544ba144d2b8ac900362ee0c
 		if(command.equals("reserve")){
 			controller = new ReserveController();
 		} else if (command.equals("dashboard")) {
@@ -82,7 +85,9 @@ public class HandlerMapping {
 		}else if (command.equals("startTime")) {
 			controller = new StopWatchController();
 		}else if (command.equals("finishTime")) {
-			controller = new StopWatchController();
+			controller = new StopWatchController();	
+		}else if (command.equals("cookieConfirm")) {
+			controller = new CookieConfirmController();
 			
 			
 		}else if(command.equals("write")) {
