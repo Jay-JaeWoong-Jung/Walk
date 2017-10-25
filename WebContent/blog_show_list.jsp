@@ -85,8 +85,15 @@ $(function (){
 </script>
 <style>
 body {
-	background-color: skyblue;
-	font: coiny;
+/* 	background-color: skyblue;
+ */	font-family: bmjua;
+	background-image: linear-gradient(180deg,#fb4d7d,#ff7556);
+	
+}
+
+@font-face {
+	font-family: bmjua;
+	src: url(./css/font/BMJUA_ttf.ttf);
 }
 
 </style>
@@ -104,29 +111,32 @@ body {
 	
 
 	<!-- **********************Start Main list Table ****************************-->
-	<div class="container-fluid">
+	<div class="container-fluid" style="padding:10px;">
 		<div class="row">
 			<div class="col-12">
-				<h1 align="left" class="display-3">
+				<h1 align="center" class="display-3" style="color:white;">
 					<b>Comment</b>
 				</h1>
 				
 	
 			<div class="container-fluid" style="padding:30px 10px 10px 0px">
 				<div class="row">
-				<div class="col-1">
-										
-				</div>
+				
 					<div class="col-6">
-						<a  href="main.jsp" class ="btn btn-primary" ><span class="oi oi-home" style="font-size:25px"></span></a>
-						&nbsp;&nbsp;
-						<a  href="DispatcherServlet?command=todayDate" class ="btn btn-primary" ><span class="oi oi-align-center" style="font-size:20px;"></span>
-						&nbsp;Today</a></a>
-						&nbsp;&nbsp;
+					&nbsp;
+						<div class="btn-group btn-group-lg" >
+						<a  href="newMain.jsp" class ="btn btn-danger" ><span class="oi oi-home" style="font-size:25px"></span></a>
+						
+						<a  href="DispatcherServlet?command=todayDate" class ="btn btn-danger" ><span class="oi oi-align-center" style="font-size:20px;"></span>
+						&nbsp;Today</a>
+					
 						
 						
-						<a  href="DispatcherServlet?command=listById" class ="btn btn-primary" ><span class="oi oi-chat" style="font-size:20px;"></span>
-						&nbsp;내가 쓴글</a></a>
+						<a  href="DispatcherServlet?command=listById" class ="btn btn-danger" ><span class="oi oi-chat" style="font-size:20px;"></span>
+						&nbsp;내가 쓴글</a>
+						
+						 
+  						</div>
 						
 						
 				
@@ -134,78 +144,81 @@ body {
 				
 				
 				<!-- **************** Start Calendar ******************** -->
-					<div class="col-4">
+				 <div class="col-6">
+					 <div class="btn-group btn-group-lg">
 						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
-					
-							<span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;						
-							<input type="text" id="datepicker" value="Select Date" name="date" onclick="this.value=null">&nbsp;
+						<input type="text" id="datepicker" value="Select Date" 
+						name="date" onclick="this.value=null" class="btn btn-danger" style="font-size:20px;">
 						
-						
-						<a href="#" class ="btn btn-primary" onclick="search_submit()"  value="Search" id="sendBtn">search</a>
-							
+					   <a href="#" class ="btn btn-danger" onclick="search_submit()"  value="Search" id="sendBtn">
+						 <span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;Search</a>	
+						 
 							<input type="hidden" name="command" value="list">
 					
 						</form>
 					</div>
+				  </div>
 				</div>
 			<!-- **************** End Calendar ********************  -->
 		
 			</div>
 				
  			
-	
+			<div class="container-fluid"></div>
 				<table class="table table-hover table-bordered">
 					<thead>
-						<tr class="text-center">
-							<th width="5%" class="text-center">#</th>
-							<th width="60%" class="text-center">Content</th>
-							<th width="15%" class="text-center">userId</th>
-							<th width="15%" class="text-center">Date</th>
-							<td colspan="2"></td>
+						<tr class="text-center" style="font-size:30px;">
+							<th width="15%" class="text-center">번호</th>
+							<th width="40%" class="text-center">내용</th>
+							<th width="20%" class="text-center">글쓴이</th>
+							<th width="15%" class="text-center">날짜</th>
+							<th width="10%" class="text-center">설정</th>
 
 						</tr>
 					</thead>
 					
 				<c:forEach var="bvo" items="${requestScope.list}" varStatus="i">
-						<tr class="table-info">
+						<tr class=" text-center" style="font-size:25px;">
 
-							<%-- <td><%i++;%><%=i %></td> --%>
+							
 							<td>${i.count}</td>
-							<td>${bvo.content}</td>
+							<td style="font-size:30px;" align="left">${bvo.content}</td>
 							<td>${bvo.userId}</td>
 							<td>${bvo.timePosted}</td>
 							
 							<!-- *************************** Edit ******************************  -->
+
 					<c:choose>
 						<c:when test="${mvo.userId==bvo.userId}">
 						
 						
-							<td>
-								<a href="#" name="edit" class="btn btn-primary-xs active"
-									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color: blue"></span></a>
+							<td colspan="2">
+						
+								<a href="#" name="edit" class="btn btn-danger"
+
+									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color:white; font-size:30px;"></span></a>
 								
 								<!-- *************************** Start Modal ******************************  -->
 								
 						
 							<div class="modal fade" id="${bvo.no}" tabindex="-1" role="dialog" >
 								<div class="modal-dialog" role="document">
-									<div class="modal-content">
+									<div class="modal-content" style="background-color:#F08080;">
 										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">edit!</h5>
+											<h5 class="modal-title" id="exampleModalLabel"><img src="./image/footstep.svg" style="width: 40px;"></h5>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										  <div class="modal-body">Edit Content
+										  <div class="modal-body">내용을 수정해주세요
 											<input type="text" value="${bvo.content}" id="${bvo.no}content"
-											name="content" maxlength="200" size="50" id="updateContent">
+											name="content" maxlength="60" size="60" id="updateContent" style="font-size:25px;width:450px;">
 										  </div>
 									
 										<div class="modal-footer">
-											<%-- <button type="button" class="btn btn-primary"
-												onclick="sumbit_Edit('${bvo.no}','${bvo.timePosted}')">Edit</button> --%>
-												<button class="btn btn-primary" id="${bvo.no}clickBtn">Edit</button>
+											
+												<button class="btn" id="${bvo.no}clickBtn" style="background-color:#FFA07A; color:white;">Edit</button>
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Close</button>
 										</div>		
@@ -231,34 +244,35 @@ body {
 							
 							<!-- *************************** End Modal ******************************  -->
 								
-								</td>
+							
 								<!-- *************************** Delete ******************************  -->
 															
-						<td>
+					
 							
-							
-							<a href="#" name="delete" class="btn btn-primary-xs active"
-									data-toggle="modal" data-target="#${bvo.no}delete" ><span class="oi oi-trash" style="color: blue"></span></a>
+						<p><p>
+							<a href="#" name="delete" class="btn btn-danger"
+									data-toggle="modal" data-target="#${bvo.no}del"><span class="oi oi-trash" style="color:white; font-size:30px;"></span></a>
+								
 							
 							
 								<!-- *************************** Start Modal ******************************  -->
 								
 								
 						
-							<div class="modal fade" id="${bvo.no}delete" tabindex="-1"
+							<div class="modal fade" id="${bvo.no}del" tabindex="-1"
 								role="dialog" >
 								<div class="modal-dialog" role="document">
-									<div class="modal-content">
+									<div class="modal-content" style="background-color:#F08080;">
 										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">Delete!</h5>
+											<h5 class="modal-title" id="exampleModalLabel"><img src="./image/footstep.svg" style="width: 40px;"></h5>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<div class="modal-body">Really??????</div>
+										<div class="modal-body">정말로 삭제하시겠습니까?</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-primary"
+											<button type="button" class="btn" style="background-color:#FFA07A; color:white;"
 
 												onclick="sumbit_Delete('${bvo.no}','${bvo.timePosted}')">OK</button>
 
@@ -279,7 +293,7 @@ body {
 								</div>
 							</div>
 							<!-- *************************** End Modal ******************************  -->
-							
+						
 						</td>	
 						</c:when>
 						<c:otherwise>
@@ -297,51 +311,50 @@ body {
 				</table>
 				<p>
 			</div>
-			
+		  </div>	
 		</div>
 		
 		<!-- *************************** Start Write Form ******************************  -->
-	<div class="container-fluid" style="padding-top: 30px" align="center">
-		<div class="col-12">
-			<form action="DispatcherServlet" method="post" name="write_form">
-				<input type="hidden" name="command" value="write">
-				<input type="hidden" name="userId" value="${mvo.userId}">
+			<div class="container-fluid" style="padding-top: 30px" align="center">
+				<div class="row">
+					<div class="col-12">
+						<form action="DispatcherServlet" method="post" name="write_form">
+							<input type="hidden" name="command" value="write"> <input
+								type="hidden" name="userId" value="${mvo.userId}"> <span
+								class="oi oi-double-quote-serif-left"></span> &nbsp;<input
+								type="text" name="content" maxlength="50" size="50" style="font-size:30px;width:600px; height:50px;"> 
+							<span class="oi oi-double-quote-serif-right"></span>
+						</form>
+						
+					</div><br><br><br>
+					
+					
+						  <div class="container" align="center">
+							<div class="row">
+							
+							<a href="#" class="btn  mx-auto btn-block"
+								onclick="content_submit()" style="font-size:35px; background-color:#FA8072; color:white;">글쓰기&nbsp;<span class="oi oi-check"></span></a>
+								
+						    </div><br>
+						  
+							 <a href="#" class="btn mx-auto" onclick="cancel()" style="font-size:30px; background-color:#F08080; color:white;">다시쓰기</a>
+							
+						 </div>
+							
+					
+					
 				
-				<table align="center" width="700px">
-					
+				</div>
+			
+			
 
-					<tr>
-						<td width="15%"><span class="oi oi-double-quote-serif-left"></span></td>
-											
-						
-						<td colspan="3">&nbsp;<input type="text"  name="content" maxlength="100" size="100">&nbsp;</td>
-						<td><span class="oi oi-double-quote-serif-right"></span></td>
-					</tr>
-					
-					<tr>
-						
-						<td colspan="4" align="center">
-							
-							<br><a href="#" class ="btn btn-primary btn-block" onclick="content_submit()">Write<span class="oi oi-check" ></span></a>
-							<br>
-							
-							<a href="#" class="btn btn-warning"  onclick="cancel()">Reset <span class="oi oi-trash" onclick="cancel()"></span></a>
-							<br><br><br>
-
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</div>
-
-	<!-- *************************** End Write Form ******************************  -->
+			<!-- *************************** End Write Form ******************************  -->
 		
 		
 		
 		
 		
-	</div>
+	
 	<!-- **********************End Main list Table ****************************-->
 
 	
