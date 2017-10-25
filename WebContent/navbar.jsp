@@ -11,7 +11,8 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="#">Logo</a>
+		class="navbar-brand" href="#"><img src="./image/logo2.png" class="img-square"
+										alt="./image/logo2.png" width="100%" ></a>
 
 	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
 		<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
