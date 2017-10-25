@@ -20,7 +20,7 @@ public class SevletContextListener implements ServletContextListener{
 
 		Timer timer = new Timer();
 		Calendar date1 = Calendar.getInstance();
-		date1.set(Calendar.HOUR_OF_DAY,19);
+		/*date1.set(Calendar.HOUR_OF_DAY,19);
 		date1.set(Calendar.MINUTE,34);
 		date1.set(Calendar.SECOND,5);
 		date1.set(Calendar.MILLISECOND,0);
@@ -63,7 +63,7 @@ public class SevletContextListener implements ServletContextListener{
 		date7.set(Calendar.HOUR_OF_DAY,23);
 		date7.set(Calendar.MINUTE,59);
 		date7.set(Calendar.SECOND,59);
-		date7.set(Calendar.MILLISECOND,0);
+		date7.set(Calendar.MILLISECOND,0);*/
 
 //		timer.schedule(new JobTimer(1), date1.getTime() ,60*1000);
 //		timer.schedule(new JobTimer(2), date2.getTime() ,60*1000);
