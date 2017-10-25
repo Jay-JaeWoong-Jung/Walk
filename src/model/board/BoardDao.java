@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import constants.StringQuery;
-import model.DataSourceManager;
+import dataSourceManager.DataSourceManager;
 
 
 
