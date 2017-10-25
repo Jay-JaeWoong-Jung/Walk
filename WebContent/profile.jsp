@@ -16,39 +16,48 @@
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript">
-function infoUpdate() {
-/* 	location.href="DispatcherServlet?command=infoUpdate&&userId=${mvo.userId}"; */
-  location.href="update.jsp?userId=${mvo.userId}";
- 
-}
-function setupdate() {
-  location.href="setting.jsp?userId=${mvo.userId}";
-	 
-	}
+	function infoUpdate() {
+		/* 	location.href="DispatcherServlet?command=infoUpdate&&userId=${mvo.userId}"; */
+		location.href = "update.jsp?userId=${mvo.userId}";
 
+	}
+	function setupdate() {
+		location.href = "setting.jsp?userId=${mvo.userId}";
+
+	}
 </script>
+
+
+
 <body>
 	<c:choose>
 		<c:when test="${mvo.userId != null}">
 			<div class="container" align="center">
-
 				<div class="row" align="center">
 					<div class="col-sm-4">
 						<h1>profile</h1>
 						<div class="thumbnail">
-							<img src="./image/default.png" class="img-circle"
-								alt="Cinque Terre" width="300" height="272"> <br> <br />
-							<b>${mvo.userId}님의 정보입니다.</b><br> <br />
+							<c:choose>
+								<c:when test="${mvo.profile != null}">
+									<img src="./upload/${mvo.profile}" class="img-circle"
+										alt="Cinque Terre" width="300" height="300" >
+								</c:when>
+								<c:otherwise>
+									<img src="./image/default.png" class="img-circle"
+										alt="Cinque Terre" width="300" height="272">
+								</c:otherwise>
+							</c:choose>
+							<br> <br /> <b>${mvo.userId}님의 정보입니다.${mvo.profile} </b><br> <br />
 						</div>
 						<div class="col-sm-6">
-							<span ><img src="./image/setting.png" class="img-circle"
-								alt="Cinque Terre" width="100" style="cursor:pointer;" onclick="setupdate()"></span>
-
+							<span><img src="./image/setting.png" class="img-circle"
+								alt="Cinque Terre" width="100" style="cursor: pointer;"
+								onclick="setupdate()"></span>
 						</div>
 						<div class="col-sm-6">
-							<span ><img src="./image/Info.png" class="img-circle"
-								alt="Cinque Terre" width="100" style="cursor:pointer;" onclick="infoUpdate()">
-							</span>
+							<span><img src="./image/Info.png" class="img-circle"
+								alt="Cinque Terre" width="100" style="cursor: pointer;"
+								onclick="infoUpdate()"> </span>
 						</div>
 					</div>
 				</div>
@@ -64,25 +73,26 @@ function setupdate() {
 							<h3>1 Week</h3>
 							<img alt="./image/1week.png" src="./image/1week.png" width="100%">
 							<p>지난 1주 동안 평균 ${weekAvg}분 걸었습니다.</p>
-							
+
 						</div>
 						<div id="1month" class="tab-pane fade">
 							<h3>1 Month</h3>
-								<img alt="./image/1week.png" src="./image/1month.png" width="100%">
+							<img alt="./image/1week.png" src="./image/1month.png"
+								width="100%">
 							<p>지난 1달 동안 평균 ${monthAvg}분 걸었습니다.</p>
-					
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</c:when>
 
-
 		<c:otherwise>
-			<div class="col-md-4">
-				<a href="main.jsp">로그인 후 이용하실 수 있습니다. </a>
-			</div>
+			<center>
+				<div class="col-md-4">
+					<a href="newMain.jsp"> <font size="5" face="바탕체"> <b>로그인
+								후 이용하실 수 있습니다.</b></font></a>
+				</div>
+			</center>
 		</c:otherwise>
 	</c:choose>
 </body>

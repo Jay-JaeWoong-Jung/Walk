@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BoardDao;
-import model.BoardVO;
+import model.board.BoardDao;
+import model.board.BoardVO;
 
 public class ListByIdController implements Controller {
 
