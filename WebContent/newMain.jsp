@@ -11,7 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="./css/newMain.css?ver=1">
+<link rel="stylesheet" href="./css/newMain.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,24 +19,25 @@
 <jsp:include page="navbar.jsp" />
 	
 	<div class="container-fluid">
-		<div class="row bg-1 ">
-			<h1 class="margin">건강도 챙기고</h1>
+		<img class="mx-auto d-block"
+			src="./image/Healthcare-Medical-Heart-icon.png">
+		<div class="row section ">
+			<h1 class="mx-auto">건강도 챙기고</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">정보교환도 하고</h1>
+
+		<img class="mx-auto d-block" src="./image/share.png">
+		<div class="row section ">
+			<h1 class="mx-auto">정보교환도 하고</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">친구도 사귀고</h1>
+
+		<img class="mx-auto d-block" src="./image/friend.png">
+		<div class="row section ">
+			<h1 class="mx-auto">친구도 사귀고</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">우리 같이 걸을래?</h1>
-		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">매일 20분 산책 프로잭트</h1>
-		</div>
-	
+			<h1 class="text-center">우리 같이 걸을래?</h1>
+			<h1 class="text-center">매일 20분 산책 프로잭트</h1>
 	</div>
-	
+
 
 
 

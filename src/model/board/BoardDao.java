@@ -93,6 +93,7 @@ public class BoardDao {
 		try {
 				
 			conn = getConnection();
+			System.out.println("getAllpostByDate...");
 			ps = conn.prepareStatement(StringQuery.PAGE_LIST);
 			ps.setString(1, date);
 			rs = ps.executeQuery();
@@ -192,6 +193,7 @@ public class BoardDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
 		try {
 			conn = getConnection();
 			ps = conn.prepareStatement(StringQuery.SELECT_POSTINGBYID);
@@ -200,7 +202,7 @@ public class BoardDao {
 			while(rs.next()) {
 				list.add(new BoardVO(
 						rs.getInt("no"), 
-						rs.getString("userId"), 
+						userId, 
 						rs.getString("content"),
 						rs.getString("timePosted")));
 							

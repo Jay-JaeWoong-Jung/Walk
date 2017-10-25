@@ -27,6 +27,8 @@ public class LoginController implements Controller {
 		System.out.println(userId + ", " + userPass);
 
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
+
+
 		if(vo.getUserId() != null) {
 			HttpSession session =request.getSession();
 			session.setAttribute("mvo", vo);
@@ -57,7 +59,9 @@ public class LoginController implements Controller {
 				}
 				
 			}
+
 			return new ModelAndView("newMain.jsp",true);
+
 		}else {
 			return new ModelAndView("newMain.jsp?loginfail=true",true);
 		}

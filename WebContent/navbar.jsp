@@ -5,15 +5,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="#"><img src="./image/logo2.png" class="img-square"
-										alt="./image/logo2.png" width="100%" ></a>
+
+		class="navbar-brand" href="#"><img src="./image/footstep.svg" style="width: 50px;"></a>
+
 
 	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
 		<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
@@ -74,8 +75,6 @@
 					<c:when test="${mvo.userId != null}">
 						<a href="#" data-toggle="modal" data-target="#signUp "
 							id="regForm">${mvo.userId}님 </a>
-							
-							
 					</c:when>
 				
 					<c:otherwise>
@@ -85,27 +84,24 @@
 				</c:choose></li>
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
 
-				
-					<c:if test="${mvo.userId != null}">
+				<c:choose>
+					<c:when test="${mvo.userId != null}">
 						
-							
-						<!-- <a class="nav-link" href="#signOut" data-toggle="modal"
-							data-target="#signOut" id="logOut">로그아웃</a> -->
-						
-						
-							
-					<%-- <a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
-								data-toggle="modal"  id="login"> 로그아웃</a> --%>
+						<a class="nav-link" onclick="logout()"> 로그아웃</a>
+							<script type="text/javascript">
+								function logout() {
+									location.href="DispatcherServlet?command=logout&userId=${mvo.userId}";
+								}
+							</script>
 
-					</c:if>
-					
-					<c:if test="${mvo  == null}">
+					</c:when>
+					<c:otherwise>
 						
 						<a class="nav-link" href="#signIn" data-toggle="modal"
 							data-target="#signIn" id="login">로그인</a>
-						
-					</c:if>
-				
+
+					</c:otherwise>
+				</c:choose>
 
 
 			</li>
@@ -118,8 +114,7 @@
 	</nav>
 
 	<!-- 회원가입 Modal -->
-	
-	
+
 	<script>
 function inputCheck() {
 	var userName = $('#InputName').val();
@@ -243,7 +238,7 @@ function inputCheck() {
 							</div>
 						</div>
 
-						 <script>
+						<script>
 						$("#InputId").keyup(function(){
 							
 							var userId=$("#InputId").val();
@@ -271,7 +266,7 @@ function inputCheck() {
 							
 						});
 						
-						</script> 
+						</script>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
@@ -421,17 +416,12 @@ function inputCheck() {
 								name="userId" >
 
 						</div>
-						 <script>
+						<script>
 							$('#login').click(function() {
 								
 								
-								
-									
-								
 								 var param = "command=cookieConfirm";
-								
-								
-								
+
 								$.ajax({
 									type: "post",
 									url: "DispatcherServlet",
@@ -440,7 +430,7 @@ function inputCheck() {
 										//공란이 있는가?  == 아이디 없다!  
 												
 										if(result.trim().charAt(1) != ""){
-											console.log("dddd")
+											
 											document.getElementById("IdRemember").checked = true;
 										}
 										$("#loginId").val(result);
@@ -476,38 +466,5 @@ function inputCheck() {
 			</div>
 		</div>
 	</div>
-	
-
-	
-	<!-- Sign-out Modal -->
-	<%-- <div class="modal fade m-t-5" id="signOut" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h3 class="modal-title">Log out</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<form action="DispatcherServlet" method="post" name="loginForm" id="loginForm" >
-					<div class="modal-body">
-						로그아웃  하시겠습니까?
-	
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" name="command" value="logout">
-						<input type="hidden" name="command" value="${mvo.userId}">
-						<button type="submit" class="btn btn-primary">로그아웃</button>
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">취소</button>
-					</div>
-				</form>
-
-
-
-			</div>
-		</div>
-	</div> --%>
 </body>
 </html>

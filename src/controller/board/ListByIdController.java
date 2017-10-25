@@ -10,19 +10,27 @@ import controller.Controller;
 import controller.ModelAndView;
 import model.board.BoardDao;
 import model.board.BoardVO;
+import model.member.MemberVO;
+
 
 public class ListByIdController implements Controller {
 
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//String userId =request.getParameter("userId");
+		
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
+		//System.out.println("$$$$$$ListByIdController....sessionid :: "+session.getId());
+		MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 		
-		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllPostById(userId);
 		
+		
+		System.out.println("==============================================111"+mvo.getUserId());
+		ArrayList<BoardVO> rlist=BoardDao.getInstance().getAllPostById(mvo.getUserId());
+		System.out.println("rlist출력````````````````````"+rlist);
 		request.setAttribute("list",rlist );
 		
-		return new ModelAndView( "blog_show_list.jsp");
+		return new ModelAndView("blog_show_list.jsp");
 	}
 
 }
