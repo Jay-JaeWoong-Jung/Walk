@@ -44,7 +44,8 @@ function setupdate() {
 						<c:choose>
 							<c:when test="${mvo.profile != null}">
 							
-								<img src="./upload/${mvo.profile}" class="img-circle"
+								<img src="./upload/${mvo.profile}" 
+								class="img-circle"
 								alt="Cinque Terre" width="300" height="272">
 							
 							</c:when>

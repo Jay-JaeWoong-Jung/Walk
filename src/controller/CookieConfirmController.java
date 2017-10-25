@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import model.MemberDAO;
 import model.MemberVO;
 
-public class LoginController implements Controller {
+public class CookieConfirmController implements Controller {
 
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -48,59 +48,9 @@
 		location.href = "delete.jsp?userId=${mvo.userId}";
 	}
 </script>
-<body>
-	<form action="DispatcherServlet?command=updateMember" method="post"
-		name="updateForm" onsubmit="return updateCheck()" id="updateForm"
-		enctype="multipart/form-data">
-
-		<div class="header" align="center">
-			<font size="5"> 회원 정보 수정</font>
-			<div>
-				<input type="hidden" name="command" value="updateMember">
-				<button type="submit" class="btn btn-primary" value="저장"
-					onclick="updateCheck()">저장</button>
-				<button type="button" class="btn btn-secondary"
-					onclick="updateClose()">취소</button>
-				<button type="button" class="btn btn-secondary"
-					onclick="deleteMember()">회원탈퇴</button>
-			</div>
-
-		</div>
-		<hr>
-
-		
-
- 
-		<div class="form-group">
-					<label for="profile">프로필 사진</label> <input type="file"
-						name="file" class="form-control" id="InputProfile">
-
-				</div> 
 
 
-				<div class="form-group">
-					<label for="id">이름</label> <input type="text" name="userName"
-						class="form-control" id="InputName" placeholder="이름" readonly
-						value="${mvo.userName}">
-				</div>
-				<div class="form-group row">
-					<div class="col-sm-10">
-						<label for="id">ID</label>
-					</div>
-					<div class="col-xs-7">
-						<input type="text" name="userId" class="form-control" id="InputId"
-							value="${mvo.userId}" readonly>
-					</div>
-					<div class="col-xs-3">
-						<span id="span_id"></span>
-						<!-- <input type="button" value="중복확인"
-									onclick="idCheck()" class="btn btn-secondary" /> -->
-						<input type="hidden" name="doubleCheck" id="doubleCheck"
-							value="false">
-					</div>
-				</div>
-
-				<script>
+	<script>
 	function updateCheck() {
 		var userName = $('#InputName').val();
 		var userId = $('#InputId').val();
@@ -183,6 +133,60 @@
 	}
 </script>
 
+<body>
+	<form action="DispatcherServlet?command=updateMember" method="post"
+		name="updateForm" onsubmit="return updateCheck()" id="updateForm"
+		enctype="multipart/form-data">
+
+		<div class="header" align="center">
+			<font size="5"> 회원 정보 수정</font>
+			<div>
+				<input type="hidden" name="command" value="updateMember">
+				<button type="submit" class="btn btn-primary" value="저장"
+					onclick="updateCheck()">저장</button>
+				<button type="button" class="btn btn-secondary"
+					onclick="updateClose()">취소</button>
+				<button type="button" class="btn btn-secondary"
+					onclick="deleteMember()">회원탈퇴</button>
+			</div>
+
+		</div>
+		<hr>
+
+		
+
+ 
+		<div class="form-group">
+					<label for="profile">프로필 사진</label> <input type="file"
+						name="file" class="form-control" id="InputProfile">
+
+				</div> 
+
+
+				<div class="form-group">
+					<label for="id">이름</label> <input type="text" name="userName"
+						class="form-control" id="InputName" placeholder="이름" readonly
+						value="${mvo.userName}">
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<label for="id">ID</label>
+					</div>
+					<div class="col-xs-7">
+						<input type="text" name="userId" class="form-control" id="InputId"
+							value="${mvo.userId}" readonly>
+					</div>
+					<div class="col-xs-3">
+						<span id="span_id"></span>
+						<!-- <input type="button" value="중복확인"
+									onclick="idCheck()" class="btn btn-secondary" /> -->
+						<input type="hidden" name="doubleCheck" id="doubleCheck"
+							value="false">
+					</div>
+				</div>
+
+				
+
 				<div class="form-group">
 					<label for="exampleInputPassword1">비밀번호</label> <input
 						type="password" name="userPass" class="form-control"
@@ -212,43 +216,48 @@
 			
 			<div class="form-group">
 				<div class="col-sm-10">
-					<label for="exampleInputEmail1">이메일</label>
-				</div>
-				<div class="col-xs-7">
-					<input type="text" name="emailId" class="form-control"
-						id="InputEmailId" aria-describedby="emailHelp"
-						value="${mvo.emailId}" required>
-				</div>
-				<div>
+							<label for="exampleInputEmail1">이메일</label>
+						</div>
+						<div class="col-xs-7">
+							<input type="text" name="emailId" class="form-control" id="InputEmailId"
+								aria-describedby="emailHelp" placeholder="Email" required>
+						</div>
+						<div>
+						
+							<div>
+							
+						
+								
+							<span id="emailChange">
+								<select class="selectpicker" name="emailAdd" id="InputSelectedEmail"   onchange="changeFunc();">
+									
+									<option value="@naver.com">@naver.com</option>
+									<option value="@nate.com">@nate.com</option>
+									<option value="@dreamwiz.com">@dreamwiz.com</option>
+									<option value="@yahoo.co.kr">@yahoo.co.kr</option>
+									<option value="@empal.com">@empal.com</option>
+									<option value="@unitel.co.kr">@unitel.co.kr</option>
+									<option value="@gmail.com">@gmail.com</option>
+									<option value="@korea.com">@korea.com</option>
+									<option value="@chol.com">@chol.com</option>
+									<option value="@paran.com">@paran.com</option>
+									<option value="@freechal.com">@freechal.com</option>
+									<option value="@hanmail.net">@hanmail.net</option>
+									<option value="@hotmail.com">@hotmail.com</option>
+									<option value="직접선택"   > 직접선택</option>
+									
+								</select>
+								</span>		
+								
+								
+							</div>
+				
 
-					<div>
 
 
+						
 
-						<span id="emailChange"> <select class="selectpicker"
-							name="emailAdd" id="InputSelectedEmail" onchange="changeFunc();"
-							value="${mvo.emailAdd}">
-
-								<option value="@naver.com">@naver.com</option>
-								<option value="@nate.com">@nate.com</option>
-								<option value="@dreamwiz.com">@dreamwiz.com</option>
-								<option value="@yahoo.co.kr">@yahoo.co.kr</option>
-								<option value="@empal.com">@empal.com</option>
-								<option value="@unitel.co.kr">@unitel.co.kr</option>
-								<option value="@gmail.com">@gmail.com</option>
-								<option value="@korea.com">@korea.com</option>
-								<option value="@chol.com">@chol.com</option>
-								<option value="@paran.com">@paran.com</option>
-								<option value="@freechal.com">@freechal.com</option>
-								<option value="@hanmail.net">@hanmail.net</option>
-								<option value="@hotmail.com">@hotmail.com</option>
-								<option value="직접선택"> 직접선택</option>
-
-						</select>
-						</span>
-
-
-					</div>
+					
 					<script>
 						function changeFunc() {
 
@@ -269,7 +278,9 @@
 					<div class="form-group">
 						<div class="col-sm-10">
 							<label for="">Email 수신여부 : &nbsp;&nbsp;</label> <input
-								type="checkbox" name="emailAccept" value="y" />
+								type="checkbox" name="emailAccept" value="y" <c:if test="${mvo.emailAccept == 'y'}"><c:out value="checked"> </c:out> </c:if> />
+						
+						
 						</div>
 					</div>
 				</div>
@@ -291,13 +302,16 @@
 						<label for="">성별</label>
 					</div>
 					<div class="col-sm-10">
-						<input type="radio" name="gender" value="0" id="male" readonly />남자
-						<input type="radio" name="gender" value="1" id="female" readonly />여자
+						<input type="radio" name="gender" value="0" id="male"   <c:if test="${mvo.gender == '0'}"><c:out value="checked"> </c:out> </c:if>/>남자
+						<input type="radio" name="gender" value="1" id="female"   <c:if test="${mvo.gender == '1'}"><c:out value="checked"> </c:out> </c:if> />여자
+				
 					</div>
 
 				</div>
 
 			</div>
+			
+		
 	</form>
 </body>
 </html>

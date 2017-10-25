@@ -89,6 +89,11 @@ function idCheck() {
 
 </head>
 
+<c:if test="${param.loginfail =='true'}">
+<script>
+alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
+</script>
+</c:if>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
 
@@ -441,14 +446,17 @@ function inputCheck() {
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
-								class="form-control" id="loginId" placeholder="아이디"  name="userId">
+								class="form-control" id="loginId" placeholder="아이디"  name="userId" value="<c:if test="${retainId !='null'}"><c:out value="${retainId}"></c:out></c:if>">
+
+
 
 						</div>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="loginPass"
-								placeholder="비밀번호" name="userPass" >
+								placeholder="비밀번호" name="userPass" value="<c:if test="${retainPass !='null'}"><c:out value="${retainPass}"></c:out></c:if>" >
+						
 						</div>
 
 						<div class="form-check">
