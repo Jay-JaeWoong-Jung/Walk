@@ -24,10 +24,10 @@ public class DispatcherServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd = request.getParameter("command");
-		System.out.println("디스패쳐 서블릿 명령어:"+cmd);
+		System.out.println("디스패쳐 서블릿 명령어:"+cmd);//ok
 		
 		Controller controller=HandlerMapping.getInstance().createController(cmd);
-
+		System.out.println(controller+"@@@@@@@@@@@@@@@");
 		try{
 			ModelAndView mv =controller.HandleRequest(request, response);
 			System.out.println("디스패쳐 controller에서 뷰페이지로 이동");

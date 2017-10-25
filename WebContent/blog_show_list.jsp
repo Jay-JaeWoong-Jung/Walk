@@ -57,6 +57,17 @@ function cancel(){
 	location.href="blog_edit_popup.jsp?no="+number"&time="+time;
 } */
 
+function search_submit(){
+	var f=document.search_form;
+	if(f.date.value==""){
+		alert("날짜를 입력하세요!");
+		f.date.focus();
+		return; 
+	}
+
+	//이동할 페이지로 폼값을 가지고 전송됨
+	f.submit();
+}
 $(function (){
     $( "#datepicker" ).datepicker({
     	
@@ -119,12 +130,13 @@ body {
 				
 				<!-- **************** Start Calendar ******************** -->
 					<div class="col-4">
-						<form class="form-inline" action="DispatcherServlet" method="post">
+						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
 					
 							<span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;						
 							<input type="text" id="datepicker" name="date">&nbsp;
-							 <input type="submit" class="btn btn-primary" value="Search" id="sendBtn">
-				
+							<!--  <input type="submit" class="btn btn-primary" value="Search" id="sendBtn" onclick="search_submit"> -->
+						<a href="#" class ="btn btn-primary" onclick="search_submit()"  value="Search" id="sendBtn">search</a>
+							
 							<input type="hidden" name="command" value="list">
 					
 						</form>
@@ -252,7 +264,7 @@ body {
 										<div class="modal-body">Really??????</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-primary"
-												onclick="sumbit_Delete('${bvo.no}','${bvo.timePosted}')">ff</button>
+												onclick="sumbit_Delete('${bvo.no}','${bvo.timePosted}')">OK</button>
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Close</button>
 											<script type="text/javascript">

@@ -92,7 +92,7 @@ Install with Bower
 					</c:choose></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
 						<c:when test="${mvo.userId != null}">
-							<!-- 로그인 상태라면 -->
+							
 							<a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
 								data-toggle="modal" id="login"> 로그아웃</a>
 
@@ -332,7 +332,7 @@ Install with Bower
 	</div>
 
 	<div class="jumbotron text-center">
-		<h1>Company</h1>
+		<h1>Company ${mvo.userId}</h1>
 		<p>We specialize in blablabla</p>
 		<form>
 			<div class="input-group">

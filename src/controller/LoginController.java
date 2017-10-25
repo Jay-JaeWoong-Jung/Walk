@@ -19,8 +19,18 @@ public class LoginController implements Controller {
 		System.out.println(userId + ", " + userPass);
 		
 		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
-
-		if (vo.getUserId() == null) {
+		System.out.println("LoginController...!!!!!! :: "+vo);
+		/*if(vo.getUserId() !="" ) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", vo.getUserId()); s//세선에 바인딩.
+			System.out.println("!!!!!!!!!!!!!!! mvo 바인딩...::"+vo);
+			return new ModelAndView("main.jsp",true);
+		}else {
+			System.out.println("!!!!!!!!!!!!!!! mvo 바인딩  else...::"+vo);
+			return new ModelAndView("index.jsp",true);
+		}*/
+		
+		if (vo==null) {
 			
 			return new ModelAndView("main.jsp",true);
 		/*	/////// 쿠키 생성/////////
@@ -48,8 +58,8 @@ public class LoginController implements Controller {
 			}
 */
 		}else {
-			HttpSession session = request.getSession();
-			session.setAttribute("mvo", vo);
+			System.out.println("main.jsp 페에지로 이동합니다..!!!!!... "+vo);
+			request.getSession().setAttribute("mvo", vo);
 			return new ModelAndView("main.jsp",true);
 		}
 		
