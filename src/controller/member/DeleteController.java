@@ -1,11 +1,12 @@
-package controller;
+package controller.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.MemberDAO;
-import model.MemberVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
 
 public class DeleteController implements Controller {
 

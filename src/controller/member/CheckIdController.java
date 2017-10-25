@@ -1,11 +1,12 @@
-package controller;
+package controller.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BoardDao;
-import model.BoardVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.board.BoardDao;
 
 public class CheckIdController implements Controller {
 

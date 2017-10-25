@@ -1,4 +1,4 @@
-package controller;
+package controller.member;
 
 import java.util.Enumeration;
 
@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import model.MemberDAO;
-import model.MemberVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
+import model.member.MemberVO;
 
 public class UpdateController implements Controller {
 

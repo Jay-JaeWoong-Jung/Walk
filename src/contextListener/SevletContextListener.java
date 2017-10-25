@@ -1,16 +1,10 @@
-package servlet;
+package contextListener;
 
 import java.util.Calendar;
 import java.util.Timer;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
-import constants.MagicNumbers;
-import controller.JobTimer;
 
 public class SevletContextListener implements ServletContextListener{
 

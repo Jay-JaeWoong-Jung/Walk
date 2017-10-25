@@ -1,4 +1,4 @@
-package controller;
+package controller.dashboard;
 
 
 
@@ -8,8 +8,10 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberDAO;
-import model.MemberVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
+import model.member.MemberVO;
 
 
 public class DashboardController implements Controller{

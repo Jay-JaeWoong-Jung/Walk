@@ -1,11 +1,11 @@
-package controller;
+package controller.member;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.MemberDAO;
+import controller.Controller;
+import controller.ModelAndView;
 
 public class LogoutController implements Controller {
 

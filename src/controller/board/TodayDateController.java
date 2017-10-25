@@ -1,9 +1,11 @@
-package controller;
+package controller.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.BoardDao;
+import controller.Controller;
+import controller.ModelAndView;
+import model.board.BoardDao;
 
 public class TodayDateController implements Controller {
 

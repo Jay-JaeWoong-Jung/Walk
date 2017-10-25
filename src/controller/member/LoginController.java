@@ -1,12 +1,13 @@
-package controller;
+package controller.member;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.MemberDAO;
-import model.MemberVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
+import model.member.MemberVO;
 
 public class LoginController implements Controller {
 

@@ -1,14 +1,14 @@
-package controller;
-
-import java.util.Date;
+package controller.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberDAO;
-import model.MemberVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
+import model.member.MemberVO;
 
-public class RegisterMemberContrller implements Controller {
+public class RegisterMemberController implements Controller {
 
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {

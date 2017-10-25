@@ -1,8 +1,11 @@
-package controller;
+package controller.reserve;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.MemberDAO;
+
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
 
 
 public class ReserveController implements Controller{

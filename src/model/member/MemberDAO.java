@@ -1,15 +1,15 @@
-package model;
+package model.member;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import java.util.Date;
+
 import constants.StringQuery;
 import javafx.util.Pair;
+import model.DataSourceManager;
 
 /*
  * 나중에 실질적으로 Component기반으로 최종적으로 돌릴때에는

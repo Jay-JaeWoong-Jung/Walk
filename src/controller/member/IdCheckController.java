@@ -1,12 +1,14 @@
-package controller;
+package controller.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.MemberDAO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.member.MemberDAO;
 
 public class IdCheckController implements Controller {
-
+	
 	@Override
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("idcheck 컨트롤러입성");

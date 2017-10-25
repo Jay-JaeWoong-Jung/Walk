@@ -1,10 +1,12 @@
-package controller;
+package controller.board;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.BoardDao;
-import model.BoardVO;
+import controller.Controller;
+import controller.ModelAndView;
+import model.board.BoardDao;
+import model.board.BoardVO;
 
 public class EditContentController implements Controller {
 
