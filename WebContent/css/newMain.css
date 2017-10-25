@@ -1,3 +1,8 @@
+body {
+	font-family: bmjua;
+	
+}	
+
 @font-face {
 	font-family: bmjua;
 	src: url(./font/BMJUA_ttf.ttf);
@@ -8,13 +13,14 @@ p {
 }
 
 .margin {
-	margin-bottom: 45px;
+	
+	margin: auto;
 }
 
 .bg-1 {
-	background-color: #1abc9c; /* Green */
+	/* background-color: #1abc9c; Green */
 	color: #ffffff;
-	font-family: bmjua;
+	height: 300px;
 }
 
 .bg-2 {
@@ -35,4 +41,6 @@ p {
 .container-fluid {
 	padding-top: 70px;
 	padding-bottom: 70px;
+	background-image: linear-gradient(180deg,#fb4d7d,#ff7556);
+	
 }

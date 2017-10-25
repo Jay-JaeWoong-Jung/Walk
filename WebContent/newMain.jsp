@@ -15,12 +15,25 @@
 </head>
 <body>
 	<c:import url="./navbar.jsp"></c:import>
-	<div class="container-fluid bg-1 text-center">
-		<h1 class="margin">우리 같이 걸을래?</h1>
+	<div class="container-fluid">
+		<div class="row bg-1 ">
+			<h1 class="margin">건강도 챙기고</h1>
+		</div>
+		<div class="row bg-1 ">
+			<h1 class="margin">정보교환도 하고</h1>
+		</div>
+		<div class="row bg-1 ">
+			<h1 class="margin">친구도 사귀고</h1>
+		</div>
+		<div class="row bg-1 ">
+			<h1 class="margin">우리 같이 걸을래?</h1>
+		</div>
+		<div class="row bg-1 ">
+			<h1 class="margin">매일 20분 산책 프로잭트</h1>
+		</div>
+	
 	</div>
-	<div class="container-fluid bg-1 text-center">
-		<h1 class="margin">우리 같이 걸을래?</h1>
-	</div>
+	
 
 
 
