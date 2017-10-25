@@ -39,7 +39,6 @@
 	$('.selectpicker').selectpicker('refresh');
 	
 	
-	
 </script>
 
 <script>
@@ -76,6 +75,8 @@ function checkLogin(){
 <script>
 alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 </script>
+
+
 </c:if>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">

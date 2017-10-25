@@ -44,7 +44,7 @@ public class LogoutController implements Controller {
 			}
 		}*/
 		
-		return new ModelAndView("main.jsp");
+		return new ModelAndView("newMain.jsp");
 	}
 
 }

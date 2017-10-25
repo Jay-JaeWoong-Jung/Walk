@@ -89,7 +89,7 @@
 		<c:otherwise>
 			<center>
 				<div class="col-md-4">
-					<a href="main.jsp"> <font size="5" face="바탕체"> <b>로그인
+					<a href="newMain.jsp"> <font size="5" face="바탕체"> <b>로그인
 								후 이용하실 수 있습니다.</b></font></a>
 				</div>
 			</center>

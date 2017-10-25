@@ -14,7 +14,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:import url="./navbar.jsp"></c:import>
+<%@ include file="./navbar.jsp"%>
+
+	
 	<div class="container-fluid">
 		<div class="row bg-1 ">
 			<h1 class="margin">건강도 챙기고</h1>

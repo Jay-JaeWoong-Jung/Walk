@@ -43,7 +43,7 @@ public class LoginController implements Controller {
 				response.addCookie(cookie);
 				System.out.println("쿠키 생성 및 밸류"+vo.getUserId());
 				
-				return new ModelAndView("main.jsp",true);
+				return new ModelAndView("newMain.jsp",true);
 				
 			}else{
 				Cookie[] cookies=request.getCookies();
@@ -57,9 +57,9 @@ public class LoginController implements Controller {
 				}
 				
 			}
-			return new ModelAndView("main.jsp",true);
+			return new ModelAndView("newMain.jsp",true);
 		}else {
-			return new ModelAndView("main.jsp?loginfail=true",true);
+			return new ModelAndView("newMain.jsp?loginfail=true",true);
 		}
 		
 	}

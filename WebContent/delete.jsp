@@ -40,7 +40,7 @@
 				<input type="hidden" name="command" value="deleteMember">
 				<input type="hidden" name="userId" value="${param.userId}">
 				<input type="submit"
-					value="회원탈퇴" onclick="javascript:window.location='main.jsp'">
+					value="회원탈퇴" onclick="javascript:window.location='newMain.jsp'">
 					<input type="button" value="취소"></td>
 			</tr>
 		</table>

@@ -86,7 +86,7 @@ body {
 	<c:when test="${mvo.userId == null}">
 		<script>
 			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
-			location.href="main.jsp";
+			location.href="newMain.jsp";
 		</script>
 	</c:when>
 	<c:otherwise>
