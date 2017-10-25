@@ -14,11 +14,13 @@ public class HandlerMapping {
 		Controller controller = null;
 
 
+<<<<<<< HEAD
 		
 		
+=======
+
+>>>>>>> f92317ac05d02b85544ba144d2b8ac900362ee0c
 		if(command.equals("reserve")){
-
-
 			controller = new ReserveController();
 		} else if (command.equals("dashboard")) {
 			controller = new DashboardController();
@@ -56,6 +58,8 @@ public class HandlerMapping {
 			controller = new TodayDateController();
 		}else if(command.equals("checkId")) {
 			controller = new CheckIdController();
+		}else if(command.equals("listById")) {
+			controller = new ListByIdController();
 		}
 		System.out.println("handler 입성"+controller+"컨트롤러 객체 생성");
 		return controller;
