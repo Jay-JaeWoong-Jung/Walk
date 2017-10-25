@@ -20,6 +20,7 @@ public class SevletContextListener implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 
+
 //		Timer timer = new Timer();
 //		Calendar date1 = Calendar.getInstance();
 //		date1.set(Calendar.HOUR_OF_DAY,18);
@@ -73,6 +74,7 @@ public class SevletContextListener implements ServletContextListener{
 //		timer.schedule(new JobTimer(4), date4.getTime() ,24*60*60*1000);
 //		timer.schedule(new JobTimer(5), date5.getTime() ,24*60*60*1000);
 //		timer.schedule(new JobTimer(6), date6.getTime() ,24*60*60*1000);	
+
 //		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7.getTime() ,60*1000);
 		
 		

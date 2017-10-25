@@ -13,7 +13,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
 
-		class="navbar-brand" href="#"><img src="./image/footstep.svg" style="width: 50px;"></a>
+		class="navbar-brand" href="newMain.jsp"><img src="./image/footstep.svg" style="width: 50px;"></a>
 
 
 	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
@@ -31,8 +31,7 @@
 	<div class="collapse navbar-collapse mr-auto"
 		id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="#">About</a>
-			</li>
+
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Reserve </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -75,7 +74,10 @@
 			<c:choose>
 				
 					<c:when test="${mvo.userId != null}">
+
 						<a href="#" data-toggle="modal" data-target="#"
+
+				
 							id="regForm">${mvo.userId}님 </a>
 					</c:when>
 				

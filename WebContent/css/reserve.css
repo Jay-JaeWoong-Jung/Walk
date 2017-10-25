@@ -6,3 +6,42 @@
  h1 {
 	font-size: 4em;
 }
+
+
+@font-face {
+	font-family: bmjua;
+	src: url(./font/BMJUA_ttf.ttf);
+}
+body {
+	font-family: bmjua;
+	
+
+	
+}	
+.highlight{
+	font-size: 4em;
+}
+
+p {
+	font-size: 16px;
+}
+
+
+.section {
+	height: 300px;
+}
+h1 {
+	color: #ffffff;
+	
+	
+}
+div > img {
+	height: 100px;
+}
+
+
+.container-fluid {
+	padding-top: 70px;
+	
+	
+}

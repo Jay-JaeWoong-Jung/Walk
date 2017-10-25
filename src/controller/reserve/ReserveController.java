@@ -22,7 +22,7 @@ public class ReserveController implements Controller{
 		int attendace = 1;
 		
 		
-		
+		//오늘 날짜로 예약 로그가 찍힌 사람이 있는지?
 		boolean isReserve=MemberDAO.getInstance().isReservation(userId);
 		System.out.println(" 맨처음 reserveController selectedTime:"+selectedTime);
 		
