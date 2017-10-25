@@ -5,7 +5,7 @@ body {
 
 @font-face {
 	font-family: bmjua;
-	src: url(./font/BMJUA_ttf.ttf);
+	src: url(./css/font/BMJUA_ttf.ttf);
 }
 
 p {
