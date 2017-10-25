@@ -8,7 +8,7 @@
 <title>회원탈퇴</title>
 </head>
 
-<meta http-equiv="Refresh" content="3;url=main.jsp">
+<meta http-equiv="Refresh" content="3;url=newMain.jsp">
 <body>
 	<center>
 		<font size="5" face="바탕체"> 회원정보가 삭제되었습니다.<br></br> 안녕히 가세요!<br></br>

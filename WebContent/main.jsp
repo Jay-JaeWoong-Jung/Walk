@@ -39,7 +39,6 @@
 	$('.selectpicker').selectpicker('refresh');
 	
 	
-	
 </script>
 
 <script>
@@ -76,6 +75,8 @@ function checkLogin(){
 <script>
 alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 </script>
+
+
 </c:if>
 <body id="myPage" data-spy="scroll" data-target=".navbar"
 	data-offset="60">
@@ -88,7 +89,8 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#myPage">Logo</a>
+			<a class="navbar-brand" href="#myPage"><img src="./image/logo1.png" class="img-circle"
+										alt="./image/logo1.png" width="70%" ></a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
@@ -99,7 +101,18 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="profile.jsp">프로필</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
+<<<<<<< HEAD
 					href="DispatcherServlet?command=todayDate">게시판 보기</a></li>
+=======
+					href="#pricing"  class="dropdown-item" onclick="reserveGo()">예약하기</a>
+					<script>
+						function reserveGo(){
+							location.href="reserve.jsp?userId=${mvo.userId}";
+						}
+						</script>	
+					
+				</li>
+>>>>>>> 82c3d7f900a8929b272bcfba814c0a4e782af95c
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="#contact">CONTACT</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>
@@ -453,7 +466,12 @@ function inputCheck() {
 						url: "DispatcherServlet",
 						data: param,
 						success: function(result){
-							
+							//공란이 있는가?  == 아이디 없다!  
+									$("#remember").html(result);
+							if(result.trim().charAt(1) != ""){
+								console.log("dddd")
+								document.getElementById("IdRemember").checked = true;
+							}
 							$("#loginId").val(result);
 						}
 					}); 
@@ -469,9 +487,10 @@ function inputCheck() {
 						
 
 						<div class="form-check">
-							<label class="form-check-label"> <input type="checkbox"
-								class="form-check-input" value="y" name="retainId"> 아이디 기억
-							</label>
+							<label class="form-check-label"> </label><input type="checkbox"
+								class="form-check-input" value="y" name="retainId" id="IdRemember"> 아이디 기억 
+							
+							<span id="remember"></span>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -489,10 +508,15 @@ function inputCheck() {
 	</div>
 
 	<div class="jumbotron text-center">
+<<<<<<< HEAD
 
 		<h1>Company</h1> 
 
 		<p>We specialize in blablabla</p>
+=======
+		<h1>Walk & Talk</h1> 
+		<p>Social Activity Platform</p>
+>>>>>>> 82c3d7f900a8929b272bcfba814c0a4e782af95c
 		<form>
 			<div class="input-group">
 				<input type="email" class="form-control" size="50"
@@ -824,11 +848,11 @@ function inputCheck() {
 	</div>
 
 	<!-- Add Google Maps -->
-	<div id="googleMap" style="height: 400px; width: 100%;"></div>
+	<div id="googleMap" style="height: 400px;" class="w3-grayscale-max"></div>
 	<script>
 		function myMap() {
-			var myCenter = new google.maps.LatLng(41.878114, -87.629798);
-			var mapProp = {
+			myCenter = new google.maps.LatLng(41.878114, -87.629798);
+			var mapOptions = {
 				center : myCenter,
 				zoom : 12,
 				scrollwheel : false,
@@ -836,16 +860,16 @@ function inputCheck() {
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			};
 			var map = new google.maps.Map(document.getElementById("googleMap"),
-					mapProp);
+					mapOptions);
+
 			var marker = new google.maps.Marker({
-				position : myCenter
+				position : myCenter,
 			});
 			marker.setMap(map);
 		}
 	</script>
 	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-	<!--
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABmESzR_EPQzZZCwZV_DFTEHWOjVJWOtc&callback=myMap"></script>	<!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
 -->

@@ -97,7 +97,7 @@ body {
 	<c:when test="${mvo.userId == null}">
 		<script>
 			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
-			location.href="main.jsp";
+			location.href="newMain.jsp";
 		</script>
 	</c:when>
 	<c:otherwise>
@@ -259,7 +259,9 @@ body {
 										<div class="modal-body">Really??????</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-primary"
+
 												onclick="sumbit_Delete('${bvo.no}','${bvo.timePosted}')">OK</button>
+
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Close</button>
 											<script type="text/javascript">

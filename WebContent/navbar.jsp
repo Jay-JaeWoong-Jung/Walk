@@ -6,11 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="#">Logo</a>
+		class="navbar-brand" href="#"><img src="./image/logo2.png" class="img-square"
+										alt="./image/logo2.png" width="100%" ></a>
 
 	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
 		<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
@@ -59,11 +61,11 @@
 					
 				</div>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+			<li class="nav-item"><a class="nav-link" href="profile.jsp">Profile</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
 
 
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar"><c:choose>
@@ -406,9 +408,37 @@ function inputCheck() {
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
 								class="form-control" id="loginId" placeholder="아이디"
-								name="userId">
+								name="userId" >
 
 						</div>
+						<script>
+							$('#login').click(function() {
+								
+								
+								
+									
+								
+								 var param = "command=cookieConfirm";
+								
+								
+								
+								$.ajax({
+									type: "post",
+									url: "DispatcherServlet",
+									data: param,
+									success: function(result){
+										//공란이 있는가?  == 아이디 없다!  
+												
+										if(result.trim().charAt(1) != ""){
+											console.log("dddd")
+											document.getElementById("IdRemember").checked = true;
+										}
+										$("#loginId").val(result);
+									}
+								}); 
+								
+							})
+				</script>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
@@ -418,7 +448,7 @@ function inputCheck() {
 
 						<div class="form-check">
 							<label class="form-check-label"> <input type="checkbox"
-								class="form-check-input" value="y" name="retainId"> 로그인
+								class="form-check-input" value="y" name="retainId" id="IdRemember"> 로그인
 								유지
 							</label>
 						</div>
