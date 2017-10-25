@@ -109,7 +109,7 @@
 		  
 		
 		
-		스탑워치:${stopWatch}
+		<%-- 스탑워치:${stopWatch} --%>
 		  
 		<SCRIPT > 
 		
