@@ -6,7 +6,7 @@ public interface StringQuery {
 	String INSERT_REGISTER = "insert into membership values(?,?,?,  ?,?,?,  ?,?,?,  ?,?,?, sysdate,?,?,?)";
 	String SELECT_LOGINCHECK = "select userpass from membership where userid=? ";
 	String SELECT_GETMEMINFO = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailaccept,profile from membership where userid=?";
-	String SELECT_UPDATE = "update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=?, company=?, selectedtime=?,emailaccept=?, profile=? where userid=?";
+	String SELECT_UPDATE = "update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=?, company=?, selectedtime=?,emailaccept=?, profile=? , gender=? where userid=?";
 /*	String SELECT_MEMBER = "select userpass from membership where userid=? ";*/
 	String DELETE_MEMBER = "delete from membership where userid=? and userPass=?";
 	String SELECT_LOGIN = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailAccept,profile from membership where userid=? and userPass=?";
@@ -49,14 +49,15 @@ public interface StringQuery {
 
 	String CURRENT_NO = "SELECT board_seq.currVal FROM dual";
 	
-	String SELECT_POSTING = "SELECT no, userId, content, timePosted FROM board WHERE no=?";
-	
 	String UPDATE_CONTENT = "UPDATE board SET content= ? WHERE no=?";
 	
 	String PAGE_LIST = "SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted FROM board where to_char(timePosted, 'YYYY/MM/DD') = ? order by no";
 	
 	String CURRENT_DATE="SELECT to_char(sysdate,'YYYY/MM/DD') AS timePosted FROM dual";
 	
+	String SELECT_POSTINGBYID = 
+			"SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted"
+			+ " FROM board WHERE userId='?' order by no";
 	
 	
 

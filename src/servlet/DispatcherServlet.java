@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import controller.HandlerMapping;
 import controller.ModelAndView;
-import model.MemberDAO;
+import model.member.MemberDAO;
 
 
 public class DispatcherServlet extends HttpServlet {

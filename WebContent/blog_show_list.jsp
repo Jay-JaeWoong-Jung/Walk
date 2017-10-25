@@ -6,6 +6,7 @@
 <head>
 
 <title>Insert title here</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
@@ -17,7 +18,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
 	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	crossorigin="anonymous"></script>
-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 	integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
@@ -80,6 +81,7 @@ body {
 </style>
 </head>
 <body>
+
 <c:choose>
 	<c:when test="${mvo.userId == null}">
 		<script>
@@ -91,13 +93,49 @@ body {
 	
 
 	<!-- **********************Start Main list Table ****************************-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-8">
+			<div class="col-12">
 				<h1 align="left" class="display-3">
 					<b>Comment</b>
 				</h1>
-				<p>
+				
+	
+			<div class="container-fluid" style="padding:30px 10px 10px 0px">
+				<div class="row">
+					<div class="col-8">
+						<a href="DispatcherServlet?command=todayDate">
+						<span class="oi oi-align-center" style="font-size:20px;color:blue"></span>
+						Today</a>
+						&nbsp;&nbsp;
+						
+						<a href="DispatcherServlet?command=listById">
+						<span class="oi oi-chat" style="font-size:20px;color:warning">					
+						</span>내가 쓴글</a>
+						
+				
+					</div>		
+				
+				
+				<!-- **************** Start Calendar ******************** -->
+					<div class="col-4">
+						<form class="form-inline" action="DispatcherServlet" method="post">
+					
+							<span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;						
+							<input type="text" id="datepicker" name="date">&nbsp;
+							 <input type="submit" class="btn btn-primary" value="Search" id="sendBtn">
+				
+							<input type="hidden" name="command" value="list">
+					
+						</form>
+					</div>
+				</div>
+			<!-- **************** End Calendar ********************  -->
+		
+			</div>
+				
+ 			
+	
 				<table class="table table-hover table-bordered">
 					<thead>
 						<tr class="text-center">
@@ -109,6 +147,7 @@ body {
 
 						</tr>
 					</thead>
+					
 				<c:forEach var="bvo" items="${requestScope.list}" varStatus="i">
 						<tr class="table-info">
 
@@ -119,10 +158,12 @@ body {
 							<td>${bvo.timePosted}</td>
 							
 							<!-- *************************** Edit ******************************  -->
-							<td><button name="edit" type="button" class="btn btn-primary-xs active"
+							<td><!-- <button name="edit" type="button" class="btn btn-primary-xs active"
 									data-toggle="modal" data-target="#${bvo.no}">
 									<span class="oi oi-pencil" style="color: blue"></span>
-								</button>
+								</button> -->
+								<a href="#" name="edit" class="btn btn-primary-xs active"
+									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color: blue"></span></a>
 								
 								<!-- *************************** Start Modal ******************************  -->
 								
@@ -184,10 +225,13 @@ body {
 															
 						<td>
 							
-							<button name="delete" type="button" class="btn btn-primary-xs active"
+							<!-- <button name="delete" type="button" class="btn btn-primary-xs active"
 									data-toggle="modal" data-target="#${bvo.no}delete">
 									<span class="oi oi-trash" style="color: blue"></span>
-								</button>
+									
+								</button> -->
+							<a href="#" name="delete" class="btn btn-primary-xs active"
+									data-toggle="modal" data-target="#${bvo.no}delete" ><span class="oi oi-trash" style="color: blue"></span></a>
 							
 							
 								<!-- *************************** Start Modal ******************************  -->
@@ -238,25 +282,14 @@ body {
 				<p>
 			</div>
 			<!-- **************** Start Calendar ********************  -->
-			<div class="col-4">
-
-				<form action="DispatcherServlet" method="post">
-					<p>
-						Date: <input type="text" id="datepicker" name="date">
-					</p>
-					<input type="submit" value="Date Check" id="sendBtn"> <input
-						type="hidden" name="command" value="list">
-				</form>
-			</div>
+			
 
 			<!-- **************** End Calendar ********************  -->
 		</div>
-	</div>
-	<!-- **********************End Main list Table ****************************-->
-
-	<!-- *************************** Start Write Form ******************************  -->
-	<div class="container" style="padding-top: 50px">
-		<div class=col-8>
+		
+		<!-- *************************** Start Write Form ******************************  -->
+	<div class="container" style="padding-top: 30px">
+		<div class="col-12">
 			<form action="DispatcherServlet" method="post" name="write_form">
 				<input type="hidden" name="command" value="write">
 				<input type="hidden" name="userId" value="${mvo.userId}">
@@ -266,20 +299,22 @@ body {
 
 					<tr>
 						<td width="15%">Comment</td>
-						<td colspan="3"><input type="text" name="content"
-							maxlength="100" size="80"></td>
+						<td colspan="3"><input type="text" name="content" maxlength="100" size="100"></td><br>
 					</tr>
-
+					
 					<tr>
+			
 						<td colspan="4" align="center">
 							<!-- <button type="button" class="btn btn-primary btn-block" onclick="content_submit()">
 								Write <span class="oi oi-check" ></span>
 							</button> -->
 							<a href="#" class ="btn btn-primary btn-block" onclick="content_submit()">Write<span class="oi oi-check" ></span></a>
-							
-							<button type="button" class="btn btn-default-lg  pull-right">
+							<br>
+							<!-- <button type="button" class="btn btn-default-lg  pull-right">
 								Cancel <span class="oi oi-trash" onclick="cancel()"></span>
-							</button>
+							</button> -->
+							<a href="#" class="btn btn-warning"  onclick="cancel()">Reset <span class="oi oi-trash" onclick="cancel()"></span></a>
+							<br><br><br>
 
 						</td>
 					</tr>
@@ -289,6 +324,15 @@ body {
 	</div>
 
 	<!-- *************************** End Write Form ******************************  -->
+		
+		
+		
+		
+		
+	</div>
+	<!-- **********************End Main list Table ****************************-->
+
+	
 
 	
 </c:otherwise>
