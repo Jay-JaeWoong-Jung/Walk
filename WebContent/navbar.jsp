@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <title>Insert title here</title>
 </head>
@@ -73,6 +74,8 @@
 					<c:when test="${mvo.userId != null}">
 						<a href="#" data-toggle="modal" data-target="#signUp "
 							id="regForm">${mvo.userId}님 </a>
+							
+							
 					</c:when>
 				
 					<c:otherwise>
@@ -82,21 +85,27 @@
 				</c:choose></li>
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
 
-				<c:choose>
-					<c:when test="${mvo.userId != null}">
+				
+					<c:if test="${mvo.userId != null}">
 						
-						<a class="nav-link"
-							href="DispatcherServlet?command=logout&userId=${mvo.userId}"
-							data-toggle="modal" id="login"> 로그아웃</a>
+							
+						<!-- <a class="nav-link" href="#signOut" data-toggle="modal"
+							data-target="#signOut" id="logOut">로그아웃</a> -->
+						
+						
+							
+					<%-- <a href="DispatcherServlet?command=logout&userId=${mvo.userId}"
+								data-toggle="modal"  id="login"> 로그아웃</a> --%>
 
-					</c:when>
-					<c:otherwise>
+					</c:if>
+					
+					<c:if test="${mvo  == null}">
 						
 						<a class="nav-link" href="#signIn" data-toggle="modal"
 							data-target="#signIn" id="login">로그인</a>
-
-					</c:otherwise>
-				</c:choose>
+						
+					</c:if>
+				
 
 
 			</li>
@@ -109,7 +118,8 @@
 	</nav>
 
 	<!-- 회원가입 Modal -->
-
+	
+	
 	<script>
 function inputCheck() {
 	var userName = $('#InputName').val();
@@ -233,7 +243,7 @@ function inputCheck() {
 							</div>
 						</div>
 
-						<script>
+						 <script>
 						$("#InputId").keyup(function(){
 							
 							var userId=$("#InputId").val();
@@ -261,7 +271,7 @@ function inputCheck() {
 							
 						});
 						
-						</script>
+						</script> 
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
@@ -411,7 +421,7 @@ function inputCheck() {
 								name="userId" >
 
 						</div>
-						<script>
+						 <script>
 							$('#login').click(function() {
 								
 								
@@ -466,5 +476,38 @@ function inputCheck() {
 			</div>
 		</div>
 	</div>
+	
+
+	
+	<!-- Sign-out Modal -->
+	<%-- <div class="modal fade m-t-5" id="signOut" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">Log out</h3>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="DispatcherServlet" method="post" name="loginForm" id="loginForm" >
+					<div class="modal-body">
+						로그아웃  하시겠습니까?
+	
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" name="command" value="logout">
+						<input type="hidden" name="command" value="${mvo.userId}">
+						<button type="submit" class="btn btn-primary">로그아웃</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">취소</button>
+					</div>
+				</form>
+
+
+
+			</div>
+		</div>
+	</div> --%>
 </body>
 </html>
