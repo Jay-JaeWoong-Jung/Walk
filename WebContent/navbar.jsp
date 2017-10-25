@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
@@ -418,13 +419,8 @@ function inputCheck() {
 							$('#login').click(function() {
 								
 								
-								
-									
-								
 								 var param = "command=cookieConfirm";
-								
-								
-								
+
 								$.ajax({
 									type: "post",
 									url: "DispatcherServlet",
@@ -433,7 +429,7 @@ function inputCheck() {
 										//공란이 있는가?  == 아이디 없다!  
 												
 										if(result.trim().charAt(1) != ""){
-											console.log("dddd")
+											
 											document.getElementById("IdRemember").checked = true;
 										}
 										$("#loginId").val(result);

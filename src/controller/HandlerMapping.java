@@ -53,7 +53,11 @@ public class HandlerMapping {
 			controller = new StopWatchController();
 		}else if (command.equals("finishTime")) {
 			controller = new StopWatchController();
+		}else if (command.equals("cookieConfirm")) {
+			controller = new CookieConfirmController();
 			
+			
+	
 			
 		}else if(command.equals("write")) {
 			controller = new WriteController();		
