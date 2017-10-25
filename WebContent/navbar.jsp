@@ -70,10 +70,12 @@
 			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
 
 
-			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar"><c:choose>
+			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
+			<!-- 로그인후 회원가입 클릭시 링크 안타게 data-target 수정함 -->
+			<c:choose>
 				
 					<c:when test="${mvo.userId != null}">
-						<a href="#" data-toggle="modal" data-target="#signUp "
+						<a href="#" data-toggle="modal" data-target="#"
 							id="regForm">${mvo.userId}님 </a>
 					</c:when>
 				

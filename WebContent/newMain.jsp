@@ -15,8 +15,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%-- <%@ include file="./navbar.jsp"%> --%>
-<jsp:include page="navbar.jsp" />
+<%@ include file="./navbar.jsp"%> 
+<%-- <jsp:include page="navbar.jsp" /> --%>
 	
 	<div class="container-fluid">
 		<img class="mx-auto d-block"

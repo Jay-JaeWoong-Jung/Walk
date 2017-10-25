@@ -47,7 +47,7 @@
 	<c:when test="${mvo.userId == null}">
 	<script>
 			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
-			location.href="main.jsp";
+			location.href="newMain.jsp";
 	</script>
 	</c:when>
 	<c:otherwise>
@@ -114,7 +114,7 @@
 		<SCRIPT > 
 		
 		$('#stBtn').one('click',function () {
-			alert("stnBtn");
+			//alert("stnBtn");
 			var param ="userId=${mvo.userId}&command=startTime";
 			$.ajax({
 				type : "post",
@@ -131,7 +131,7 @@
 		
 		
 		$('#stopBtn').click(function () {
-			alert("stopBtn");
+			//alert("stopBtn");
 			var param ="userId=${mvo.userId}&command=finishTime";
 			$.ajax({
 				type : "post",
@@ -273,7 +273,7 @@
 	    <p class="display-4 text-center">그룹색상</p>
 	    <p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
 	    <a href="#">
-		<img class="card-image rounded mx-auto d-block" src="./iamge/zoom_in.png" alt="Card image">
+		<img class="card-image rounded mx-auto d-block" src="./image/route.JPG" alt="Card image" style=" width:500px;">
 		</a>
 	</div>
 
