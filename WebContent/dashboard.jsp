@@ -107,6 +107,9 @@
 		  <span><a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="width:300px;">FINISH</a></span> 
 		  </div><br> -->
 		  
+		
+		
+		스탑워치:${stopWatch}
 		  
 		<SCRIPT > 
 		
@@ -148,15 +151,16 @@
 		
 		
 		
-		 <SCRIPT > 
 		
 		
 		
-		<%-- <% System.out.println("첫 쓰레드이름:"+Thread.currentThread().getName());
+		
+		  <% 
+		 
+		System.out.println("첫 쓰레드이름:"+Thread.currentThread().getName());
 		String threadName= Thread.currentThread().getName();
 		if(!Thread.currentThread().getName().equals("stopWatch")){
 			
-		
 		Thread th = new Thread(new Runnable(){
 			 
 			 public  void run(){
@@ -180,8 +184,8 @@
 		
 		th.start();
 		}
-		  	%> --%>
-		  	
+		  	%>  
+		  		
 	
 						var currentsec = 0;
 						var currentmin = 0;

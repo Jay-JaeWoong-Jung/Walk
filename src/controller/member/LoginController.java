@@ -45,6 +45,17 @@ public class LoginController implements Controller {
 				
 				return new ModelAndView("main.jsp",true);
 				
+			}else{
+				Cookie[] cookies=request.getCookies();
+				if (cookies!=null) {
+					for (int i = 0; i < cookies.length; i++) {
+						if (cookies[i].getName().equals("retainInfo")) {
+							cookies[i].setMaxAge(0);
+							response.addCookie(cookies[i]);
+						}
+					}
+				}
+				
 			}
 			return new ModelAndView("main.jsp",true);
 		}else {
