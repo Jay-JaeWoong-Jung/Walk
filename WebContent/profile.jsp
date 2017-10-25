@@ -75,8 +75,8 @@
 				
 					<div class="col-sm-12">
 						<nav class="nav nav-tabs" id="myTab" role="tablist">
-						<a class="nav-item nav-link active" id="nav-week-tab" data-toggle="tab" href="#nav-week" role="tab" aria-controls="nav-home" aria-selected="true">1week</a>
-  						<a class="nav-item nav-link" id="nav-month-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-month" aria-selected="false">1 month</a>
+						<a class="nav-item nav-link active" id="nav-week-tab" data-toggle="tab" href="#nav-week" role="tab" aria-controls="nav-week" aria-selected="true">1week</a>
+  						<a class="nav-item nav-link" id="nav-month-tab" data-toggle="tab" href="#nav-month" role="tab" aria-controls="nav-month" aria-selected="false">1 month</a>
 						
 						
 						
@@ -92,7 +92,7 @@
 							</div>
 	 						 <div class="tab-pane fade" id="nav-month" role="tabpanel" aria-labelledby="nav-month-tab">
 	 						 	<h3>1 Month</h3>
-								<img alt="./image/1week.png" src="./image/1month.png"
+								<img alt="./image/1month.png" src="./image/1month.png"
 									width="100%">
 								<p>지난 1달 동안 평균 ${monthAvg}분 걸었습니다.</p>
 	 						 </div>

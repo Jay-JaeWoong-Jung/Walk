@@ -103,7 +103,8 @@
 			<a class="btn btn-primary btn-lg col-4 " id="stopBtn" href="#" role="button"   style="position:absolute;left:60%;">FINISH</a>
 		  </div>
 		  <br>
-		  
+		  <br>
+		  <br><br>
 		  
 		<!-- <span><a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()" style="width:300px;" >START</a></span> 
 		  <span><a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="width:300px;">FINISH</a></span> 
@@ -147,7 +148,7 @@
 				});
 			});
 			
-			//location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=StartTime";
+		
 			
 	
 		
@@ -255,32 +256,46 @@
 						});
 					</SCRIPT> 
 		
+	<div class="jumbotron groupColorCard bg-primary text-white">
+	   		
+	    
+	  	<p class="lead text-center">오늘 산책할 루트</p> 
+
+		<img class="img-thumbnail img-fluid  rounded mx-auto d-block"  src="./image/route.jpg" class="img-fluid" alt="Responsive image" >
+		<!-- <img class="card-image rounded mx-auto d-block" src="./image/route.jpg" > -->
+
+		
+	</div>
+	
+	
+	
 	
 	  </div>
 	  
+	
+	  
 	</div>
-	<c:if test="${vo.groupColor == '1'}"><div class="jumbotron groupColorCard bg-success text-white">  </c:if>
-	<c:if test="${vo.groupColor == '2'}"><div class="jumbotron groupColorCard bg-info text-white">  </c:if>
-	<c:if test="${vo.groupColor == '3'}"><div class="jumbotron groupColorCard bg-warning text-white">  </c:if>
-	<c:if test="${vo.groupColor == '4'}"><div class="jumbotron groupColorCard bg-danger text-white">  </c:if>
-	<c:if test="${vo.groupColor == '5'}"><div class="jumbotron groupColorCard bg-primary text-white">  </c:if>
-	<c:if test="${vo.groupColor == '6'}"><div class="jumbotron groupColorCard  text-white" style="background-color:blue;">  </c:if>
-	<c:if test="${vo.groupColor == '7'}"><div class="jumbotron groupColorCard  text-white" style="background-color:yello;">  </c:if>
-	<c:if test="${vo.groupColor == '8'}"><div class="jumbotron groupColorCard  text-white" style="background-color:pink;">  </c:if>
-	<c:if test="${vo.groupColor == '9'}"><div class="jumbotron groupColorCard  text-white" style="background-color:grey;">  </c:if>
-	<c:if test="${vo.groupColor == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;">  </c:if>
 	
 	
-	<div class="jumbotron groupColorCard bg-danger text-white">
-	    <p class="display-4 text-center">그룹색상</p>
-	    <p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
-	    <a href="#">
+	
+	
+	 <c:if test="${vo.groupColor == '1'}"><div class="jumbotron groupColorCard bg-success text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '2'}"><div class="jumbotron groupColorCard bg-info text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '3'}"><div class="jumbotron groupColorCard bg-warning text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '4'}"><div class="jumbotron groupColorCard bg-danger text-white">  <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p></c:if>
+	<c:if test="${vo.groupColor == '5'}"><div class="jumbotron groupColorCard bg-primary text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '6'}"><div class="jumbotron groupColorCard  text-white" style="background-color:blue;"><p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>  </c:if>
+	<c:if test="${vo.groupColor == '7'}"><div class="jumbotron groupColorCard  text-white" style="background-color:yello;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '8'}"><div class="jumbotron groupColorCard  text-white" style="background-color:pink;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '9'}"><div class="jumbotron groupColorCard  text-white" style="background-color:grey;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	<c:if test="${vo.groupColor == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
+	  
+	   
 
-		<img class="card-image rounded mx-auto d-block" src="./image/route.jpg" alt="Card image" style=" width:500px;">
+		
 
-		</a>
-	</div>
-
+	
+	
 	 
 	</c:otherwise>
 	

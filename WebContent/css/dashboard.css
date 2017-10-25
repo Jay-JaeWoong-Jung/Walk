@@ -1,4 +1,18 @@
 @charset "EUC-KR";
+
+
+
+@font-face {
+	font-family: bmjua;
+	src: url(./font/BMJUA_ttf.ttf);
+}
+
+body {
+	font-family: bmjua;
+
+}	
+
+
 .displayInline {
 	display: inline;
 }
@@ -19,3 +33,7 @@
 .card-image {
 	width: 50px;
 }
+
+
+
+
