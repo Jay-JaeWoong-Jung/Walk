@@ -116,7 +116,14 @@ alert("로그인에 실패하였습니다.");
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="profile.jsp">프로필</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
-					href="#pricing">PRICING</a></li>
+					href="#pricing"  class="dropdown-item" onclick="reserveGo()">예약하기</a>
+					<script>
+						function reserveGo(){
+							location.href="reserve.jsp?userId=${mvo.userId}";
+						}
+						</script>	
+					
+				</li>
 				<li data-toggle="collapse" data-target="#myNavbar"><a
 					href="DispatcherServlet?command=todayDate&userId=${mvo.userId}">게시판보기</a></li>
 				<li data-toggle="collapse" data-target="#myNavbar"><c:choose>

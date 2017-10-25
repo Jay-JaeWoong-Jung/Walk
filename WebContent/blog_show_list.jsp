@@ -208,7 +208,7 @@ body {
 										<div class="modal-body">Really??????</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-primary"
-												onclick="sumbit_Delete('${bvo.no}','${bvo.timePosted}')">ff</button>
+												onclick="sumbit_Delete('${bvo.no}','${bvo.timePosted}')">ok</button>
 											<button type="button" class="btn btn-secondary"
 												data-dismiss="modal">Close</button>
 											<script type="text/javascript">
