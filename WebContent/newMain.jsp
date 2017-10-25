@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -14,28 +15,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="./navbar.jsp"%>
-
+<%-- <%@ include file="./navbar.jsp"%> --%>
+<jsp:include page="navbar.jsp" />
 	
 	<div class="container-fluid">
-		<div class="row bg-1 ">
-			<h1 class="margin">건강도 챙기고</h1>
+		<img class="mx-auto d-block"
+			src="./image/Healthcare-Medical-Heart-icon.png"><br>
+		<div class="row section ">
+			<h1 class="mx-auto">건강도 챙기고</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">정보교환도 하고</h1>
+
+		<img class="mx-auto d-block" src="./image/share.png"><br>
+		<div class="row section ">
+			<h1 class="mx-auto">정보교환도 하고</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">친구도 사귀고</h1>
+
+		<img class="mx-auto d-block" src="./image/friend.png"><br>
+		<div class="row section ">
+			<h1 class="mx-auto">친구도 사귀고</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">우리 같이 걸을래?</h1>
+		
+		<img class="mx-auto d-block" src="./image/footstep.svg"><br>
+		<div class="row section ">
+			<h1 class="mx-auto">매일 20분 산책 프로잭트</h1>
 		</div>
-		<div class="row bg-1 ">
-			<h1 class="margin">매일 20분 산책 프로잭트</h1>
+		
+		<div class="row section ">
+			<h1 class="mx-auto highlight">우리 같이 걸을래?</h1>
 		</div>
-	
+			
+			
 	</div>
-	
+
 
 
 

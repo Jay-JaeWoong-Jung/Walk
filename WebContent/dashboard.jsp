@@ -13,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/dashboard.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Dashboard</title>
 
@@ -273,7 +274,7 @@
 	    <p class="display-4 text-center">그룹색상</p>
 	    <p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
 	    <a href="#">
-		<img class="card-image rounded mx-auto d-block" src="./pic/zoom_in.png" alt="Card image">
+		<img class="card-image rounded mx-auto d-block" src="./image/zoom_in.png" alt="Card image">
 		</a>
 	</div>
 

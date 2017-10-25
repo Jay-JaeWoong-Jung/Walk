@@ -5,14 +5,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a
-		class="navbar-brand" href="#"><img src="./image/logo2.png" class="img-square"
-										alt="./image/logo2.png" width="100%" ></a>
+
+		class="navbar-brand" href="newMain.jsp"><img src="./image/footstep.svg" style="width: 50px;"></a>
+
 
 	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
 		<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
@@ -29,8 +31,7 @@
 	<div class="collapse navbar-collapse mr-auto"
 		id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="#">About</a>
-			</li>
+
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Reserve </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -71,7 +72,7 @@
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar"><c:choose>
 				
 					<c:when test="${mvo.userId != null}">
-						<a href="#" data-toggle="modal" data-target="#signUp "
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#signUp "
 							id="regForm">${mvo.userId}님 </a>
 					</c:when>
 				
@@ -85,9 +86,12 @@
 				<c:choose>
 					<c:when test="${mvo.userId != null}">
 						
-						<a class="nav-link"
-							href="DispatcherServlet?command=logout&userId=${mvo.userId}"
-							data-toggle="modal" id="login"> 로그아웃</a>
+						<a class="nav-link" onclick="logout()"> 로그아웃</a>
+							<script type="text/javascript">
+								function logout() {
+									location.href="DispatcherServlet?command=logout&userId=${mvo.userId}";
+								}
+							</script>
 
 					</c:when>
 					<c:otherwise>
@@ -415,13 +419,8 @@ function inputCheck() {
 							$('#login').click(function() {
 								
 								
-								
-									
-								
 								 var param = "command=cookieConfirm";
-								
-								
-								
+
 								$.ajax({
 									type: "post",
 									url: "DispatcherServlet",
@@ -430,7 +429,7 @@ function inputCheck() {
 										//공란이 있는가?  == 아이디 없다!  
 												
 										if(result.trim().charAt(1) != ""){
-											console.log("dddd")
+											
 											document.getElementById("IdRemember").checked = true;
 										}
 										$("#loginId").val(result);
