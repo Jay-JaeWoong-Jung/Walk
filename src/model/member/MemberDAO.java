@@ -89,14 +89,14 @@ public class MemberDAO {
 						}
 			System.out.println("입력한 정보와 일치하는 ID는 "+vo.getUserId()+"입니다.");
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, conn);
 		}
 		return vo.getUserId();
 	}// findIdByEmail
 	
-	//임시비번 메일전송 로직 String findIdByEmail=MemberDAO.getInstance().idCheck(String userId)
+	//임시비번 DB 업데이트 로직
 	public int updateFindPass(String userId,String tempPass) throws SQLException{
 		int result=0;
 		Connection conn = null;
@@ -199,6 +199,7 @@ public class MemberDAO {
 			}
 
 		} catch (Exception e) {
+			System.out.println("check: "+check);
 			System.out.println("Exception" + e);
 		} finally {
 			closeAll(rs, pstmt, conn);

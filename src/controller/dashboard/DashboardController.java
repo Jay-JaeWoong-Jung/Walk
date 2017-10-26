@@ -22,6 +22,7 @@ public class DashboardController implements Controller{
 		
 		String userId =request.getParameter("userId");
 		 int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
+		 
 //		String userId ="myId1";
 //		int selectedTime=2;
 		
@@ -41,16 +42,16 @@ public class DashboardController implements Controller{
 		int count=MemberDAO.getInstance().getgroupColorCout(selectedTime, vo.getgroupColor());
 		
 		
-		
+		//같은 그룹 사람들 이름 추출
 		ArrayList<MemberVO> rvo=MemberDAO.getInstance().getNameInGroup(selectedTime, vo.getgroupColor());
 		
 		Date date=MemberDAO.getInstance().getReserveDate(userId);
 		
 		
 		
-		System.out.println("count:"+count);
-		System.out.println("vo:"+vo);
-		System.out.println("rvo:"+rvo);
+		System.out.println("Dash count:"+count);
+		System.out.println("Dash  vo:"+vo);
+		System.out.println("Dash  rvo:"+rvo);
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("rvo", rvo);

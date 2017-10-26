@@ -10,16 +10,7 @@
 <script language="JavaScript" src="script.js"></script>
 <script>
 
-function regForm(){
-/* 	
-$('#moveLogin').click(function() {
-		
-		
-	
-	});
-$('#login').trigger('click');
-}
-	 */
+
 	
 		
 	
@@ -30,18 +21,26 @@ $('#login').trigger('click');
 	<center>
 		<c:choose>
 			<c:when test="${regResult == '1'}">
-				<b>회원가입을 축하드립니다.</b>
-				<br />
-				<script type="text/javascript">
+			<script type="text/javascript">
+				alert("회원가입을 축하드립니다. 메인 페이지로 이동합니다.")
+				
+				location.href="newMain.jsp";
+				
 				
 				</script>
-				<a href="newMain.jsp" id="moveLogin" onclick="regForm()"> 메인페이지로 이동
-				</a>
+				
+				
 			</c:when>
 			<c:otherwise>
-				<b>다시 입력하여 주십시오.</b>
-				<br />
-				<a href="newMain.jsp" id="moveRegForm">다시 가입</a>
+			
+			<script type="text/javascript">
+				alert("회원가입에 실패하셨습니다. 다시 부탁드립니다.")
+				
+				location.href="newMain.jsp";
+				
+				
+				</script>
+			
 			</c:otherwise>
 		</c:choose>
 	</center>

@@ -41,7 +41,7 @@
 
 <script type="text/javascript">
 	function updateClose() {
-		location.href = "main.jsp?userId=${mvo.userId}";
+		location.href = "profile.jsp?userId=${mvo.userId}";
 	}
 	function deleteMember() {
 		location.href = "delete.jsp?userId=${mvo.userId}";

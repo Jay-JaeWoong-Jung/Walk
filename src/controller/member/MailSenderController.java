@@ -13,11 +13,20 @@ public class MailSenderController implements Controller {
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MailSenderController 실행중....");
 		String userId = request.getParameter("userId");
+		boolean result = false;
 		
-		MailSender ms=null;
-		ms.sendTemporaryPassword(userId);
-		request.setAttribute("userId", userId);
-
+		if(MemberDAO.getInstance().idCheck(userId)) {
+			result = true;
+			// MailSender.sendTemporaryPassword(userId);
+		} else {
+			result = false;
+		}
+		
+		
+		MailSender.sendTemporaryPassword(userId);
+		//request.setAttribute("idCheck", result);
+		
+		// return new ModelAndView(DispatcherServlet?command=..&result=+result);
 		
 		return new ModelAndView("mailSenderProc.jsp");
 	}

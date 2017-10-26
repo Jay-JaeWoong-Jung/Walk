@@ -11,6 +11,7 @@ import controller.dashboard.StopWatchController;
 
 import controller.member.CookieConfirmController;
 import controller.member.DeleteController;
+import controller.member.FindIdController;
 import controller.member.IdCheckController;
 import controller.member.LoginController;
 import controller.member.LogoutController;
@@ -30,6 +31,7 @@ public class HandlerMapping {
 	}
 	
 	public Controller createController(String command) {
+		System.out.println( "핸들러 들어온 command:"+command);
 		Controller controller = null;
 		if(command.equals("reserve")){
 			controller = new ReserveController();
@@ -55,7 +57,9 @@ public class HandlerMapping {
 			controller = new StopWatchController();
 		}else if (command.equals("cookieConfirm")) {
 			controller = new CookieConfirmController();
-			
+		}else if (command.equals("findId")) {
+				controller = new FindIdController();
+				System.out.println("findIdController 생성됬습니다..");
 			
 	
 			

@@ -67,7 +67,7 @@ public class MailSender {
 				// set tempPassword
 				String body = "Your Temporary Password for " +userId + " : " + tempPassword;
 				
-			
+		
 				MemberDAO.getInstance().updateFindPass(userId, tempPassword);
 				
 				msg.setSubject("[ Walk & Talk ] : " +userId +", Temporary Password !", "UTF-8");
