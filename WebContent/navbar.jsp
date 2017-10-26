@@ -18,6 +18,14 @@ function reserveCheck(){
 }
 
 </script>
+
+<c:if test="${param.loginfail =='true'}">
+<script>
+alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
+</script>
+
+
+</c:if>
 <title>Insert title here</title>
 </head>
 <body>

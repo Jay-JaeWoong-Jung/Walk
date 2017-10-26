@@ -145,8 +145,11 @@ public class MemberDAO {
 		} finally {
 			closeAll(rs, pstmt, conn);
 		}
+		System.out.println("check 결과:"+check);
 		return check;
 	}// loginCheck
+	
+	
 
 	public MemberVO getMemberInfo(String userId) throws SQLException {
 		Connection conn = null;
@@ -241,7 +244,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public MemberVO login(String userId, String userPass) throws SQLException ,Exception{
+	public MemberVO login(String userId, String userPass) throws SQLException {
 		MemberVO vo  = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -254,14 +257,31 @@ public class MemberDAO {
 			pstmt.setString(2, userPass);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				vo = new MemberVO(userId, rs.getString("userName"), rs.getString("phone1"),
-						rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"), rs.getString("emailId"),
-						rs.getString("emailAdd"), rs.getString("birth"),rs.getString("company"),rs.getInt("selectedTime"), rs.getString("emailaccept"),
+				vo = new MemberVO(
+						userId, 
+						rs.getString("userName"), 
+						rs.getString("phone1"),
+						rs.getString("phone2"), 
+						rs.getString("phone3"), 
+						
+						rs.getInt("gender"), 
+						rs.getString("emailId"),
+						rs.getString("emailAdd"), 
+						rs.getString("birth"),
+						rs.getString("company"),
+						
+						rs.getInt("selectedTime"), 
+						rs.getString("emailAccept"),
 						rs.getString("profile"));
+				
+				
 				System.out.println("login성공!!!....로그인 멤버 정보" + vo);
-			} 
+			}
 
-		}catch(Exception e){e.printStackTrace();}
+		}catch(Exception e){
+			System.out.println("dao에서 로긴 에러 + vo는:"+vo);
+			e.printStackTrace();
+		}
 		
 		finally {
 			closeAll(rs, pstmt, con);

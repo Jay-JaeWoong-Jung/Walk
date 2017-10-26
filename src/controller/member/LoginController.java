@@ -25,11 +25,10 @@ public class LoginController implements Controller {
 //			retainId="n";
 //		}
 		System.out.println(userId + ", " + userPass);
-
-		MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
-
-
-		if(vo.getUserId() != null) {
+		int loginResult=MemberDAO.getInstance().loginCheck(userId, userPass);
+		System.out.println("loginResult:"+loginResult);
+		if(loginResult==1){
+			MemberVO vo = MemberDAO.getInstance().login(userId, userPass);
 			HttpSession session =request.getSession();
 			session.setAttribute("mvo", vo);
 			//			ServletContext application = session.getServletContext();
@@ -62,10 +61,18 @@ public class LoginController implements Controller {
 			}
 
 			return new ModelAndView("newMain.jsp",true);
-
+			
 		}else {
 			return new ModelAndView("newMain.jsp?loginfail=true",true);
 		}
+
+		
+
+
+//		if(vo.getUserId() != null) {
+		
+
+
 		
 	}
 
