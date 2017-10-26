@@ -83,7 +83,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 			<li class="nav-item"><a class="nav-link" href="profile.jsp">Profile</a></li>
 			<li class="nav-item">
 				<c:choose>
-					<c:when test="${mvo.selectedTime == ''}">
+					<c:when test="${mvo.selectedTime == '' }">
 				<a class="nav-link" href="reserve.jsp" onclick="reserveCheck()" >Dashboard</a>	
 					</c:when>
 					<c:otherwise>
@@ -217,10 +217,10 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" name="userPass" class="form-control"
-								id="InputPassword" placeholder="비밀번호" style="font-family:Georgia;"> <label><b>비밀번호
+								id="InputPassword" placeholder="Password"  style="font-family:'Saira Semi Condensed', sans-serif;"> <label><b>비밀번호
 									확인</b></label> <input type="password" name="userRepass"
 								class="form-control" id="InputPasswordRepeat"
-								placeholder="비밀번호 확인" name="psw-repeat" style="font-family:Georgia;" >
+								placeholder="Check Password" name="psw-repeat" style="font-family:'Saira Semi Condensed', sans-serif;" >
 						</div>
 						<div class="form-group ">
 							<label for="">핸드폰 번호 </label>
@@ -481,7 +481,7 @@ function inputCheck() {
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="loginPass"
-								placeholder="비밀번호" name="userPass">
+								placeholder="Password" name="userPass" style="font-family:'Saira Semi Condensed', sans-serif;">
 						</div>
 
 						<div class="form-check">
