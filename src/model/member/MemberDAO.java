@@ -253,11 +253,11 @@ public class MemberDAO {
 			pstmt.setString(2, userPass);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
+				vo = new MemberVO(userId, rs.getString("userName"), rs.getString("phone1"),
 						rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"), rs.getString("emailId"),
-						rs.getString("emailAdd"), rs.getString("birth"), rs.getString("emailaccept"),
+						rs.getString("emailAdd"), rs.getString("birth"),rs.getString("company"),rs.getInt("selectedTime"), rs.getString("emailaccept"),
 						rs.getString("profile"));
-				System.out.println("login성공!!!...." + vo);
+				System.out.println("login성공!!!....로그인 멤버 정보" + vo);
 			} 
 
 		}catch(Exception e){e.printStackTrace();}

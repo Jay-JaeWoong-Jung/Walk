@@ -37,6 +37,7 @@ public class LoginController implements Controller {
 			//			application.setAttribute("retainPass", vo.getUserPass());
 			System.out.println("mvo 바인딩 완료!");
 			System.out.println("retainId:"+retainId);
+			
 			if (retainId !=null) {
 
 				/////// 쿠키 생성/////////

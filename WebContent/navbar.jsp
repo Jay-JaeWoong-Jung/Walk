@@ -8,6 +8,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<script>
+function reserveCheck(){
+	
+		alert("예약 후 이용 가능합니다. 예약 후 이용 바랍니다.")
+		
+	
+	
+}
+
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -38,7 +48,7 @@
 					<a class="dropdown-item" href="#" onclick="reserveGo()">예약하기</a>
 						<script>
 						function reserveGo(){
-							location.href="reserve.jsp?";
+							location.href="reserve.jsp";
 						}
 						</script>
 					<div class="dropdown-divider"></div>	
@@ -63,8 +73,16 @@
 				</div>
 			</li>
 			<li class="nav-item"><a class="nav-link" href="profile.jsp">Profile</a></li>
-			<li class="nav-item"><a class="nav-link"
-				href="DispatcherServlet?userId=myId1&selectedTime=1&command=dashboard">Dashboard</a>
+			<li class="nav-item">
+				<c:choose>
+					<c:when test="${mvo.selectedTime == ''}">
+				<a class="nav-link" href="reserve.jsp" onclick="reserveCheck()" >Dashboard</a>	
+					</c:when>
+					<c:otherwise>
+				<a class="nav-link" href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${mvo.selectedTime}&command=dashboard" >Dashboard</a>	
+					</c:otherwise>
+				</c:choose>
+			
 			</li>
 			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
 

@@ -9,7 +9,7 @@ public interface StringQuery {
 	String SELECT_UPDATE = "update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=?, company=?, selectedtime=?,emailaccept=?, profile=? , gender=? where userid=?";
 /*	String SELECT_MEMBER = "select userpass from membership where userid=? ";*/
 	String DELETE_MEMBER = "delete from membership where userid=? and userPass=?";
-	String SELECT_LOGIN = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailAccept,profile from membership where userid=? and userPass=?";
+	String SELECT_LOGIN = "select userid,username,phone1,phone2,phone3,  gender,emailid,emailadd,birth,company, selectedtime,emailAccept,profile from membership where userid=? and userPass=?";
 
 	
 	////////////////////reservation queries//////////////
@@ -26,9 +26,9 @@ public interface StringQuery {
 	String GET_USERID_GROUPCOLOR_BY_TIMESLOT = "select userid, GROUPCOLOR from membership where selectedtime=?";
 	String CLEAR_GROUPCOLOR_SELECTEDTIME="UPDATE membership SET GROUPCOLOR=?, selectedTime=?";
 	
-	String GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR="select userName from membership where selectedTime=? and GROUPCOLOR=?";
+	String GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR="select userName,selectedTime,GROUPCOLOR from membership where  selectedTime=? and GROUPCOLOR=? and GROUPCOLOR is not null and GROUPCOLOR !=0";
 	String GET_RESERVATION_INFO_BY_ID="select userId, selectedTime, GROUPCOLOR,userName from membership where userId=?";
-	String GET_SAME_GROUPCOLOR_COUNT ="select count(*) from membership where selectedTime=? group by GROUPCOLOR having GROUPCOLOR=?";
+	String GET_SAME_GROUPCOLOR_COUNT ="select count(*) from membership where selectedTime=? group by GROUPCOLOR having GROUPCOLOR=? and GROUPCOLOR is not null and GROUPCOLOR !=0";
 	String UPDATE_TIMESLOT ="update membership set selectedTime=? where userId=?";
 	String CANCEL_RESERVATION="update membership set selectedTime=0 ,groupcolor=0 where userId=?";
 	String DELETE_LOG="delete from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
