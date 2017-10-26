@@ -75,7 +75,7 @@
 				
 					<c:when test="${mvo.userId != null}">
 
-						<a href="#" data-toggle="modal" data-target="#"
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#"
 
 				
 							id="regForm">${mvo.userId}님 </a>

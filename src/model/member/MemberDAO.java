@@ -107,7 +107,7 @@ public class MemberDAO {
 			pstmt.setString(11, null);
 			pstmt.setNull(12, java.sql.Types.INTEGER);
 			pstmt.setString(13, vo.getEmailAccept());
-			pstmt.setString(14, null);
+			pstmt.setString(14, "default.png");
 			pstmt.setNull(15, java.sql.Types.INTEGER);
 
 			flag = pstmt.executeUpdate();
