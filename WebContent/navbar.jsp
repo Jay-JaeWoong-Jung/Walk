@@ -50,13 +50,35 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 		id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
+
+
+		
+		
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Reserve </a>
+				
+				
+				
+				
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="#" onclick="reserveGo()">예약하기</a>
 						<script>
 						function reserveGo(){
-							location.href="reserve.jsp";
+							
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="reserve.jsp";
+								</c:otherwise>
+		
+							</c:choose>
+	
+							
+							
 						}
 						</script>
 					<div class="dropdown-divider"></div>	
@@ -64,7 +86,18 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 					<a class="dropdown-item" href="#" onclick="reserveChange()">예약변경</a>
 						<script>
 						function reserveChange(){
-							location.href="reserve.jsp?change=true";
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="reserve.jsp?change=true";
+								</c:otherwise>
+		
+							</c:choose>
+
 						}
 						</script>
 					
@@ -73,27 +106,70 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 					<a class="dropdown-item" href="#"onclick="reserveCancel()">예약 취소</a>
 					<script>
 						function reserveCancel(){
-							location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=reserveCancel";
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=reserveCancel";
+							</c:otherwise>
+	
+						</c:choose>
+						
+						
+							
 						}
 					</script>
 						
 					
 				</div>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="profile.jsp">Profile</a></li>
+			<li class="nav-item"><a class="nav-link" href="#" onclick="profile()">Profile</a></li>
+					<script>
+						function profile(){
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="profile.jsp";
+								</c:otherwise>
+	
+							</c:choose>
+		
+						}
+					</script>
+			
 			<li class="nav-item">
-				<c:choose>
-					<c:when test="${mvo.selectedTime == ''}">
-				<a class="nav-link" href="reserve.jsp" onclick="reserveCheck()" >Dashboard</a>	
-					</c:when>
-					<c:otherwise>
-				<a class="nav-link" href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${mvo.selectedTime}&command=dashboard" >Dashboard</a>	
-					</c:otherwise>
-				</c:choose>
+				
+				<a class="nav-link" href="#" onclick="dashboard()">Dashboard</a>
+					<script>
+						function dashboard(){
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="DispatcherServlet?userId=${mvo.userId}&command=dashboard";
+								</c:otherwise>
+	
+							</c:choose>
+		
+						}
+					</script>
+						
+				
 			
 			</li>
 			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
-
+ 
+			
 
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
 			<!-- 로그인후 회원가입 클릭시 링크 안타게 data-target 수정함 -->

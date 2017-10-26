@@ -76,7 +76,7 @@
 								<input type="submit" class="btn btn-primary btn-lg" value="dashboard가기"> 
 								<input type="hidden" name="command" value="dashboard">
 								<input type="hidden" name="userId" value="${mvo.userId}">
-								<input type="hidden" name="selectedTime" value="${param.selectedTime}">
+								
 							</form>
 						</c:otherwise>
 					</c:choose>
