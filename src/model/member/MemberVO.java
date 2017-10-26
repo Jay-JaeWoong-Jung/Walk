@@ -24,14 +24,19 @@ public class MemberVO {
     public MemberVO() {
 		super();
 	}
-	///회원가입용 생성자///
+    
+
+
+	///회원가입용 생성자///   //이름,이메일로 아이디 찾기
  // delete, logincheck용
  	public MemberVO(String userId, String userPass) {
  		super();
  		this.userId = userId;
  		this.userPass = userPass;
  	}
- 	//login용 
+ 
+
+	//login용 
  	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
  			int gender, String emailId, String emailAdd, String birth, String emailAccept, String profile) {
  		super();
@@ -89,6 +94,7 @@ public class MemberVO {
  	}
     
     ///예약관리용 생성자////
+ 	
 	public MemberVO(String userName) {
 		super();
 		this.userName = userName;
@@ -100,6 +106,8 @@ public class MemberVO {
 		this.selectedTime = selectedTime;
 		this.groupColor = groupColor;
 	}
+
+
 	public MemberVO(String userId, String userPass, String userName, String phone1, String phone2, String phone3,
 			int gender, String emailId, String emailAdd, String birth, String company, int selectedTime, Date regDate,
 			String emailAccept, String profile, int groupColor) {
@@ -121,6 +129,8 @@ public class MemberVO {
 		this.profile = profile;
 		this.groupColor = groupColor;
 	}
+	
+
 	public String getUserId() {
 		return userId;
 	}

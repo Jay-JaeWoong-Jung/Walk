@@ -1,4 +1,4 @@
-package constants;
+ package constants;
 
 public interface StringQuery {
 	///////////////////회원관리 queries//////////////////////////////
@@ -10,7 +10,11 @@ public interface StringQuery {
 /*	String SELECT_MEMBER = "select userpass from membership where userid=? ";*/
 	String DELETE_MEMBER = "delete from membership where userid=? and userPass=?";
 	String SELECT_LOGIN = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailAccept,profile from membership where userid=? and userPass=?";
-
+	
+	//10/26 10:30 김보경 아이디 비번찾기 추가
+	String SELECT_FINDID="select userid from membership where username=? and emailid=? and emailadd=?";
+	String UPDATE_FINDPASS="update membership set userpass=? where userid=?";
+	
 	
 	////////////////////reservation queries//////////////
 	String UPDATE_TIME ="update membership  set  selectedTime=? where userId=?";
@@ -30,9 +34,9 @@ public interface StringQuery {
 	String GET_RESERVATION_INFO_BY_ID="select userId, selectedTime, GROUPCOLOR,userName from membership where userId=?";
 	String GET_SAME_GROUPCOLOR_COUNT ="select count(*) from membership where selectedTime=? group by GROUPCOLOR having GROUPCOLOR=?";
 	String UPDATE_TIMESLOT ="update membership set selectedTime=? where userId=?";
-	String CANCEL_RESERVATION="update membership set selectedTime=0 ,groupcolor=0 where userId=?";
+	String CANCEL_RESERVATION="update membership set selectedTime=0 where userId=?";
 	String DELETE_LOG="delete from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
-	String IS_RESERVATION="select attendance from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
+	String IS_RESERVATION="select attendance from id_log where userId=?";
 	String GET_RESERVE_DATE= "select reserveDate from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
 	String UPDATE_START_TIME="update id_log set startTime=TO_CHAR(SYSDATE, 'HH24MISS') where userId=?";
 	String UPDATE_FINISH_TIME="update id_log set finishTime=TO_CHAR(SYSDATE, 'HH24MISS') where userId=?";

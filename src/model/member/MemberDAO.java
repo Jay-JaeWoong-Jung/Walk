@@ -1,12 +1,14 @@
 package model.member;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import config.OracleInfo;
 import constants.StringQuery;
 import dataSourceManager.DataSourceManager;
 import javafx.util.Pair;
@@ -43,8 +45,11 @@ public class MemberDAO {
 	public Connection getConnection() throws SQLException {
 		// System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
-		// return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER,
+		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER,
 		// OracleInfo.PASS);
+		
+		 
+		
 	}
 
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
@@ -60,8 +65,61 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}
+	
+	/////////////////////////아이디 찾기 로직////////////////////문제:VO에 한개 매개변수 갖고 있는 거가 또있음...해결:생성자 여러개짜리써서 null값넣을수있다//
+	public String findIdByEmail(String userName,String emailId,String emailAdd) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		try {
+			conn = getConnection();
+			//	String SELECT_FINDID="select userid from membership where username=? and emailid=? and emailadd=?";
+			pstmt = conn.prepareStatement(StringQuery.SELECT_FINDID);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, emailId);
+			pstmt.setString(3, emailAdd);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				vo = new MemberVO();
+				vo.setUserId(rs.getString("userid"));
+				vo.setUserPass(null);
+				
 
-	///////////////////////////////////////////////
+						}
+			System.out.println("입력한 정보와 일치하는 ID는 "+vo.getUserId()+"입니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return vo.getUserId();
+	}// findIdByEmail
+	
+	//임시비번 메일전송 로직 String findIdByEmail=MemberDAO.getInstance().idCheck(String userId)
+	public int updateFindPass(String userId,String tempPass) throws SQLException{
+		int result=0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			//update membership set userpass=? where userid=?
+			pstmt = conn.prepareStatement(StringQuery.UPDATE_FINDPASS);
+			pstmt.setString(1, tempPass);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+			System.out.println("updateFindPass OK..." + result);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(pstmt, conn);
+		}
+		return result;
+		}//updateFindPass
+
 
 	////////////////// 회원관리 로직///////////////////
 	public boolean idCheck(String userId) throws SQLException {
@@ -72,6 +130,7 @@ public class MemberDAO {
 
 		try {
 			conn = getConnection();
+			//"select * from membership where userId=?
 			pstmt = conn.prepareStatement(StringQuery.SELECT_IDCHECK);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
@@ -627,7 +686,14 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}
-	
+/*	public static void main(String[] args) throws SQLException {
+		
+		//String findId=MemberDAO.getInstance().findIdByEmail("admin", "ealurill", "@naver.com");
+		//System.out.println(findId);
+		//int result=MemberDAO.getInstance().updateFindPass("TempPassword123", "tester","테스터", "tester", "@naver.com");
+		//System.out.println(result);
+		//문제점 디비 비밀번호 저장공간이 너무적다  USERPASS  NOT NULL VARCHAR2(60) 상향요청
+	}*/
 	
 
 }
