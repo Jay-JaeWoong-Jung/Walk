@@ -13,7 +13,7 @@ import controller.ModelAndView;
 import javafx.util.Pair;
 import model.member.MemberDAO;
 
-public class JobTimer extends TimerTask{
+public class JobTimer extends TimerTask {
 	
 private int timeSlot;
 	
@@ -27,6 +27,7 @@ private int timeSlot;
 	
 	public void run(){
 		try {
+			
 			if(timeSlot != 0){
 				
 			
@@ -41,6 +42,8 @@ private int timeSlot;
 				
 				
 			}
+			
+			
 			ArrayList<Pair<String, Integer>> resultList = MemberDAO.getInstance().getUserIdgroupColorPairByTimeSlot(timeSlot);
 			System.out.println("그룹할당 결과:" + resultList);
 			
