@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TimerTask;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import constants.MagicNumbers;
+import controller.Controller;
+import controller.ModelAndView;
 import javafx.util.Pair;
 import model.member.MemberDAO;
 
@@ -49,4 +54,8 @@ private int timeSlot;
 		}
 		
 	}
+
+
+
+	
 }

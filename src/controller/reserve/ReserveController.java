@@ -30,12 +30,13 @@ public class ReserveController implements Controller{
 		System.out.println("isReserve:"+isReserve);
 		//기존 예약자면  메인페이지 이동 , 최초 예약자는 로그에 넣고 성공페이지 이동, 예약변경자는 로그 없이 성공페이지 이동
 		
-		//예약이 처음이라면..
+		//예약이 처음이라면.. 
+		//selectedTime 넣어주고 로그에 넣어줌
 		if(isReserve == false ){
 			MemberDAO.getInstance().chooseTimeSlot(selectedTime,userId);
 			MemberDAO.getInstance().setReserveDate(userId,attendace);
 			System.out.println("첫 예약후 reserveController selectedTime:"+selectedTime);
-			path = "rsuccess.jsp?selectedTime="+selectedTime;
+			path = "rsuccess.jsp";
 			
 
 		//기존 예약자라면..
@@ -43,12 +44,12 @@ public class ReserveController implements Controller{
 			
 			// 기존 예약자가 예약 변경이 아니고 다시 예약하려고 하면..
 			if(change == null){
-				path ="reserve.jsp?reserve=true&selectedTime="+selectedTime;
+				path ="reserve.jsp?reserve=true";
 				
-				//기존 예약자가 예약 변경이라면	
+				//기존 예약자가 예약 변경이라면	selectedTime 변경해줌.
 			}else if(change.equals("true")){
 				MemberDAO.getInstance().chooseTimeSlot(selectedTime, userId);
-				path = "rsuccess.jsp?change=true&selectedTime="+selectedTime;
+				path = "rsuccess.jsp?change=true";
 			}
 
 		}

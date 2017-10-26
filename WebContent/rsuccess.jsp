@@ -25,7 +25,7 @@
 body {
 
 	font-family: bmjua;
-	background-image: linear-gradient(180deg,#fb4d7d,#ff7556);
+	
 	
 }
 
@@ -55,7 +55,8 @@ body {
 	<c:otherwise>
 
 	<c:import url="./navbar.jsp"></c:import>
-	<div class="jumbotron  jumbotron-fluid">
+   
+	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -88,7 +89,7 @@ body {
 								<input type="submit" class="btn btn-primary btn-lg" value="dashboard가기"> 
 								<input type="hidden" name="command" value="dashboard">
 								<input type="hidden" name="userId" value="${mvo.userId}">
-								<input type="hidden" name="selectedTime" value="${param.selectedTime}">
+								
 							</form>
 						</c:otherwise>
 					</c:choose>
@@ -102,7 +103,7 @@ body {
 
 		</div>
 	</div>
-	
+ 
 
 	
 	
