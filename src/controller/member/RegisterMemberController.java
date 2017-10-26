@@ -1,5 +1,7 @@
 package controller.member;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,7 +38,18 @@ public class RegisterMemberController implements Controller {
 		System.out.println("emailAccept:"+emailAccept);
 		request.setAttribute("regResult", regResult);
 		
-		return new ModelAndView("regProc.jsp");
+		
+		if(regResult=='0') {
+			PrintWriter out = response.getWriter();
+			
+			response.setContentType("text/html; charset=utf-8");
+			out.println("<script language='javascript'>");
+			out.println("alert('다시 입력하여 주세요!');");
+			out.println("</script>");
+			out.flush();
+		}
+		
+		return new ModelAndView("newMain.jsp"); // regProc로 안가고 newMain으로 이동
 	}
 
 }

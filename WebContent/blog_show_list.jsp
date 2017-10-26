@@ -147,7 +147,7 @@ body {
 				 <div class="col-6">
 					 <div class="btn-group btn-group-lg">
 						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
-						<input type="text" id="datepicker" value="Select Date" 
+						<input type="text" id="datepicker" placeholder="Select Date" 
 						name="date" onclick="this.value=null" class="btn btn-danger" style="font-size:20px;">
 						
 					   <a href="#" class ="btn btn-danger" onclick="search_submit()"  value="Search" id="sendBtn">

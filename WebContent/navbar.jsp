@@ -164,17 +164,17 @@ function inputCheck() {
 		document.regForm.userId.focus();
 		return;
 	}
-	if (doubleCheck== "false") {
+	/* if (doubleCheck== "false") {
 		alert("아이디 중복확인을 해주세요.");
 		
 		return;
-	}
+	} */
 	if (userPass == "") {
 		alert("비밀번호를 입력해 주세요.");
 		document.regForm.userPass.focus();
 		return;
 	}
-	if (userRepass == "") {
+	 if (userRepass == "") {
 		alert("비밀번호를 확인해 주세요.");
 		document.regForm.userRepass.focus();
 		return;
@@ -212,13 +212,13 @@ function inputCheck() {
 	}
 	if (birthday =="") {
 		alert("생년월일을  입력해 주세요.");
-		window.close();
+		return;
 		 
 		
 	}
 	
 	
-	 $('#regForm').submit(); 
+	document.regForm.submit(); 
 }
 
 
@@ -237,7 +237,7 @@ function inputCheck() {
 				</div>
 
 				<form action="DispatcherServlet" method="post" name="regForm"
-					onsubmit="inputCheck()" id="regForm">
+					 id="regForm"> <!--onsubmit="inputCheck()"  -->
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">이름</label> <input type="text" name="userName"
@@ -247,21 +247,21 @@ function inputCheck() {
 							<div class="col-sm-10">
 								<label for="id">ID</label>
 							</div>
-							<div class="col-xs-7">
+							<div class="col-sm-7">
 								<input type="text" name="userId" class="form-control"
 									id="InputId" placeholder="아이디">
 							</div>
-							<div class="col-xs-3">
+							<div class="col-sm-3">
 								<span id="span_id"></span>
 								<!-- <input type="button" value="중복확인"
 									onclick="idCheck()" class="btn btn-secondary" /> -->
-								<input type="hidden" name="doubleCheck" id="doubleCheck"
-									value="false">
+								<!-- <input type="hidden" name="doubleCheck" id="doubleCheck"
+									value="false"> -->
 							</div>
 						</div>
 
 						<script>
-						$("#InputId").keyup(function(){
+						/* $("#InputId").keyup(function(){
 							
 							var userId=$("#InputId").val();
 							var param = "userId="+userId+"&command=idCheck";
@@ -286,24 +286,24 @@ function inputCheck() {
 									}
 								});
 							
-						});
+						}); */
 						
 						</script>
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" name="userPass" class="form-control"
-								id="InputPassword" placeholder="비밀번호" required> <label><b>비밀번호
-									확인</b></label> <input type="password" name="userRepass"
+								id="InputPassword" placeholder="비밀번호" style="font-family:Georgia;"> <label>비밀번호
+									확인</label> <input type="password" name="userRepass"
 								class="form-control" id="InputPasswordRepeat"
-								placeholder="비밀번호 확인" name="psw-repeat" required>
+								placeholder="비밀번호 확인" name="psw-repeat" style="font-family:Georgia;">
 						</div>
 						<div class="form-group ">
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
 							<select name="phone1" class="selectpicker col-xs-3"
-								id="InputPhone1">
+								id="InputPhone1" style=height:30px;">
 								<option value="010" selected>010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
@@ -321,17 +321,15 @@ function inputCheck() {
 						<div class="col-sm-10">
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
-						<div class="col-xs-7">
+					 
+						<div class="col-sm-5">
 							<input type="text" name="emailId" class="form-control"
 								id="InputEmailId" aria-describedby="emailHelp"
-								placeholder="Email" required>
-						</div>
-						<div>
-
-							<div>
-
-
-
+								placeholder="Email" style="width:400px; height:30px;">
+						
+						
+							
+								<br>
 								<span id="emailChange"> <select class="selectpicker"
 									name="emailAdd" id="InputSelectedEmail"
 									onchange="changeFunc();">
@@ -356,6 +354,7 @@ function inputCheck() {
 
 
 							</div>
+					
 							<script>
 							function changeFunc() {
 								  
@@ -370,16 +369,16 @@ function inputCheck() {
 							
 							
 							</script>
-
-
+						
+							
 							<div class="form-group">
 								<div class="col-sm-10">
 									<label for="">Email 수신여부 : &nbsp;&nbsp;</label> <input
 										type="checkbox" name="emailAccept" value="y" />
 								</div>
 							</div>
-						</div>
-
+						
+					</div>
 						<div class="form-group">
 							<div class="col-sm-10">
 								<label for="birth">생년월일</label>
@@ -401,11 +400,11 @@ function inputCheck() {
 							</div>
 
 						</div>
-					</div>
+					
 
 					<div class="modal-footer" style="margin-top: 160px">
 						<input type="hidden" value="register" name="command">
-						<button type="submit" class="btn btn-primary" value="회원가입"
+						<button type="button" class="btn btn-primary" value="회원가입"
 							onclick="inputCheck()">회원가입</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
