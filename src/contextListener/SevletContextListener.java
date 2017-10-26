@@ -77,8 +77,8 @@ public class SevletContextListener implements ServletContextListener{
 		timer.schedule(new JobTimer(5), date5.getTime() ,24*60*60*1000);
 		timer.schedule(new JobTimer(6), date6.getTime() ,24*60*60*1000);	
 
-		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7.getTime() ,24*60*60*1000);*/
-		
+		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7.getTime() ,24*60*60*1000);
+		*/
 		
 		
 //		scheduler = Executors.newSingleThreadScheduledExecutor();

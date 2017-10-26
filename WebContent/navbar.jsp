@@ -137,92 +137,7 @@ function reserveCheck(){
 
 	<!-- 회원가입 Modal -->
 
-	<script>
-function inputCheck() {
-	var userName = $('#InputName').val();
-	var userId = $('#InputId').val();
-	var doubleCheck = $('#doubleCheck').val();
-	var userPass = $('#InputPassword').val();
-	var userRepass = $('#InputPasswordRepeat').val();
-	var phone1 = $('#InputPhone1').val();
-	var phone2 = $('#InputPhone2').val();
-	var phone3 = $('#InputPhone3').val();
-	var emailId = $('#InputEmailId').val();
-	var emailAdd = $('#InputSelectedEmail').val();
-	var birthday = $('#InputBirth').val();
 	
-	var male = $('#male').val();
-	var female = $('#female').val();
-	if (userName == "") {
-		alert("이름을 입력해 주세요.");
-		document.regForm.userName.focus();
-		return;
-	}
-	
-	if (userId== "") {
-		alert("아이디를 입력해 주세요.");
-		document.regForm.userId.focus();
-		return;
-	}
-	/* if (doubleCheck== "false") {
-		alert("아이디 중복확인을 해주세요.");
-		
-		return;
-	} */
-	if (userPass == "") {
-		alert("비밀번호를 입력해 주세요.");
-		document.regForm.userPass.focus();
-		return;
-	}
-	 if (userRepass == "") {
-		alert("비밀번호를 확인해 주세요.");
-		document.regForm.userRepass.focus();
-		return;
-	}
-	if (userPass != userRepass) {
-		alert("비밀번호가 일치하지 않습니다.");
-		document.regForm.userRepass.focus();
-		return;
-	}
-
-	
-	if (phone2== "") {
-		alert("전화번호 중간자리를 입력해 주세요.");
-		document.regForm.phone2.focus();
-		return;
-	}
-	if (phone3 == "") {
-		alert("전화번호 뒷자리를 입력해 주세요.");
-		document.regForm.phone3.focus();
-		return;
-	}
-	if (emailId== "") {
-		alert("이메일을 입력해 주세요.");
-		document.regForm.email.focus();
-		return;
-	}
-	if (emailAdd== "") {
-		alert("이메일을 입력해 주세요.");
-		document.regForm.email.focus();
-		return;
-	}if (male== "" && female=="") {
-		alert("성별을 입력해주세요.");
-		document.regForm.email.focus();
-		return;
-	}
-	if (birthday =="") {
-		alert("생년월일을  입력해 주세요.");
-		return;
-		 
-		
-	}
-	
-	
-	document.regForm.submit(); 
-}
-
-
-</script>
 
 
 	<div class="modal fade " id="signUp" tabindex="-1" role="dialog">
@@ -237,11 +152,11 @@ function inputCheck() {
 				</div>
 
 				<form action="DispatcherServlet" method="post" name="regForm"
-					 id="regForm"> <!--onsubmit="inputCheck()"  -->
+					 id="regForm">
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">이름</label> <input type="text" name="userName"
-								class="form-control" id="InputName" placeholder="이름" required>
+								class="form-control" id="InputName" placeholder="이름" >
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-10">
@@ -255,13 +170,13 @@ function inputCheck() {
 								<span id="span_id"></span>
 								<!-- <input type="button" value="중복확인"
 									onclick="idCheck()" class="btn btn-secondary" /> -->
-								<!-- <input type="hidden" name="doubleCheck" id="doubleCheck"
-									value="false"> -->
+								<input type="hidden" name="doubleCheck" id="doubleCheck"
+									value="false">
 							</div>
 						</div>
 
 						<script>
-						/* $("#InputId").keyup(function(){
+						$("#InputId").keyup(function(){
 							
 							var userId=$("#InputId").val();
 							var param = "userId="+userId+"&command=idCheck";
@@ -286,24 +201,25 @@ function inputCheck() {
 									}
 								});
 							
-						}); */
+						});
 						
 						</script>
+                                
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" name="userPass" class="form-control"
-								id="InputPassword" placeholder="비밀번호" style="font-family:Georgia;"> <label>비밀번호
-									확인</label> <input type="password" name="userRepass"
+								id="InputPassword" placeholder="비밀번호" style="font-family:Georgia;"> <label><b>비밀번호
+									확인</b></label> <input type="password" name="userRepass"
 								class="form-control" id="InputPasswordRepeat"
-								placeholder="비밀번호 확인" name="psw-repeat" style="font-family:Georgia;">
+								placeholder="비밀번호 확인" name="psw-repeat" style="font-family:Georgia;" >
 						</div>
 						<div class="form-group ">
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
 							<select name="phone1" class="selectpicker col-xs-3"
-								id="InputPhone1" style=height:30px;">
+								id="InputPhone1" style="height:30px;">
 								<option value="010" selected>010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
@@ -321,15 +237,18 @@ function inputCheck() {
 						<div class="col-sm-10">
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
-					 
-						<div class="col-sm-5">
+						<div class="col-sm-7">
 							<input type="text" name="emailId" class="form-control"
 								id="InputEmailId" aria-describedby="emailHelp"
-								placeholder="Email" style="width:400px; height:30px;">
-						
-						
-							
-								<br>
+								placeholder="Email" style="width:400px; height:30px;">                     
+								
+						</div>
+						<div>
+							<br>
+							<div class="col-sm-3">
+
+
+
 								<span id="emailChange"> <select class="selectpicker"
 									name="emailAdd" id="InputSelectedEmail"
 									onchange="changeFunc();">
@@ -354,7 +273,6 @@ function inputCheck() {
 
 
 							</div>
-					
 							<script>
 							function changeFunc() {
 								  
@@ -369,19 +287,19 @@ function inputCheck() {
 							
 							
 							</script>
-						
-							
+
+
 							<div class="form-group">
 								<div class="col-sm-10">
 									<label for="">Email 수신여부 : &nbsp;&nbsp;</label> <input
 										type="checkbox" name="emailAccept" value="y" />
 								</div>
 							</div>
-						
-					</div>
+						</div>
+
 						<div class="form-group">
 							<div class="col-sm-10">
-								<label for="birth">생년월일</label>
+								<label for="">생년월일</label>
 							</div>
 							<div class="col-sm-10">
 								<input type="date" name="birthday" id="InputBirth"
@@ -400,7 +318,7 @@ function inputCheck() {
 							</div>
 
 						</div>
-					
+					</div>
 
 					<div class="modal-footer" style="margin-top: 160px">
 						<input type="hidden" value="register" name="command">
@@ -409,9 +327,100 @@ function inputCheck() {
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
 					</div>
+					
+					<script>
+function inputCheck() {
+	var userName = $('#InputName').val();
+	var userId = $('#InputId').val();
+	var doubleCheck = $('#doubleCheck').val();
+	var userPass = $('#InputPassword').val();
+	var userRepass = $('#InputPasswordRepeat').val();
+	var phone1 = $('#InputPhone1').val();
+	var phone2 = $('#InputPhone2').val();
+	var phone3 = $('#InputPhone3').val();
+	var emailId = $('#InputEmailId').val();
+	var emailAdd = $('#InputSelectedEmail').val();
+	var birthday = $('#InputBirth').val();
+	var isGender=$('input[name=gender]').is(':checked');
+	
+	
+	if (userName == "") {
+		alert("이름을 입력해 주세요.");
+		document.regForm.userName.focus();
+		return;
+	}
+	
+	if (userId== "") {
+		alert("아이디를 입력해 주세요.");
+		document.regForm.userId.focus();
+		return;
+	}
+	if (doubleCheck== "false") {
+		alert("아이디 중복확인을 해주세요.");
+		
+		return;
+	}
+	if (userPass == "") {
+		alert("비밀번호를 입력해 주세요.");
+		document.regForm.userPass.focus();
+		return;
+	}
+	if (userRepass == "") {
+		alert("비밀번호를 확인해 주세요.");
+		document.regForm.userRepass.focus();
+		return;
+	}
+	if (userPass != userRepass) {
+		alert("비밀번호가 일치하지 않습니다.");
+		document.regForm.userPass.focus();
+		return;
+	}
+
+	
+	if (phone2== "") {
+		alert("전화번호 중간자리를 입력해 주세요.");
+		document.regForm.phone2.focus();
+		return;
+	}
+	if (phone3 == "") {
+		alert("전화번호 뒷자리를 입력해 주세요.");
+		document.regForm.phone3.focus();
+		return;
+	}
+	if (emailId== "") {
+		alert("이메일을 입력해 주세요.");
+		document.regForm.email.focus();
+		return;
+	}
+	if (emailAdd== "") {
+		alert("이메일을 입력해 주세요.");
+		document.regForm.email.focus();
+		return;
+	}if (isGender ==false) {
+		alert("성별을 입력해주세요.");
+		document.regForm.email.focus();
+		return;
+	}
+	if (birthday =="") {
+		alert("생년월일을  입력해 주세요.");
+		document.regForm.email.focus();
+		return;
+		 
+		
+	}
+	
+	
+	document.regForm.submit(); 
+}
+
+
+</script>
+
+
 				</form>
 			</div>
 		</div>
+		
 
 
 	</div>
@@ -429,7 +438,7 @@ function inputCheck() {
 					</button>
 				</div>
 				<form action="DispatcherServlet" method="post" name="loginForm"
-					id="loginForm" onsubmit="return checkLogin()">
+					id="loginForm" >
 					<div class="modal-body">
 						<div class="form-group">
 							<label for="id">ID</label> <input type="text"
@@ -476,7 +485,7 @@ function inputCheck() {
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" name="command" value="login">
-						<button type="submit" class="btn btn-primary">로그인</button>
+						<button type=submit class="btn btn-primary">로그인</button>
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
 					</div>

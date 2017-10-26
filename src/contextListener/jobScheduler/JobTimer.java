@@ -31,7 +31,7 @@ private int timeSlot;
 			System.out.println("선택시간:" + timeSlot);
 			System.out.println("현재 list.size():"+list.size());
 			for(int i=0; i<list.size(); i++) {
-				int groupColor = i % (list.size() / MagicNumbers.GROUP_SIZE)+1 ;
+				int groupColor = (i % (list.size() / MagicNumbers.GROUP_SIZE) )+1 ;
 				MemberDAO.getInstance().updateAssignedGroup(list.get(i), groupColor);
 				
 				

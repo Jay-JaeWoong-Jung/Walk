@@ -114,7 +114,8 @@ public class MemberDAO {
 			System.out.println("registerMember OK....");
 
 		} catch (Exception e) {
-			System.out.println("Exception" + e);
+			System.out.println(" DAO 회원가입 Exception 발생");
+			e.printStackTrace();
 		} finally {
 			closeAll(pstmt, conn);
 		}
