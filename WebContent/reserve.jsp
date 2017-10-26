@@ -47,15 +47,11 @@ function reserve(num){
 <body>
 
 
-<c:choose>
-	<c:when test="${mvo.userId == null}">
-		<script>
-			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
-			location.href="newMain.jsp";
-		</script>
-	</c:when>
-	<c:otherwise>
+
 	 <c:import url="./navbar.jsp"></c:import>
+
+
+
 
 	<div class="btn-group-vertical container-fluid">
 	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="1" onclick="reserve('1')"><h1>11:00</h1></button>
@@ -80,10 +76,6 @@ function reserve(num){
 	
 	
 	
-		
-	</c:otherwise>
-	
-</c:choose>
 	 
 </body>
 </html>

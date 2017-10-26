@@ -36,8 +36,7 @@
 <%@ include file="./navbar.jsp"%> 
 <body>
 
-	<c:choose>
-		<c:when test="${mvo.userId != null}">
+	
 			<div class="container-fluid" align="center">
 				<div class="row" >
 					<div class="col-lg-12"><h1>profile</h1></div>
@@ -104,17 +103,6 @@
 			</div>
 		</div>
 			
-		</c:when>
-
-		<c:otherwise>
-			<center>
-			<script>
-				alert("로그인 후 이용바랍니다.")
-				location.href="newMain.jsp";
-			</script>
-				
-			</center>
-		</c:otherwise>
-	</c:choose>
+		
 </body>
 </html>
