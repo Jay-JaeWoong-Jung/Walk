@@ -6,6 +6,7 @@ public interface StringQuery {
 	String INSERT_REGISTER = "insert into membership values(?,?,?,  ?,?,?,  ?,?,?,  ?,?,?, sysdate,?,?,?)";
 	String SELECT_LOGINCHECK = "select userpass from membership where userid=? ";
 	String SELECT_GETMEMINFO = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailaccept,profile from membership where userid=?";
+	String SELECT_GETMEMINFOM = "select userid,userpass,username,phone1,phone2,phone3,gender,emailid,emailadd,birth,company,selectedtime,regdate,emailaccept,profile from membership where userid=?";
 	String SELECT_UPDATE = "update membership set userpass=?,phone1=?,phone2=?,phone3=?,emailid=?,emailadd=?, company=?, selectedtime=?,emailaccept=?, profile=? , gender=? where userid=?";
 	/* String SELECT_MEMBER = "select userpass from membership where userid=? "; */
 	String DELETE_MEMBER = "delete from membership where userid=? and userPass=?";
@@ -23,23 +24,25 @@ public interface StringQuery {
 	String SELECTED_TIME = "select count(*) from membership where selectedTime=?";
 	String INSERT_MEMBER = "insert into membership ( values(?,?,?,?,?,?,?,?,?,?)";
 	String GET_ALL_USERID_TIMESLOT = "select userid, selectedtime from membership";
-	String GET_USERID_BY_TIMESLOT = "SELECT userId FROM membership where selectedTime=?";
+	String GET_USERID_BY_TIMESLOT = "SELECT userId FROM membership where selectedTime=? and selectedTime !=0";
 	String UPDATE_GROUPCOLOR = "UPDATE membership SET GROUPCOLOR=? WHERE userId =?";
 	String GET_USERID_GROUPCOLOR_BY_TIMESLOT = "select userid, GROUPCOLOR from membership where selectedtime=?";
-	String CLEAR_GROUPCOLOR_SELECTEDTIME = "UPDATE membership SET GROUPCOLOR=?, selectedTime=?";
 
-	String GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR = "select userName,selectedTime,GROUPCOLOR from membership where  selectedTime=? and GROUPCOLOR=? and GROUPCOLOR is not null and GROUPCOLOR !=0";
-	String GET_RESERVATION_INFO_BY_ID = "select userId, selectedTime, GROUPCOLOR,userName from membership where userId=?";
-	String GET_SAME_GROUPCOLOR_COUNT = "select count(*) from membership where selectedTime=? group by GROUPCOLOR having GROUPCOLOR=? and GROUPCOLOR is not null and GROUPCOLOR !=0";
-	String UPDATE_TIMESLOT = "update membership set selectedTime=? where userId=?";
-	String CANCEL_RESERVATION = "update membership set selectedTime=0 where userId=?";
-	String DELETE_LOG = "delete from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
-	String IS_RESERVATION = "select attendance from id_log where userId=?";
-	String GET_RESERVE_DATE = "select reserveDate from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
-	String UPDATE_START_TIME = "update id_log set startTime=TO_CHAR(SYSDATE, 'HH24MISS') where userId=?";
-	String UPDATE_FINISH_TIME = "update id_log set finishTime=TO_CHAR(SYSDATE, 'HH24MISS') where userId=?";
-
-	/////////////////// 게시판 비지니스 로직////////////////////////////
+	String CLEAR_GROUPCOLOR_SELECTEDTIME="UPDATE membership SET GROUPCOLOR=?, selectedTime=?";
+	
+	String GET_NAME_IN_GROUP_BY_ID_GROUPCOLOR="select userName,selectedTime,GROUPCOLOR from membership where  selectedTime=? and GROUPCOLOR=? and GROUPCOLOR is not null and GROUPCOLOR !=0";
+	String GET_RESERVATION_INFO_BY_ID="select userId, selectedTime, GROUPCOLOR,userName from membership where userId=?";
+	String GET_SAME_GROUPCOLOR_COUNT ="select count(*) from membership where selectedTime=? group by GROUPCOLOR having GROUPCOLOR=? and GROUPCOLOR is not null and GROUPCOLOR !=0";
+	String UPDATE_TIMESLOT ="update membership set selectedTime=? where userId=?";
+	String CANCEL_RESERVATION="update membership set selectedTime=0 ,groupcolor=0 where userId=?";
+	String DELETE_LOG="delete from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
+	String IS_RESERVATION="select attendance from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
+	String GET_RESERVE_DATE= "select reserveDate from id_log where userId=? and reserveDate=to_char(sysdate,'YYYYMMDD')";
+	String UPDATE_START_TIME="update id_log set startTime=TO_CHAR(SYSDATE, 'HH24MISS') where userId=? and reserveDate=TO_CHAR(SYSDATE, 'YYYYMMDD')";
+	String UPDATE_FINISH_TIME="update id_log set finishTime=TO_CHAR(SYSDATE, 'HH24MISS') where userId=? and reserveDate=TO_CHAR(SYSDATE, 'YYYYMMDD')";
+	
+	///////////////////게시판 비지니스 로직////////////////////////////
+	
 
 	String INSERT_POSTING = "INSERT INTO board (no, userId, content, timePosted) VALUES(board_seq.nextVal,?, ?, sysdate)";
 

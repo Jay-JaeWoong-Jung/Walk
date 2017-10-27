@@ -28,7 +28,7 @@
 			<div class="col-12">
 				<jsp:useBean id="now" class="java.util.Date" />
 				<fmt:formatDate var="currYear" value="${now}" pattern="yyyy" />
-				 <c:set var = "birthYear" value = "${fn:substring(mvo.birth, 0, 4)}" />
+				  <c:set var = "birthYear" value = "${fn:substring(mvo.birth, 0, 4)}" />
 				<p class="name text-center">${mvo.userName},${currYear - birthYear + 1}</p>
 			</div>
 		</div>

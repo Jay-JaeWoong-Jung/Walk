@@ -139,6 +139,9 @@ public class MemberDAO {
 		return userId;
 	}// findIdByEmail
 	
+	
+	
+	
 	//임시비번 DB 업데이트 로직
 	public int updateFindPass(String userId,String tempPass) throws SQLException{
 		int result=0;
@@ -290,6 +293,53 @@ public class MemberDAO {
 		}
 		return vo;
 	}// getMemberInfo
+	
+	
+	
+	public MemberVO getMemberInfom(String userName) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(StringQuery.SELECT_GETMEMINFOM);
+			pstmt.setString(1, userName);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				vo = new MemberVO();
+				vo.setUserId(rs.getString("userid"));
+				vo.setUserPass(rs.getString("userpass"));
+				vo.setUserName(rs.getString("username"));
+
+				vo.setPhone1(rs.getString("phone1"));
+				vo.setPhone2(rs.getString("phone2"));
+				vo.setPhone3(rs.getString("phone3"));
+
+				vo.setGender(rs.getInt("gender"));
+				vo.setEmailId(rs.getString("emailid"));
+				vo.setEmailAdd(rs.getString("emailadd"));
+
+				vo.setBirth(rs.getString("birth"));
+				vo.setCompany(rs.getString("company"));
+				vo.setSelectedTime(rs.getInt("selectedtime"));
+
+				vo.setRegDate(rs.getDate("regdate"));
+				vo.setEmailAccept(rs.getString("emailaccept"));
+				vo.setProfile(rs.getString("profile"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return vo;
+	}// getMemberInfo
+	
+	
+	
+	
 
 	public int updateMember(MemberVO vo) throws SQLException {
 		Connection conn = null;

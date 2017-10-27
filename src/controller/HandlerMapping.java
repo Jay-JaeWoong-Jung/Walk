@@ -22,7 +22,7 @@ import controller.member.ProfileController;
 
 import controller.member.RegisterMemberController;
 import controller.member.UpdateController;
-import controller.member.tempPassAuthController;
+
 import controller.reserve.ReserveCancelController;
 import controller.reserve.ReserveController;
 import jdk.nashorn.internal.runtime.FindProperty;
@@ -70,11 +70,6 @@ public class HandlerMapping {
 			controller = new ExistIdController();
 		} else if (command.equals("sendPass")) {
 			controller = new MailSenderController();
-		} else if (command.equals("authPass")) {
-			controller = new tempPassAuthController();
-			System.out.println("authPass.. tempPassAuthController 생성됐습니다..");
-			
-			
 		} else if (command.equals("write")) {
 			controller = new WriteController();
 		} else if (command.equals("list") || command.equals("date")) {
