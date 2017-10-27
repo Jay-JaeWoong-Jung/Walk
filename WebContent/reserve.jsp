@@ -66,7 +66,7 @@ function reserve(num){
  
 <%
 
-	String date1 =CalendarMaker.getInstance().setCalendar(23, 00);
+	String date1 =CalendarMaker.getInstance().setCalendar(10, 00);
 	String date2 =CalendarMaker.getInstance().setCalendar(23, 00);
 	String date3 =CalendarMaker.getInstance().setCalendar(23, 00);
 	String date4 =CalendarMaker.getInstance().setCalendar(23, 30);
@@ -77,12 +77,12 @@ function reserve(num){
 	
 
 %>
-<c:set var="date1" value="<%= Integer.parseInt(date1) %>"></c:set>
-<c:set var="date2" value="<%= Integer.parseInt(date2) %>"></c:set>
-<c:set var="date3" value="<%= Integer.parseInt(date3) %>"></c:set>
-<c:set var="date4" value="<%= Integer.parseInt(date4) %>"></c:set>
-<c:set var="date5" value="<%= Integer.parseInt(date5) %>"></c:set>
-<c:set var="date6" value="<%= Integer.parseInt(date6) %>"></c:set>
+<c:set var="date1" value="<%= date1 %>"></c:set>
+<c:set var="date2" value="<%= date2 %>"></c:set>
+<c:set var="date3" value="<%= date3 %>"></c:set>
+<c:set var="date4" value="<%= date4 %>"></c:set>
+<c:set var="date5" value="<%= date5 %>"></c:set>
+<c:set var="date6" value="<%= date6 %>"></c:set>
 
 
 

@@ -106,42 +106,39 @@
 			<span class="text-muted">팀원(${count}):&emsp;</span>
 			<c:forEach var="row" items="${rvo}">
 	 ${row.userName} &nbsp;
-	 
-	 </c:forEach>
 
-		</p>
-		<hr class="my-4">
-
-		<div class="container">
-			<h1 class=" mb-3 text-center">활동 기록하기</h1>
-			<h1 class="display-1 mb-5 col text-center">
-				<!-- 	<span id="minute" style="position:absolute;left:30%;">00</span> <span style="position:absolute;left:40%;" >:</span>
-	  	  	<span id="seconds"style="position:absolute;left:50%;">00</span>	<span style="position:absolute;left:60%;">:</span>
-	  	  	<span id="milsecs"style="position:absolute;left:70%;">00</span> -->
-
-				<span id="minute">00</span> <span>:</span> <span id="seconds">00</span>
-				<span>:</span> <span id="milsecs">00</span>
-			</h1>
-
-			<div class="row justify-content-around">
-
-
-				<a class="btn btn-primary btn-lg col-4" id="stBtn" href="#"
-					role="button" style="position: absolute; left: 10%;">START</a> <a
-					class="btn btn-primary btn-lg col-4 " id="stopBtn" href="#"
-					role="button" style="position: absolute; left: 60%;">FINISH</a>
-			</div>
-			<br> <br> <br> <br>
-
-			<!-- <span><a class="btn btn-primary btn-lg col-5" href="#" role="button" ONCLICK="keepgoin=true;timer()" style="width:300px;" >START</a></span> 
-		  <span><a class="btn btn-primary btn-lg col-5 " href="#" role="button"  ONCLICK="keepgoin=false;" style="width:300px;">FINISH</a></span> 
-		  </div><br> -->
+	 </c:forEach> 
+	  
+	  </p>
+	  <hr class="my-4">
+	  
+	  <div class="container">
+	  	  	<h1 class=" mb-3 text-center">활동 기록하기</h1>
+	  	  	<h1 class="display-1 mb-5 col text-center">
+	  
+	  	  	
+	  	  	<span id="minute" >00</span> <span  >:</span>
+	  	  	<span id="seconds">00</span> <span >:</span>
+	  	  	<span id="milsecs">00</span>
+	  	  	</h1>
+	  	  	
+		  <div class="row justify-content-around">
 
 
-
-			<%-- 스탑워치:${stopWatch} --%>
-
-			<SCRIPT> 
+			<button  type="button" class="btn btn-primary btn-lg col-4" id="stBtn"  role="button"  style="position:absolute;left:10%;">START</a>
+			<button type="button" class="btn btn-primary btn-lg col-4 " id="stopBtn" role="button"   style="position:absolute;left:60%;">FINISH</a>
+		  </div>
+		  <br>
+		  <br>
+		  <br><br>
+		  
+		
+		  
+		
+		
+		<%-- 스탑워치:${stopWatch} --%>
+		  
+		<SCRIPT > 
 		
 		$('#stBtn').one('click',function () {
 			//alert("stnBtn");
@@ -208,7 +205,6 @@
 		}
 		  	%>   --%>
 		  		
-	
 						var currentsec = 0;
 						var currentmin = 0;
 						var currentmil = 0;
