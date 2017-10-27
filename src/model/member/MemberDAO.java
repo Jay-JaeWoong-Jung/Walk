@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import config.OracleInfo;
 import constants.StringQuery;
 import dataSourceManager.DataSourceManager;
 import javafx.util.Pair;
