@@ -20,12 +20,14 @@ public class MemberVO {
     private String profile;
     private int groupColor;
     
+    private int weeklyAttendance;
+    private int monthlyAttendance;
     
     
+     
     
-    
-    
-    
+
+
 	public MemberVO() {
 		super();
 	}
@@ -229,14 +231,52 @@ public class MemberVO {
 	public void setgroupColor(int groupColor) {
 		this.groupColor = groupColor;
 	}
+
+	public int getWeeklyAttendance() {
+		return weeklyAttendance;
+	}
+
+
+
+
+	public void setWeeklyAttendance(int weeklyAttendance) {
+		this.weeklyAttendance = weeklyAttendance;
+	}
+
+
+    
+	public int getMonthlyAttendance() {
+		return monthlyAttendance;
+	}
+
+
+
+
+	public void setMonthlyAttendance(int monthlyAttendance) {
+		this.monthlyAttendance = monthlyAttendance;
+	}
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phone1=" + phone1
 				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", gender=" + gender + ", emailId=" + emailId
 				+ ", emailAdd=" + emailAdd + ", birth=" + birth + ", company=" + company + ", selectedTime="
 				+ selectedTime + ", regDate=" + regDate + ", emailAccept=" + emailAccept + ", profile=" + profile
-				+ ", groupColor=" + groupColor + "]";
+				+ ", groupColor=" + groupColor + ", weeklyAttendance=" + weeklyAttendance + ", monthlyAttendance="
+				+ monthlyAttendance + "]";
 	}
+
+
+
+
+	
     
     
 	

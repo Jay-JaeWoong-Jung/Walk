@@ -60,9 +60,11 @@ public interface StringQuery {
 			+ " FROM board WHERE userId=? order by no";
 	
 	/////////////////////통계로직/////////////////
-	String SELECT_WEEKLY_ATTENDANCE_BY_ID =
+	String SELECT_WKLY_ATTANDANCE_BY_ID =
 			"select count(-1) from Id_log where userid=? AND (sysdate - RESERVEDATE) < 7";
-
+	String SELECT_MTHLY_ATTANDANCE_BY_ID =
+			"select count(-1) from Id_log where userid=? AND (sysdate - RESERVEDATE) < 30";
+	
 	
 	
 }

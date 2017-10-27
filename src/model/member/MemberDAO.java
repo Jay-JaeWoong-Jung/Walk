@@ -496,7 +496,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
+ 
 	public int cancelReservation(String userId) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;

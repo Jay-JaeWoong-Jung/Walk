@@ -17,9 +17,8 @@ public class ReserveCancelController implements Controller{
 			HttpServletResponse response) throws Exception {
 
 		String userId =request.getParameter("userId");
-		 int selectedTime =Integer.parseInt(request.getParameter("selectedTime"));
 		
-		
+		 
 
 
 		//selectedTime 수정!!! 시간대 변경!!!

@@ -9,7 +9,14 @@ body {
 	background-color: #f5f5f5;
 	 
 }	
-
+.name{
+	font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+}
+div.row > div > * {
+ max-width: 100%;
+}
 
 #profileImg {
 	height: 250px;

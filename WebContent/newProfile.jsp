@@ -29,7 +29,7 @@
 				<jsp:useBean id="now" class="java.util.Date" />
 				<fmt:formatDate var="currYear" value="${now}" pattern="yyyy" />
 				 <c:set var = "birthYear" value = "${fn:substring(mvo.birth, 0, 4)}" />
-				<p class="display-1 text-center">${mvo.userName},${currYear - birthYear + 1}</p>
+				<p class="name text-center">${mvo.userName},${currYear - birthYear + 1}</p>
 			</div>
 		</div>
 		<div class="row">
@@ -57,8 +57,10 @@
 				<p class="display-4 text-center">이번주</p>
 			</div>
 			<div class="col-12 d-flex justify-content-center">
-				<div class="c100 p50 big m-auto">					
-					<span>50%</span>
+				<fmt:formatNumber var="wkPercent" value="${mvo.weeklyAttendance / 5 * 100 }" maxFractionDigits="0" />
+				
+				<div class="c100 p${wkPercent} big m-auto">					
+					<span>${mvo.weeklyAttendance}일</span>
 					<div class="slice">
 						<div class="bar"></div>
 						<div class="fill"></div>
@@ -75,8 +77,10 @@
 				<p class="display-4 text-center">${currMonth}월</p>
 			</div>
 			<div class="col-12 d-flex justify-content-center">
-				<div class="c100 p50 big m-auto">
-					<span>50%</span>
+				<fmt:formatNumber var="mthPercent"
+					value="${mvo.monthlyAttendance / 20 * 100 }" maxFractionDigits="0" />
+				<div class="c100 p${mthPercent } big m-auto">
+					<span>${mvo.monthlyAttendance}일</span>
 					<div class="slice">
 						<div class="bar"></div>
 						<div class="fill"></div>
