@@ -8,15 +8,18 @@ import controller.board.TodayDateController;
 import controller.board.WriteController;
 import controller.dashboard.DashboardController;
 import controller.dashboard.StopWatchController;
-
 import controller.member.CookieConfirmController;
 import controller.member.DeleteController;
 import controller.member.FindIdController;
 import controller.member.IdCheckController;
 import controller.member.LoginController;
 import controller.member.LogoutController;
+
 import controller.member.MailSenderController;
 import controller.member.ExistIdController;
+
+import controller.member.ProfileController;
+
 import controller.member.RegisterMemberController;
 import controller.member.UpdateController;
 import controller.reserve.ReserveCancelController;
@@ -86,6 +89,8 @@ public class HandlerMapping {
 		} else if (command.equals("listById")) {
 			controller = new ListByIdController();
 			System.out.println("ListByIdController 생성됬습니다..");
+		} else if(command.equals("profile")) {
+			controller = new ProfileController();
 		}
 		System.out.println("handler 입성" + controller + "컨트롤러 객체 생성");
 		return controller;

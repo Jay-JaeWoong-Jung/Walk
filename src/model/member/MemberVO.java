@@ -4,21 +4,30 @@ import java.util.Date;
 
 public class MemberVO {
 	private String userId;
-	private String userPass;
-	private String userName;
-	private String phone1;
-	private String phone2;
-	private String phone3;
-	private int gender;
-	private String emailId;
-	private String emailAdd;
-	private String birth;
-	private String company;
-	private int selectedTime;
-	private Date regDate;
-	private String emailAccept;
-	private String profile;
-	private int groupColor;
+    private String userPass;
+    private String userName;
+    private String phone1;
+    private String phone2;
+    private String phone3;
+    private int gender;
+    private String emailId;
+    private String emailAdd;
+    private String birth;
+    private String company;
+    private int selectedTime;
+    private Date regDate;
+    private String emailAccept;
+    private String profile;
+    private int groupColor;
+    
+    private int weeklyAttendance;
+    private int monthlyAttendance;
+    
+    
+     
+    
+
+
 
 	public MemberVO() {
 		super();
@@ -257,13 +266,48 @@ public class MemberVO {
 		this.groupColor = groupColor;
 	}
 
+
+	public int getWeeklyAttendance() {
+		return weeklyAttendance;
+	}
+
+
+
+
+	public void setWeeklyAttendance(int weeklyAttendance) {
+		this.weeklyAttendance = weeklyAttendance;
+	}
+
+
+    
+	public int getMonthlyAttendance() {
+		return monthlyAttendance;
+	}
+
+
+
+
+	public void setMonthlyAttendance(int monthlyAttendance) {
+		this.monthlyAttendance = monthlyAttendance;
+	}
+
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "MemberVO [userId=" + userId + ", userPass=" + userPass + ", userName=" + userName + ", phone1=" + phone1
 				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", gender=" + gender + ", emailId=" + emailId
 				+ ", emailAdd=" + emailAdd + ", birth=" + birth + ", company=" + company + ", selectedTime="
 				+ selectedTime + ", regDate=" + regDate + ", emailAccept=" + emailAccept + ", profile=" + profile
-				+ ", groupColor=" + groupColor + "]";
+				+ ", groupColor=" + groupColor + ", weeklyAttendance=" + weeklyAttendance + ", monthlyAttendance="
+				+ monthlyAttendance + "]";
 	}
+
 
 }

@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TimerTask;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import constants.MagicNumbers;
+import controller.Controller;
+import controller.ModelAndView;
 import javafx.util.Pair;
 import model.member.MemberDAO;
 
-public class JobTimer extends TimerTask{
+public class JobTimer extends TimerTask {
 	
 private int timeSlot;
 	
@@ -22,6 +27,7 @@ private int timeSlot;
 	
 	public void run(){
 		try {
+			
 			if(timeSlot != 0){
 				
 			
@@ -36,6 +42,8 @@ private int timeSlot;
 				
 				
 			}
+			
+			
 			ArrayList<Pair<String, Integer>> resultList = MemberDAO.getInstance().getUserIdgroupColorPairByTimeSlot(timeSlot);
 			System.out.println("그룹할당 결과:" + resultList);
 			
@@ -49,4 +57,8 @@ private int timeSlot;
 		}
 		
 	}
+
+
+
+	
 }

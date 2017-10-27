@@ -1,7 +1,13 @@
+<%@page import="constants.CalendarMaker"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -17,6 +23,7 @@
 <title>Insert title here</title>
 </head>
 <script>
+
 function reserve(num){
 	/* $('button[name=timeOption]').click(function(){
 		
@@ -47,23 +54,85 @@ function reserve(num){
 <body>
 
 
-<c:choose>
-	<c:when test="${mvo.userId == null}">
-		<script>
-			alert("로그인 후 이용가능합니다. 메인 페이지로 이동합니다.")
-			location.href="newMain.jsp";
-		</script>
-	</c:when>
-	<c:otherwise>
+
 	 <c:import url="./navbar.jsp"></c:import>
 
+
+
+ <jsp:useBean id="now" class="java.util.Date" ></jsp:useBean>
+ <fmt:formatDate var="curTime" value="${now}" pattern="HHmm" />
+ 
+ 
+ 
+<%
+
+	String date1 =CalendarMaker.getInstance().setCalendar(10, 00);
+	String date2 =CalendarMaker.getInstance().setCalendar(23, 00);
+	String date3 =CalendarMaker.getInstance().setCalendar(23, 00);
+	String date4 =CalendarMaker.getInstance().setCalendar(23, 30);
+	String date5 =CalendarMaker.getInstance().setCalendar(23, 00);
+	String date6 =CalendarMaker.getInstance().setCalendar(23, 00);
+
+	
+	
+
+%>
+<c:set var="date1" value="<%= date1 %>"></c:set>
+<c:set var="date2" value="<%= date2 %>"></c:set>
+<c:set var="date3" value="<%= date3 %>"></c:set>
+<c:set var="date4" value="<%= date4 %>"></c:set>
+<c:set var="date5" value="<%= date5 %>"></c:set>
+<c:set var="date6" value="<%= date6 %>"></c:set>
+
+
+
+
+
+
+
+
 	<div class="btn-group-vertical container-fluid">
-	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="1" onclick="reserve('1')"><h1>11:00</h1></button>
-	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="2" onclick="reserve('2')"><h1>11:30</h1></button>
-	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="3" onclick="reserve('3')"><h1>12:00</h1></button>
-	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="4" onclick="reserve('4')"><h1>12:30</h1></button>
-	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="5" onclick="reserve('5')"><h1>13:00</h1></button>
-	<button type="button" class="btn btn-secondary my-3" name = "timeOption" value="6" onclick="reserve('6')"><h1>13:30</h1></button>
+	
+ 
+
+<c:choose>
+	<c:when test="${curTime > date1}"><button type="button" class="btn btn-secondary my-3 disabled" name = "timeOption" value="1" "><h1>마감되었습니다.</h1></button></c:when>
+	<c:otherwise><button type="button" class="btn btn-secondary my-3" name = "timeOption" value="1" onclick="reserve('1')"><h1>11:00</h1></button></c:otherwise>
+</c:choose>
+
+<c:choose>
+	<c:when test="${curTime > date2}"><button type="button" class="btn btn-secondary my-3 disabled" name = "timeOption" value="2" "><h1>마감되었습니다</h1></button></c:when>
+	<c:otherwise><button type="button" class="btn btn-secondary my-3" name = "timeOption" value="2" onclick="reserve('2')"><h1>11:30</h1></button></c:otherwise>
+</c:choose>
+
+<c:choose>
+	<c:when test="${curTime > date3}"><button type="button" class="btn btn-secondary my-3 disabled" name = "timeOption" value="3" "><h1>마감되었습니다</h1></button></c:when>
+	<c:otherwise><button type="button" class="btn btn-secondary my-3" name = "timeOption" value="3" onclick="reserve('3')"><h1>12:00</h1></button></c:otherwise>
+</c:choose>
+
+<c:choose>
+	<c:when test="${curTime > date4}"><button type="button" class="btn btn-secondary my-3 disabled" name = "timeOption" value="4" "><h1>마감되었습니다</h1></button></c:when>
+	<c:otherwise><button type="button" class="btn btn-secondary my-3" name = "timeOption" value="4" onclick="reserve('4')"><h1>12:30</h1></button></c:otherwise>
+</c:choose>
+
+<c:choose>
+	<c:when test="${curTime > date5}"><button type="button" class="btn btn-secondary my-3 disabled" name = "timeOption" value="5""><h1>마감되었습니다</h1></button></c:when>
+	<c:otherwise><button type="button" class="btn btn-secondary my-3" name = "timeOption" value="5" onclick="reserve('5')"><h1>13:00</h1></button></c:otherwise>
+</c:choose>
+
+
+<c:choose>
+	<c:when test="${curTime > date6}"><button type="button" class="btn btn-secondary my-3 disabled" name = "timeOption" value="6" "><h1>마감되었습니다</h1></button></c:when>
+	<c:otherwise><button type="button" class="btn btn-secondary my-3" name = "timeOption" value="6" onclick="reserve('6')"><h1>13:30</h1></button></c:otherwise>
+</c:choose>
+
+	
+	
+	
+	
+	
+	
+	  	
 	  		
 
 		<form action="DispatcherServlet" name="selectTimeFrm" id="selectTimeFrm" method="post"> 
@@ -80,10 +149,6 @@ function reserve(num){
 	
 	
 	
-		
-	</c:otherwise>
-	
-</c:choose>
 	 
 </body>
 </html>

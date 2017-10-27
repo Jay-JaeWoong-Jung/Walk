@@ -21,7 +21,19 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
 	integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
 	crossorigin="anonymous"></script>
+<style>
+body {
 
+	font-family: bmjua;
+	
+	
+}
+
+@font-face {
+	font-family: bmjua;
+	src: url(./css/font/BMJUA_ttf.ttf);
+}
+</style>
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
@@ -43,7 +55,8 @@
 	<c:otherwise>
 
 	<c:import url="./navbar.jsp"></c:import>
-	<div class="jumbotron  jumbotron-fluid">
+   
+	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -76,7 +89,7 @@
 								<input type="submit" class="btn btn-primary btn-lg" value="dashboard가기"> 
 								<input type="hidden" name="command" value="dashboard">
 								<input type="hidden" name="userId" value="${mvo.userId}">
-								<input type="hidden" name="selectedTime" value="${param.selectedTime}">
+								
 							</form>
 						</c:otherwise>
 					</c:choose>
@@ -90,7 +103,7 @@
 
 		</div>
 	</div>
-	
+ 
 
 	
 	

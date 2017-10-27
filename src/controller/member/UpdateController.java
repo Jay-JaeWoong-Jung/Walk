@@ -25,6 +25,7 @@ public class UpdateController implements Controller {
 
 		int size=10*1024*1024;
 		int updateResult=0;
+
 		//String upload_path="C:/upload";
 		//String upload_path="C:/EFI/kbk/WebProgramming2/eclipse/workspace/Walk/WebContent/upload";
 		String upload="upload";

@@ -50,13 +50,35 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 		id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 
+
+
+		
+		
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown"
 				aria-haspopup="true" aria-expanded="false"> Reserve </a>
+				
+				
+				
+				
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="#" onclick="reserveGo()">예약하기</a>
 						<script>
 						function reserveGo(){
-							location.href="reserve.jsp";
+							
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="reserve.jsp";
+								</c:otherwise>
+		
+							</c:choose>
+	
+							
+							
 						}
 						</script>
 					<div class="dropdown-divider"></div>	
@@ -64,7 +86,18 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 					<a class="dropdown-item" href="#" onclick="reserveChange()">예약변경</a>
 						<script>
 						function reserveChange(){
-							location.href="reserve.jsp?change=true";
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="reserve.jsp?change=true";
+								</c:otherwise>
+		
+							</c:choose>
+
 						}
 						</script>
 					
@@ -73,27 +106,70 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 					<a class="dropdown-item" href="#"onclick="reserveCancel()">예약 취소</a>
 					<script>
 						function reserveCancel(){
-							location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=reserveCancel";
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="DispatcherServlet?userId=${mvo.userId}&command=reserveCancel";
+							</c:otherwise>
+	
+						</c:choose>
+						
+						
+							
 						}
 					</script>
 						
 					
 				</div>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="profile.jsp">Profile</a></li>
+			<li class="nav-item"><a class="nav-link" href="#" onclick="profile()">Profile</a></li>
+					<script>
+						function profile(){
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="DispatcherServlet?userId=${mvo.userId}&command=profile";
+								</c:otherwise>
+	
+							</c:choose>
+		
+						}
+					</script>
+			
 			<li class="nav-item">
-				<c:choose>
-					<c:when test="${mvo.selectedTime == ''}">
-				<a class="nav-link" href="reserve.jsp" onclick="reserveCheck()" >Dashboard</a>	
-					</c:when>
-					<c:otherwise>
-				<a class="nav-link" href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${mvo.selectedTime}&command=dashboard" >Dashboard</a>	
-					</c:otherwise>
-				</c:choose>
+
+				
+				<a class="nav-link" href="#" onclick="dashboard()">Dashboard</a>
+					<script>
+						function dashboard(){
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="DispatcherServlet?userId=${mvo.userId}&command=dashboard";
+								</c:otherwise>
+	
+							</c:choose>
+		
+						}
+					</script>
+
 			
 			</li>
 			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
-
+ 
+			
 
 			<li class="nav-item" data-toggle="collapse" data-target="#myNavbar">
 			<!-- 로그인후 회원가입 클릭시 링크 안타게 data-target 수정함 -->
@@ -101,7 +177,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 				
 					<c:when test="${mvo.userId != null}">
 
-						<a href="#" data-toggle="modal" data-target="#"
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#"
 
 				
 							id="regForm">${mvo.userId}님 </a>
@@ -170,11 +246,11 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							<div class="col-sm-10">
 								<label for="id">ID</label>
 							</div>
-							<div class="col-xs-7">
+							<div class="col-sm-7">
 								<input type="text" name="userId" class="form-control"
 									id="InputId" placeholder="아이디">
 							</div>
-							<div class="col-xs-3">
+							<div class="col-sm-3">
 								<span id="span_id"></span>
 								<!-- <input type="button" value="중복확인"
 									onclick="idCheck()" class="btn btn-secondary" /> -->
@@ -212,21 +288,22 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						});
 						
 						</script>
+                                
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" name="userPass" class="form-control"
-								id="InputPassword" placeholder="비밀번호" > <label><b>비밀번호
+								id="InputPassword" placeholder="Password"  style="font-family:'Saira Semi Condensed', sans-serif;"> <label><b>비밀번호
 									확인</b></label> <input type="password" name="userRepass"
 								class="form-control" id="InputPasswordRepeat"
-								placeholder="비밀번호 확인" name="psw-repeat" >
+								placeholder="Check Password" name="psw-repeat" style="font-family:'Saira Semi Condensed', sans-serif;" >
 						</div>
 						<div class="form-group ">
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
 							<select name="phone1" class="selectpicker col-xs-3"
-								id="InputPhone1">
+								id="InputPhone1" style="height:30px;">
 								<option value="010" selected>010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
@@ -244,14 +321,15 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						<div class="col-sm-10">
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
-						<div class="col-xs-7">
+						<div class="col-sm-7">
 							<input type="text" name="emailId" class="form-control"
 								id="InputEmailId" aria-describedby="emailHelp"
-								placeholder="Email" >
+								placeholder="Email" style="width:400px; height:30px;">                     
+								
 						</div>
 						<div>
-
-							<div>
+							<br>
+							<div class="col-sm-3">
 
 
 
@@ -305,7 +383,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 
 						<div class="form-group">
 							<div class="col-sm-10">
-								<label for="birth">생년월일</label>
+								<label for="">생년월일</label>
 							</div>
 							<div class="col-sm-10">
 								<input type="date" name="birthday" id="InputBirth"
@@ -480,7 +558,7 @@ function inputCheck() {
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="loginPass"
-								placeholder="비밀번호" name="userPass">
+								placeholder="Password" name="userPass" style="font-family:'Saira Semi Condensed', sans-serif;">
 						</div>
 
 						<div class="form-check">
