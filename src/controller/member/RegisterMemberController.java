@@ -63,7 +63,10 @@ public class RegisterMemberController implements Controller {
 			out.flush();
 		}
 		
-		return new ModelAndView("regProc.jsp"); // regProc로 안가고 newMain으로 이동
+		
+		
+		
+		return new ModelAndView("newMain.jsp"); // regProc로 안가고 newMain으로 이동
 	}
 
 }
