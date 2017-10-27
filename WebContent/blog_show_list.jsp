@@ -51,6 +51,8 @@ function cancel(){
 
 
 
+
+
 /* function winOpen_Edit(editno,ediTime){
 	var number = editno
 	var time = ediTime 
@@ -82,7 +84,10 @@ $(function (){
     
 });
 
+
+
 </script>
+
 <style>
 body {
 /* 	background-color: skyblue;
@@ -99,7 +104,7 @@ body {
 </style>
 </head>
 <body>
-
+<%@ include file="./navbar.jsp"%> 
 <c:choose>
 	<c:when test="${mvo.userId == null}">
 		<script>
@@ -144,6 +149,7 @@ body {
 				
 				
 				<!-- **************** Start Calendar ******************** -->
+				<div class="row">
 				 <div class="col-6">
 					 <div class="btn-group btn-group-lg">
 						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
@@ -160,9 +166,10 @@ body {
 					</div>
 				  </div>
 				</div>
+			</div>
 			<!-- **************** End Calendar ********************  -->
 		
-			</div>
+		</div>
 				
  			
 			<div class="container-fluid"></div>

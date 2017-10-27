@@ -210,7 +210,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						<a class="nav-link" href="#" data-toggle="modal" data-target="#"
 
 				
-							id="regForm">${mvo.userId}님 </a>
+							id="regForm">${mvo.userName}님 </a>
 					</c:when>
 				
 					<c:otherwise>
