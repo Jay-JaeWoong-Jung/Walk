@@ -19,7 +19,9 @@ public class BoardVO {
 	public BoardVO(String userId, String content) {
 		super();
 		this.userId = userId;
-		this.content = content;
+		this.content = content.replaceAll("(?i)<script", "&lt;script");
+
+
 	}
 
 	

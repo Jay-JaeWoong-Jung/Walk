@@ -17,7 +17,37 @@ function reserveCheck(){
 	
 }
 
+
 </script>
+
+
+
+			<c:if test="${regResult == '1'}">
+			<script type="text/javascript">
+				alert("회원가입을 축하드립니다. 메인 페이지로 이동합니다.")
+				
+				location.href="newMain.jsp";
+				
+				
+				</script>
+				
+				
+			</c:if>
+			<c:if test="${regResult == '0'}">
+			
+			<script type="text/javascript">
+				alert("회원가입에 실패하셨습니다. 다시 부탁드립니다.")
+				
+				location.href="newMain.jsp";
+				
+				
+				</script>
+			
+			</c:if>
+		
+
+
+
 
 <c:if test="${param.loginfail =='true'}">
 <script>

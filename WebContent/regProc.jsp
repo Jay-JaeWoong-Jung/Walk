@@ -16,7 +16,7 @@
 	
 </script>
 </head>
-<body bgcolor="#ffffcc">
+<body >
 
 	<center>
 		<c:choose>
