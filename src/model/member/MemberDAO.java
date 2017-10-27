@@ -1,6 +1,7 @@
 package model.member;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,10 +42,13 @@ public class MemberDAO {
 
 	/////////////// 공통적인 로직 /////////////////////////////
 	public Connection getConnection() throws SQLException {
-		// System.out.println("디비연결 성공....");
+		//System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
-		// return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER,
+		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER,
 		// OracleInfo.PASS);
+		
+		 
+		
 	}
 
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
@@ -60,8 +64,105 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}
+	
+	//10/27 9:23 아이디 존재여부
+	public boolean isExist(String userId) throws SQLException{
+		boolean result=false;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=getConnection();
+			String sql="select count(-1) from membership where userid=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,userId);
+			rs=pstmt.executeQuery();
+			if(rs.next()){				
+				if(rs.getInt(1)>0)
+					result=true;
+			}
+		}finally{
+			closeAll(rs,pstmt,con);
+		}
+		return result;
+	}
+	
+	public boolean nameExist(String userName) throws SQLException{
+		boolean result=false;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=getConnection();
+			String sql="select count(-1) from membership where userName=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,userName);
+			rs=pstmt.executeQuery();
+			if(rs.next()){				
+				if(rs.getInt(1)>0)
+					result=true;
+			}
+		}finally{
+			closeAll(rs,pstmt,con);
+		}
+		return result;
+	}
+	
+	
+	/////////////////////////아이디 찾기 로직////////////////////문제:VO에 한개 매개변수 갖고 있는 거가 또있음...해결:생성자 여러개짜리써서 null값넣을수있다//
+	public String findIdByEmail(String userName,String emailId,String emailAdd) throws SQLException {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO vo = null;
+		String userId = null;
+		try {
+			conn = getConnection();
+			//	String SELECT_FINDID="select userid from membership where username=? and emailid=? and emailadd=?";
+			pstmt = conn.prepareStatement(StringQuery.SELECT_FINDID);
+			pstmt.setString(1, userName);
+			pstmt.setString(2, emailId);
+			pstmt.setString(3, emailAdd);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				userId = rs.getString("userid");
+				System.out.println("입력한 정보와 일치하는 ID는 "+userId+"입니다.");
+				// vo = new MemberVO();
+				// vo.setUserId(rs.getString("userid"));
+			}
 
-	///////////////////////////////////////////////
+		} catch (Exception e) {
+			//e.printStackTrace();
+		} finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return userId;
+	}// findIdByEmail
+	
+	//임시비번 DB 업데이트 로직
+	public int updateFindPass(String userId,String tempPass) throws SQLException{
+		int result=0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+			//update membership set userpass=? where userid=?
+			pstmt = conn.prepareStatement(StringQuery.UPDATE_FINDPASS);
+			pstmt.setString(1, tempPass);
+			pstmt.setString(2, userId);
+			
+			result = pstmt.executeUpdate();
+			System.out.println("updateFindPass OK..." + result);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(pstmt, conn);
+		}
+		return result;
+		}//updateFindPass
+
 
 	////////////////// 회원관리 로직///////////////////
 	public boolean idCheck(String userId) throws SQLException {
@@ -72,6 +173,7 @@ public class MemberDAO {
 
 		try {
 			conn = getConnection();
+			//"select * from membership where userId=?
 			pstmt = conn.prepareStatement(StringQuery.SELECT_IDCHECK);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
@@ -114,8 +216,7 @@ public class MemberDAO {
 			System.out.println("registerMember OK....");
 
 		} catch (Exception e) {
-			System.out.println(" DAO 회원가입 Exception 발생");
-			e.printStackTrace();
+			System.out.println("Exception" + e);
 		} finally {
 			closeAll(pstmt, conn);
 		}
@@ -141,15 +242,13 @@ public class MemberDAO {
 			}
 
 		} catch (Exception e) {
+			System.out.println("check: "+check);
 			System.out.println("Exception" + e);
 		} finally {
 			closeAll(rs, pstmt, conn);
 		}
-		System.out.println("check 결과:"+check);
 		return check;
 	}// loginCheck
-	
-	
 
 	public MemberVO getMemberInfo(String userId) throws SQLException {
 		Connection conn = null;
@@ -244,7 +343,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	public MemberVO login(String userId, String userPass) throws SQLException {
+	public MemberVO login(String userId, String userPass) throws SQLException ,Exception{
 		MemberVO vo  = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -257,31 +356,14 @@ public class MemberDAO {
 			pstmt.setString(2, userPass);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				vo = new MemberVO(
-						userId, 
-						rs.getString("userName"), 
-						rs.getString("phone1"),
-						rs.getString("phone2"), 
-						rs.getString("phone3"), 
-						
-						rs.getInt("gender"), 
-						rs.getString("emailId"),
-						rs.getString("emailAdd"), 
-						rs.getString("birth"),
-						rs.getString("company"),
-						
-						rs.getInt("selectedTime"), 
-						rs.getString("emailAccept"),
+				vo = new MemberVO(userId, userPass, rs.getString("userName"), rs.getString("phone1"),
+						rs.getString("phone2"), rs.getString("phone3"), rs.getInt("gender"), rs.getString("emailId"),
+						rs.getString("emailAdd"), rs.getString("birth"), rs.getString("emailaccept"),
 						rs.getString("profile"));
-				
-				
-				System.out.println("login성공!!!....로그인 멤버 정보" + vo);
-			}
+				System.out.println("login성공!!!...." + vo);
+			} 
 
-		}catch(Exception e){
-			System.out.println("dao에서 로긴 에러 + vo는:"+vo);
-			e.printStackTrace();
-		}
+		}catch(Exception e){e.printStackTrace();}
 		
 		finally {
 			closeAll(rs, pstmt, con);
@@ -648,7 +730,18 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}
-	
+	/*public static void main(String[] args) throws SQLException {
+		
+		//String findId=MemberDAO.getInstance().findIdByEmail("admin", "ealurill", "@naver.com");
+		//System.out.println(findId);
+		//int result=MemberDAO.getInstance().updateFindPass("TempPassword123", "tester","테스터", "tester", "@naver.com");
+		//System.out.println(result);
+		//문제점 디비 비밀번호 저장공간이 너무적다  USERPASS  NOT NULL VARCHAR2(60) 상향요청
+	boolean result=MemberDAO.getInstance().isExist("test");
+	System.out.println(result);
+		String userId=MemberDAO.getInstance().findIdByEmail("admin", "ealurill", "@naver.com");
+	System.out.println(userId);
+	}*/
 	
 
 }

@@ -413,6 +413,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 					</div>
 					
 					<script>
+
 function inputCheck() {
 	var userName = $('#InputName').val();
 	var userId = $('#InputId').val();
@@ -565,6 +566,10 @@ function inputCheck() {
 								class="form-check-input" value="y" name="retainId" id="IdRemember"> 아이디 기억
 								
 							</label>
+						</div>
+						<div class="form-group">
+							<a href="findId.jsp">아이디</a>&nbsp;|&nbsp;
+						<a href="ExistId.jsp">비밀번호 찾기</a>
 						</div>
 					</div>
 					<div class="modal-footer">

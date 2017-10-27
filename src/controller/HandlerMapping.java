@@ -10,14 +10,22 @@ import controller.dashboard.DashboardController;
 import controller.dashboard.StopWatchController;
 import controller.member.CookieConfirmController;
 import controller.member.DeleteController;
+import controller.member.FindIdController;
 import controller.member.IdCheckController;
 import controller.member.LoginController;
 import controller.member.LogoutController;
+
+import controller.member.MailSenderController;
+import controller.member.ExistIdController;
+
 import controller.member.ProfileController;
+
 import controller.member.RegisterMemberController;
 import controller.member.UpdateController;
+import controller.member.tempPassAuthController;
 import controller.reserve.ReserveCancelController;
 import controller.reserve.ReserveController;
+import jdk.nashorn.internal.runtime.FindProperty;
 
 public class HandlerMapping {
 	private static HandlerMapping hm = new HandlerMapping();
@@ -28,10 +36,11 @@ public class HandlerMapping {
 	public static HandlerMapping getInstance() {
 		return hm;
 	}
-	
+
 	public Controller createController(String command) {
+		System.out.println("핸들러 들어온 command:" + command);
 		Controller controller = null;
-		if(command.equals("reserve")){
+		if (command.equals("reserve")) {
 			controller = new ReserveController();
 		} else if (command.equals("dashboard")) {
 			controller = new DashboardController();
@@ -49,82 +58,73 @@ public class HandlerMapping {
 			controller = new UpdateController();
 		} else if (command.equals("deleteMember")) {
 			controller = new DeleteController();
-		}else if (command.equals("startTime")) {
+		} else if (command.equals("startTime")) {
 			controller = new StopWatchController();
-		}else if (command.equals("finishTime")) {
+		} else if (command.equals("finishTime")) {
 			controller = new StopWatchController();
-		}else if (command.equals("cookieConfirm")) {
+		} else if (command.equals("cookieConfirm")) {
 			controller = new CookieConfirmController();
+		} else if (command.equals("findId")) {
+			controller = new FindIdController();
+		} else if (command.equals("existId")) {
+			controller = new ExistIdController();
+		} else if (command.equals("sendPass")) {
+			controller = new MailSenderController();
+		} else if (command.equals("authPass")) {
+			controller = new tempPassAuthController();
+			System.out.println("authPass.. tempPassAuthController 생성됐습니다..");
 			
 			
-	
-			
-		}else if(command.equals("write")) {
-			controller = new WriteController();		
-		}else if(command.equals("list") || command.equals("date")) {
+		} else if (command.equals("write")) {
+			controller = new WriteController();
+		} else if (command.equals("list") || command.equals("date")) {
 			controller = new ListController();
-		}else if(command.equals("deletePosting")) {
+		} else if (command.equals("deletePosting")) {
 			controller = new DeletePostingController();
-		}else if(command.equals("editContent")) {
+		} else if (command.equals("editContent")) {
 			controller = new EditContentController();
-		}else if(command.equals("todayDate")) {
+		} else if (command.equals("todayDate")) {
 			controller = new TodayDateController();
-		}else if(command.equals("listById")) {
+		} else if (command.equals("listById")) {
 			controller = new ListByIdController();
 			System.out.println("ListByIdController 생성됬습니다..");
 		} else if(command.equals("profile")) {
 			controller = new ProfileController();
 		}
-		System.out.println("handler 입성"+controller+"컨트롤러 객체 생성");
+		System.out.println("handler 입성" + controller + "컨트롤러 객체 생성");
 		return controller;
 	}
 
-	/*public Controller createController(String command) {
-		Controller controller = null;
-
-
-		if(command.equals("reserve")){
-			controller = new ReserveController();
-		} else if (command.equals("dashboard")) {
-			controller = new DashboardController();
-		} else if (command.equals("reserveCancel")) {
-			controller = new ReserveCancelController();
-		} else if (command.equals("register")) {
-			controller = new RegisterMemberController();
-		} else if (command.equals("login")) {
-			controller = new LoginController();
-		} else if (command.equals("idCheck")) {
-			controller = new IdCheckController();
-		} else if (command.equals("logout")) {
-			controller = new LogoutController();
-		} else if (command.equals("updateMember")) {
-			controller = new UpdateController();
-		} else if (command.equals("deleteMember")) {
-			controller = new DeleteController();
-		}else if (command.equals("startTime")) {
-			controller = new StopWatchController();
-		}else if (command.equals("finishTime")) {
-			controller = new StopWatchController();	
-		}else if (command.equals("cookieConfirm")) {
-			controller = new CookieConfirmController();
-			
-			
-		}else if(command.equals("write")) {
-			controller = new WriteController();		
-		}else if(command.equals("list") || command.equals("date")) {
-			controller = new ListController();
-		}else if(command.equals("deletePosting")) {
-			controller = new DeletePostingController();
-		}else if(command.equals("editContent")) {
-			controller = new EditContentController();
-		}else if(command.equals("todayDate")) {
-			controller = new TodayDateController();
-		}else if(command.equals("checkId")) {
-			controller = new CheckIdController();
-		}else if(command.equals("listById")) {
-			controller = new ListByIdController();
-		}
-		System.out.println("handler 입성"+controller+"컨트롤러 객체 생성");
-		return controller;
-	}*/
+	/*
+	 * public Controller createController(String command) { Controller controller =
+	 * null;
+	 * 
+	 * 
+	 * if(command.equals("reserve")){ controller = new ReserveController(); } else
+	 * if (command.equals("dashboard")) { controller = new DashboardController(); }
+	 * else if (command.equals("reserveCancel")) { controller = new
+	 * ReserveCancelController(); } else if (command.equals("register")) {
+	 * controller = new RegisterMemberController(); } else if
+	 * (command.equals("login")) { controller = new LoginController(); } else if
+	 * (command.equals("idCheck")) { controller = new IdCheckController(); } else if
+	 * (command.equals("logout")) { controller = new LogoutController(); } else if
+	 * (command.equals("updateMember")) { controller = new UpdateController(); }
+	 * else if (command.equals("deleteMember")) { controller = new
+	 * DeleteController(); }else if (command.equals("startTime")) { controller = new
+	 * StopWatchController(); }else if (command.equals("finishTime")) { controller =
+	 * new StopWatchController(); }else if (command.equals("cookieConfirm")) {
+	 * controller = new CookieConfirmController();
+	 * 
+	 * 
+	 * }else if(command.equals("write")) { controller = new WriteController(); }else
+	 * if(command.equals("list") || command.equals("date")) { controller = new
+	 * ListController(); }else if(command.equals("deletePosting")) { controller =
+	 * new DeletePostingController(); }else if(command.equals("editContent")) {
+	 * controller = new EditContentController(); }else
+	 * if(command.equals("todayDate")) { controller = new TodayDateController();
+	 * }else if(command.equals("checkId")) { controller = new CheckIdController();
+	 * }else if(command.equals("listById")) { controller = new ListByIdController();
+	 * } System.out.println("handler 입성"+controller+"컨트롤러 객체 생성"); return
+	 * controller; }
+	 */
 }

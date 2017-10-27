@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-   
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+	integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./css/dashboard.css">
 
 
@@ -41,37 +53,60 @@
 </head>
 
 
-	
+
 
 
 <body>
 
-	
+
 	<c:import url="./navbar.jsp"></c:import>
 	<div class="jumbotron">
-	  <p class="display-4 text-right"><span class="smallFont text-muted">Meet by</span> 
-	  <c:if test="${vo.selectedTime =='2' }"> 11:30 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='3' }"> 12:00 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='4' }"> 12:30 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='5' }"> 13:00 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='6' }"> 13:30 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p> </c:if>
-	  
-	  <p class="display-4 text-right"><span class="smallFont text-muted	">Start at</span> 
-	  <c:if test="${vo.selectedTime =='2'}"> 11:35 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='3' }"> 12:05 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='4' }"> 12:35 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='5' }"> 13:05 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='6' }"> 13:35 AM</p> </c:if>
-	  <c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p> </c:if>
-	  
-	  
-	  
-	  <hr class="my-4">
-	  <p class="lead text-right"><span class="text-muted">팀원(${count}):&emsp;</span>
-	  <c:forEach var="row" items="${rvo}">
+		<p class="display-4 text-right">
+			<span class="smallFont text-muted">Meet by</span>
+			<c:if test="${vo.selectedTime =='2' }"> 11:30 AM
+		
+		
+		
+		</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='3' }"> 12:00 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='4' }"> 12:30 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='5' }"> 13:00 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='6' }"> 13:30 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p>
+		</c:if>
+
+		<p class="display-4 text-right">
+			<span class="smallFont text-muted	">Start at</span>
+			<c:if test="${vo.selectedTime =='2'}"> 11:35 AM
+		
+		
+		
+		</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='3' }"> 12:05 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='4' }"> 12:35 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='5' }"> 13:05 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='6' }"> 13:35 AM</p>
+		</c:if>
+		<c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p>
+		</c:if>
+
+
+
+		<hr class="my-4">
+		<p class="lead text-right">
+			<span class="text-muted">팀원(${count}):&emsp;</span>
+			<c:forEach var="row" items="${rvo}">
 	 ${row.userName} &nbsp;
-	 
+
 	 </c:forEach> 
 	  
 	  </p>
@@ -170,7 +205,6 @@
 		}
 		  	%>   --%>
 		  		
-	
 						var currentsec = 0;
 						var currentmin = 0;
 						var currentmil = 0;
@@ -235,53 +269,135 @@
 							}
 
 						});
-					</SCRIPT> 
-					
-					
-<c:if test="${vo.selectedTime != ''}">
+					</SCRIPT>
 
 
-	<div class="jumbotron groupColorCard bg-primary text-white">
-	   		
-	    
-	  	<p class="lead text-center">오늘 산책할 루트</p> 
+			<c:if test="${vo.selectedTime != ''}">
 
-		<img class="img-thumbnail img-fluid  rounded mx-auto d-block"  src="./image/route.jpg" class="img-fluid" alt="Responsive image" >
-		<!-- <img class="card-image rounded mx-auto d-block" src="./image/route.jpg" > -->
 
-		
+
+
+
+
+
+
+
+
+				<c:if test="${vo.groupColor == '1'}">
+					<div class="jumbotron groupColorCard bg-success text-white">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '2'}">
+					<div class="jumbotron groupColorCard bg-info text-white">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '3'}">
+					<div class="jumbotron groupColorCard bg-warning text-white">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '4'}">
+					<div class="jumbotron groupColorCard bg-danger text-white">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '5'}">
+					<div class="jumbotron groupColorCard bg-primary text-white">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '6'}">
+					<div class="jumbotron groupColorCard  text-white"
+						style="background-color: blue;">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '7'}">
+					<div class="jumbotron groupColorCard  text-white"
+						style="background-color: yello;">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '8'}">
+					<div class="jumbotron groupColorCard  text-white"
+						style="background-color: pink;">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '9'}">
+					<div class="jumbotron groupColorCard  text-white"
+						style="background-color: grey;">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+				<c:if test="${vo.groupColor == '10'}">
+					<div class="jumbotron groupColorCard  text-white"
+						style="background-color: khaki;">
+						<p class="display-4 text-center">그룹색상</p>
+						<p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>
+						<a href="#"> <img class="card-image rounded mx-auto d-block"
+							src="./pic/zoom_in.png" alt="Card image">
+						</a>
+					</div>
+				</c:if>
+
+				<div class="card text-white bg-secondary groupColorCard">
+					<h1 class="card-header text-center">오늘 산책할 루트</h1>
+					<div class="card-body">
+						<img class="img-thumbnail img-fluid  rounded mx-auto d-block"
+							src="./image/route.jpg" class="img-fluid" alt="Responsive image">
+					</div>
+				</div>
+
+			</c:if>
+
+		</div>
+
+
+
 	</div>
-	
 
-	
-	
-	  </div>
-	  
-	
-	  
-	</div>
-	
-	
-	
-	
-	 <c:if test="${vo.groupColor == '1'}"><div class="jumbotron groupColorCard bg-success text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '2'}"><div class="jumbotron groupColorCard bg-info text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '3'}"><div class="jumbotron groupColorCard bg-warning text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '4'}"><div class="jumbotron groupColorCard bg-danger text-white">  <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p></c:if>
-	<c:if test="${vo.groupColor == '5'}"><div class="jumbotron groupColorCard bg-primary text-white"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '6'}"><div class="jumbotron groupColorCard  text-white" style="background-color:blue;"><p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p>  </c:if>
-	<c:if test="${vo.groupColor == '7'}"><div class="jumbotron groupColorCard  text-white" style="background-color:yello;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '8'}"><div class="jumbotron groupColorCard  text-white" style="background-color:pink;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '9'}"><div class="jumbotron groupColorCard  text-white" style="background-color:grey;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	<c:if test="${vo.groupColor == '10'}"><div class="jumbotron groupColorCard  text-white"style="background-color:khaki;"> <p class="display-4 text-center">그룹색상</p><p class="lead text-center">집결장소에서 다른 멤버들에게 색상을 보여주세요</p> </c:if>
-	  
-	   
 
-</c:if>		
-		
-	
-	
-	 
-  	
+
+
+
 </body>
 </html>
