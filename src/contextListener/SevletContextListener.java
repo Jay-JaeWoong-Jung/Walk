@@ -28,12 +28,12 @@ public class SevletContextListener implements ServletContextListener{
 
 //		Timer timer = new Timer();
 
-//		Date date1 = CalendarMaker.getInstance().makeCalendar(11,00);
-//		Date date2 = CalendarMaker.getInstance().makeCalendar(11,30);
-//		Date date3 = CalendarMaker.getInstance().makeCalendar(12,00);
-//		Date date4 = CalendarMaker.getInstance().makeCalendar(12,30);
-//		Date date5 = CalendarMaker.getInstance().makeCalendar(13,00);
-//		Date date6 = CalendarMaker.getInstance().makeCalendar(13,30);
+//		Date date1 = CalendarMaker.getInstance().makeCalendar(11,15);
+//		Date date2 = CalendarMaker.getInstance().makeCalendar(11,45);
+//		Date date3 = CalendarMaker.getInstance().makeCalendar(12,15);
+//		Date date4 = CalendarMaker.getInstance().makeCalendar(12,45);
+//		Date date5 = CalendarMaker.getInstance().makeCalendar(13,15);
+//		Date date6 = CalendarMaker.getInstance().makeCalendar(13,45);
 //		Date date7 = CalendarMaker.getInstance().makeCalendar(23,59);
 //		
 

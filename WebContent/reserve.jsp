@@ -22,6 +22,22 @@
 
 <title>Insert title here</title>
 </head>
+
+
+
+<c:if test="${cancelReserve =='1' }">
+	<script>
+		alert("예약 취소에 성공하셨습니다.");
+	</script>
+</c:if>
+<c:if test="${cancelReserve =='0' }">
+	<script>
+		alert("예약 취소가 안되었습니다. 관리자에게 문의바랍니다.");
+	</script>
+</c:if>
+
+
+
 <script>
 
 function reserve(num){
@@ -66,12 +82,12 @@ function reserve(num){
  
 <%
 
-	String date1 =CalendarMaker.getInstance().setCalendar(10, 00);
-	String date2 =CalendarMaker.getInstance().setCalendar(23, 00);
-	String date3 =CalendarMaker.getInstance().setCalendar(23, 00);
-	String date4 =CalendarMaker.getInstance().setCalendar(23, 30);
-	String date5 =CalendarMaker.getInstance().setCalendar(23, 00);
-	String date6 =CalendarMaker.getInstance().setCalendar(23, 00);
+	String date1 =CalendarMaker.getInstance().setCalendar(11, 15);
+	String date2 =CalendarMaker.getInstance().setCalendar(11, 45);
+	String date3 =CalendarMaker.getInstance().setCalendar(12, 15);
+	String date4 =CalendarMaker.getInstance().setCalendar(12, 45);
+	String date5 =CalendarMaker.getInstance().setCalendar(01, 15);
+	String date6 =CalendarMaker.getInstance().setCalendar(01, 45);
 
 	
 	
@@ -83,9 +99,6 @@ function reserve(num){
 <c:set var="date4" value="<%= date4 %>"></c:set>
 <c:set var="date5" value="<%= date5 %>"></c:set>
 <c:set var="date6" value="<%= date6 %>"></c:set>
-
-
-
 
 
 

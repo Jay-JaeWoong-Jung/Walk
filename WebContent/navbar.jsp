@@ -523,10 +523,6 @@ function inputCheck() {
 		alert("이메일을 입력해 주세요.");
 		document.regForm.email.focus();
 		return;
-	}if (isGender ==false) {
-		alert("성별을 입력해주세요.");
-		document.regForm.email.focus();
-		return;
 	}
 	if (birthday =="") {
 		alert("생년월일을  입력해 주세요.");
@@ -534,6 +530,10 @@ function inputCheck() {
 		return;
 		 
 		
+	}if (isGender ==false) {
+		alert("성별을 입력해주세요.");
+		document.regForm.email.focus();
+		return;
 	}
 	
 	

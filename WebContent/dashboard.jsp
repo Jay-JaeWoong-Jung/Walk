@@ -35,18 +35,6 @@
 
 
 
-<c:if test="${cancelReserve =='1' }">
-	<script>
-		alert("예약 취소에 성공하셨습니다.");
-	</script>
-</c:if>
-<c:if test="${cancelReserve =='0' }">
-	<script>
-		alert("예약 취소가 안되었습니다. 관리자에게 문의바랍니다.");
-	</script>
-</c:if>
-
-
 
 
 
@@ -96,7 +84,7 @@
 		</c:if>
 		<c:if test="${vo.selectedTime =='6' }"> 13:35 AM</p>
 		</c:if>
-		<c:if test="${vo.selectedTime =='1' }"> 11:00 AM</p>
+		<c:if test="${vo.selectedTime =='1' }"> 11:05 AM</p>
 		</c:if>
 
 
@@ -272,7 +260,7 @@
 					</SCRIPT>
 
 
-			<c:if test="${vo.selectedTime != ''}">
+			<c:if test="${ vo.groupColor != 0 }">
 
 
 

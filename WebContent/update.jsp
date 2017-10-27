@@ -76,28 +76,12 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 		var emailId = $('#InputEmailId').val();
 		var emailAdd = $('#InputSelectedEmail').val();
 		var birthday = $('#InputBirth').val();
-
-		var male = $('#male').val();
-		var female = $('#female').val();
-		/* if (userName == "") {
-			alert("이름을 입력해 주세요.");
-			document.regForm.userName.focus();
-			return;
-		} */
-
-		/* if (userId == "") {
-			alert("아이디를 입력해 주세요.");
-			document.regForm.userId.focus();
-			return;
-		} */
-		/* if (doubleCheck == "false") {
-			alert("아이디 중복확인을 해주세요.");
-
-			return;
-		} */
+		var isGender=$('input[name=gender]').is(':checked');
+		
+		
 		if (userPass == "") {
 			alert("비밀번호를 입력해 주세요.");
-			document.regForm.userPass.focus();
+			document.regForm.userPass2.focus();
 			return;
 		}
 		if (userRepass == "") {
@@ -130,32 +114,35 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 			alert("이메일을 입력해 주세요.");
 			document.regForm.email.focus();
 			return;
-		}
-		if (male == "" && female == "") {
+		}if (isGender ==false) {
 			alert("성별을 입력해주세요.");
 			document.regForm.email.focus();
 			return;
 		}
-		if (birthday == "") {
+		if (birthday =="") {
 			alert("생년월일을  입력해 주세요.");
-			window.close();
-
+			document.regForm.email.focus();
+			return;
+			 
+			
 		}
-
-		$('#updateForm').submit();
+		
+		document.updateForm.submit();
+		
+		//$('#updateForm').submit();
 	}
 </script>
 
 <body>
 	<form action="DispatcherServlet?command=updateMember" method="post"
-		name="updateForm" onsubmit="return updateCheck()" id="updateForm"
+		name="updateForm"  id="updateForm"
 		enctype="multipart/form-data">
 
 		<div class="header" align="center">
 			<font size="5"> 회원 정보 수정</font>
 			<div>
 				<input type="hidden" name="command" value="updateMember">
-				<button type="submit" class="btn btn-primary" value="저장"
+				<button type="button" class="btn btn-primary" value="저장"
 					onclick="updateCheck()" style="font-size:30px;">저장</button>
 				<button type="button" class="btn btn-secondary"
 					onclick="updateClose()" style="font-size:30px;">취소</button>
@@ -165,63 +152,8 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 			</div>
 
 		</div>
-		<!-- *************************** Start Modal ******************************  -->
-
-
-
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">
-							<img src="./image/footstep.svg" style="width: 40px;">
-						</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" style="font-size:20px">정말로 산책을 그만두고 나태한 삶을 사시겠어요?<br>
-					<input type="password"  id="userPass"
-											name="userPass" maxlength="40" size="40" 
-											style="font-family:'Saira Semi Condensed', sans-serif;font-size:20px;width:300px;">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary"
-							
-							id="ClickBtnDel" >ㅜ,.ㅜ</button>
-
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-							
-							 <script type="text/javascript">
-								$(document).ready(function () {
-									$('#ClickBtnDel').click(function () {
-										
-										var userPass=$('#userPass').val();
-										location.href = "DispatcherServlet?command=deleteMember&&userId=${mvo.userId}"
-										+"&&userPass=" + userPass;
-														
-									});
-													
-								});
-											
-							</script> 
-							
-						<!-- <script type="text/javascript">
-							function sumbit_Delete(mvouserId, mvouserpass) {
-								var userId = mvouserId
-								var userPass = mvouserpass
-								location.href = "DispatcherServlet?command=deleteMember&&userId="
-										+ userId + "&&userPass=" + userPass;
-							}
-						</script> -->
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- *************************** End Modal ******************************  -->
+		
+		
 
 
 
@@ -248,8 +180,7 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 					</div>
 					<div class="col-xs-3">
 						<span id="span_id"></span>
-						<!-- <input type="button" value="중복확인"
-									onclick="idCheck()" class="btn btn-secondary" /> -->
+						
 						<input type="hidden" name="doubleCheck" id="doubleCheck"
 							value="false">
 					</div>
@@ -258,12 +189,10 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 				
 
 				<div class="form-group">
-					<label for="exampleInputPassword1">비밀번호</label> <input
-						type="password" name="userPass" class="form-control"
-						id="InputPassword" value="${mvo.userPass}" required> <label><b>비밀번호
-							확인</b></label> <input type="password" name="userRepass" class="form-control"
-						id="InputPasswordRepeat" placeholder="비밀번호 확인" name="psw-repeat"
-						required>
+					<label for="exampleInputPassword1">비밀번호</label> 
+					<input type="password" name="userPass2" class="form-control" id="InputPassword"  > 
+						<label><b>비밀번호 확인</b></label> 
+						<input type="password" name="userRepass" class="form-control" id="InputPasswordRepeat" placeholder="비밀번호 확인" >
 				</div>
 				<div class="form-group ">
 					<label for="">핸드폰 번호 </label>
@@ -383,5 +312,64 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 			
 		
 	</form>
+	
+	
+	<!-- *************************** Start Modal ******************************  -->
+
+
+
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+							<img src="./image/footstep.svg" style="width: 40px;">
+						</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" style="font-size:20px">정말로 산책을 그만두고 나태한 삶을 사시겠어요?<br>
+					<input type="password"  id="userPass1"
+											name="userPass" maxlength="40" size="40" 
+											style="font-family:'Saira Semi Condensed', sans-serif;font-size:20px;width:300px;">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							
+							id="ClickBtnDel" >ㅜ,.ㅜ</button>
+
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+							
+							 <script type="text/javascript">
+								$(document).ready(function () {
+									$('#ClickBtnDel').click(function () {
+										
+										var userPass=$('#userPass1').val();
+										location.href = "DispatcherServlet?command=deleteMember&&userId=${mvo.userId}"
+										+"&&userPass=" + userPass;
+														
+									});
+													
+								});
+											
+							</script> 
+							
+						<!-- <script type="text/javascript">
+							function sumbit_Delete(mvouserId, mvouserpass) {
+								var userId = mvouserId
+								var userPass = mvouserpass
+								location.href = "DispatcherServlet?command=deleteMember&&userId="
+										+ userId + "&&userPass=" + userPass;
+							}
+						</script> -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- *************************** End Modal ******************************  -->
 </body>
 </html>

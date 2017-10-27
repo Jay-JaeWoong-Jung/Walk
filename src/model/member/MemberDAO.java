@@ -210,10 +210,10 @@ public class MemberDAO {
 			pstmt.setString(9, vo.getEmailAdd());
 			pstmt.setString(10, vo.getBirth());
 			pstmt.setString(11, null);
-			pstmt.setNull(12, java.sql.Types.INTEGER);
+			pstmt.setInt(12, 0);
 			pstmt.setString(13, vo.getEmailAccept());
 			pstmt.setString(14, "default.png");
-			pstmt.setNull(15, java.sql.Types.INTEGER);
+			pstmt.setInt(15, 0);
 
 			flag = pstmt.executeUpdate();
 			System.out.println("registerMember OK....");

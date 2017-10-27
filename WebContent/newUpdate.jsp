@@ -59,7 +59,7 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 		
 		if (userPass == "") {
 			alert("비밀번호를 입력해 주세요.");
-			document.regForm.userPass.focus();
+			document.regForm.userPass2.focus();
 			return;
 		}
 		if (userRepass == "") {
@@ -104,7 +104,7 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 
 		}
 
-		$('#updateForm').submit();
+		document.updateForm.submit();
 	}
 </script>
 
@@ -157,11 +157,11 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 				
 				<div class="form-group">
 					<label for="exampleInputPassword1">비밀번호</label> <input
-						type="password" name="userPass" class="form-control InputPassword"
-						id="InputPassword" value="${mvo.userPass}" required> <label><b>비밀번호
+						type="password" name="userPass2" class="form-control InputPassword"
+						id="InputPassword"  > <label><b>비밀번호
 							확인</b></label> <input type="password" name="userRepass" class="form-control InputPassword"
-						id="InputPasswordRepeat" placeholder="Check Password" name="psw-repeat"
-						required>
+						id="InputPasswordRepeat" placeholder="Check Password" 
+						>
 				</div>
 				<div class="form-group ">
 					<label for="">핸드폰 번호 </label>
@@ -287,7 +287,7 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 		 </div>	
 			<div align="center">
 				<input type="hidden" name="command" value="updateMember">
-				<button type="submit" class="btn btn-primary goBtn" value="저장"
+				<button type="button" class="btn btn-primary goBtn" value="저장"
 					onclick="updateCheck()" >저장</button>
 				<button type="button" class="btn btn-secondary goBtn"
 					onclick="updateClose()" >취소</button>
@@ -299,7 +299,7 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 
 
 
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+		 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -341,7 +341,7 @@ alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해�
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> 
 		<!-- *************************** End Modal ******************************  -->
 	 
 	</form>

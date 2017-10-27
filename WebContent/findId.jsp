@@ -7,35 +7,10 @@
 <head>
 
 <title>아이디 찾기</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat"
-	rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Lato"
-	rel="stylesheet" type="text/css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="./css/main.css">
-
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-
-<!-- (Optional) Latest compiled and minified JavaScript translation files -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </head>
 
 <script>
@@ -69,8 +44,7 @@
 							}
 				</script>
 
-								</div>
-							</div>
+							
 							
 							
 							
@@ -95,12 +69,12 @@
 							</script>
 <body>
 
-
+<%@ include file="./navbar.jsp"%>
 
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-10">
+			<div class="col-sm-10 text-center">
 				<h2 class="title">아이디 찾기</h2>
 				<h4>이메일로 인증</h4>
 				<button type="button" class="close" page-dismiss="modal"
@@ -116,14 +90,15 @@
 				<form action="DispatcherServlet?command=findId" method="post"
 					name="findIdForm" id="findIdForm">
 					<div class="body">
-						<div class="col-sm-5">
+						<div class="col-sm-5 text-left">
 							<div class="form-group">
-								<label for="name">이름</label> <input type="text" name="userName"
+								<label for="name"> &nbsp;&nbsp;&nbsp;이름:</label> 
+								<input type="text" name="userName"
 									id="InputName" placeholder="이름">
-							</div>
+							</div><br>
 							<div class="form-group">
-								<div class="col-sm-3">
-									<label for="exampleInputEmail1">이메일</label>
+								<div class="col-sm-5 text-left">
+									<label for="exampleInputEmail1">이메일:</label>
 								</div>
 							</div>
 							<div class="form-group">

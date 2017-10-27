@@ -48,18 +48,17 @@ public class UpdateController implements Controller {
 
 
 				/*String file=(String)files.nextElement();//1번 파일
-		 String profile=multi.getFilesystemName(file);*/
+		 		String profile=multi.getFilesystemName(file);*/
 				System.out.println("profile 이름:"+profile);
 
 
 				String userName=multi.getParameter("userName");
 				String userId=multi.getParameter("userId");
-				String userPass=multi.getParameter("userPass");
+				String userPass=multi.getParameter("userPass2");
 				String phone1=multi.getParameter("phone1");
 				String phone2=multi.getParameter("phone2");
 				String phone3=multi.getParameter("phone3");
 				String emailId=multi.getParameter("emailId");
-
 				String emailAdd=multi.getParameter("emailAdd");
 				String birth=multi.getParameter("birthday");
 				int gender=Integer.parseInt(multi.getParameter("gender"));
@@ -67,6 +66,13 @@ public class UpdateController implements Controller {
 
 
 				System.out.println("userId:"+userId);
+				System.out.println("userPass:"+userPass);
+				System.out.println("phone1:"+phone1);
+				System.out.println("phone2:"+phone2);
+				System.out.println("phone3:"+phone3);
+				System.out.println("emailId:"+emailId);
+				System.out.println("emailAdd:"+emailAdd);
+				System.out.println("birth:"+birth);
 				if(emailAccept == null) {
 					emailAccept="n";
 				}

@@ -30,7 +30,7 @@ public class ReserveCancelController implements Controller{
 		
 		
 		
-		String path = "dashboard.jsp";
+		String path = "reserve.jsp";
 
 
 		return new ModelAndView(path);
