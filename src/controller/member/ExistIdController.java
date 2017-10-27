@@ -13,15 +13,20 @@ public class ExistIdController implements Controller {
 	public ModelAndView HandleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("ExistIdController 실행중....");
 
-		String findId = request.getParameter("findId");
+		String findIdforfindPass = request.getParameter("findIdforfindPass");
 		boolean result = false;
-		System.out.println("findId" + findId);
-		result = MemberDAO.getInstance().isExist(findId);
+
+		System.out.println("findIdforfindPass:" + findIdforfindPass);
+
+		result = MemberDAO.getInstance().isExist(findIdforfindPass);
 		if (result) {
+
 			return new ModelAndView("mailSender.jsp");
 
+		} else {
+			request.setAttribute("result", result);
+			System.out.println("아이디 없음.. 비밀번호찾기 프로세스 실패....");
+			return new ModelAndView("ExistId.jsp?result="+result);
 		}
-
-		return new ModelAndView("mailSender.jsp");
 	}
 }

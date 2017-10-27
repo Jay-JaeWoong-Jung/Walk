@@ -25,8 +25,8 @@
 	<h2>본인확인 이메일로 인증</h2>
 	<hr>
 	<p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</p>
-	<form action="DispatcherServlet" method="post" name="mailSenderForm"
-		id="mailSenderForm">
+	<form action="DispatcherServlet?command=sendPass" method="post"
+		name="mailSenderForm" id="mailSenderForm">
 		<div>
 			<label>이름</label><input type="text" name="userName">
 			<div class="col-sm-10">
@@ -59,12 +59,15 @@
 				받기</button>
 		</div>
 	</form>
-	<form action="DispatcherServlet" method="post">
-		<input type="text" name="authNum" placeholder="인증번호 6자리 숫자 입력">
-
-		<p>인증번호가 오지 않나요?</p>
-		<br> <input type="hidden" name="command" value="authNum">
-		<button type="submit" class="btn btn-primary" value="changePass">다음</button>
+	<form action="DispatcherServlet?command=authPass" method="post"
+		name="authPassForm" id="authPassForm">
+		<div>
+			<input type="text" name="authNum" placeholder="인증번호  5자리 숫자 입력">
+			<p>
+				<a href="mailSender.jsp">인증번호가 오지 않나요?</a> <br> <input
+					type="hidden" name="command" value="authPass">
+				<button type="submit" class="btn btn-primary" value="nextButton">다음</button>
+		</div>
 	</form>
 </body>
 </html>

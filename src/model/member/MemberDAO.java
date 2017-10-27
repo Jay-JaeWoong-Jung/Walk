@@ -116,6 +116,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		MemberVO vo = null;
+		String userId = null;
 		try {
 			conn = getConnection();
 			//	String SELECT_FINDID="select userid from membership where username=? and emailid=? and emailadd=?";
@@ -125,19 +126,18 @@ public class MemberDAO {
 			pstmt.setString(3, emailAdd);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				vo = new MemberVO();
-				vo.setUserId(rs.getString("userid"));
-				vo.setUserPass(null);
-				
+				userId = rs.getString("userid");
+				System.out.println("입력한 정보와 일치하는 ID는 "+userId+"입니다.");
+				// vo = new MemberVO();
+				// vo.setUserId(rs.getString("userid"));
+			}
 
-						}
-			System.out.println("입력한 정보와 일치하는 ID는 "+vo.getUserId()+"입니다.");
 		} catch (Exception e) {
 			//e.printStackTrace();
 		} finally {
 			closeAll(rs, pstmt, conn);
 		}
-		return vo.getUserId();
+		return userId;
 	}// findIdByEmail
 	
 	//임시비번 DB 업데이트 로직
@@ -740,7 +740,9 @@ public class MemberDAO {
 		//문제점 디비 비밀번호 저장공간이 너무적다  USERPASS  NOT NULL VARCHAR2(60) 상향요청
 	boolean result=MemberDAO.getInstance().isExist("test");
 	System.out.println(result);
-	}
-	*/
+		String userId=MemberDAO.getInstance().findIdByEmail("admin", "ealurill", "@naver.com");
+	System.out.println(userId);
+	}*/
+	
 
 }

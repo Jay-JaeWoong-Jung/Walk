@@ -26,6 +26,8 @@ public class FindIdController implements Controller {
 
 			// 메소드 호출해서 Id 알아내고
 			userId = MemberDAO.getInstance().findIdByEmail(userName, emailId, emailAdd);
+			System.out.println(userId);
+			
 			request.setAttribute("userName", userName);
 			request.setAttribute("emailId", emailId);
 			request.setAttribute("emailAdd", emailAdd);

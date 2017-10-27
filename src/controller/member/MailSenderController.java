@@ -23,22 +23,19 @@ public class MailSenderController implements Controller {
 		System.out.println("emailAdd: " + emailAdd);
 
 		String userId = MemberDAO.getInstance().findIdByEmail(userName, emailId, emailAdd);
-     
+
 		if (MemberDAO.getInstance().isExist(userId)) {
+			MailSender.sendTemporaryPassword(userId, emailId + emailAdd);
 			result = true;
-			MailSender.sendTemporaryPassword(userId);
-			return new ModelAndView("mailSender.jsp");
-			} else {
+			System.out.println(userId + "에게 임시비번 전송");
+			return new ModelAndView("mailSender.jsp", true);
+		} else {
+			System.out.println("userId없어서 전송 안됨....");
 			result = false;
 		}
-		String authNum = request.getParameter("authNum");
-		MemberVO vo=MemberDAO.getInstance().getMemberInfo(userId);
-		String tempPass=vo.getUserPass();
-		if (tempPass.equals(authNum)) {
-			result = true;
-		}
+
 		request.setAttribute("result", result);
-		// return new ModelAndView(DispatcherServlet?command=..&result=+result);
+
 		return new ModelAndView("newMain.jsp");
 	}
 }
