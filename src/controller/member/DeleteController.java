@@ -26,7 +26,7 @@ public class DeleteController implements Controller {
 			return new ModelAndView("deleteProc.jsp",true);
 		}else{
 			request.setAttribute("deleteResult", result);
-			return new ModelAndView("delete.jsp?");
+			return new ModelAndView("newUpdate.jsp?");
 		}
 		
 	}

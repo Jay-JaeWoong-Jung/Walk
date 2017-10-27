@@ -70,7 +70,7 @@ function search_submit(){
 	//이동할 페이지로 폼값을 가지고 전송됨
 	f.submit();
 }
-$(function (){
+/* $(function (){
     $( "#datepicker" ).datepicker({
     	
     	dateFormat:"yy-mm-dd",
@@ -82,8 +82,7 @@ $(function (){
     //sendBtn 버튼을 클릭하면 입력된 날짜를 받아서 alert로 출력
 	
     
-});
-
+}); */
 
 
 </script>
@@ -104,7 +103,7 @@ body {
 </style>
 </head>
 <body>
-<%@ include file="./navbar.jsp"%> 
+
 <c:choose>
 	<c:when test="${mvo.userId == null}">
 		<script>
@@ -114,6 +113,7 @@ body {
 	</c:when>
 	<c:otherwise>
 	
+<%@ include file="./navbar.jsp"%> 
 
 	<!-- **********************Start Main list Table ****************************-->
 	<div class="container-fluid" style="padding:10px;">
@@ -127,45 +127,44 @@ body {
 			<div class="container-fluid" style="padding:30px 10px 10px 0px">
 				<div class="row">
 				
-					<div class="col-6">
+					<div class="col-6 d-flex justify-content-end">
 					&nbsp;
-						<div class="btn-group btn-group-lg" >
-						<a  href="newMain.jsp" class ="btn btn-danger" ><span class="oi oi-home" style="font-size:25px"></span></a>
-						
-						<a  href="DispatcherServlet?command=todayDate" class ="btn btn-danger" ><span class="oi oi-align-center" style="font-size:20px;"></span>
-						&nbsp;Today</a>
+						<div class="btn-group btn-group-lg" >						
+						<button type="button" onclick="location.href='DispatcherServlet?command=todayDate';" class ="btn btn-danger" ><span class="oi oi-align-center" style="font-size:20px;"></span>
+						&nbsp;Today</button>
 					
 						
 						
-						<a  href="DispatcherServlet?command=listById" class ="btn btn-danger" ><span class="oi oi-chat" style="font-size:20px;"></span>
+						<button type="button" onclick="location.href='DispatcherServlet?command=listById'" class ="btn btn-danger" ><span class="oi oi-chat" style="font-size:20px;"></span>
 						&nbsp;내가 쓴글</a>
 						
 						 
   						</div>
 						
-						
+					</div>
 				
-					</div>	
 				
 				
 				<!-- **************** Start Calendar ******************** -->
-				<div class="row">
-				 <div class="col-6">
-					 <div class="btn-group btn-group-lg">
+				  <div class="col-6 d-flex justify-content-start">
+				
+					 <div class="btn-group btn-group-lg" style="min-height: 48px;">
 						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
-						<input type="text" id="datepicker" value="연도 / 월 / 일" 
-						name="date" onclick="this.value=null" class="btn btn-danger" style="font-size:20px;">
-						
-						
-					   <a href="#" class ="btn btn-danger" onclick="search_submit()"  value="Search" id="sendBtn">
-						 <span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;Search</a>	
-						 
+							<input type="date" id="datepicker" value="연도 / 월 / 일"
+								name="date" onclick="this.value=null" class="btn btn-danger"
+								style="font-size: 20px; min-height: 48px;">
+
+
+							<button type="button" class="btn btn-danger"
+								onclick="search_submit()" value="Search" id="sendBtn" style="min-height: 48px;" >
+								<span class="oi oi-calendar" style="font-size: 20px;"></span>&nbsp;Search
+							</button>
+
 							<input type="hidden" name="command" value="list">
-					
+
 						</form>
 					</div>
 				  </div>
-				</div>
 			</div>
 			<!-- **************** End Calendar ********************  -->
 		
@@ -190,7 +189,7 @@ body {
 
 							
 							<td style="color:white; vertical-align:middle;">${i.count}</td>
-							<td style="font-size:30px; vertical-align:middle;" align="left">${bvo.content}</td>
+							<td style="font-size:30px; word-break:break-all" align="left">${bvo.content}</td>
 							<td style="vertical-align:middle;">${bvo.userId}</td>
 							<td style="vertical-align:middle;">${bvo.timePosted}</td>
 							
@@ -201,10 +200,11 @@ body {
 						
 						
 							<td colspan="2" style="vertical-align:middle;">
-								<div class="btn-group-lg" >
-								<a href="#" name="edit" class="btn btn-danger"
+								<div >
+								<p><a href="#" name="edit" class="btn btn-danger"
 
 									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color:white; font-size:30px;"></span></a>
+								</p>	
 								
 								<!-- *************************** Start Modal ******************************  -->
 								
@@ -257,11 +257,11 @@ body {
 															
 					
 							
-						&nbsp;
-							<a href="#" name="delete" class="btn btn-danger"
+						
+							<p><a href="#" name="delete" class="btn btn-danger"
 									data-toggle="modal" data-target="#${bvo.no}del"><span class="oi oi-trash" style="color:white; font-size:30px;"></span></a>
 								
-							
+							</p>
 							
 								<!-- *************************** Start Modal ******************************  -->
 								
@@ -344,10 +344,11 @@ body {
 							<a href="#" class="btn  mx-auto btn-block"
 								onclick="content_submit()" style="font-size:35px; background-color:#FA8072; color:white;">글쓰기&nbsp;<span class="oi oi-check"></span></a>
 								
-						    </div><br>
-						  
+						    </div>
+						    <br>
+						  <div class="row">
 							 <a href="#" class="btn mx-auto" onclick="cancel()" style="font-size:30px; background-color:#F08080; color:white;">다시쓰기</a>
-							
+							</div>
 						 </div>
 							
 					

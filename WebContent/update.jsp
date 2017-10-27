@@ -26,15 +26,32 @@
 
 <!-- (Optional) Latest compiled and minified JavaScript translation files -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
+<link href="./open-iconic-master/font/css/open-iconic-bootstrap.css"
+	rel="stylesheet">
 </head>
 
 <style>
+body {
+font-family: bmjua;
+	
+	
+}
 
 @font-face {
 	font-family: bmjua;
 	src: url(./css/font/BMJUA_ttf.ttf);
 }
+
 </style>
+
+<c:if test="${deleteResult == '0'}">
+
+<script>
+alert("회원탈퇴에 실패 하셨습니다. 비밀번호를 다시 입력해주세요")
+
+</script>
+
+</c:if>
 
 <script type="text/javascript">
 	function updateClose() {
@@ -139,19 +156,76 @@
 			<div>
 				<input type="hidden" name="command" value="updateMember">
 				<button type="submit" class="btn btn-primary" value="저장"
-					onclick="updateCheck()">저장</button>
+					onclick="updateCheck()" style="font-size:30px;">저장</button>
 				<button type="button" class="btn btn-secondary"
-					onclick="updateClose()">취소</button>
-				<button type="button" class="btn btn-secondary"
-					onclick="deleteMember()">회원탈퇴</button>
+					onclick="updateClose()" style="font-size:30px;">취소</button>
+				<a href="#" name="delete" class="btn btn-danger"
+				data-toggle="modal" data-target="#deleteModal" style="color:white; font-size:30px;">
+					회원탈퇴</a>
 			</div>
 
 		</div>
-		<hr>
+		<!-- *************************** Start Modal ******************************  -->
 
-		
 
- 
+
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">
+							<img src="./image/footstep.svg" style="width: 40px;">
+						</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" style="font-size:20px">정말로 산책을 그만두고 나태한 삶을 사시겠어요?<br>
+					<input type="password"  id="userPass"
+											name="userPass" maxlength="40" size="40" 
+											style="font-family:'Saira Semi Condensed', sans-serif;font-size:20px;width:300px;">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							
+							id="ClickBtnDel" >ㅜ,.ㅜ</button>
+
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+							
+							 <script type="text/javascript">
+								$(document).ready(function () {
+									$('#ClickBtnDel').click(function () {
+										
+										var userPass=$('#userPass').val();
+										location.href = "DispatcherServlet?command=deleteMember&&userId=${mvo.userId}"
+										+"&&userPass=" + userPass;
+														
+									});
+													
+								});
+											
+							</script> 
+							
+						<!-- <script type="text/javascript">
+							function sumbit_Delete(mvouserId, mvouserpass) {
+								var userId = mvouserId
+								var userPass = mvouserpass
+								location.href = "DispatcherServlet?command=deleteMember&&userId="
+										+ userId + "&&userPass=" + userPass;
+							}
+						</script> -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- *************************** End Modal ******************************  -->
+
+
+
+
 		<div class="form-group">
 					<label for="profile">프로필 사진</label> <input type="file"
 						name="file" class="form-control" id="InputProfile">

@@ -1,0 +1,59 @@
+@font-face {
+	font-family: bmjua;
+	src: url(./font/BMJUA_ttf.ttf);
+}
+body {
+	font-family: bmjua;
+	
+
+	
+}	
+
+.highlight{
+	font-size: 4em;
+}
+
+p {
+	font-size: 16px;
+}
+
+
+.section {
+	height: 300px;
+}
+h1 {
+	color: #ffffff;
+	
+	
+}
+div > img {
+	height: 100px;
+}
+
+
+.container-fluid {
+	padding: 70px 30px 70px 30px;
+	
+	
+}
+.InputPhone {
+	height:40px;
+		
+}
+#InputSelectedEmail{
+	height:40px;
+	font-size:20px;
+}
+#gol{
+	font-size:25px;
+}
+#userPass{
+	font-family:'Saira Semi Condensed', sans-serif;font-size:20px;width:300px;
+}
+.InputPassword{
+	font-family:'Saira Semi Condensed', sans-serif;
+}
+.goBtn{
+	color:white; font-size:30px;
+	
+}
