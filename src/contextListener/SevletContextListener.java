@@ -20,12 +20,12 @@ public class SevletContextListener implements ServletContextListener{
 	public void contextDestroyed(ServletContextEvent event) {
 //		scheduler.shutdownNow();
 	}
-
+ 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 
 
-	/*	Timer timer = new Timer();
+		Timer timer = new Timer();
 		Date date1 = CalendarMaker.getInstance().makeCalendar(11,00);
 		Date date2 = CalendarMaker.getInstance().makeCalendar(11,30);
 		Date date3 = CalendarMaker.getInstance().makeCalendar(12,00);
@@ -42,7 +42,7 @@ public class SevletContextListener implements ServletContextListener{
 		timer.schedule(new JobTimer(5), date5 ,24*60*60*1000);
 		timer.schedule(new JobTimer(6), date6 ,24*60*60*1000);	
 
-		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7 ,24*60*60*1000);*/
+		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7 ,24*60*60*1000);
 		
 		
 	}
