@@ -169,11 +169,11 @@ body {
 				<table class="table table-hover table-bordered">
 					<thead>
 						<tr class="text-center" style="font-size:30px; color:white;">
-							<th width="15%" class="text-center">번호</th>
+							<th width="12%" class="text-center">번호</th>
 							<th width="40%" class="text-center">내용</th>
-							<th width="20%" class="text-center">글쓴이</th>
-							<th width="15%" class="text-center">날짜</th>
-							<th width="10%" class="text-center">설정</th>
+							<th width="10%" class="text-center">I D</th>
+							<th width="16%" class="text-center">날짜</th>
+							<th width="17%" class="text-center">설정</th>
 
 						</tr>
 					</thead>
@@ -182,10 +182,10 @@ body {
 						<tr class=" text-center" style="font-size:25px;">
 
 							
-							<td style="color:white">${i.count}</td>
-							<td style="font-size:30px;" align="left">${bvo.content}</td>
-							<td>${bvo.userId}</td>
-							<td>${bvo.timePosted}</td>
+							<td style="color:white; vertical-align:middle;">${i.count}</td>
+							<td style="font-size:30px; vertical-align:middle;" align="left">${bvo.content}</td>
+							<td style="vertical-align:middle;">${bvo.userId}</td>
+							<td style="vertical-align:middle;">${bvo.timePosted}</td>
 							
 							<!-- *************************** Edit ******************************  -->
 
@@ -193,8 +193,8 @@ body {
 						<c:when test="${mvo.userId==bvo.userId}">
 						
 						
-							<td colspan="2">
-						
+							<td colspan="2" style="vertical-align:middle;">
+								<div class="btn-group-lg" >
 								<a href="#" name="edit" class="btn btn-danger"
 
 									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color:white; font-size:30px;"></span></a>
@@ -250,7 +250,7 @@ body {
 															
 					
 							
-						<p><p>
+						&nbsp;
 							<a href="#" name="delete" class="btn btn-danger"
 									data-toggle="modal" data-target="#${bvo.no}del"><span class="oi oi-trash" style="color:white; font-size:30px;"></span></a>
 								
@@ -294,7 +294,7 @@ body {
 								</div>
 							</div>
 							<!-- *************************** End Modal ******************************  -->
-						
+						 </div>
 						</td>	
 						</c:when>
 						<c:otherwise>

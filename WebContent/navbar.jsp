@@ -113,7 +113,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 										alert("로그인 후 이용가능합니다.")
 								</c:when>
 								<c:otherwise>
-								location.href="DispatcherServlet?userId=${mvo.userId}&selectedTime=${vo.selectedTime}&command=reserveCancel";
+								location.href="DispatcherServlet?userId=${mvo.userId}&command=reserveCancel";
 							</c:otherwise>
 	
 						</c:choose>
