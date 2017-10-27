@@ -37,24 +37,65 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/i18n/defaults-*.min.js"></script>
 </head>
-<script type="text/javascript">
-var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+<script>
+							function findId(){
+								alert("findId");
+	
+								
+								var userName = $('#InputName').val();
+								var InputEmailId=$('#InputEmailId').val();
+								var InputSelectedEmail=$('#InputSelectedEmail').val();
+								
+								 var param = "command=findId&userName="+userName+
+								 			"&InputEmailId="+InputEmailId+"&InputSelectedEmail="+InputSelectedEmail;
+
+								$.ajax({
+									type: "post",
+									url: "DispatcherServlet",
+									data: param,
+									success: function(result){
+										 
+												
+										if(result.trim().charAt(1) != ""){
+											
+											document.getElementById("IdRemember").checked = true;
+										}
+										$("#loginId").val(result);
+									}
+								}); 
+								
+								$('#findIdForm').submit();
+							}
+				</script>
+
+								</div>
+							</div>
+							
+							
+							
+
+							
 
 
-	/* $(document).ready(function() {
-		$('#findId').click(function() {
-			//$('#wrap').html($('#hiddenId').val());
+							<script>
+								function changeFunc() {
 
-			//alert($('input[type=hidden]').val());
-			//alert($('#hiddenId').val());
-			$('#wrap').html($('#hiddenId').val());
-		});
-	}); */
-</script>
+									var selectBox = document
+											.getElementById("InputSelectedEmail");
+									var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
+									if (selectedValue == "직접선택") {
+										$("#emailChange")
+												.html(
+														"<input type='text' name='emailAdd' id='InputSelectedEmail' value='' />")
+
+									}
+								}
+							</script>
 <body>
 
-	
+
 
 
 	<div class="container">
@@ -62,7 +103,7 @@ var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 			<div class="col-sm-10">
 				<h2 class="title">아이디 찾기</h2>
 				<h4>이메일로 인증</h4>
-				<button type="button" class="close" data-dismiss="modal"
+				<button type="button" class="close" page-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -73,13 +114,12 @@ var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 
 
 				<form action="DispatcherServlet?command=findId" method="post"
-					name="loginForm" id="loginForm">
+					name="findIdForm" id="findIdForm">
 					<div class="body">
 						<div class="col-sm-5">
 							<div class="form-group">
 								<label for="name">이름</label> <input type="text" name="userName"
-									id="InputName" placeholder="이름"> <input type="hidden"
-									name="hidden" value="${param.id}" id="hiddenId">
+									id="InputName" placeholder="이름">
 							</div>
 							<div class="form-group">
 								<div class="col-sm-3">
@@ -114,48 +154,10 @@ var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 								</div>
 								<div>
 									<input type="hidden" name="command" value="findId">
-									<button type=submit class="btn btn-primary" id="findId" >아이디
+									<button type="submit" class="btn btn-primary" id="findId" onclick="findId()">아이디
 										찾기</button>
 									<button type="button" class="btn btn-secondary">취소</button>
-									
-									
-								</div>
-							</div>
-							<div id="wrap"></div>
 							
-
-							<div class="footer">
-								<c:choose>
-									<c:when test="${userId == null}">
-										<h3>일치하는 정보가 없습니다. 다시한번 시도해주세요!!!</h3>
-										<a href="findId.jsp">아이디 다시 찾기</a>
-									</c:when>
-
-									<c:otherwise>
-									찾으시는 ID는 <b>${userId }</b> 입니다....<br>
-										<a href="newMain.jsp">로그인 하러가기 </a>
-
-									</c:otherwise>
-								</c:choose>
-							</div>
-
-
-
-							<script>
-								function changeFunc() {
-
-									var selectBox = document
-											.getElementById("InputSelectedEmail");
-									var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-									if (selectedValue == "직접선택") {
-										$("#emailChange")
-												.html(
-														"<input type='text' name='emailAdd' id='InputSelectedEmail' value='' />")
-
-									}
-								}
-							</script>
 						</div>
 					</div>
 				</form>

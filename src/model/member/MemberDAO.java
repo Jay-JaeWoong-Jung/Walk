@@ -43,7 +43,7 @@ public class MemberDAO {
 
 	/////////////// 공통적인 로직 /////////////////////////////
 	public Connection getConnection() throws SQLException {
-		// System.out.println("디비연결 성공....");
+		//System.out.println("디비연결 성공....");
 		return DataSourceManager.getInstance().getConnection();
 		//return DriverManager.getConnection(OracleInfo.URL, OracleInfo.USER,
 		// OracleInfo.PASS);
@@ -65,6 +65,50 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}
+	
+	//10/27 9:23 아이디 존재여부
+	public boolean isExist(String userId) throws SQLException{
+		boolean result=false;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=getConnection();
+			String sql="select count(-1) from membership where userid=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,userId);
+			rs=pstmt.executeQuery();
+			if(rs.next()){				
+				if(rs.getInt(1)>0)
+					result=true;
+			}
+		}finally{
+			closeAll(rs,pstmt,con);
+		}
+		return result;
+	}
+	
+	public boolean nameExist(String userName) throws SQLException{
+		boolean result=false;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try{
+			con=getConnection();
+			String sql="select count(-1) from membership where userName=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,userName);
+			rs=pstmt.executeQuery();
+			if(rs.next()){				
+				if(rs.getInt(1)>0)
+					result=true;
+			}
+		}finally{
+			closeAll(rs,pstmt,con);
+		}
+		return result;
+	}
+	
 	
 	/////////////////////////아이디 찾기 로직////////////////////문제:VO에 한개 매개변수 갖고 있는 거가 또있음...해결:생성자 여러개짜리써서 null값넣을수있다//
 	public String findIdByEmail(String userName,String emailId,String emailAdd) throws SQLException {
@@ -687,14 +731,16 @@ public class MemberDAO {
 			closeAll(ps, conn);
 		}
 	}
-/*	public static void main(String[] args) throws SQLException {
+	/*public static void main(String[] args) throws SQLException {
 		
 		//String findId=MemberDAO.getInstance().findIdByEmail("admin", "ealurill", "@naver.com");
 		//System.out.println(findId);
 		//int result=MemberDAO.getInstance().updateFindPass("TempPassword123", "tester","테스터", "tester", "@naver.com");
 		//System.out.println(result);
 		//문제점 디비 비밀번호 저장공간이 너무적다  USERPASS  NOT NULL VARCHAR2(60) 상향요청
-	}*/
-	
+	boolean result=MemberDAO.getInstance().isExist("test");
+	System.out.println(result);
+	}
+	*/
 
 }

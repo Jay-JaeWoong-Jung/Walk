@@ -29,7 +29,7 @@ public class MailSender {
 		String tempPassword = null;
 		
 		try {
-			if(MemberDAO.getInstance().idCheck(userId)){
+			if(MemberDAO.getInstance().isExist(userId)){
 				Properties props = new Properties();
 				// SSL 사용하는 경우
 				props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host

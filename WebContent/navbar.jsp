@@ -491,7 +491,7 @@ function inputCheck() {
 						</div>
 						<div class="form-group">
 							<a href="findId.jsp">아이디</a>&nbsp;|&nbsp;
-						<a href="findPass.jsp">비밀번호 찾기</a>
+						<a href="ExistId.jsp">비밀번호 찾기</a>
 						</div>
 					</div>
 					<div class="modal-footer">
