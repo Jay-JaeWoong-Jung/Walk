@@ -14,7 +14,8 @@
 			<h3>
 				찾으시는 ID는 <b>${userId}</b> 입니다....<br>
 			</h3>
-			<a href="newMain.jsp">로그인 하러가기 </a>
+			<a href="newMain.jsp">로그인 하러가기 </a><br>
+			<a href="ExistId.jsp">비밀번호를 잊으셨나요? </a>
 		</c:when>
 		<c:otherwise>
 			<h3>일치하는 정보가 없습니다. 다시 한번 시도해주세요!!!</h3>
