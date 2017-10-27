@@ -145,6 +145,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 					</script>
 			
 			<li class="nav-item">
+
 				
 				<a class="nav-link" href="#" onclick="dashboard()">Dashboard</a>
 					<script>
@@ -163,8 +164,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 		
 						}
 					</script>
-						
-				
+
 			
 			</li>
 			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
@@ -246,11 +246,11 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							<div class="col-sm-10">
 								<label for="id">ID</label>
 							</div>
-							<div class="col-xs-7">
+							<div class="col-sm-7">
 								<input type="text" name="userId" class="form-control"
 									id="InputId" placeholder="아이디">
 							</div>
-							<div class="col-xs-3">
+							<div class="col-sm-3">
 								<span id="span_id"></span>
 								<!-- <input type="button" value="중복확인"
 									onclick="idCheck()" class="btn btn-secondary" /> -->
@@ -288,21 +288,22 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						});
 						
 						</script>
+                                
 
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" name="userPass" class="form-control"
-								id="InputPassword" placeholder="비밀번호" > <label><b>비밀번호
+								id="InputPassword" placeholder="Password"  style="font-family:'Saira Semi Condensed', sans-serif;"> <label><b>비밀번호
 									확인</b></label> <input type="password" name="userRepass"
 								class="form-control" id="InputPasswordRepeat"
-								placeholder="비밀번호 확인" name="psw-repeat" >
+								placeholder="Check Password" name="psw-repeat" style="font-family:'Saira Semi Condensed', sans-serif;" >
 						</div>
 						<div class="form-group ">
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
 							<select name="phone1" class="selectpicker col-xs-3"
-								id="InputPhone1">
+								id="InputPhone1" style="height:30px;">
 								<option value="010" selected>010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
@@ -320,14 +321,15 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						<div class="col-sm-10">
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
-						<div class="col-xs-7">
+						<div class="col-sm-7">
 							<input type="text" name="emailId" class="form-control"
 								id="InputEmailId" aria-describedby="emailHelp"
-								placeholder="Email" >
+								placeholder="Email" style="width:400px; height:30px;">                     
+								
 						</div>
 						<div>
-
-							<div>
+							<br>
+							<div class="col-sm-3">
 
 
 
@@ -381,7 +383,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 
 						<div class="form-group">
 							<div class="col-sm-10">
-								<label for="birth">생년월일</label>
+								<label for="">생년월일</label>
 							</div>
 							<div class="col-sm-10">
 								<input type="date" name="birthday" id="InputBirth"
@@ -555,7 +557,7 @@ function inputCheck() {
 						<div class="form-group">
 							<label for="exampleInputPassword1">비밀번호</label> <input
 								type="password" class="form-control" id="loginPass"
-								placeholder="비밀번호" name="userPass">
+								placeholder="Password" name="userPass" style="font-family:'Saira Semi Condensed', sans-serif;">
 						</div>
 
 						<div class="form-check">

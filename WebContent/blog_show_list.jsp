@@ -147,8 +147,9 @@ body {
 				 <div class="col-6">
 					 <div class="btn-group btn-group-lg">
 						<form name="search_form"class="form-inline" action="DispatcherServlet" method="post">
-						<input type="text" id="datepicker" value="Select Date" 
+						<input type="text" id="datepicker" value="연도 / 월 / 일" 
 						name="date" onclick="this.value=null" class="btn btn-danger" style="font-size:20px;">
+						
 						
 					   <a href="#" class ="btn btn-danger" onclick="search_submit()"  value="Search" id="sendBtn">
 						 <span class="oi oi-calendar" style="font-size:20px;"></span>&nbsp;Search</a>	
@@ -167,12 +168,12 @@ body {
 			<div class="container-fluid"></div>
 				<table class="table table-hover table-bordered">
 					<thead>
-						<tr class="text-center" style="font-size:30px;">
-							<th width="15%" class="text-center">번호</th>
+						<tr class="text-center" style="font-size:30px; color:white;">
+							<th width="12%" class="text-center">번호</th>
 							<th width="40%" class="text-center">내용</th>
-							<th width="20%" class="text-center">글쓴이</th>
-							<th width="15%" class="text-center">날짜</th>
-							<th width="10%" class="text-center">설정</th>
+							<th width="10%" class="text-center">I D</th>
+							<th width="16%" class="text-center">날짜</th>
+							<th width="17%" class="text-center">설정</th>
 
 						</tr>
 					</thead>
@@ -181,10 +182,10 @@ body {
 						<tr class=" text-center" style="font-size:25px;">
 
 							
-							<td>${i.count}</td>
-							<td style="font-size:30px;" align="left">${bvo.content}</td>
-							<td>${bvo.userId}</td>
-							<td>${bvo.timePosted}</td>
+							<td style="color:white; vertical-align:middle;">${i.count}</td>
+							<td style="font-size:30px; vertical-align:middle;" align="left">${bvo.content}</td>
+							<td style="vertical-align:middle;">${bvo.userId}</td>
+							<td style="vertical-align:middle;">${bvo.timePosted}</td>
 							
 							<!-- *************************** Edit ******************************  -->
 
@@ -192,8 +193,8 @@ body {
 						<c:when test="${mvo.userId==bvo.userId}">
 						
 						
-							<td colspan="2">
-						
+							<td colspan="2" style="vertical-align:middle;">
+								<div class="btn-group-lg" >
 								<a href="#" name="edit" class="btn btn-danger"
 
 									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color:white; font-size:30px;"></span></a>
@@ -205,13 +206,13 @@ body {
 								<div class="modal-dialog" role="document">
 									<div class="modal-content" style="background-color:#F08080;">
 										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel"><img src="./image/footstep.svg" style="width: 40px;"></h5>
+											<h5 class="modal-title" id="exampleModalLabel"><img src="./image/footstep.svg" style="width:40px;"></h5>
 											<button type="button" class="close" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										  <div class="modal-body">내용을 수정해주세요
+										  <div class="modal-body" style="color:white">내용을 수정해주세요
 											<input type="text" value="${bvo.content}" id="${bvo.no}content"
 											name="content" maxlength="60" size="60" id="updateContent" style="font-size:25px;width:450px;">
 										  </div>
@@ -249,7 +250,7 @@ body {
 															
 					
 							
-						<p><p>
+						&nbsp;
 							<a href="#" name="delete" class="btn btn-danger"
 									data-toggle="modal" data-target="#${bvo.no}del"><span class="oi oi-trash" style="color:white; font-size:30px;"></span></a>
 								
@@ -270,7 +271,7 @@ body {
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<div class="modal-body">정말로 삭제하시겠습니까?</div>
+										<div class="modal-body" style="color:white">정말로 삭제하시겠습니까?</div>
 										<div class="modal-footer">
 											<button type="button" class="btn" style="background-color:#FFA07A; color:white;"
 
@@ -293,7 +294,7 @@ body {
 								</div>
 							</div>
 							<!-- *************************** End Modal ******************************  -->
-						
+						 </div>
 						</td>	
 						</c:when>
 						<c:otherwise>
@@ -320,10 +321,11 @@ body {
 					<div class="col-12">
 						<form action="DispatcherServlet" method="post" name="write_form">
 							<input type="hidden" name="command" value="write"> <input
-								type="hidden" name="userId" value="${mvo.userId}"> <span
-								class="oi oi-double-quote-serif-left"></span> &nbsp;<input
+								type="hidden" name="userId" value="${mvo.userId}"> 
+								<span class="oi oi-double-quote-serif-left" style="color:white"></span> 
+								&nbsp;<input
 								type="text" name="content" maxlength="50" size="50" style="font-size:30px;width:600px; height:50px;"> 
-							<span class="oi oi-double-quote-serif-right"></span>
+							<span class="oi oi-double-quote-serif-right" style="color:white"></span>
 						</form>
 						
 					</div><br><br><br>

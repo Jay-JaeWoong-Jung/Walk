@@ -51,12 +51,12 @@ public interface StringQuery {
 	
 	String UPDATE_CONTENT = "UPDATE board SET content= ? WHERE no=?";
 	
-	String PAGE_LIST = "SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted FROM board where to_char(timePosted, 'YYYY/MM/DD') = ? order by no";
+	String PAGE_LIST = "SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh24:mm') timePosted FROM board where to_char(timePosted, 'YYYY/MM/DD') = ? order by no";
 	
 	String CURRENT_DATE="SELECT to_char(sysdate,'YYYY/MM/DD') AS timePosted FROM dual";
 	
 	String SELECT_POSTINGBYID = 
-			"SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh:mm') timePosted"
+			"SELECT no, userId, content, to_char(timePosted, 'YYYY/mm/DD hh24:mm') timePosted"
 			+ " FROM board WHERE userId=? order by no";
 	
 	
