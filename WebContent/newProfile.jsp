@@ -44,7 +44,7 @@
 				</a>
 			</div>
 			<div class="col-6">
-				<a href="update.jsp?userId=${mvo.userId}">			
+				<a href="newUpdate.jsp?userId=${mvo.userId}">			
 					<img alt="" src="./image/Editing-edit-icon.png" class="main-buttons rounded mx-auto d-block">
 				</a>			
 			</div>

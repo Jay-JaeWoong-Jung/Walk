@@ -183,7 +183,7 @@ body {
 
 							
 							<td style="color:white; vertical-align:middle;">${i.count}</td>
-							<td style="font-size:30px; vertical-align:middle;" align="left">${bvo.content}</td>
+							<td style="font-size:30px; word-break:break-all" align="left">${bvo.content}</td>
 							<td style="vertical-align:middle;">${bvo.userId}</td>
 							<td style="vertical-align:middle;">${bvo.timePosted}</td>
 							
@@ -194,10 +194,11 @@ body {
 						
 						
 							<td colspan="2" style="vertical-align:middle;">
-								<div class="btn-group-lg" >
-								<a href="#" name="edit" class="btn btn-danger"
+								<div >
+								<p><a href="#" name="edit" class="btn btn-danger"
 
 									data-toggle="modal" data-target="#${bvo.no}"><span class="oi oi-pencil" style="color:white; font-size:30px;"></span></a>
+								</p>	
 								
 								<!-- *************************** Start Modal ******************************  -->
 								
@@ -250,11 +251,11 @@ body {
 															
 					
 							
-						&nbsp;
-							<a href="#" name="delete" class="btn btn-danger"
+						
+							<p><a href="#" name="delete" class="btn btn-danger"
 									data-toggle="modal" data-target="#${bvo.no}del"><span class="oi oi-trash" style="color:white; font-size:30px;"></span></a>
 								
-							
+							</p>
 							
 								<!-- *************************** Start Modal ******************************  -->
 								
@@ -337,10 +338,11 @@ body {
 							<a href="#" class="btn  mx-auto btn-block"
 								onclick="content_submit()" style="font-size:35px; background-color:#FA8072; color:white;">글쓰기&nbsp;<span class="oi oi-check"></span></a>
 								
-						    </div><br>
-						  
+						    </div>
+						    <br>
+						  <div class="row">
 							 <a href="#" class="btn mx-auto" onclick="cancel()" style="font-size:30px; background-color:#F08080; color:white;">다시쓰기</a>
-							
+							</div>
 						 </div>
 							
 					

@@ -7,7 +7,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<link rel="stylesheet" href="./css/newUpdate.css?ver=1">
 <script>
 function reserveCheck(){
 	
@@ -302,7 +302,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							<label for="">핸드폰 번호 </label>
 						</div>
 						<div>
-							<select name="phone1" class="selectpicker col-xs-3"
+							<select name="phone1" class="selectpicker col-xs-3 InputPhone"
 								id="InputPhone1" style="height:30px;">
 								<option value="010" selected>010</option>
 								<option value="011">011</option>
@@ -311,25 +311,31 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 								<option value="018">018</option>
 								<option value="019">019</option>
 							</select> &nbsp; - &nbsp;<input type="text" name="phone2" id="InputPhone2"
-								class="form-group input-sm" /> &nbsp; - &nbsp;<input
+								class="form-group input-sm InputPhone" /> &nbsp;  &nbsp;<input
 								type="text" name="phone3" id="InputPhone3"
-								class="form-group input-sm" />
+								class="form-group input-sm InputPhone" />
 						</div>
 
-					</div>
+				
 					<div class="form-group">
+					<div class=" row">
 						<div class="col-sm-10">
 							<label for="exampleInputEmail1">이메일</label>
 						</div>
-						<div class="col-sm-7">
+					</div>	
+					<div class="row">
+						<div class="col-sm-6">
 							<input type="text" name="emailId" class="form-control"
 								id="InputEmailId" aria-describedby="emailHelp"
-								placeholder="Email" style="width:400px; height:30px;">                     
+								placeholder="Email" >                     
 								
 						</div>
-						<div>
-							<br>
-							<div class="col-sm-3">
+						<div class="col-sm-1" id="gol">
+						<b> @</b>
+						</div>
+						
+							
+							<div class="col-sm-5">
 
 
 
@@ -337,19 +343,19 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 									name="emailAdd" id="InputSelectedEmail"
 									onchange="changeFunc();">
 
-										<option value="@naver.com">@naver.com</option>
-										<option value="@nate.com">@nate.com</option>
-										<option value="@dreamwiz.com">@dreamwiz.com</option>
-										<option value="@yahoo.co.kr">@yahoo.co.kr</option>
-										<option value="@empal.com">@empal.com</option>
-										<option value="@unitel.co.kr">@unitel.co.kr</option>
-										<option value="@gmail.com">@gmail.com</option>
-										<option value="@korea.com">@korea.com</option>
-										<option value="@chol.com">@chol.com</option>
-										<option value="@paran.com">@paran.com</option>
-										<option value="@freechal.com">@freechal.com</option>
-										<option value="@hanmail.net">@hanmail.net</option>
-										<option value="@hotmail.com">@hotmail.com</option>
+										<option value="@naver.com">naver.com</option>
+										<option value="@nate.com">nate.com</option>
+										<option value="@dreamwiz.com">dreamwiz.com</option>
+										<option value="@yahoo.co.kr">yahoo.co.kr</option>
+										<option value="@empal.com">empal.com</option>
+										<option value="@unitel.co.kr">unitel.co.kr</option>
+										<option value="@gmail.com">gmail.com</option>
+										<option value="@korea.com">korea.com</option>
+										<option value="@chol.com">chol.com</option>
+										<option value="@paran.com">paran.com</option>
+										<option value="@freechal.com">freechal.com</option>
+										<option value="@hanmail.net">hanmail.net</option>
+										<option value="@hotmail.com">hotmail.com</option>
 										<option value="직접선택"> 직접선택</option>
 
 								</select>
@@ -357,6 +363,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 
 
 							</div>
+						</div>	
 							<script>
 							function changeFunc() {
 								  
@@ -371,17 +378,17 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							
 							
 							</script>
+						</div>
 
-
-							<div class="form-group">
+							<div class="form-group row">
 								<div class="col-sm-10">
 									<label for="">Email 수신여부 : &nbsp;&nbsp;</label> <input
 										type="checkbox" name="emailAccept" value="y" />
 								</div>
 							</div>
-						</div>
+					
 
-						<div class="form-group">
+						<div class="form-group row">
 							<div class="col-sm-10">
 								<label for="">생년월일</label>
 							</div>
@@ -392,7 +399,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						</div>
 
 
-						<div class="form-group">
+						<div class="form-group row">
 							<div class="col-sm-10">
 								<label for="">성별</label>
 							</div>
@@ -402,7 +409,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							</div>
 
 						</div>
-					</div>
+					
 
 					<div class="modal-footer" style="margin-top: 160px">
 						<input type="hidden" value="register" name="command">
@@ -411,7 +418,12 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">취소</button>
 					</div>
-					
+				 	</div>	
+				</form>
+			</div>	
+		</div>
+	</div>
+		
 					<script>
 function inputCheck() {
 	var userName = $('#InputName').val();
@@ -501,13 +513,6 @@ function inputCheck() {
 </script>
 
 
-				</form>
-			</div>
-		</div>
-		
-
-
-	</div>
 
 
 	<!-- Sign-in Modal -->
