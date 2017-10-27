@@ -64,7 +64,9 @@
 		<div>
 			<input type="text" name="authNum" placeholder="인증번호  5자리 숫자 입력">
 			<p>
-				<a href="mailSender.jsp">인증번호가 오지 않나요?</a> <br> <input
+				<a href="mailSender.jsp">인증번호가 오지 않나요?</a> <br> 
+				${userId }
+				<input
 					type="hidden" name="command" value="authPass">
 				<button type="submit" class="btn btn-primary" value="nextButton">다음</button>
 		</div>

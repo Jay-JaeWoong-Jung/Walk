@@ -28,13 +28,14 @@ public class MailSenderController implements Controller {
 			MailSender.sendTemporaryPassword(userId, emailId + emailAdd);
 			result = true;
 			System.out.println(userId + "에게 임시비번 전송");
-			return new ModelAndView("mailSender.jsp", true);
+			request.setAttribute("userId", userId);
+			request.setAttribute("result", result);
+			return new ModelAndView("mailSender.jsp?userId="+userId, true);
 		} else {
 			System.out.println("userId없어서 전송 안됨....");
 			result = false;
 		}
-
-		request.setAttribute("result", result);
+	
 
 		return new ModelAndView("newMain.jsp");
 	}

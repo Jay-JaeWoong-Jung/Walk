@@ -16,7 +16,9 @@ public class tempPassAuthController implements Controller {
 		boolean authNumResult=false;
 		String authNum = request.getParameter("authNum");
 		System.out.println("authNum: " + authNum);
-		MemberVO vo = null;
+		
+		
+		//MemberVO vo=MemberDAO.getInstance().getMemberInfo(userId);
 		String userPass = vo.getUserPass();
 		if (authNum.equals(userPass)) {
 			
