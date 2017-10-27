@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import config.OracleInfo;
+
 import constants.StringQuery;
 import dataSourceManager.DataSourceManager;
 

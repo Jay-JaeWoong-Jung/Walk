@@ -18,13 +18,16 @@ public class DeleteController implements Controller {
 		String userId =request.getParameter("userId");
 		String userPass = request.getParameter("userPass");
 
-		System.out.println(userId + ", " + userPass);
+		System.out.println("delete :"+userId + ", " + userPass);
 
 		int result = MemberDAO.getInstance().deleteMember(userId, userPass);
 		if (result == 1) {
 			session.invalidate();
-
+			return new ModelAndView("deleteProc.jsp",true);
+		}else{
+			request.setAttribute("deleteResult", result);
+			return new ModelAndView("delete.jsp?");
 		}
-		return new ModelAndView("deleteProc.jsp",true);
+		
 	}
 }
