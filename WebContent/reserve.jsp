@@ -82,12 +82,12 @@ function reserve(num){
  
 <%
 
-	String date1 =CalendarMaker.getInstance().setCalendar(11, 15);
-	String date2 =CalendarMaker.getInstance().setCalendar(11, 45);
-	String date3 =CalendarMaker.getInstance().setCalendar(12, 15);
-	String date4 =CalendarMaker.getInstance().setCalendar(12, 45);
-	String date5 =CalendarMaker.getInstance().setCalendar(01, 15);
-	String date6 =CalendarMaker.getInstance().setCalendar(01, 45);
+	String date1 =CalendarMaker.getInstance().setCalendar(23, 15);
+	String date2 =CalendarMaker.getInstance().setCalendar(23, 45);
+	String date3 =CalendarMaker.getInstance().setCalendar(23, 15);
+	String date4 =CalendarMaker.getInstance().setCalendar(23, 45);
+	String date5 =CalendarMaker.getInstance().setCalendar(23, 15);
+	String date6 =CalendarMaker.getInstance().setCalendar(23, 45);
 
 	
 	
