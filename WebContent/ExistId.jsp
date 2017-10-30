@@ -34,10 +34,10 @@
 		<div class="row">
 			<div class="col-sm-10 text-center">
 
-
+				<p></p>
 				<h2>비밀번호 찾기</h2>
 				<hr>
-				<p>비밀 번호를 찾고자 하는 아이디를 입력해주세요.
+				<p> * 비밀 번호를 찾고자 하는 아이디를 입력해주세요.
 				<form action="DispatcherServlet?command=existId" method="post"
 					name="ExistIdForm" id="ExistIdForm">
 					<div>
@@ -45,6 +45,7 @@
 					</div>
 					<input type="hidden" name="command" value="existId"><br>
 					<button type="submit" class="btn btn-primary" value="findPass">다음</button>
+					<p></p>
 					<p>아이디가 기억나지 않는다면?</p>
 					<a href="findId.jsp">아이디 찾기 바로가기</a>
 				</form>

@@ -26,6 +26,10 @@
 </head>
 
 <script>
+	function passCheck() {
+		alert("임시 비밀번호가 전송되었습니다. 이메일에서 확인해주세요");
+	}
+
 	function changeFunc() {
 
 		var selectBox = document.getElementById("InputSelectedEmail");
@@ -48,16 +52,20 @@
 			<div class="col-sm-12 text-center">
 				<h2>본인확인 이메일로 인증</h2>
 				<hr>
-				<p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 임시 비밀번호를 받을 수 있습니다.</p>
+				<p>* 본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 임시 비밀번호를 받을 수 있습니다.</p>
 				<form action="DispatcherServlet?command=sendPass" method="post"
 					name="mailSenderForm" id="mailSenderForm">
+					
+						<label>이름:</label><input type="text" name="userName"
+							value="${userName}">
+					
 
-					<label>이름:</label><input type="text" name="userName"
-						value="${userName}"> <label>이메일:</label> <input type="text"
-						name="emailId" id="InputEmailId" aria-describedby="emailHelp"
-						value="${emailId }"> <span id="emailChange"> <select
-						class="selectpicker" name="emailAdd" id="InputSelectedEmail"
-						placeholder="이메일" onchange="changeFunc();">
+					<p></p>
+					<label>이메일:</label> <input type="text" name="emailId"
+						id="InputEmailId" aria-describedby="emailHelp" value="${emailId }">
+					<span id="emailChange"> <select class="selectpicker"
+						name="emailAdd" id="InputSelectedEmail" placeholder="이메일"
+						onchange="changeFunc();">
 
 							<option value="@naver.com">@naver.com</option>
 							<option value="@nate.com">@nate.com</option>
@@ -76,9 +84,9 @@
 
 					</select>
 					</span> <input type="hidden" name="command" value="sendPass">
-					<button type="submit" class="btn btn-primary" value="sendEmail">임시
-						비밀번호 받기</button>
-
+					<p></p>
+					<button type="submit" class="btn btn-primary" value="sendEmail"
+						onclick="passCheck()">임시 비밀번호 받기</button>
 				</form>
 
 			</div>
