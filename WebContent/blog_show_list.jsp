@@ -324,7 +324,7 @@ body {
 								type="hidden" name="userId" value="${mvo.userId}"> 
 								<span class="oi oi-double-quote-serif-left" style="color:white"></span> 
 								&nbsp;<input
-								type="text" name="content" maxlength="50" size="50" style="font-size:30px;width:600px; height:50px;"> 
+								type="text" name="content" maxlength="100" size="100" style="font-size:30px;width:600px; height:50px;"> 
 							<span class="oi oi-double-quote-serif-right" style="color:white"></span>
 						</form>
 						

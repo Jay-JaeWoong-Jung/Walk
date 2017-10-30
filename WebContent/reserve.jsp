@@ -76,23 +76,40 @@ function reserve(num){
 
 
  <jsp:useBean id="now" class="java.util.Date" ></jsp:useBean>
- <fmt:formatDate var="curTime" value="${now}" pattern="HHmm" />
+ <fmt:formatDate var="curTime" value="${now}" pattern="HHmmss" />
  
  
  
 <%
 
-	String date1 =CalendarMaker.getInstance().setCalendar(23, 15);
-	String date2 =CalendarMaker.getInstance().setCalendar(23, 45);
-	String date3 =CalendarMaker.getInstance().setCalendar(23, 15);
-	String date4 =CalendarMaker.getInstance().setCalendar(23, 45);
-	String date5 =CalendarMaker.getInstance().setCalendar(23, 15);
-	String date6 =CalendarMaker.getInstance().setCalendar(23, 45);
+	String date1 =CalendarMaker.getInstance().setCalendar(23, 36);
+	String date2 =CalendarMaker.getInstance().setCalendar(23, 59);
+	String date3 =CalendarMaker.getInstance().setCalendar(23, 59);
+	String date4 =CalendarMaker.getInstance().setCalendar(23, 59);
+	String date5 =CalendarMaker.getInstance().setCalendar(23, 59);
+	String date6 =CalendarMaker.getInstance().setCalendar(23, 59);
 
 	
 	
 
 %>
+
+
+<%-- <%
+
+	String date1 =CalendarMaker.getInstance().setCalendar(11, 00);
+	String date2 =CalendarMaker.getInstance().setCalendar(11, 30);
+	String date3 =CalendarMaker.getInstance().setCalendar(12, 00);
+	String date4 =CalendarMaker.getInstance().setCalendar(12, 30);
+	String date5 =CalendarMaker.getInstance().setCalendar(13, 00);
+	String date6 =CalendarMaker.getInstance().setCalendar(13, 30);
+
+	
+	
+
+%> --%>
+
+
 <c:set var="date1" value="<%= date1 %>"></c:set>
 <c:set var="date2" value="<%= date2 %>"></c:set>
 <c:set var="date3" value="<%= date3 %>"></c:set>
@@ -101,8 +118,12 @@ function reserve(num){
 <c:set var="date6" value="<%= date6 %>"></c:set>
 
 
+<%-- 
 
+date1: ${date1}
+curTime: ${curTime}
 
+ --%>
 
 	<div class="btn-group-vertical container-fluid">
 	

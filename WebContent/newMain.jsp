@@ -37,7 +37,7 @@
 		
 		<img class="mx-auto d-block" src="./image/footstep.svg"><br>
 		<div class="row section ">
-			<h1 class="mx-auto">매일 20분 산책 프로잭트</h1>
+			<h1 class="mx-auto">매일 20분 산책 프로젝트</h1>
 		</div>
 		
 		<div class="row section ">

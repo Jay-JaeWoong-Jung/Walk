@@ -14,11 +14,11 @@ import contextListener.jobScheduler.JobTimer;
 
 public class SevletContextListener implements ServletContextListener{
 
-//	private ScheduledExecutorService scheduler;
+
 	
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {
-//		scheduler.shutdownNow();
+
 	}
  
 	@Override
@@ -27,6 +27,11 @@ public class SevletContextListener implements ServletContextListener{
 
 
 //		Timer timer = new Timer();
+//		
+//		Date date1 = CalendarMaker.getInstance().makeCalendar(23,28);
+//		timer.schedule(new JobTimer(1), date1 ,24*60*60*1000);
+		
+		
 
 //		Date date1 = CalendarMaker.getInstance().makeCalendar(11,15);
 //		Date date2 = CalendarMaker.getInstance().makeCalendar(11,45);
@@ -37,17 +42,19 @@ public class SevletContextListener implements ServletContextListener{
 //		Date date7 = CalendarMaker.getInstance().makeCalendar(23,59);
 //		
 
+		
 
-//
+
 //		timer.schedule(new JobTimer(1), date1 ,24*60*60*1000);
 //		timer.schedule(new JobTimer(2), date2 ,24*60*60*1000);
 //		timer.schedule(new JobTimer(3), date3 ,24*60*60*1000);
 //		timer.schedule(new JobTimer(4), date4 ,24*60*60*1000);
 //		timer.schedule(new JobTimer(5), date5 ,24*60*60*1000);
 //		timer.schedule(new JobTimer(6), date6 ,24*60*60*1000);	
-//
+
 //		timer.schedule(new JobTimer(MagicNumbers.RESET_VAL_SELECTEDTIME_FLAG), date7 ,24*60*60*1000);
 
+		
 		
 	}
 

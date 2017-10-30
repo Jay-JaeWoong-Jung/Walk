@@ -23,8 +23,9 @@ public class CalendarMaker {
 		Calendar date= Calendar.getInstance();
 		date.set(Calendar.HOUR_OF_DAY, hour);
 		date.set(Calendar.MINUTE, minute);	
+		date.set(Calendar.SECOND, 00);	
 		Date d= date.getTime();
-		SimpleDateFormat sdf = new java.text.SimpleDateFormat("HHmm");
+		SimpleDateFormat sdf = new java.text.SimpleDateFormat("HHmmss");
 		String time = sdf.format(d);
 		
 		return time;

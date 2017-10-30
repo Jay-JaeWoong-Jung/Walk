@@ -64,9 +64,9 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 		class="navbar-brand" href="newMain.jsp"><img src="./image/footstep.svg" style="width: 50px;"></a>
 
 
-	<p id="tDate" class="lead displayInline mb-0 text-center text-right ">
+	<%-- <p id="tDate" class="lead displayInline mb-0 text-center text-right ">
 		<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />
-	</p>
+	</p> --%>
 	<button class="navbar-toggler " type="button" data-toggle="collapse"
 		data-target="#navbarSupportedContent"
 		aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -197,7 +197,32 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 
 			
 			</li>
-			<li class="nav-item"><a class="nav-link" href="DispatcherServlet?command=todayDate">Blog</a></li>
+			<li class="nav-item">
+			<a class="nav-link" href="#" onclick="blog()">Blog</a>
+			
+			<script>
+						function blog(){
+							
+							<c:choose>
+								<c:when test="${mvo.userId == null}">
+										location.href="newMain.jsp";
+										alert("로그인 후 이용가능합니다.")
+								</c:when>
+								<c:otherwise>
+								location.href="DispatcherServlet?command=todayDate";
+								</c:otherwise>
+	
+							</c:choose>
+		
+						}
+					</script>
+					
+					
+					
+			
+			
+			
+			</li>
  
 			
 
@@ -207,10 +232,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 				
 					<c:when test="${mvo.userId != null}">
 
-						<a class="nav-link" href="#" data-toggle="modal" data-target="#"
-
-				
-							id="regForm">${mvo.userName}님 </a>
+						<a class="nav-link" href="#" data-toggle="modal" data-target="#" id="regForm">${mvo.userName}님 </a>
 					</c:when>
 				
 					<c:otherwise>
@@ -341,9 +363,9 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 								<option value="018">018</option>
 								<option value="019">019</option>
 							</select> &nbsp; - &nbsp;<input type="text" name="phone2" id="InputPhone2"
-								class="form-group input-sm InputPhone" /> &nbsp;  &nbsp;<input
+								class="form-group input-sm InputPhone"size="15"/> &nbsp;  &nbsp;<input
 								type="text" name="phone3" id="InputPhone3"
-								class="form-group input-sm InputPhone" />
+								class="form-group input-sm InputPhone" size="15"/>
 						</div>
 
 				
@@ -401,7 +423,7 @@ alert("로그인에 실패하였습니다. 다시 로그인 해주세요")
 							    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 							    
 							    if(selectedValue =="직접선택"){
-							    	$("#emailChange").html("<input type='text' name='emailAdd' id='InputSelectedEmail' value='' />")
+							    	$("#emailChange").html("<input type='text' name='emailAdd' id='InputSelectedEmail' size='10' value='' />")
 							    	
 							    }
 							   }
